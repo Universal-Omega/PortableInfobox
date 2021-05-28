@@ -3,6 +3,7 @@
 namespace PortableInfobox\Helpers;
 
 use MediaWiki\Logger\LoggerFactory;
+use MediaWiki\MediaWikiServices;
 
 class PortableInfoboxParsingHelper {
 
@@ -26,7 +27,7 @@ class PortableInfoboxParsingHelper {
 		$templateText = $this->fetchArticleContent( $title );
 
 		if ( $templateText ) {
-			$parser = new \Parser();
+			$parser = MediaWikiServices::getInstance()->getParser();
 			$parser->setTitle( $title );
 			$parserOptions = new \ParserOptions();
 			$frame = $parser->getPreprocessor()->newFrame();
