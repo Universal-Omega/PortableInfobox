@@ -1,11 +1,11 @@
 # mediawiki-PortableInfobox
-Port of FANDOM's https://github.com/Wikia/app/tree/dev/extensions/wikia/PortableInfobox extension to the MediaWiki 1.27+
+Port of FANDOM's https://github.com/Wikia/app/tree/dev/extensions/wikia/PortableInfobox extension to the MediaWiki 1.32+
 
 ## Installation
 Grab the latest release from [GitHub](https://github.com/Luqgreg/mediawiki-PortableInfobox/releases/latest) and unpack it into `extensions\PortableInfobox` directory in your MediaWiki installation or clone this repository, by using these commands:
 ```bash
 cd extensions
-git clone https://github.com/Luqgreg/mediawiki-PortableInfobox.git PortableInfobox --branch master --depth 1
+git clone https://github.com/Universal-Omega/PortableInfobox.git --depth=1
 ```
 
 and add the following code at the bottom of [LocalSettings.php](https://www.mediawiki.org/wiki/Manual:LocalSettings.php):
@@ -22,7 +22,7 @@ You can use several variables to modify extension's behaviour:
 - `$wgPortableInfoboxUseTidy` (bool) - use [RemexHtml](https://www.mediawiki.org/wiki/RemexHtml) for validating HTML in infoboxes (default: true)
 
 ## Usage
-See: https://community.wikia.com/wiki/Help:Infoboxes
+See: https://community.fandom.com/wiki/Help:Infoboxes
 
 ### `<media />` tag
 In the 0.3 version, the `<media/>` tag was introduced in favor of `<image/>`, which still works (see Aliases). It allows users to embed images, videos, and audio files in the infobox, in the same way as `<image />` tag does in the original version.
