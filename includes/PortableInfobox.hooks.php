@@ -1,6 +1,7 @@
 <?php
 
 use MediaWiki\MediaWikiServices;
+use PortableInfobox\Helpers\PortableInfoboxDataBag;
 
 // phpcs:ignore MediaWiki.Files.ClassMatchesFilename.NotMatch
 class PortableInfoboxHooks {
@@ -14,7 +15,7 @@ class PortableInfoboxHooks {
 	public static function onBeforeParserrenderImageGallery(
 		Parser &$parser, ImageGalleryBase &$gallery
 	) {
-		PortableInfobox\Helpers\PortableInfoboxDataBag::getInstance()->setGallery(
+		PortableInfoboxDataBag::getInstance()->setGallery(
 			Parser::MARKER_PREFIX . '-gallery-' . sprintf( '%08X', $parser->mMarkerIndex - 1 ) .
 				Parser::MARKER_SUFFIX,
 			$gallery
