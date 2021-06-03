@@ -42,7 +42,7 @@ class MediaWikiParserService implements ExternalParser {
 			return $this->cache[$wikitext];
 		}
 
-		$parsed = $this->parser->internalParse( $wikitext, false, $this->frame );
+		$parsed = $wikitext ? $this->parser->internalParse( $wikitext, false, $this->frame ) : null;
 		if ( in_array( substr( $parsed, 0, 1 ), [ '*', '#' ] ) ) {
 			//fix for first item list elements
 			$parsed = "\n" . $parsed;
