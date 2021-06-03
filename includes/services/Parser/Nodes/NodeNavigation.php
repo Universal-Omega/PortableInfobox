@@ -1,8 +1,8 @@
 <?php
+
 namespace PortableInfobox\Parser\Nodes;
 
 class NodeNavigation extends Node {
-
 	public function getData() {
 		if ( !isset( $this->data ) ) {
 			$this->data = [
