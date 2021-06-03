@@ -1,4 +1,5 @@
 <?php
+
 namespace PortableInfobox\Parser\Nodes;
 
 class NodeGroup extends Node {
