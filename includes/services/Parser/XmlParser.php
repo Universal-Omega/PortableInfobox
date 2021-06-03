@@ -1,7 +1,10 @@
 <?php
+
 namespace PortableInfobox\Parser;
 
+use Exception;
 use MediaWiki\Logger\LoggerFactory;
+use SimpleXMLElement;
 
 class XmlParser {
 	protected static $contentTags = [ 'default', 'label', 'format', 'navigation', 'header' ];
@@ -11,7 +14,7 @@ class XmlParser {
 	 *
 	 * @param array &$errors this array will be filled with errors if any found
 	 *
-	 * @return \SimpleXMLElement
+	 * @return SimpleXMLElement
 	 * @throws XmlMarkupParseErrorException
 	 */
 	public static function parseXmlString( $xmlString, &$errors = [] ) {
@@ -62,7 +65,7 @@ class XmlParser {
 }
 
 // phpcs:ignore Generic.Files.OneObjectStructurePerFile.MultipleFound
-class XmlMarkupParseErrorException extends \Exception {
+class XmlMarkupParseErrorException extends Exception {
 	private $errors;
 
 	public function __construct( $errors ) {
