@@ -1,5 +1,5 @@
 {
-	"portable-infobox-desc": "您可以使用類似XML的標記建立簡便的資訊框，並且可以使用清晰的語義特性HTML標記在任何佈景主題或者平台呈現",
+	"portable-infobox-desc": "您可以使用類似XML的標記建立簡便的資訊框，並且可以使用清晰的語義特性HTML標記在任何外觀或平台呈現",
 	"portable-infobox-unimplemented-infobox-tag": "未生效的資訊框標籤：<$1>",
 	"portable-infobox-xml-parse-error-info": "解析資訊框時出現問題",
 	"portable-infobox-xml-parse-error": "XML標記不正確。請驗證。",
