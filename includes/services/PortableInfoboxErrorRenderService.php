@@ -22,7 +22,7 @@ class PortableInfoboxErrorRenderService {
 		77 => 'XML_ERR_TAG_NOT_FINISHED'
 	];
 
-	/* @var $templateEngine PortableInfobox\Helpers\PortableInfoboxTemplateEngine */
+	/* @var $templateEngine PortableInfoboxTemplateEngine */
 	private $templateEngine;
 
 	public function __construct( $errorList ) {
