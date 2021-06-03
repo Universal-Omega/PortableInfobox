@@ -14,9 +14,9 @@ class ApiPortableInfobox extends ApiBase {
 			$this->addWarning( 'apiwarn-infobox-invalidargs' );
 		}
 
-		global $wgParser;
-		$wgParser->firstCallInit();
-		$wgParser->startExternalParse(
+		$parser = MediaWikiServices::getInstance()->getParser();
+		$parser->firstCallInit();
+		$parser->startExternalParse(
 			Title::newFromText( $title ),
 			ParserOptions::newFromContext( $this->getContext() ),
 			Parser::OT_HTML,
@@ -25,14 +25,14 @@ class ApiPortableInfobox extends ApiBase {
 
 		if ( is_array( $arguments ) ) {
 			foreach ( $arguments as $key => &$value ) {
-				$value = $wgParser->replaceVariables( $value );
+				$value = $parser->replaceVariables( $value );
 			}
 		}
 
-		$frame = $wgParser->getPreprocessor()->newCustomFrame( is_array( $arguments ) ? $arguments : [] );
+		$frame = $parser->getPreprocessor()->newCustomFrame( is_array( $arguments ) ? $arguments : [] );
 
 		try {
-			$output = PortableInfoboxParserTagController::getInstance()->render( $text, $wgParser, $frame );
+			$output = PortableInfoboxParserTagController::getInstance()->render( $text, $parser, $frame );
 			$this->getResult()->addValue( null, $this->getModuleName(), [ 'text' => [ '*' => $output ] ] );
 		} catch ( \PortableInfobox\Parser\Nodes\UnimplementedNodeException $e ) {
 			$this->dieUsage(
