@@ -1,4 +1,5 @@
 <?php
+
 namespace PortableInfobox\Parser;
 
 class SimpleParser implements ExternalParser {
