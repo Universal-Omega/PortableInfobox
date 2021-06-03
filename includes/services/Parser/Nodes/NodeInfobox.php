@@ -1,8 +1,8 @@
 <?php
+
 namespace PortableInfobox\Parser\Nodes;
 
 class NodeInfobox extends Node {
-
 	protected $params;
 
 	public function getData() {
