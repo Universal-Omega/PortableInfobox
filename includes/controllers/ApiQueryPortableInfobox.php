@@ -3,7 +3,6 @@
 use PortableInfobox\Helpers\PagePropsProxy;
 
 class ApiQueryPortableInfobox extends ApiQueryBase {
-
 	protected $propsProxy;
 
 	public function __construct( $query, $moduleName ) {
