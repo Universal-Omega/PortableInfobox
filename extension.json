@@ -5,7 +5,7 @@
 		"Universal Omega",
 		"Luqgreg (Łukasz K.)"
 	],
-	"url": "https://github.com/Luqgreg/mediawiki-PortableInfobox",
+	"url": "https://github.com/Universal-Omega/PortableInfobox",
 	"descriptionmsg": "portable-infobox-desc",
 	"version": "0.5",
 	"type": "parserhook",
