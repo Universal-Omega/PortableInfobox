@@ -7,11 +7,11 @@
 	],
 	"url": "https://github.com/Luqgreg/mediawiki-PortableInfobox",
 	"descriptionmsg": "portable-infobox-desc",
-	"version": "0.3",
+	"version": "0.5",
 	"type": "parserhook",
 	"license-name": "GPL-3.0-or-later",
 	"requires": {
-		"MediaWiki": ">= 1.32.0"
+		"MediaWiki": ">= 1.35.0"
 	},
 	"config": {
 		"AllInfoboxesSubpagesBlacklist": [ "doc", "draft", "test" ],
