@@ -1,5 +1,8 @@
 <?php
+
 namespace PortableInfobox\Helpers;
+
+use Exception;
 
 class InfoboxParamsValidator {
 	private static $supportedParams = [
@@ -240,5 +243,4 @@ class InfoboxParamsValidator {
 }
 
 // phpcs:ignore Generic.Files.OneObjectStructurePerFile.MultipleFound
-class InvalidInfoboxParamsException extends \Exception {
-}
+class InvalidInfoboxParamsException extends Exception {}
