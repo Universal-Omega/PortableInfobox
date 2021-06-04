@@ -3,7 +3,6 @@
 use MediaWiki\MediaWikiServices;
 
 class ApiQueryAllinfoboxes extends ApiQueryBase {
-
 	const CACHE_TTL = 86400;
 	const MCACHE_KEY = 'allinfoboxes-list';
 
