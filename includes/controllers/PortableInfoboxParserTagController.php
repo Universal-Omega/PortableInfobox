@@ -1,6 +1,5 @@
 <?php
 
-use ParserOutput;
 use PortableInfobox\Helpers\InvalidInfoboxParamsException;
 use PortableInfobox\Helpers\InfoboxParamsValidator;
 use PortableInfobox\Parser\MediaWikiParserService;
