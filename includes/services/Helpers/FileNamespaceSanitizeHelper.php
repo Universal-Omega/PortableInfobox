@@ -2,14 +2,16 @@
 
 namespace PortableInfobox\Helpers;
 
+use Language;
+use MWNamespace;
+
 // original class & authors:
 // https://github.com/Wikia/app/blob/dev/includes/wikia/helpers/FileNamespaceSanitizeHelper.php
 class FileNamespaceSanitizeHelper {
 	private static $instance = null;
 	private $filePrefixRegex = [];
 
-	private function __construct() {
-	}
+	private function __construct() {}
 
 	/**
 	 * @return null|FileNamespaceSanitizeHelper
@@ -23,7 +25,7 @@ class FileNamespaceSanitizeHelper {
 	}
 
 	/**
-	 * @param \Language $contLang
+	 * @param Language $contLang
 	 * Used as local cache for getting string to remove
 	 */
 	private function getFilePrefixRegex( $contLang ) {
@@ -31,7 +33,7 @@ class FileNamespaceSanitizeHelper {
 		$langCode = $contLang->getCode();
 		if ( empty( $this->filePrefixRegex[$langCode] ) ) {
 			$fileNamespaces = [
-				\MWNamespace::getCanonicalName( NS_FILE ),
+				MWNamespace::getCanonicalName( NS_FILE ),
 				$contLang->getNamespaces()[NS_FILE],
 			];
 
@@ -61,7 +63,7 @@ class FileNamespaceSanitizeHelper {
 
 	/**
 	 * @param string $filename
-	 * @param \Language $contLang
+	 * @param Language $contLang
 	 *
 	 * @return mixed
 	 */
