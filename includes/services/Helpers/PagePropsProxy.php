@@ -21,7 +21,6 @@ class PagePropsProxy {
 			],
 			__METHOD__
 		);
-
 		return $propValue;
 	}
 
