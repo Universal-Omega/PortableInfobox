@@ -1,7 +1,6 @@
 <?php
 
 class AllinfoboxesQueryPage extends PageQueryPage {
-
 	const ALL_INFOBOXES_TYPE = 'AllInfoboxes';
 
 	function __construct() {
