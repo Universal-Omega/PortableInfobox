@@ -6,7 +6,6 @@ use PortableInfobox\Helpers\PortableInfoboxParsingHelper;
 use PortableInfobox\Parser\Nodes\NodeInfobox;
 
 class PortableInfoboxDataService {
-
 	const CACHE_TTL = 86400; // 24 hours
 	const IMAGE_FIELD_TYPE = 'image';
 	const INFOBOXES_PROPERTY_NAME = 'infoboxes';
