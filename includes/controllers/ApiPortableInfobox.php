@@ -1,7 +1,10 @@
 <?php
 
-class ApiPortableInfobox extends ApiBase {
+use PortableInfobox\Helpers\InvalidInfoboxParamsException;
+use PortableInfobox\Parser\Nodes\UnimplementedNodeException;
+use PortableInfobox\Parser\XmlMarkupParseErrorException;
 
+class ApiPortableInfobox extends ApiBase {
 	public function __construct( $main, $action ) {
 		parent::__construct( $main, $action );
 	}
@@ -34,14 +37,14 @@ class ApiPortableInfobox extends ApiBase {
 		try {
 			$output = PortableInfoboxParserTagController::getInstance()->render( $text, $parser, $frame );
 			$this->getResult()->addValue( null, $this->getModuleName(), [ 'text' => [ '*' => $output ] ] );
-		} catch ( \PortableInfobox\Parser\Nodes\UnimplementedNodeException $e ) {
+		} catch ( UnimplementedNodeException $e ) {
 			$this->dieUsage(
 				wfMessage( 'portable-infobox-unimplemented-infobox-tag', [ $e->getMessage() ] )->escaped(),
 				'notimplemented'
 			);
-		} catch ( \PortableInfobox\Parser\XmlMarkupParseErrorException $e ) {
+		} catch ( XmlMarkupParseErrorException $e ) {
 			$this->dieUsage( wfMessage( 'portable-infobox-xml-parse-error' )->text(), 'badxml' );
-		} catch ( \PortableInfobox\Helpers\InvalidInfoboxParamsException $e ) {
+		} catch ( InvalidInfoboxParamsException $e ) {
 			$this->dieUsage(
 				wfMessage(
 					'portable-infobox-xml-parse-error-infobox-tag-attribute-unsupported',
