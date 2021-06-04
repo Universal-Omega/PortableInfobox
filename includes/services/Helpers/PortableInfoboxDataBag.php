@@ -10,8 +10,7 @@ class PortableInfoboxDataBag {
 	private static $instance = null;
 	private $galleries = [];
 
-	private function __construct() {
-	}
+	private function __construct() {}
 
 	/**
 	 * @return null|PortableInfoboxDataBag
