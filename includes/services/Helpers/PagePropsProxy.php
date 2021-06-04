@@ -3,7 +3,6 @@
 namespace PortableInfobox\Helpers;
 
 class PagePropsProxy {
-
 	protected $atomicStarted;
 	protected $manualWrite;
 
