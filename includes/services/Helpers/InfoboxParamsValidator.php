@@ -170,16 +170,16 @@ class InfoboxParamsValidator {
 	];
 	private static $colorNamesFlipped;
 
-	const REGEX_PERCENT = '(?:100|\d{1,2})%';
-	const REGEX_HUE = '-?(?:3(?:60|[0-5]\d)|[12]?\d{1,2})';
-	const REGEX_ALPHAVAL = '(?:' . self::REGEX_PERCENT . '|[01]?\.\d+|[01])';
-	const REGEX_RGBVAL = '(?:' . self::REGEX_PERCENT . '|2(?:5[0-5]|[0-4]\d)|1?\d{1,2})';
-	const REGEX_HEXRGB = '/^#?[a-f0-9]{3}(?:[a-f0-9]{3}(?:[a-f0-9]{2})?|[a-f0-9])?$/';
-	const REGEX_RGB = '/^rgb\((?:' . self::REGEX_RGBVAL . ',){2}' . self::REGEX_RGBVAL . '\)$/';
-	const REGEX_RGBA = '/^rgba\((?:' . self::REGEX_RGBVAL . ',){3}' . self::REGEX_ALPHAVAL . '\)$/';
-	const REGEX_HSL = '/^hsl\(' . self::REGEX_HUE . ',' . self::REGEX_PERCENT . ',' .
+	private const REGEX_PERCENT = '(?:100|\d{1,2})%';
+	private const REGEX_HUE = '-?(?:3(?:60|[0-5]\d)|[12]?\d{1,2})';
+	private const REGEX_ALPHAVAL = '(?:' . self::REGEX_PERCENT . '|[01]?\.\d+|[01])';
+	private const REGEX_RGBVAL = '(?:' . self::REGEX_PERCENT . '|2(?:5[0-5]|[0-4]\d)|1?\d{1,2})';
+	private const REGEX_HEXRGB = '/^#?[a-f0-9]{3}(?:[a-f0-9]{3}(?:[a-f0-9]{2})?|[a-f0-9])?$/';
+	private const REGEX_RGB = '/^rgb\((?:' . self::REGEX_RGBVAL . ',){2}' . self::REGEX_RGBVAL . '\)$/';
+	private const REGEX_RGBA = '/^rgba\((?:' . self::REGEX_RGBVAL . ',){3}' . self::REGEX_ALPHAVAL . '\)$/';
+	private const REGEX_HSL = '/^hsl\(' . self::REGEX_HUE . ',' . self::REGEX_PERCENT . ',' .
 		self::REGEX_PERCENT . '\)$/';
-	const REGEX_HSLA = '/^hsla\(' . self::REGEX_HUE . ',(?:' . self::REGEX_PERCENT . ',){2}' .
+	private const REGEX_HSLA = '/^hsla\(' . self::REGEX_HUE . ',(?:' . self::REGEX_PERCENT . ',){2}' .
 		self::REGEX_ALPHAVAL . '\)$/';
 
 	public function __construct() {
