@@ -31,9 +31,11 @@ class AllinfoboxesQueryPage extends PageQueryPage {
 			]
 		];
 
+		$dbr = $this->getDBLoadBalancer()->getConnectionRef( DB_REPLICA );
+
 		$subpagesBlacklist = $this->getConfig()->get( 'AllInfoboxesSubpagesBlacklist' );
 		foreach ( $subpagesBlacklist as $subpage ) {
-			$query['conds'][] = 'page.page_title NOT LIKE %/' . mysql_real_escape_string( $subpage );
+			$query['conds'][] = 'page.page_title NOT ' . $dbr->buildLike( "/{$subpage}" );
 		}
 
 		return $query;
