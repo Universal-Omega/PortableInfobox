@@ -3,7 +3,7 @@
 namespace PortableInfobox\Helpers;
 
 class PortableInfoboxImagesHelper {
-	const MAX_DESKTOP_THUMBNAIL_HEIGHT = 500;
+	private const MAX_DESKTOP_THUMBNAIL_HEIGHT = 500;
 
 	/**
 	 * extends image data
