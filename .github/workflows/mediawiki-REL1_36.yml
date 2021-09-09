@@ -1,4 +1,4 @@
-name: Continuous integration (master)
+name: Continuous integration (REL1_36)
 
 on:
   create:
