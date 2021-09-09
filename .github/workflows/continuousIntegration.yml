@@ -20,6 +20,8 @@ jobs:
       run: |
         composer validate
         composer install --prefer-dist --no-progress
+        sudo pecl install ast
+        echo "extension=ast" | sudo tee -a /etc/php/8.0/cli/php.ini
 
     # Bypass the phpcbf non-standard exit code  
     - name: Check PHP
