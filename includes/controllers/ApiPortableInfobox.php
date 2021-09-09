@@ -36,14 +36,14 @@ class ApiPortableInfobox extends ApiBase {
 			$this->getResult()->addValue( null, $this->getModuleName(), [ 'text' => [ '*' => $output ] ] );
 		} catch ( \PortableInfobox\Parser\Nodes\UnimplementedNodeException $e ) {
 			$this->dieUsage(
-				wfMessage( 'portable-infobox-unimplemented-infobox-tag', [ $e->getMessage() ] )->escaped(),
+				$this->msg( 'portable-infobox-unimplemented-infobox-tag', [ $e->getMessage() ] )->escaped(),
 				'notimplemented'
 			);
 		} catch ( \PortableInfobox\Parser\XmlMarkupParseErrorException $e ) {
-			$this->dieUsage( wfMessage( 'portable-infobox-xml-parse-error' )->text(), 'badxml' );
+			$this->dieUsage( $this->msg( 'portable-infobox-xml-parse-error' )->text(), 'badxml' );
 		} catch ( \PortableInfobox\Helpers\InvalidInfoboxParamsException $e ) {
 			$this->dieUsage(
-				wfMessage(
+				$this->msg(
 					'portable-infobox-xml-parse-error-infobox-tag-attribute-unsupported',
 					[ $e->getMessage() ]
 				)->escaped(),
