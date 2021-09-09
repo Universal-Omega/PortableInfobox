@@ -87,7 +87,7 @@ class PortableInfoboxParserTagController {
 	 */
 	public function prepareInfobox( $markup, Parser $parser, PPFrame $frame, $params = null ) {
 		$frameArguments = $frame->getArguments();
-		$infoboxNode = Nodes\NodeFactory::newFromXML( $markup, $frameArguments ? $frameArguments : [] );
+		$infoboxNode = Nodes\NodeFactory::newFromXML( $markup, $frameArguments ?: [] );
 		$infoboxNode->setExternalParser(
 			new PortableInfobox\Parser\MediaWikiParserService( $parser, $frame )
 		);
@@ -114,7 +114,7 @@ class PortableInfoboxParserTagController {
 	 * @param Parser $parser
 	 * @param PPFrame $frame
 	 *
-	 * @return string $html
+	 * @return string|array
 	 */
 	public function renderInfobox( $text, $params, $parser, $frame ) {
 		$markup = '<' . self::PARSER_TAG_NAME . '>' . $text . '</' . self::PARSER_TAG_NAME . '>';
