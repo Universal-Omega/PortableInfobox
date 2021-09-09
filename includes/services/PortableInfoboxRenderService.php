@@ -4,8 +4,8 @@ use PortableInfobox\Helpers\PortableInfoboxTemplateEngine;
 
 class PortableInfoboxRenderService {
 	// keep synced with css variables (--pi-width)
-	const DEFAULT_DESKTOP_INFOBOX_WIDTH = 270;
-	const DEFAULT_DESKTOP_THUMBNAIL_WIDTH = 350;
+	private const DEFAULT_DESKTOP_INFOBOX_WIDTH = 270;
+	private const DEFAULT_DESKTOP_THUMBNAIL_WIDTH = 350;
 
 	protected $templateEngine;
 	protected $inlineStyles;
