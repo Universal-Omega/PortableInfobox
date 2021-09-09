@@ -226,7 +226,7 @@ class PortableInfoboxRenderService {
 			return '';
 		}
 		if ( !$shouldShowToggles ) {
-			$sections = array_map( function ( $content ) {
+			$sections = array_map( static function ( $content ) {
 				$content['active'] = true;
 				return $content;
 			}, $sections );
@@ -329,7 +329,7 @@ class PortableInfoboxRenderService {
 	}
 
 	private function createSmartGroupSections( array $rowItems, $capacity ) {
-		return array_reduce( $rowItems, function ( $result, $item ) use ( $capacity ) {
+		return array_reduce( $rowItems, static function ( $result, $item ) use ( $capacity ) {
 			$width = $item['data']['span'] / $capacity * 100;
 			$styles = "width: {$width}%";
 

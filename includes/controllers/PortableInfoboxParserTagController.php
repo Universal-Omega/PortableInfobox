@@ -1,10 +1,10 @@
 <?php
 
-use PortableInfobox\Parser\Nodes;
-use PortableInfobox\Helpers\InvalidInfoboxParamsException;
 use PortableInfobox\Helpers\InfoboxParamsValidator;
-use PortableInfobox\Parser\XmlMarkupParseErrorException;
+use PortableInfobox\Helpers\InvalidInfoboxParamsException;
+use PortableInfobox\Parser\Nodes;
 use PortableInfobox\Parser\Nodes\UnimplementedNodeException;
+use PortableInfobox\Parser\XmlMarkupParseErrorException;
 
 class PortableInfoboxParserTagController {
 	const PARSER_TAG_NAME = 'infobox';
@@ -205,7 +205,7 @@ class PortableInfoboxParserTagController {
 		// use default global theme if not present
 		$themes = !empty( $themes ) ? $themes : [ self::DEFAULT_THEME_NAME ];
 
-		return array_map( function ( $name ) {
+		return array_map( static function ( $name ) {
 			return Sanitizer::escapeClass(
 				self::INFOBOX_THEME_PREFIX . preg_replace( '|\s+|s', '-', $name )
 			);

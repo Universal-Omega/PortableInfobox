@@ -183,7 +183,7 @@ class InfoboxParamsValidator {
 		self::REGEX_ALPHAVAL . '\)$/';
 
 	public function __construct() {
-		if ( is_null( self::$colorNamesFlipped ) ) {
+		if ( self::$colorNamesFlipped === null ) {
 			self::$colorNamesFlipped = array_flip( self::$colorNames );
 		}
 	}

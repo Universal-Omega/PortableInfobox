@@ -2,8 +2,8 @@
 
 namespace PortableInfobox\Helpers;
 
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Logger\LoggerFactory;
+use MediaWiki\MediaWikiServices;
 
 class PortableInfoboxTemplateEngine {
 	private const CACHE_TTL = 86400;
@@ -73,7 +73,7 @@ class PortableInfoboxTemplateEngine {
 					__CLASS__, \PortableInfoboxParserTagController::PARSER_TAG_VERSION, $type
 				);
 				$template = self::$memcache->getWithSetCallback(
-					$cachekey, self::CACHE_TTL, function () use ( $path ) {
+					$cachekey, self::CACHE_TTL, static function () use ( $path ) {
 						// @see https://github.com/wikimedia/mediawiki-vendor/tree/master/zordius/lightncandy
 						return self::$lightncandy::compile( file_get_contents( $path ), [
 							'flags' => self::$compileFlags

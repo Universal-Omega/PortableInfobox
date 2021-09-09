@@ -29,7 +29,7 @@ class Node {
 	}
 
 	public function getSources() {
-		if ( is_null( $this->cachedSources ) ) {
+		if ( $this->cachedSources === null ) {
 			$this->cachedSources = $this->extractSourcesFromNode( $this->xmlNode );
 		}
 
@@ -154,7 +154,7 @@ class Node {
 
 	protected function getDataForChildren() {
 		return array_map(
-			function ( Node $item ) {
+			static function ( Node $item ) {
 				return [
 					'type' => $item->getType(),
 					'data' => $item->getData(),
@@ -167,9 +167,9 @@ class Node {
 	}
 
 	protected function getRenderDataForChildren() {
-		$renderData = array_map( function ( Node $item ) {
+		$renderData = array_map( static function ( Node $item ) {
 			return $item->getRenderData();
-		}, array_filter( $this->getChildNodes(), function ( Node $item ) {
+		}, array_filter( $this->getChildNodes(), static function ( Node $item ) {
 			return !$item->isEmpty();
 		} ) );
 		// rebase keys
@@ -188,7 +188,7 @@ class Node {
 	}
 
 	protected function getMetadataForChildren() {
-		return array_map( function ( Node $item ) {
+		return array_map( static function ( Node $item ) {
 			return $item->getMetadata();
 		}, $this->getChildNodes() );
 	}

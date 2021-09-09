@@ -45,7 +45,7 @@ class NodeGroup extends Node {
 	public function getRenderData() {
 		$value = $this->showIncomplete() ?
 			array_map(
-				function ( Node $item ) {
+				static function ( Node $item ) {
 					return $item->getRenderData();
 				},
 				$this->getChildNodes()

@@ -31,7 +31,7 @@ class NodeMedia extends Node {
 
 	public static function getGalleryData( $marker ) {
 		$gallery = PortableInfoboxDataBag::getInstance()->getGallery( $marker );
-		return isset( $gallery ) ? array_map( function ( $image ) {
+		return isset( $gallery ) ? array_map( static function ( $image ) {
 			return [
 				'label' => $image[1],
 				'title' => $image[0]
@@ -101,7 +101,7 @@ class NodeMedia extends Node {
 		$items = array_merge( $this->getGalleryItems( $value ), $this->getTabberItems( $value ) );
 		foreach ( $items as $item ) {
 			$mediaItem = $this->getImageData( $item['title'], $item['label'], $item['label'] );
-			if ( !!$mediaItem ) {
+			if ( (bool)$mediaItem ) {
 				$data[] = $mediaItem;
 			}
 		}
