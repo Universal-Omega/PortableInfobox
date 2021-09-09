@@ -9,7 +9,7 @@ class PortableInfoboxDataService {
 
 	private const CACHE_TTL = 86400;
 	private const IMAGE_FIELD_TYPE = 'image';
-	private const INFOBOXES_PROPERTY_NAME = 'infoboxes';
+	public const INFOBOXES_PROPERTY_NAME = 'infoboxes';
 
 	protected $title;
 	protected $parsingHelper;
