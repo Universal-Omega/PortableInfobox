@@ -8,15 +8,15 @@ use PortableInfobox\Helpers\PortableInfoboxDataBag;
 use PortableInfobox\Helpers\PortableInfoboxImagesHelper;
 
 class NodeMedia extends Node {
-	const GALLERY = 'GALLERY';
-	const TABBER = 'TABBER';
+	private const GALLERY = 'GALLERY';
+	private const TABBER = 'TABBER';
 
-	const ALLOWIMAGE_ATTR_NAME = 'image';
-	const ALLOWVIDEO_ATTR_NAME = 'video';
-	const ALLOWAUDIO_ATTR_NAME = 'audio';
+	private const ALLOWIMAGE_ATTR_NAME = 'image';
+	private const ALLOWVIDEO_ATTR_NAME = 'video';
+	private const ALLOWAUDIO_ATTR_NAME = 'audio';
 
-	const ALT_TAG_NAME = 'alt';
-	const CAPTION_TAG_NAME = 'caption';
+	private const ALT_TAG_NAME = 'alt';
+	private const CAPTION_TAG_NAME = 'caption';
 
 	private $helper;
 
