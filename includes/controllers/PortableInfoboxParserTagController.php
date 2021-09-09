@@ -7,17 +7,17 @@ use PortableInfobox\Parser\Nodes\UnimplementedNodeException;
 use PortableInfobox\Parser\XmlMarkupParseErrorException;
 
 class PortableInfoboxParserTagController {
-	const PARSER_TAG_NAME = 'infobox';
-	const PARSER_TAG_VERSION = 2;
-	const DEFAULT_THEME_NAME = 'default';
-	const DEFAULT_LAYOUT_NAME = 'default';
-	const INFOBOX_THEME_PREFIX = 'pi-theme-';
-	const INFOBOX_LAYOUT_PREFIX = 'pi-layout-';
-	const INFOBOX_TYPE_PREFIX = 'pi-type-';
-	const ACCENT_COLOR = 'accent-color';
-	const ACCENT_COLOR_TEXT = 'accent-color-text';
-	const ERR_UNIMPLEMENTEDNODE = 'portable-infobox-unimplemented-infobox-tag';
-	const ERR_UNSUPPORTEDATTR = 'portable-infobox-xml-parse-error-infobox-tag-attribute-unsupported';
+	private const PARSER_TAG_NAME = 'infobox';
+	private const PARSER_TAG_VERSION = 2;
+	private const DEFAULT_THEME_NAME = 'default';
+	private const DEFAULT_LAYOUT_NAME = 'default';
+	private const INFOBOX_THEME_PREFIX = 'pi-theme-';
+	private const INFOBOX_LAYOUT_PREFIX = 'pi-layout-';
+	private const INFOBOX_TYPE_PREFIX = 'pi-type-';
+	private const ACCENT_COLOR = 'accent-color';
+	private const ACCENT_COLOR_TEXT = 'accent-color-text';
+	private const ERR_UNIMPLEMENTEDNODE = 'portable-infobox-unimplemented-infobox-tag';
+	private const ERR_UNSUPPORTEDATTR = 'portable-infobox-xml-parse-error-infobox-tag-attribute-unsupported';
 
 	private $infoboxParamsValidator = null;
 
@@ -175,9 +175,10 @@ class PortableInfoboxParserTagController {
 	}
 
 	private function handleXmlParseError( $errors, $xmlMarkup ) {
-		global $wgTitle;
 		$errorRenderer = new PortableInfoboxErrorRenderService( $errors );
-		if ( $wgTitle && $wgTitle->getNamespace() == NS_TEMPLATE ) {
+
+		$title = RequestContext::getMain()->getTitle();
+		if ( $title && $title->getNamespace() == NS_TEMPLATE ) {
 			$renderedValue = $errorRenderer->renderMarkupDebugView( $xmlMarkup );
 		} else {
 			$renderedValue = $errorRenderer->renderArticleMsgView();
