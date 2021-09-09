@@ -73,7 +73,7 @@ class PortableInfoboxParsingHelper {
 	protected function fetchArticleContent( \Title $title ) {
 		if ( $title && $title->exists() ) {
 			$content = \WikiPage::factory( $title )
-				->getContent( \Revision::FOR_PUBLIC )
+				->getContent()
 				->getNativeData();
 		}
 
