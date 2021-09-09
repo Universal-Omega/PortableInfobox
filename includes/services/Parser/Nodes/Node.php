@@ -6,12 +6,12 @@ use PortableInfobox\Parser\SimpleParser;
 
 class Node {
 
-	const DATA_SRC_ATTR_NAME = 'source';
-	const NAME_ATTR_NAME = 'name';
-	const DEFAULT_TAG_NAME = 'default';
-	const FORMAT_TAG_NAME = 'format';
-	const LABEL_TAG_NAME = 'label';
-	const EXTRACT_SOURCE_REGEX = '/{{{([^\|}]*?)\|?.*}}}/sU';
+	private const DATA_SRC_ATTR_NAME = 'source';
+	private const NAME_ATTR_NAME = 'name';
+	private const DEFAULT_TAG_NAME = 'default';
+	private const FORMAT_TAG_NAME = 'format';
+	private const LABEL_TAG_NAME = 'label';
+	private const EXTRACT_SOURCE_REGEX = '/{{{([^\|}]*?)\|?.*}}}/sU';
 
 	protected $xmlNode;
 	protected $children;
