@@ -5,7 +5,7 @@ use MediaWiki\MediaWikiServices;
 class ApiQueryAllinfoboxes extends ApiQueryBase {
 
 	private const CACHE_TTL = 86400;
-	private const MCACHE_KEY = 'allinfoboxes-list';
+	public const MCACHE_KEY = 'allinfoboxes-list';
 
 	public function execute() {
 		$db = $this->getDB();
