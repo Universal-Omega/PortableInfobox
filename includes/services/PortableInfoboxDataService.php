@@ -7,9 +7,9 @@ use PortableInfobox\Parser\Nodes\NodeInfobox;
 
 class PortableInfoboxDataService {
 
-	const CACHE_TTL = 86400; // 24 hours
-	const IMAGE_FIELD_TYPE = 'image';
-	const INFOBOXES_PROPERTY_NAME = 'infoboxes';
+	private const CACHE_TTL = 86400;
+	private const IMAGE_FIELD_TYPE = 'image';
+	private const INFOBOXES_PROPERTY_NAME = 'infoboxes';
 
 	protected $title;
 	protected $parsingHelper;
