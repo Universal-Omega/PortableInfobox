@@ -2,33 +2,13 @@
 
 class AllinfoboxesQueryPage extends PageQueryPage {
 
-	const ALL_INFOBOXES_TYPE = 'AllInfoboxes';
+	private const ALL_INFOBOXES_TYPE = 'AllInfoboxes';
 
-	function __construct() {
+	public function __construct() {
 		parent::__construct( self::ALL_INFOBOXES_TYPE );
 	}
 
-	function getGroupName() {
-		return 'pages';
-	}
-
-	public function sortDescending() {
-		return false;
-	}
-
-	public function isExpensive() {
-		return true;
-	}
-
-	public function getOrderFields() {
-		return [ 'title' ];
-	}
-
-	public function getCacheOrderFields() {
-		return $this->getOrderFields();
-	}
-
-	function getQueryInfo() {
+	public function getQueryInfo() {
 		$query = [
 			'tables' => [ 'page', 'page_props' ],
 			'fields' => [
@@ -74,5 +54,25 @@ class AllinfoboxesQueryPage extends PageQueryPage {
 
 		Hooks::run( 'AllInfoboxesQueryRecached' );
 		return $res;
+	}
+
+	public function isExpensive() {
+		return true;
+	}
+
+	protected function getOrderFields() {
+		return [ 'title' ];
+	}
+
+	protected function getCacheOrderFields() {
+		return $this->getOrderFields();
+	}
+
+	protected function sortDescending() {
+		return false;
+	}
+
+	protected function getGroupName() {
+		return 'pages';
 	}
 }
