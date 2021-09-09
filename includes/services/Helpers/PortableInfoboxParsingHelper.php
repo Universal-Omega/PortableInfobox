@@ -56,7 +56,7 @@ class PortableInfoboxParsingHelper {
 
 	public function reparseArticle( \Title $title ) {
 		$parser = MediaWikiServices::getInstance()->getParser();
-		$user = RequestContext::getMain()->getUser();
+		$user = \RequestContext::getMain()->getUser();
 
 		$parserOptions = new \ParserOptions( $user );
 		$parser->parse( $this->fetchArticleContent( $title ), $title, $parserOptions );
