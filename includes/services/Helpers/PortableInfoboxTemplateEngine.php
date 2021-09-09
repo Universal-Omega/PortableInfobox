@@ -6,8 +6,8 @@ use MediaWiki\MediaWikiServices;
 use MediaWiki\Logger\LoggerFactory;
 
 class PortableInfoboxTemplateEngine {
-	const CACHE_TTL = 86400;
-	const TYPE_NOT_SUPPORTED_MESSAGE = 'portable-infobox-render-not-supported-type';
+	private const CACHE_TTL = 86400;
+	private const TYPE_NOT_SUPPORTED_MESSAGE = 'portable-infobox-render-not-supported-type';
 
 	private static $cache = [];
 	private static $compileFlags;
