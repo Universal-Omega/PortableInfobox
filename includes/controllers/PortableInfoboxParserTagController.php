@@ -148,25 +148,24 @@ class PortableInfoboxParserTagController {
 		// parser output stores this in page_props table,
 		// therefore we can reuse the data in data provider service
 		// (see: PortableInfoboxDataService.class.php)
-		if ( $raw ) {
-			$infoboxes = json_decode(
-				$parserOutput->getProperty( PortableInfoboxDataService::INFOBOXES_PROPERTY_NAME ),
-				true
-			);
+		
+		$infoboxes = json_decode(
+			$parserOutput->getProperty( PortableInfoboxDataService::INFOBOXES_PROPERTY_NAME ),
+			true
+		);
 
-			// When you modify this structure, remember to bump the version
-			// Version is checked in PortableInfoboxDataService::load()
-			$infoboxes[] = [
-				'parser_tag_version' => self::PARSER_TAG_VERSION,
-				'data' => $raw->getRenderData(),
-				'metadata' => $raw->getMetadata()
-			];
+		// When you modify this structure, remember to bump the version
+		// Version is checked in PortableInfoboxDataService::load()
+		$infoboxes[] = [
+			'parser_tag_version' => self::PARSER_TAG_VERSION,
+			'data' => $raw->getRenderData(),
+			'metadata' => $raw->getMetadata()
+		];
 
-			$parserOutput->setProperty(
-				PortableInfoboxDataService::INFOBOXES_PROPERTY_NAME,
-				json_encode( $infoboxes )
-			);
-		}
+		$parserOutput->setProperty(
+			PortableInfoboxDataService::INFOBOXES_PROPERTY_NAME,
+			json_encode( $infoboxes )
+		);
 	}
 
 	private function handleError( $message ) {
