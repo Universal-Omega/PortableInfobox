@@ -7,8 +7,9 @@ use PortableInfobox\Parser\Nodes\UnimplementedNodeException;
 use PortableInfobox\Parser\XmlMarkupParseErrorException;
 
 class PortableInfoboxParserTagController {
+	public const PARSER_TAG_VERSION = 2;
+
 	private const PARSER_TAG_NAME = 'infobox';
-	private const PARSER_TAG_VERSION = 2;
 	private const DEFAULT_THEME_NAME = 'default';
 	private const DEFAULT_LAYOUT_NAME = 'default';
 	private const INFOBOX_THEME_PREFIX = 'pi-theme-';
