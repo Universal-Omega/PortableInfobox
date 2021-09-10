@@ -23,8 +23,8 @@ class PortableInfoboxDataService {
 	 *
 	 * @internal param $helper
 	 */
-	protected function __construct( $title ) {
-		$this->title = $title ?? RequestContext::getMain()->getTitle();
+	protected function __construct( Title $title ) {
+		$this->title = $title;
 		$this->parsingHelper = new PortableInfoboxParsingHelper();
 		$this->propsProxy = new PagePropsProxy();
 		$this->memcached = MediaWikiServices::getInstance()->getMainWANObjectCache();
