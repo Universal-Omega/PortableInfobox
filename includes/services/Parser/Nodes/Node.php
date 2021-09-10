@@ -222,8 +222,7 @@ class Node {
 	protected function getValueWithData( \SimpleXMLElement $xmlNode ) {
 		$value = $this->extractDataFromSource( $xmlNode );
 
-		return $value ? $value
-			: $this->getInnerValue( $xmlNode );
+		return $value ?: $this->getInnerValue( $xmlNode );
 	}
 
 	protected function getInnerValue( \SimpleXMLElement $xmlNode ) {
@@ -236,8 +235,7 @@ class Node {
 	}
 
 	protected function getRawInfoboxData( $key ) {
-		return isset( $this->infoboxData[$key] ) ? $this->infoboxData[$key]
-			: null;
+		return $this->infoboxData[$key] ?? null;
 	}
 
 	protected function getInfoboxData( $key ) {
