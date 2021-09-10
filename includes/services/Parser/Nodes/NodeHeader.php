@@ -2,7 +2,9 @@
 namespace PortableInfobox\Parser\Nodes;
 
 class NodeHeader extends Node {
-
+	/*
+	 * @return array
+	 */
 	public function getData() {
 		if ( !isset( $this->data ) ) {
 			$this->data = [
