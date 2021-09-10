@@ -2,11 +2,11 @@
 namespace PortableInfobox\Parser\Nodes;
 
 class NodeData extends Node {
-	const SPAN_ATTR_NAME = 'span';
-	const SPAN_DEFAULT_VALUE = 1;
+	private const SPAN_ATTR_NAME = 'span';
+	private const SPAN_DEFAULT_VALUE = 1;
 
-	const LAYOUT_ATTR_NAME = 'layout';
-	const LAYOUT_DEFAULT_VALUE = 'default';
+	private const LAYOUT_ATTR_NAME = 'layout';
+	private const LAYOUT_DEFAULT_VALUE = 'default';
 
 	public function getData() {
 		if ( !isset( $this->data ) ) {

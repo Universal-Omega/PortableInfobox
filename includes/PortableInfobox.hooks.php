@@ -42,7 +42,7 @@ class PortableInfoboxHooks {
 		$dataService->delete();
 
 		if ( $article->getTitle()->inNamespace( NS_TEMPLATE ) ) {
-			$dataService->reparseArticle( true );
+			$dataService->reparseArticle();
 		}
 
 		return true;

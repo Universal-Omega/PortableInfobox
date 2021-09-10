@@ -3,7 +3,7 @@
 namespace PortableInfobox\Helpers;
 
 class PortableInfoboxImagesHelper {
-	const MAX_DESKTOP_THUMBNAIL_HEIGHT = 500;
+	private const MAX_DESKTOP_THUMBNAIL_HEIGHT = 500;
 
 	/**
 	 * extends image data
@@ -70,7 +70,7 @@ class PortableInfoboxImagesHelper {
 	 */
 	public function extendImageCollectionData( $images ) {
 		$images = array_map(
-			function ( $image, $index ) {
+			static function ( $image, $index ) {
 				$image['ref'] = $index + 1;
 
 				if ( empty( $image['caption'] ) ) {

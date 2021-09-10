@@ -4,8 +4,8 @@ use PortableInfobox\Helpers\PortableInfoboxTemplateEngine;
 
 class PortableInfoboxRenderService {
 	// keep synced with css variables (--pi-width)
-	const DEFAULT_DESKTOP_INFOBOX_WIDTH = 270;
-	const DEFAULT_DESKTOP_THUMBNAIL_WIDTH = 350;
+	public const DEFAULT_DESKTOP_INFOBOX_WIDTH = 270;
+	public const DEFAULT_DESKTOP_THUMBNAIL_WIDTH = 350;
 
 	protected $templateEngine;
 	protected $inlineStyles;
@@ -226,7 +226,7 @@ class PortableInfoboxRenderService {
 			return '';
 		}
 		if ( !$shouldShowToggles ) {
-			$sections = array_map( function ( $content ) {
+			$sections = array_map( static function ( $content ) {
 				$content['active'] = true;
 				return $content;
 			}, $sections );
@@ -329,7 +329,7 @@ class PortableInfoboxRenderService {
 	}
 
 	private function createSmartGroupSections( array $rowItems, $capacity ) {
-		return array_reduce( $rowItems, function ( $result, $item ) use ( $capacity ) {
+		return array_reduce( $rowItems, static function ( $result, $item ) use ( $capacity ) {
 			$width = $item['data']['span'] / $capacity * 100;
 			$styles = "width: {$width}%";
 

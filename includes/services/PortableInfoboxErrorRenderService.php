@@ -4,7 +4,7 @@ use PortableInfobox\Helpers\PortableInfoboxTemplateEngine;
 
 class PortableInfoboxErrorRenderService {
 
-	const XML_ERR_GENERAL = 'xml-parse-error';
+	private const XML_ERR_GENERAL = 'xml-parse-error';
 
 	private $errorList = [];
 

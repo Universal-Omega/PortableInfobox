@@ -8,15 +8,15 @@ use PortableInfobox\Helpers\PortableInfoboxDataBag;
 use PortableInfobox\Helpers\PortableInfoboxImagesHelper;
 
 class NodeMedia extends Node {
-	const GALLERY = 'GALLERY';
-	const TABBER = 'TABBER';
+	private const GALLERY = 'GALLERY';
+	private const TABBER = 'TABBER';
 
-	const ALLOWIMAGE_ATTR_NAME = 'image';
-	const ALLOWVIDEO_ATTR_NAME = 'video';
-	const ALLOWAUDIO_ATTR_NAME = 'audio';
+	private const ALLOWIMAGE_ATTR_NAME = 'image';
+	private const ALLOWVIDEO_ATTR_NAME = 'video';
+	private const ALLOWAUDIO_ATTR_NAME = 'audio';
 
-	const ALT_TAG_NAME = 'alt';
-	const CAPTION_TAG_NAME = 'caption';
+	private const ALT_TAG_NAME = 'alt';
+	private const CAPTION_TAG_NAME = 'caption';
 
 	private $helper;
 
@@ -31,7 +31,7 @@ class NodeMedia extends Node {
 
 	public static function getGalleryData( $marker ) {
 		$gallery = PortableInfoboxDataBag::getInstance()->getGallery( $marker );
-		return isset( $gallery ) ? array_map( function ( $image ) {
+		return isset( $gallery ) ? array_map( static function ( $image ) {
 			return [
 				'label' => $image[1],
 				'title' => $image[0]
@@ -101,7 +101,7 @@ class NodeMedia extends Node {
 		$items = array_merge( $this->getGalleryItems( $value ), $this->getTabberItems( $value ) );
 		foreach ( $items as $item ) {
 			$mediaItem = $this->getImageData( $item['title'], $item['label'], $item['label'] );
-			if ( !!$mediaItem ) {
+			if ( (bool)$mediaItem ) {
 				$data[] = $mediaItem;
 			}
 		}
@@ -216,7 +216,7 @@ class NodeMedia extends Node {
 
 	/**
 	 * Returns image url for given image title
-	 * @param File|null $file
+	 * @param \File|null $file
 	 * @return string url or '' if image doesn't exist
 	 */
 	public function resolveImageUrl( $file ) {

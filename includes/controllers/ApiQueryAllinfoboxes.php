@@ -4,8 +4,8 @@ use MediaWiki\MediaWikiServices;
 
 class ApiQueryAllinfoboxes extends ApiQueryBase {
 
-	const CACHE_TTL = 86400;
-	const MCACHE_KEY = 'allinfoboxes-list';
+	private const CACHE_TTL = 86400;
+	public const MCACHE_KEY = 'allinfoboxes-list';
 
 	public function execute() {
 		$db = $this->getDB();
@@ -17,7 +17,7 @@ class ApiQueryAllinfoboxes extends ApiQueryBase {
 			$out = [];
 
 			$res = ( new AllinfoboxesQueryPage() )->doQuery();
-			while ( $row = $res->fetchObject() ) {
+			foreach ( $res as $row ) {
 				$out[] = [
 					'pageid' => $row->value,
 					'title' => $row->title,

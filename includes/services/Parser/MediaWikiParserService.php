@@ -19,14 +19,7 @@ class MediaWikiParserService implements ExternalParser {
 		$this->frame = $frame;
 
 		if ( $wgPortableInfoboxUseTidy && class_exists( '\MediaWiki\Tidy\RemexDriver' ) ) {
-			if ( version_compare( MW_VERSION, '1.36', '>=' ) ) {
-				$this->tidyDriver = MediaWikiServices::getInstance()->getTidy();
-			} else {
-				$this->tidyDriver = \MWTidy::factory( [
-					'driver' => 'RemexHtml',
-					'pwrap' => false
-				] );
-			}
+			$this->tidyDriver = MediaWikiServices::getInstance()->getTidy();
 		}
 	}
 
@@ -44,7 +37,7 @@ class MediaWikiParserService implements ExternalParser {
 
 		$parsed = $wikitext ? $this->parser->internalParse( $wikitext, false, $this->frame ) : null;
 		if ( in_array( substr( $parsed, 0, 1 ), [ '*', '#' ] ) ) {
-			//fix for first item list elements
+			// fix for first item list elements
 			$parsed = "\n" . $parsed;
 		}
 		$output = $this->parser->doBlockLevels( $parsed, false );

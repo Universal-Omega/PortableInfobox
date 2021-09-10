@@ -1,5 +1,7 @@
 <?php
 
+use MediaWiki\MediaWikiServices;
+
 class ApiPortableInfobox extends ApiBase {
 
 	public function __construct( $main, $action ) {
@@ -35,15 +37,15 @@ class ApiPortableInfobox extends ApiBase {
 			$output = PortableInfoboxParserTagController::getInstance()->render( $text, $parser, $frame );
 			$this->getResult()->addValue( null, $this->getModuleName(), [ 'text' => [ '*' => $output ] ] );
 		} catch ( \PortableInfobox\Parser\Nodes\UnimplementedNodeException $e ) {
-			$this->dieUsage(
-				wfMessage( 'portable-infobox-unimplemented-infobox-tag', [ $e->getMessage() ] )->escaped(),
+			$this->dieWithError(
+				$this->msg( 'portable-infobox-unimplemented-infobox-tag', [ $e->getMessage() ] )->escaped(),
 				'notimplemented'
 			);
 		} catch ( \PortableInfobox\Parser\XmlMarkupParseErrorException $e ) {
-			$this->dieUsage( wfMessage( 'portable-infobox-xml-parse-error' )->text(), 'badxml' );
+			$this->dieWithError( $this->msg( 'portable-infobox-xml-parse-error' )->text(), 'badxml' );
 		} catch ( \PortableInfobox\Helpers\InvalidInfoboxParamsException $e ) {
-			$this->dieUsage(
-				wfMessage(
+			$this->dieWithError(
+				$this->msg(
 					'portable-infobox-xml-parse-error-infobox-tag-attribute-unsupported',
 					[ $e->getMessage() ]
 				)->escaped(),

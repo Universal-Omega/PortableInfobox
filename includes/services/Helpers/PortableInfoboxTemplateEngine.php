@@ -2,12 +2,12 @@
 
 namespace PortableInfobox\Helpers;
 
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Logger\LoggerFactory;
+use MediaWiki\MediaWikiServices;
 
 class PortableInfoboxTemplateEngine {
-	const CACHE_TTL = 86400;
-	const TYPE_NOT_SUPPORTED_MESSAGE = 'portable-infobox-render-not-supported-type';
+	private const CACHE_TTL = 86400;
+	private const TYPE_NOT_SUPPORTED_MESSAGE = 'portable-infobox-render-not-supported-type';
 
 	private static $cache = [];
 	private static $compileFlags;
@@ -31,7 +31,7 @@ class PortableInfoboxTemplateEngine {
 
 	public function __construct() {
 		if ( !isset( self::$lightncandy ) ) {
-			self::$lightncandy = class_exists( '\LightnCandy\LightnCandy' ) ? \LightnCandy\LightnCandy::class : \LightnCandy::class;
+			self::$lightncandy = \LightnCandy\LightnCandy::class;
 			self::$compileFlags = self::$lightncandy::FLAG_BESTPERFORMANCE | self::$lightncandy::FLAG_PARENT | self::$lightncandy::FLAG_HANDLEBARS;
 		}
 
@@ -60,7 +60,7 @@ class PortableInfoboxTemplateEngine {
 	 * Returns a template renderer
 	 *
 	 * @param string $type Template type
-	 * @return Closure
+	 * @return \Closure
 	 */
 	public function getRenderer( $type ) {
 		global $wgPortableInfoboxCacheRenderers;
@@ -73,7 +73,7 @@ class PortableInfoboxTemplateEngine {
 					__CLASS__, \PortableInfoboxParserTagController::PARSER_TAG_VERSION, $type
 				);
 				$template = self::$memcache->getWithSetCallback(
-					$cachekey, self::CACHE_TTL, function () use ( $path ) {
+					$cachekey, self::CACHE_TTL, static function () use ( $path ) {
 						// @see https://github.com/wikimedia/mediawiki-vendor/tree/master/zordius/lightncandy
 						return self::$lightncandy::compile( file_get_contents( $path ), [
 							'flags' => self::$compileFlags

@@ -22,7 +22,7 @@ class PortableInfoboxParsingHelper {
 	 *
 	 * @return mixed false when no infoboxes found, Array with infoboxes on success
 	 */
-	public function parseIncludeonlyInfoboxes( $title ) {
+	public function parseIncludeonlyInfoboxes( \Title $title ) {
 		// for templates we need to check for include tags
 		$templateText = $this->fetchArticleContent( $title );
 
@@ -55,8 +55,10 @@ class PortableInfoboxParsingHelper {
 	}
 
 	public function reparseArticle( \Title $title ) {
-		$parser = new \Parser();
-		$parserOptions = new \ParserOptions();
+		$parser = MediaWikiServices::getInstance()->getParser();
+		$user = \RequestContext::getMain()->getUser();
+
+		$parserOptions = new \ParserOptions( $user );
 		$parser->parse( $this->fetchArticleContent( $title ), $title, $parserOptions );
 
 		return json_decode(
@@ -71,7 +73,7 @@ class PortableInfoboxParsingHelper {
 	 * @return string
 	 */
 	protected function fetchArticleContent( \Title $title ) {
-		if ( $title && $title->exists() ) {
+		if ( $title->exists() ) {
 			$content = \WikiPage::factory( $title )
 				->getContent()
 				->getNativeData();

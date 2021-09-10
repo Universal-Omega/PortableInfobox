@@ -1,0 +1,60 @@
+name: Continuous integration (master)
+
+on:
+  create:
+  push:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  test:
+    name: Test and lint
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php-versions: ['7.3']
+    steps:
+    - uses: actions/checkout@v2
+      
+    - name: Install dependencies
+      run: |
+        composer validate
+        composer install --prefer-dist --no-progress
+        sudo pecl install ast
+        echo "extension=ast" | sudo tee -a /etc/php/8.0/cli/php.ini
+
+    # Bypass the phpcbf non-standard exit code  
+    - name: Check PHP
+      run: |
+        sh phpcbf.sh
+        composer fix
+        composer test
+
+    - name: Clone MediaWiki
+      run: |
+        git clone https://github.com/wikimedia/mediawiki.git --depth=1
+        cd mediawiki
+        git clone https://github.com/wikimedia/mediawiki-extensions-PageImages.git --depth=1 extensions/PageImages
+        composer install --no-dev
+        cd ..
+
+    - name: Run phan
+      run: |
+        composer phan
+
+ #   - name: PHPUnit tests
+ #     uses: php-actions/phpunit@v3
+
+    # Only patch code when it is a push event
+    - name: Push the changes
+      if: github.event_name == 'push'
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        git config --global user.name "github-actions"
+        git config --global user.email "github-actions@users.noreply.github.com"
+        git remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+        git add .
+        git commit -am "CI: lint code to MediaWiki standards" -m "Check commit and GitHub actions for more details" || echo "No changes to commit"
+        git pull --rebase
+        git push
