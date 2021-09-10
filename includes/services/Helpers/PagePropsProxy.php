@@ -26,7 +26,7 @@ class PagePropsProxy {
 	}
 
 	public function set( $id, array $props ) {
-		$dbw = wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_PRIMARY );
 
 		if ( !$this->atomicStarted ) {
 			$dbw->startAtomic( __METHOD__ );
@@ -57,7 +57,7 @@ class PagePropsProxy {
 
 	public function write() {
 		if ( $this->atomicStarted && $this->manualWrite ) {
-			wfGetDB( DB_MASTER )->endAtomic( __CLASS__ . '::set' );
+			wfGetDB( DB_PRIMARY )->endAtomic( __CLASS__ . '::set' );
 			$this->atomicStarted = false;
 		}
 	}
