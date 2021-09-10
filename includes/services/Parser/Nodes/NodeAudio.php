@@ -2,6 +2,9 @@
 namespace PortableInfobox\Parser\Nodes;
 
 class NodeAudio extends NodeMedia {
+	/*
+	 * @return string
+	 */
 	public function getType() {
 		return 'media';
 	}
