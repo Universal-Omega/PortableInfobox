@@ -34,7 +34,7 @@ jobs:
       run: |
         git clone https://github.com/wikimedia/mediawiki.git --branch=REL1_36 --depth=1
         cd mediawiki
-        git submodule update --init
+        git submodule update --init extensions/PageImages
         composer install --no-dev
         cd ..
 
