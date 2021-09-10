@@ -14,7 +14,9 @@ class Node {
 	private const EXTRACT_SOURCE_REGEX = '/{{{([^\|}]*?)\|?.*}}}/sU';
 
 	protected $xmlNode;
+	protected $infoboxData;
 	protected $children;
+
 	protected $cachedSources = null;
 	protected $data = null;
 
