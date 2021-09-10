@@ -129,15 +129,14 @@ class PortableInfoboxDataService {
 	 * @return $this
 	 */
 	public function save( NodeInfobox $raw ) {
-		if ( $raw ) {
-			$stored = $this->get();
-			$stored[] = [
-				'parser_tag_version' => PortableInfoboxParserTagController::PARSER_TAG_VERSION,
-				'data' => $raw->getRenderData(),
-				'metadata' => $raw->getMetadata()
-			];
-			$this->set( $stored );
-		}
+		$stored = $this->get();
+		$stored[] = [
+			'parser_tag_version' => PortableInfoboxParserTagController::PARSER_TAG_VERSION,
+			'data' => $raw->getRenderData(),
+			'metadata' => $raw->getMetadata()
+		];
+
+		$this->set( $stored );
 
 		return $this;
 	}
