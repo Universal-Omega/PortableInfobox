@@ -42,6 +42,9 @@ jobs:
       run: |
         composer phan
 
+    - name: PHPUnit tests
+      uses: php-actions/phpunit@v3
+
     # Only patch code when it is a push event
     - name: Push the changes
       if: github.event_name == 'push'
