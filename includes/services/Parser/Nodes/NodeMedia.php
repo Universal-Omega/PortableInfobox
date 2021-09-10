@@ -216,7 +216,7 @@ class NodeMedia extends Node {
 
 	/**
 	 * Returns image url for given image title
-	 * @param File|null $file
+	 * @param \File|null $file
 	 * @return string url or '' if image doesn't exist
 	 */
 	public function resolveImageUrl( $file ) {
