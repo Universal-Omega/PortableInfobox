@@ -72,11 +72,13 @@ class PortableInfoboxParsingHelper {
 	}
 
 	/**
-	 * @param \Title $title
+	 * @param ?\Title $title
 	 *
 	 * @return string
 	 */
-	protected function fetchArticleContent( \Title $title ) {
+	protected function fetchArticleContent( ?\Title $title ) {
+		$title = $title ?? \RequestContext::getMain()->getTitle();
+
 		if ( $title && $title->exists() ) {
 			$content = \WikiPage::factory( $title )
 				->getContent()
