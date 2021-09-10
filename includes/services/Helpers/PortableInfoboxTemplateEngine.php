@@ -60,7 +60,7 @@ class PortableInfoboxTemplateEngine {
 	 * Returns a template renderer
 	 *
 	 * @param string $type Template type
-	 * @return Closure
+	 * @return \Closure
 	 */
 	public function getRenderer( $type ) {
 		global $wgPortableInfoboxCacheRenderers;
