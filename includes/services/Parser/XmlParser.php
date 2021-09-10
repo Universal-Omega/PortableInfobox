@@ -68,7 +68,7 @@ class XmlMarkupParseErrorException extends \Exception {
 	public function __construct( $errors ) {
 		$this->errors = $errors;
 
-		return parent::__construct();
+		parent::__construct();
 	}
 
 	public function getErrors() {
