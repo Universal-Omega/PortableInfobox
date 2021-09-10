@@ -18,11 +18,13 @@ class PortableInfoboxParsingHelper {
 	/**
 	 * Try to find out if infobox got "hidden" inside includeonly tag. Parse it if that's the case.
 	 *
-	 * @param \Title $title
+	 * @param ?\Title $title
 	 *
 	 * @return mixed false when no infoboxes found, Array with infoboxes on success
 	 */
-	public function parseIncludeonlyInfoboxes( $title ) {
+	public function parseIncludeonlyInfoboxes( ?$title ) {
+		$title = $title ?? \RequestContext::getMain()->getTitle();
+
 		// for templates we need to check for include tags
 		$templateText = $this->fetchArticleContent( $title );
 
@@ -54,7 +56,9 @@ class PortableInfoboxParsingHelper {
 		return false;
 	}
 
-	public function reparseArticle( \Title $title ) {
+	public function reparseArticle( ?\Title $title ) {
+		$title = $title ?? \RequestContext::getMain()->getTitle();
+
 		$parser = MediaWikiServices::getInstance()->getParser();
 		$user = \RequestContext::getMain()->getUser();
 
@@ -83,10 +87,12 @@ class PortableInfoboxParsingHelper {
 	}
 
 	/**
-	 * @param \Title $title
+	 * @param ?\Title $title
 	 * @return string[] array of strings (infobox markups)
 	 */
-	public function getMarkup( \Title $title ) {
+	public function getMarkup( ?\Title $title ) {
+		$title = $title ?? \RequestContext::getMain()->getTitle();
+
 		$content = $this->fetchArticleContent( $title );
 		return $this->getInfoboxes( $content );
 	}
