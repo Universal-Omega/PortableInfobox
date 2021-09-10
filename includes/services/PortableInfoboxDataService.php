@@ -147,6 +147,8 @@ class PortableInfoboxDataService {
 	 */
 	public function delete() {
 		$this->clear();
+
+		// @phan-suppress-next-line PhanTypeObjectUnsetDeclaredProperty
 		unset( $this->cache );
 
 		return $this;
@@ -157,6 +159,8 @@ class PortableInfoboxDataService {
 	 */
 	public function purge() {
 		$this->memcached->delete( $this->cachekey );
+
+		// @phan-suppress-next-line PhanTypeObjectUnsetDeclaredProperty
 		unset( $this->cache );
 
 		return $this;
