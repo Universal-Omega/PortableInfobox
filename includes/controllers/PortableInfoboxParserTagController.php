@@ -148,7 +148,7 @@ class PortableInfoboxParserTagController {
 		// parser output stores this in page_props table,
 		// therefore we can reuse the data in data provider service
 		// (see: PortableInfoboxDataService.class.php)
-		
+
 		$infoboxes = json_decode(
 			$parserOutput->getProperty( PortableInfoboxDataService::INFOBOXES_PROPERTY_NAME ),
 			true
