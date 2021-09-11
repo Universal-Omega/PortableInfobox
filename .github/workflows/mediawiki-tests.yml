@@ -1,0 +1,95 @@
+name: MediaWiki tests
+
+on:
+  push:
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  test:
+    name: "MediaWiki ${{ matrix.mw }} | PHP ${{ matrix.php }}"
+    continue-on-error: true
+    strategy:
+      matrix:
+        include:
+          # Latest stable MediaWiki - PHP 7.3
+          - mw: 'REL1_36'
+            php: 7.3
+            composer: v2
+            continue-on-error: false
+
+          # Latest stable MediaWiki - PHP 7.4
+          - mw: 'REL1_36'
+            php: 7.4
+            composer: v2
+            continue-on-error: true
+
+          # Latest MediaWiki master
+          - mw: 'master'
+            php: 7.3
+            composer: v2
+            continue-on-error: true
+
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: intl,ast
+          tools: composer:${{ matrix.composer }}
+
+      - name: Install dependencies
+        run: |
+          composer validate
+          composer update
+
+      - name: Check PHP
+        if: ${{ matrix.mw == 'master' }}
+        run: |
+          sh phpcbf.sh
+          composer fix
+          composer test
+
+      - name: Cache MediaWiki
+        id: cache-mediawiki
+        uses: actions/cache@v2
+        with:
+          path: |
+            mediawiki
+            !mediawiki/extensions/
+            !mediawiki/vendor/
+          key: mw-${{ matrix.mw }}-php${{ matrix.php }}-v2
+
+      - name: Cache Composer cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.composer/cache
+          key: composer-php${{ matrix.php }}
+
+      - name: Download MediaWiki
+        if: steps.cache-mediawiki.outputs.cache-hit != 'true'
+        run: |
+          bash .github/workflows/download-mediawiki.sh ${{ matrix.mw }}
+          git clone https://github.com/wikimedia/mediawiki-extensions-PageImages.git --depth=1 --branch=${{ matrix.mw }} mediawiki/extensions/PageImages
+
+      - name: Run phan
+        continue-on-error: ${{ matrix.continue-on-error }}
+        run: |
+          composer phan
+
+      # Only patch code when it is a push event
+      - name: Push the changes
+        if: github.event_name == 'push' && matrix.mw == 'master'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@users.noreply.github.com"
+          git remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          git add .
+          git commit -am "CI: lint code to MediaWiki standards" -m "Check commit and GitHub actions for more details" || echo "No changes to commit"
+          git pull --rebase
+          git push
