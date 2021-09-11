@@ -26,7 +26,6 @@ class BlockLevelPass {
 	 * @param string $text
 	 * @param bool $lineStart Whether or not this is at the start of a line.
 	 * @return string The lists rendered as HTML
-	 * @internal
 	 */
 	public static function doBlockLevels( $text, $lineStart ) {
 		$pass = new self( $text, $lineStart );
