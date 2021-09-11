@@ -94,7 +94,7 @@ jobs:
 
       # Only patch code when it is a push event
       - name: Push the changes
-        if: github.event_name == 'push' && matrix.mw == 'master' && matrix.php == 8.0
+        if: ${{ github.event_name == 'push' && matrix.mw == 'master' && matrix.php == 8.0 }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
