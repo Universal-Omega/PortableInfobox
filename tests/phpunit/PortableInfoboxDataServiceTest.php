@@ -15,7 +15,7 @@ class PortableInfoboxDataServiceTest extends MediaWikiTestCase {
 	 * @return Title
 	 */
 	protected function prepareTitle( $id = 0, $ns = NS_MAIN ) {
-		$title = Title::newFromText( '' );
+		$title = $this->getExistingTestPage( 'Test' )->getTitle();
 		$title->mArticleID = $id;
 		$title->mNamespace = $ns;
 
@@ -181,12 +181,6 @@ class PortableInfoboxDataServiceTest extends MediaWikiTestCase {
 			->getImages();
 
 		$this->assertEquals( [ 'Test.jpg', 'Test2.jpg' ], $images );
-	}
-
-	public function testTitleNullConstructor() {
-		$service = PortableInfoboxDataService::newFromTitle( null );
-		$result = $service->getData();
-		$this->assertEquals( [], $result );
 	}
 
 	public function testConstructor() {
