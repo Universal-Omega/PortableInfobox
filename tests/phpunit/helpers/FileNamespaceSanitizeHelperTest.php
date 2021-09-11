@@ -39,8 +39,8 @@ class FileNamespaceSanitizeHelperTest extends TestCase {
 	) {
 		global $wgNamespaceAliases;
 
-		$language = MediaWikiServices::getInstance()->getLanguageFactory();
-		$language->getLanguage( $contentLanguageCode );
+		$language = MediaWikiServices::getInstance()->getLanguageFactory()
+			->getLanguage( $contentLanguageCode );
 
 		if ( isset( $fileNamespaceAlias ) ) {
 			$wgNamespaceAliases[$fileNamespaceAlias] = NS_FILE;
