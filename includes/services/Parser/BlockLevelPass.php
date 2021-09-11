@@ -171,7 +171,7 @@ class BlockLevelPass {
 		# Parsing through the text line by line.  The main thing
 		# happening here is handling of block-level elements p, pre,
 		# and making lists from lines starting with * # : etc.
-		$textLines = StringUtils::explode( "\n", $text );
+		$textLines = \StringUtils::explode( "\n", $text );
 
 		$lastPrefix = $output = '';
 		$this->DTopen = $inBlockElem = false;
@@ -566,7 +566,7 @@ class BlockLevelPass {
 					}
 					break;
 				default:
-					throw new MWException( "State machine error in " . __METHOD__ );
+					throw new \MWException( "State machine error in " . __METHOD__ );
 			}
 		}
 		if ( $ltLevel > 0 || $lcLevel > 0 ) {
