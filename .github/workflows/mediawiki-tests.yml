@@ -45,7 +45,6 @@ jobs:
         run: |
           composer validate
           composer update
-          npm install --save-dev
 
       - name: Check PHP
         if: ${{ matrix.mw == 'master' }}
