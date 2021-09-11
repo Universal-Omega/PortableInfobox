@@ -11,7 +11,7 @@ class FileNamespaceSanitizeHelperTest extends TestCase {
 	/** @var PortableInfobox\Helpers\FileNamespaceSanitizeHelper $fileNamespaceSanitizeHelper */
 	private $fileNamespaceSanitizeHelper;
 
-	protected function setUp() {
+	protected function setUp(): void {
 		parent::setUp();
 
 		$class = new ReflectionClass( FileNamespaceSanitizeHelper::class );
