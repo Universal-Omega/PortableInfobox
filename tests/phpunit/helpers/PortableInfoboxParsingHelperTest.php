@@ -1,9 +1,18 @@
 <?php
+
 /**
  * @group PortableInfobox
+ * @group Database
  * @covers PortableInfobox\Helpers\PortableInfoboxParsingHelper
  */
 class PortableInfoboxParsingHelperTest extends MediaWikiTestCase {
+
+	/**
+	 * @return bool
+	 */
+	public function needsDB() {
+		return true;
+	}
 
 	/**
 	 * @dataProvider parsingIncludeonlyInfoboxesDataProvider
