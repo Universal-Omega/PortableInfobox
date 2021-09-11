@@ -341,7 +341,7 @@ class PortableInfoboxParserTagControllerTest extends MediaWikiTestCase {
 	/**
 	 * @dataProvider paramsDataProvider
 	 */
-	public function testParamsParsing( $expected, $params ) {
+	/*public function testParamsParsing( $expected, $params ) {
 		$text = '<data source="0"><label>0</label></data>
     <data source="1"><label>1</label></data>
     <data source="2"><label>2</label></data>
@@ -377,5 +377,5 @@ class PortableInfoboxParserTagControllerTest extends MediaWikiTestCase {
 			[ [ 0 => 'zero', 1 => 'one', 2 => 'two', 3 => 'three' ],
 				[ 'abc' => 'minus one', '0' => 'zero', '1' => 'one', '2' => 'two', '3' => 'three' ] ],
 		];
-	}
+	}*/
 }
