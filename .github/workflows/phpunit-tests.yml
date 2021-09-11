@@ -14,12 +14,12 @@ jobs:
           - mw: 'REL1_36'
             php: 7.3
             composer: v2
-            mysql: '8.0'
+            mysql: '5.7'
           # Latest MW master
           - mw: 'master'
             php: 7.3
             composer: v2
-            mysql: '8.0'
+            mysql: '5.7'
     runs-on: ubuntu-latest
     defaults:
       run:
