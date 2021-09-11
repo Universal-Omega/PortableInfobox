@@ -14,7 +14,7 @@ class MediaWikiParserTest extends MediaWikiTestCase {
 	public function setUp(): void {
 		$this->parser = MediaWikiServices::getInstance()->getParser();
 		$title = Title::newFromText( 'test' );
-		$user = RequestContext::getMain()->getUser();
+		$user = $this->getTestUser()->getUser();
 		$options = new ParserOptions( $user );
 		// Required for MW >= 1.30
 		if ( method_exists( $options, 'setOption' ) ) {
@@ -45,7 +45,7 @@ class MediaWikiParserTest extends MediaWikiTestCase {
 	/* Fails - it needs a modification in the core to pass
 	public function testAsideTagPWrappedDuringParsing() {
 		$aside = "<aside></aside>";
-		$result = ( new Parser() )->doBlockLevels( $aside, true );
+		$result = $this->parser->doBlockLevels( $aside, true );
 		//parser adds new line at the end of block
 		$this->assertEquals( $aside . "\n", $result );
 	} */
