@@ -1,4 +1,7 @@
 <?php
+
+use MediaWiki\MediaWikiServices;
+
 /**
  * @group PortableInfobox
  * @covers PortableInfoboxParserTagController
@@ -28,8 +31,9 @@ class PortableInfoboxParserTagControllerTest extends MediaWikiTestCase {
 	}
 
 	protected function setUpParser() {
-		$parser = new Parser();
-		$options = new ParserOptions();
+		$parser = MediaWikiServices::getInstance()->getParser();
+		$user = $this->getTestUser()->getUser();
+		$options = new ParserOptions( $user );
 		$title = Title::newFromText( 'Test' );
 		$parser->Options( $options );
 		$parser->startExternalParse( $title, $options, 'text', true );
