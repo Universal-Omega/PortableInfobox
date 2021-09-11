@@ -3,6 +3,9 @@ namespace PortableInfobox\Parser\Nodes;
 
 class NodeUnimplemented extends Node {
 
+	/**
+	 * @throws UnimplementedNodeException
+	 */
 	public function getData() {
 		throw new UnimplementedNodeException( $this->getType() );
 	}
