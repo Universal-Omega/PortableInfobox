@@ -191,12 +191,6 @@ class PortableInfoboxDataServiceTest extends MediaWikiTestCase {
 		$this->assertEquals( [ 'Test.jpg', 'Test2.jpg' ], $images );
 	}
 
-	public function testConstructor() {
-		$service = PortableInfoboxDataService::newFromPageID( null );
-		$result = $service->getData();
-		$this->assertEquals( [], $result );
-	}
-
 	protected function getInfoboxPageProps() {
 		return [
 			[
