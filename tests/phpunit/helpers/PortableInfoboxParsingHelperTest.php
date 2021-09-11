@@ -16,7 +16,7 @@ class PortableInfoboxParsingHelperTest extends MediaWikiTestCase {
 			->method( 'fetchArticleContent' )
 			->will( $this->returnValue( $markup ) );
 
-		$result = $helper->parseIncludeonlyInfoboxes( new Title() );
+		$result = $helper->parseIncludeonlyInfoboxes( $this->getExistingTestPage( 'Test' )->getTitle() );
 
 		$this->assertEquals( $expected, $result );
 	}
