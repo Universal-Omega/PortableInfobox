@@ -1,5 +1,6 @@
 <?php
 
+use MediaWiki\MediaWikiServices;
 use PortableInfobox\Helpers\FileNamespaceSanitizeHelper;
 use PHPUnit\Framework\TestCase;
 
@@ -38,8 +39,8 @@ class FileNamespaceSanitizeHelperTest extends TestCase {
 	) {
 		global $wgNamespaceAliases;
 
-		$language = new \Language();
-		$language->setCode( $contentLanguageCode );
+		$language = MediaWikiServices::getInstance()->getLanguageFactory();
+		$language->getLanguage( $contentLanguageCode );
 
 		if ( isset( $fileNamespaceAlias ) ) {
 			$wgNamespaceAliases[$fileNamespaceAlias] = NS_FILE;
