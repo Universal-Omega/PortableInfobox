@@ -14,14 +14,14 @@ class PortableInfoboxParserTagControllerTest extends MediaWikiTestCase {
 	/** @var PortableInfoboxParserTagController */
 	protected $controller;
 
-	protected function setUp() {
+	protected function setUp(): void {
 		parent::setUp();
 
 		$this->parser = $this->setUpParser();
 		$this->controller = new PortableInfoboxParserTagController();
 	}
 
-	protected function tearDown() {
+	protected function tearDown(): void {
 		// we use libxml only for tests here
 		libxml_clear_errors();
 		parent::tearDown();
