@@ -397,7 +397,7 @@ class BlockLevelPass {
 			}
 		}
 		while ( $prefixLength ) {
-			$output .= $this->closeList( (array)$prefix2[$prefixLength - 1] );
+			$output .= $this->closeList( (array)( $prefix2 )[$prefixLength - 1] );
 			--$prefixLength;
 			// Note that a paragraph is only ever opened when `prefixLength`
 			// is zero, but we'll choose to be overly cautious.
