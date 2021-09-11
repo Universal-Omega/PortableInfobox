@@ -30,7 +30,7 @@ class MediaWikiParserService implements ExternalParser {
 	 *
 	 * @return string HTML outcome
 	 */
-	public function parseRecursive( string $wikitext ) {
+	public function parseRecursive( $wikitext ) {
 		if ( isset( $this->cache[$wikitext] ) ) {
 			return $this->cache[$wikitext];
 		}
