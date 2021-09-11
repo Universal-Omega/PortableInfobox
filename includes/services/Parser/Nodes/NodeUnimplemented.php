@@ -4,9 +4,9 @@ namespace PortableInfobox\Parser\Nodes;
 class NodeUnimplemented extends Node {
 
 	public function getData() {
-		throw new UnimplementedNodeException( $this->getType() );
+		// @phan-suppress-previous-line PhanPluginNeverReturnMethod LSP violation.
 
-		return [];
+		throw new UnimplementedNodeException( $this->getType() );
 	}
 }
 
