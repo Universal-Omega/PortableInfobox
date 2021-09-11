@@ -30,12 +30,12 @@ class MediaWikiParserService implements ExternalParser {
 	 *
 	 * @return string HTML outcome
 	 */
-	public function parseRecursive( $wikitext ) {
+	public function parseRecursive( string $wikitext ) {
 		if ( isset( $this->cache[$wikitext] ) ) {
 			return $this->cache[$wikitext];
 		}
 
-		$parsed = $wikitext ? $this->parser->internalParse( $wikitext, false, $this->frame ) : null;
+		$parsed = $this->parser->internalParse( $wikitext, false, $this->frame );
 		if ( in_array( substr( $parsed, 0, 1 ), [ '*', '#' ] ) ) {
 			// fix for first item list elements
 			$parsed = "\n" . $parsed;
