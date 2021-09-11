@@ -80,7 +80,6 @@ jobs:
         continue-on-error: ${{ matrix.continue-on-error }}
         run: |
           composer phan
-          rm -rf master.tar.gz
 
       # Only patch code when it is a push event
       - name: Push the changes
