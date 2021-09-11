@@ -9,12 +9,12 @@ use PortableInfobox\Helpers\PortableInfoboxImagesHelper;
 class PortableInfoboxImagesHelperTest extends MediaWikiTestCase {
 	private $helper;
 
-	protected function setUp() {
+	protected function setUp(): void {
 		parent::setUp();
 		$this->helper = new PortableInfoboxImagesHelper();
 	}
 
-	protected function tearDown() {
+	protected function tearDown(): void {
 		unset( $this->helper );
 		parent::tearDown();
 	}
