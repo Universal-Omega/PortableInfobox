@@ -20,10 +20,10 @@ class InfoboxParamsValidatorTest extends MediaWikiTestCase {
 	/**
 	 * @param array $params
 	 * @dataProvider infoboxParamsFailValidationDataProvider
-	 *
-	 * @expectedException PortableInfobox\Helpers\InvalidInfoboxParamsException
 	 */
 	public function testInfoboxParamsFailValidation( $params ) {
+		$this->expectException( PortableInfobox\Helpers\InvalidInfoboxParamsException::class );
+
 		$this->InfoboxParamsValidator->validateParams( $params );
 	}
 
