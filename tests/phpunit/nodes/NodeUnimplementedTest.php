@@ -8,10 +8,9 @@ use PortableInfobox\Parser\Nodes\NodeUnimplemented;
  */
 class NodeUnimplementedTest extends MediaWikiTestCase {
 
-	/**
-	 * @expectedException PortableInfobox\Parser\Nodes\UnimplementedNodeException
-	 */
 	public function testNewFromXML() {
+		$this->expectException( PortableInfobox\Parser\Nodes\UnimplementedNodeException::class );
+
 		( new NodeUnimplemented(
 			PortableInfobox\Parser\XmlParser::parseXmlString( "<foo/>" ),
 			[]
