@@ -4,6 +4,7 @@ use PortableInfobox\Parser\Nodes\NodeFactory;
 
 /**
  * @group PortableInfobox
+ * @group Database
  * @covers PortableInfoboxDataService
  */
 class PortableInfoboxDataServiceTest extends MediaWikiTestCase {
