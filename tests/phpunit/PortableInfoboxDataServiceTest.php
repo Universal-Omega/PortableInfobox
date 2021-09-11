@@ -9,6 +9,13 @@ use PortableInfobox\Parser\Nodes\NodeFactory;
 class PortableInfoboxDataServiceTest extends MediaWikiTestCase {
 
 	/**
+	 * @return bool
+	 */
+	public function needsDB() {
+		return true;
+	}
+
+	/**
 	 * @param $id
 	 * @param int $ns
 	 *
