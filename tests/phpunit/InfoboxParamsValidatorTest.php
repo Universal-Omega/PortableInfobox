@@ -7,12 +7,12 @@ class InfoboxParamsValidatorTest extends MediaWikiTestCase {
 	/** @var PortableInfobox\Helpers\InfoboxParamsValidator $InfoboxParamsValidator */
 	private $InfoboxParamsValidator;
 
-	protected function setUp() {
+	protected function setUp(): void {
 		parent::setUp();
 		$this->InfoboxParamsValidator = new PortableInfobox\Helpers\InfoboxParamsValidator();
 	}
 
-	protected function tearDown() {
+	protected function tearDown(): void {
 		unset( $this->InfoboxParamsValidator );
 		parent::tearDown();
 	}
@@ -20,10 +20,10 @@ class InfoboxParamsValidatorTest extends MediaWikiTestCase {
 	/**
 	 * @param array $params
 	 * @dataProvider infoboxParamsFailValidationDataProvider
-	 *
-	 * @expectedException PortableInfobox\Helpers\InvalidInfoboxParamsException
 	 */
 	public function testInfoboxParamsFailValidation( $params ) {
+		$this->expectException( PortableInfobox\Helpers\InvalidInfoboxParamsException::class );
+
 		$this->InfoboxParamsValidator->validateParams( $params );
 	}
 

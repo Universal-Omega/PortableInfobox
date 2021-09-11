@@ -51,6 +51,7 @@
 		"PortableInfoboxDataService": "includes/services/PortableInfoboxDataService.php",
 		"PortableInfoboxRenderService": "includes/services/PortableInfoboxRenderService.php",
 		"PortableInfoboxErrorRenderService": "includes/services/PortableInfoboxErrorRenderService.php",
+		"PortableInfobox\\Parser\\BlockLevelPass": "includes/services/Parser/BlockLevelPass.php",
 		"PortableInfobox\\Parser\\ExternalParser": "includes/services/Parser/ExternalParser.php",
 		"PortableInfobox\\Parser\\SimpleParser": "includes/services/Parser/SimpleParser.php",
 		"PortableInfobox\\Parser\\XmlParser": "includes/services/Parser/XmlParser.php",

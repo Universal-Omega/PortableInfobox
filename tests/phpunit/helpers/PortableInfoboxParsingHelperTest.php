@@ -1,9 +1,18 @@
 <?php
+
 /**
  * @group PortableInfobox
+ * @group Database
  * @covers PortableInfobox\Helpers\PortableInfoboxParsingHelper
  */
 class PortableInfoboxParsingHelperTest extends MediaWikiTestCase {
+
+	/**
+	 * @return bool
+	 */
+	public function needsDB() {
+		return true;
+	}
 
 	/**
 	 * @dataProvider parsingIncludeonlyInfoboxesDataProvider
@@ -16,7 +25,7 @@ class PortableInfoboxParsingHelperTest extends MediaWikiTestCase {
 			->method( 'fetchArticleContent' )
 			->will( $this->returnValue( $markup ) );
 
-		$result = $helper->parseIncludeonlyInfoboxes( new Title() );
+		$result = $helper->parseIncludeonlyInfoboxes( $this->getExistingTestPage( 'Test' )->getTitle() );
 
 		$this->assertEquals( $expected, $result );
 	}

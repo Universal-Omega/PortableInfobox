@@ -8,11 +8,11 @@ use PortableInfobox\Parser\XmlMarkupParseErrorException;
 
 class PortableInfoboxParserTagController {
 	public const PARSER_TAG_VERSION = 2;
+	public const DEFAULT_THEME_NAME = 'default';
+	public const INFOBOX_THEME_PREFIX = 'pi-theme-';
 
 	private const PARSER_TAG_NAME = 'infobox';
-	private const DEFAULT_THEME_NAME = 'default';
 	private const DEFAULT_LAYOUT_NAME = 'default';
-	private const INFOBOX_THEME_PREFIX = 'pi-theme-';
 	private const INFOBOX_LAYOUT_PREFIX = 'pi-layout-';
 	private const INFOBOX_TYPE_PREFIX = 'pi-type-';
 	private const ACCENT_COLOR = 'accent-color';
