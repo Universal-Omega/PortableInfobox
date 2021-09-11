@@ -15,7 +15,7 @@ class PortableInfoboxDataServiceTest extends MediaWikiTestCase {
 	 * @return Title
 	 */
 	protected function prepareTitle( $id = 0, $ns = NS_MAIN ) {
-		$title = RequestContext::getMain()->getTitle();
+		$title = Title::newFromText( '' );
 		$title->mArticleID = $id;
 		$title->mNamespace = $ns;
 
