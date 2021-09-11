@@ -397,7 +397,7 @@ class BlockLevelPass {
 			}
 		}
 		while ( $prefixLength ) {
-			// @phan-ignore-next-line PhanTypeArraySuspicious
+			// @phan-suppress-next-line PhanTypeArraySuspicious
 			$output .= $this->closeList( $prefix2[$prefixLength - 1] );
 
 			--$prefixLength;
