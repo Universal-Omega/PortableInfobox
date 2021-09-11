@@ -8,7 +8,7 @@ class MediaWikiParserTest extends MediaWikiTestCase {
 	/** @var Parser */
 	protected $parser;
 
-	public function setUp() {
+	public function setUp(): void {
 		$this->parser = new Parser();
 		$title = Title::newFromText( 'test' );
 		$options = new ParserOptions();
@@ -20,7 +20,7 @@ class MediaWikiParserTest extends MediaWikiTestCase {
 		parent::setUp();
 	}
 
-	public function tearDown() {
+	public function tearDown(): void {
 		unset( $this->parser );
 		parent::tearDown();
 	}
