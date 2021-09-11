@@ -7,7 +7,7 @@ class InfoboxParamsValidatorTest extends MediaWikiTestCase {
 	/** @var PortableInfobox\Helpers\InfoboxParamsValidator $InfoboxParamsValidator */
 	private $InfoboxParamsValidator;
 
-	protected function setUp() {
+	protected function setUp(): void {
 		parent::setUp();
 		$this->InfoboxParamsValidator = new PortableInfobox\Helpers\InfoboxParamsValidator();
 	}
