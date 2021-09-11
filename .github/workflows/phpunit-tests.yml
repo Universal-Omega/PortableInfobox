@@ -76,18 +76,15 @@ jobs:
           MYSQL_USER: mwuser
           MYSQL_PASSWORD: mw12345
 
-      - name: Checkout DPL extension
+      - name: Checkout PortableInfobox extension
         uses: actions/checkout@v2
         with:
-          path: mediawiki/extensions/DynamicPageList3
+          path: mediawiki/extensions/PortableInfobox
 
       - name: Run PHPUnit
         run: |
           [[ '${{ matrix.mw }}' != 'master' ]] && PHPUNIT_ARGS='--use-normal-tables' ||  PHPUNIT_ARGS=''
-          php tests/phpunit/phpunit.php $PHPUNIT_ARGS extensions/DynamicPageList3/tests/phpunit
+          php tests/phpunit/phpunit.php $PHPUNIT_ARGS extensions/PortableInfobox/tests/phpunit
 
         env:
-          # By default MediaWiki creates temporary tables for use in integration tests,
-          # which do not play well with DPL's queries. Ensure we use real tables to avoid issues.
-          # https://dev.mysql.com/doc/refman/8.0/en/temporary-table-problems.html
           PHPUNIT_USE_NORMAL_TABLES: 1
