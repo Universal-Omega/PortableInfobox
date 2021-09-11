@@ -22,11 +22,23 @@ jobs:
           - mw: 'REL1_36'
             php: 7.4
             composer: v2
-            continue-on-error: true
+            continue-on-error: false
 
-          # Latest MediaWiki master
+          # Latest MediaWiki master - PHP 7.3
           - mw: 'master'
             php: 7.3
+            composer: v2
+            continue-on-error: false
+
+          # Latest MediaWiki master - PHP 7.4
+          - mw: 'master'
+            php: 7.4
+            composer: v2
+            continue-on-error: false
+
+          # Latest MediaWiki master - PHP 8.0
+          - mw: 'master'
+            php: 8.0
             composer: v2
             continue-on-error: true
 
@@ -47,7 +59,7 @@ jobs:
           composer update
 
       - name: Check PHP
-        if: ${{ matrix.mw == 'master' }}
+        if: ${{ matrix.mw == 'master' && matrix.php == 8.0 }}
         run: |
           sh phpcbf.sh
           composer fix
@@ -82,7 +94,7 @@ jobs:
 
       # Only patch code when it is a push event
       - name: Push the changes
-        if: github.event_name == 'push' && matrix.mw == 'master'
+        if: github.event_name == 'push' && matrix.mw == 'master' && matrix.php == 8.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
