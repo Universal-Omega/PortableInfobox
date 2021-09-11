@@ -1,4 +1,7 @@
 <?php
+
+use MediaWiki\MediaWikiServices;
+
 /**
  * @group PortableInfobox
  * @covers PortableInfobox\Parser\MediaWikiParserService
@@ -9,9 +12,10 @@ class MediaWikiParserTest extends MediaWikiTestCase {
 	protected $parser;
 
 	public function setUp(): void {
-		$this->parser = new Parser();
+		$this->parser = MediaWikiServices::getInstance()->getParser();
 		$title = Title::newFromText( 'test' );
-		$options = new ParserOptions();
+		$user = RequestContext::getMain()->getUser();
+		$options = new ParserOptions( $user );
 		// Required for MW >= 1.30
 		if ( method_exists( $options, 'setOption' ) ) {
 			$options->setOption( 'wrapclass', false );
