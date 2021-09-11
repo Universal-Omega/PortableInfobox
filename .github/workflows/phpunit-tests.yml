@@ -12,12 +12,12 @@ jobs:
         include:
           # Latest stable MW
           - mw: 'REL1_36'
-            php: 8.0
+            php: 7.3
             composer: v2
             mysql: '8.0'
           # Latest MW master
           - mw: 'master'
-            php: 8.0
+            php: 7.3
             composer: v2
             mysql: '8.0'
     runs-on: ubuntu-latest
