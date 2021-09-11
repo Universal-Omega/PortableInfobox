@@ -12,7 +12,7 @@ class InfoboxParamsValidatorTest extends MediaWikiTestCase {
 		$this->InfoboxParamsValidator = new PortableInfobox\Helpers\InfoboxParamsValidator();
 	}
 
-	protected function tearDown() {
+	protected function tearDown(): void {
 		unset( $this->InfoboxParamsValidator );
 		parent::tearDown();
 	}
