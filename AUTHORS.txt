@@ -1,0 +1,5 @@
+The PortableInfobox extension was original created by Fandom (Adam Robak, Diana Falkowska, Jacek Jursza, Mateusz Rybarski, Rafał Leszczyński, Sebastian Marzjan).
+
+The original port of the extension was by Luqgreg (Łukasz K.).
+
+This version of PortableInfobox is a fork created by Universal Omega in order to provide better MediaWiki forward compatibility and support

@@ -1,17 +1,20 @@
 {
 	"name": "Portable Infobox",
 	"author": [
-		"Fandom (Adam Robak, Diana Falkowska, Jacek Jursza, Mateusz Rybarski, Rafał Leszczyński, Sebastian Marzjan)",
 		"Universal Omega",
-		"Luqgreg (Łukasz K.)"
+		"Luqgreg (Łukasz K.)",
+		"..."
 	],
-	"url": "https://github.com/Luqgreg/mediawiki-PortableInfobox",
+	"url": "https://github.com/Universal-Omega/PortableInfobox",
 	"descriptionmsg": "portable-infobox-desc",
-	"version": "0.3",
+	"version": "0.5",
 	"type": "parserhook",
 	"license-name": "GPL-3.0-or-later",
 	"requires": {
-		"MediaWiki": ">= 1.36.0"
+		"MediaWiki": ">= 1.36.0",
+		"platform": {
+			"php": ">= 7.3"
+		}
 	},
 	"config": {
 		"AllInfoboxesSubpagesBlacklist": [ "doc", "draft", "test" ],
