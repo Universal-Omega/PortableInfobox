@@ -1,4 +1,5 @@
 name: PHPUnit tests
+
 on:
   push:
     branches: [ master ]
@@ -7,19 +8,39 @@ on:
 jobs:
   test:
     name: "MediaWiki ${{ matrix.mw }} | PHP ${{ matrix.php }} | MySQL ${{ matrix.mysql }}"
+    continue-on-error: true
     strategy:
       matrix:
         include:
-          # Latest stable MW
+          # Latest stable MW - PHP 7.3
           - mw: 'REL1_36'
             php: 7.3
             composer: v2
             mysql: '5.7'
-          # Latest MW master
+
+          # Latest stable MW - PHP 7.4
+          - mw: 'REL1_36'
+            php: 7.3
+            composer: v2
+            mysql: '5.7'
+
+          # Latest MW master - PHP 7.3
           - mw: 'master'
             php: 7.3
             composer: v2
             mysql: '5.7'
+
+          # Latest MW master - PHP 7.4
+          - mw: 'master'
+            php: 7.4
+            composer: v2
+            mysql: '5.7'
+
+          # Latest MW master - PHP 8.0
+          - mw: 'master'
+            php: 8.0
+            composer: v2
+            mysql: '8.0'
     runs-on: ubuntu-latest
     defaults:
       run:
