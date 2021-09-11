@@ -1,0 +1,93 @@
+name: PHPUnit tests
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+jobs:
+  test:
+    name: "MediaWiki ${{ matrix.mw }} | PHP ${{ matrix.php }} | MySQL ${{ matrix.mysql }}"
+    strategy:
+      matrix:
+        include:
+          # Latest stable MW
+          - mw: 'REL1_36'
+            php: 8.0
+            composer: v2
+            mysql: '8.0'
+          # Latest MW master
+          - mw: 'master'
+            php: 8.0
+            composer: v2
+            mysql: '8.0'
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: mediawiki
+    services:
+      mysql:
+        image: mysql:${{ matrix.mysql }}
+        options: --name integration-tests-mysql
+        env:
+          MYSQL_ROOT_PASSWORD: root123
+          MYSQL_DATABASE: mwtest
+          MYSQL_USER: mwuser
+          MYSQL_PASSWORD: mw12345
+        ports:
+        - 3306:3306
+    steps:
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: intl
+          tools: composer:${{ matrix.composer }}
+      - name: Cache MediaWiki
+        id: cache-mediawiki
+        uses: actions/cache@v2
+        with:
+          path: |
+            mediawiki
+            !mediawiki/extensions/
+            !mediawiki/vendor/
+          key: mw-${{ matrix.mw }}-php${{ matrix.php }}-v2
+
+      - name: Cache Composer cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.composer/cache
+          key: composer-php${{ matrix.php }}
+
+      - name: Fetch MW install script
+        uses: actions/checkout@v2
+        with:
+          path: installer
+
+      - name: Download MediaWiki
+        if: steps.cache-mediawiki.outputs.cache-hit != 'true'
+        working-directory: ~
+        run: bash installer/.github/workflows/download-mediawiki.sh ${{ matrix.mw }}
+
+      - name: Install MediaWiki
+        working-directory: ~
+        run: bash installer/.github/workflows/install-mediawiki.sh
+        env:
+          MYSQL_DATABASE: mwtest
+          MYSQL_USER: mwuser
+          MYSQL_PASSWORD: mw12345
+
+      - name: Checkout DPL extension
+        uses: actions/checkout@v2
+        with:
+          path: mediawiki/extensions/DynamicPageList3
+
+      - name: Run PHPUnit
+        run: |
+          [[ '${{ matrix.mw }}' != 'master' ]] && PHPUNIT_ARGS='--use-normal-tables' ||  PHPUNIT_ARGS=''
+          php tests/phpunit/phpunit.php $PHPUNIT_ARGS extensions/DynamicPageList3/tests/phpunit
+
+        env:
+          # By default MediaWiki creates temporary tables for use in integration tests,
+          # which do not play well with DPL's queries. Ensure we use real tables to avoid issues.
+          # https://dev.mysql.com/doc/refman/8.0/en/temporary-table-problems.html
+          PHPUNIT_USE_NORMAL_TABLES: 1
