@@ -64,16 +64,6 @@ jobs:
           composer fix
           composer test
 
-      - name: Cache MediaWiki
-        id: cache-mediawiki
-        uses: actions/cache@v2
-        with:
-          path: |
-            mediawiki
-            !mediawiki/extensions/
-            !mediawiki/vendor/
-          key: mw-${{ matrix.mw }}-php${{ matrix.php }}-v4
-
       - name: Cache Composer cache
         uses: actions/cache@v2
         with:
@@ -81,7 +71,6 @@ jobs:
           key: composer-php${{ matrix.php }}
 
       - name: Download MediaWiki
-        if: steps.cache-mediawiki.outputs.cache-hit != 'true'
         run: |
           bash .github/workflows/download-mediawiki.sh ${{ matrix.mw }}
           git clone https://github.com/wikimedia/mediawiki-extensions-PageImages.git --depth=1 --branch=${{ matrix.mw }} mediawiki/extensions/PageImages
