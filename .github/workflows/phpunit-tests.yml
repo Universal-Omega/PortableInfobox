@@ -21,7 +21,7 @@ jobs:
 
           # Latest stable MW - PHP 7.4
           - mw: 'REL1_36'
-            php: 7.3
+            php: 7.4
             composer: v2
             mysql: '5.7'
             continue-on-error: false
