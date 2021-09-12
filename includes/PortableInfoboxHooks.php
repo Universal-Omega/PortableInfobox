@@ -14,6 +14,7 @@ class PortableInfoboxHooks {
 		Parser &$parser, ImageGalleryBase &$gallery
 	) {
 		PortableInfobox\Helpers\PortableInfoboxDataBag::getInstance()->setGallery(
+			// @phan-suppress-next-line PhanDeprecatedProperty
 			Parser::MARKER_PREFIX . '-gallery-' . sprintf( '%08X', $parser->mMarkerIndex - 1 ) .
 				Parser::MARKER_SUFFIX,
 			$gallery
