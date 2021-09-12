@@ -57,7 +57,7 @@ class MediaWikiParserTest extends MediaWikiTestCase {
 		$frame = $this->parser->getPreprocessor()->newCustomFrame( $params );
 		$wrapper = new PortableInfobox\Parser\MediaWikiParserService( $this->parser, $frame );
 
-		$output = str_replace( '<!-- ERR 3 -->', '', $wrapper->parseRecursive( $wikitext ) );
+		$output = $wrapper->parseRecursive( $wikitext );
 
 		$this->assertEquals( $this->parse( $wikitext, $params, $newline ), $output );
 	}
