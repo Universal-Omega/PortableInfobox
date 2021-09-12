@@ -1,6 +1,6 @@
 <?php
 
-class AllinfoboxesQueryPage extends PageQueryPage {
+class AllInfoboxesQueryPage extends PageQueryPage {
 
 	private const ALL_INFOBOXES_TYPE = 'AllInfoboxes';
 
