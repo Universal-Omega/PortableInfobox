@@ -1,5 +1,7 @@
 <?php
 
+use MediaWiki\MediaWikiServices;
+
 class AllInfoboxesQueryPage extends PageQueryPage {
 
 	private const ALL_INFOBOXES_TYPE = 'AllInfoboxes';
@@ -54,7 +56,9 @@ class AllInfoboxesQueryPage extends PageQueryPage {
 	public function recache( $limit = false, $ignoreErrors = true ) {
 		$res = parent::recache( $limit, $ignoreErrors );
 
-		Hooks::run( 'AllInfoboxesQueryRecached' );
+		$hookContainer = MediaWikiServices::getInstance()->getHookContainer();
+		$hookContainer->run( 'AllInfoboxesQueryRecached' );
+
 		return $res;
 	}
 
