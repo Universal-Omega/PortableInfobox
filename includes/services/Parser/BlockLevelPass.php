@@ -159,7 +159,7 @@ class BlockLevelPass {
 		} else {
 			return '<!-- ERR 3 -->';
 		}
-		return $text;
+		return $text . "\n";
 	}
 
 	/**
