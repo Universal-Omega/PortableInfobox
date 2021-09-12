@@ -294,7 +294,14 @@ class BlockLevelPass {
 				// P-wrapping and indent-pre are suppressed outside, not inside
 				$antiBlockElems = 'td|th';
 
-				$openMatch = preg_match(
+				$openmatch = preg_match('/(?:<aside|<table|<h1|<h2|<h3|<h4|<h5|<h6|<pre|<tr|<p|<ul|<ol|<li|<\\/tr|<\\/td|<\\/th)/iS', $t );
+
+				$closematch = preg_match(
+					'/(?:<\\/?aside|<\\/table|<\\/h1|<\\/h2|<\\/h3|<\\/h4|<\\/h5|<\\/h6|'.
+				#	'<td|<th|<\\/?div|<hr|<\\/pre|<\\/p|'.Parser::MARKER_PREFIX.'-pre|<\\/li|<\\/ul|<\\/ol|<\\/?center)/iS', $t );
+					'<td|<th|<\\/?div|<\\/?figure|<hr|<\\/pre|<\\/p|'.Parser::MARKER_PREFIX.'-pre|'.Parser::MARKER_PREFIX.'-bloglist|'.Parser::MARKER_PREFIX.'-infobox|<\\/li|<\\/ul|<\\/ol|<\\/?center)/iS', $t );
+
+				/*$openMatch = preg_match(
 					'/<('
 						. "({$blockElems})|\\/({$antiBlockElems})|"
 						// Always suppresses
@@ -309,7 +316,7 @@ class BlockLevelPass {
 						. '\\/?(center|blockquote|div|hr|mw:|aside|figure)'
 						. ')\\b/iS',
 					$t
-				);
+				);*/
 
 				// Any match closes the paragraph, but only when `!$closeMatch`
 				// do we enter block mode.  The oddities with table rows and
