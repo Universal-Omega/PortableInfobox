@@ -42,13 +42,13 @@ class MediaWikiParserService implements ExternalParser {
 			return $this->cache[$wikitext];
 		}
 
-		$parsed = $this->parser->internalParse( $wikitext, false, $this->frame );
+		$parsed = $this->parser->recursiveTagParse( $wikitext, $this->frame );
 		if ( in_array( substr( $parsed, 0, 1 ), [ '*', '#' ] ) ) {
 			// fix for first item list elements
 			$parsed = "\n" . $parsed;
 		}
 		$output = BlockLevelPass::doBlockLevels( $parsed, false );
-		$ready = $this->parser->mStripState->unstripBoth( $output );
+		$ready = $this->parser->getStripState()->unstripBoth( $output );
 		$this->parser->replaceLinkHolders( $ready );
 		if ( isset( $this->tidyDriver ) ) {
 			$ready = $this->tidyDriver->tidy( $ready );
