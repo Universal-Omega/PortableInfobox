@@ -2,7 +2,6 @@
 
 use MediaWiki\MediaWikiServices;
 
-// phpcs:ignore MediaWiki.Files.ClassMatchesFilename.NotMatch
 class PortableInfoboxHooks {
 
 	public static function onWgQueryPages( array &$queryPages = [] ) {
