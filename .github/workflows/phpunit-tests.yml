@@ -68,15 +68,6 @@ jobs:
           php-version: ${{ matrix.php }}
           extensions: intl
           tools: composer:${{ matrix.composer }}
-      - name: Cache MediaWiki
-        id: cache-mediawiki
-        uses: actions/cache@v2
-        with:
-          path: |
-            mediawiki
-            !mediawiki/extensions/
-            !mediawiki/vendor/
-          key: mw-${{ matrix.mw }}-php${{ matrix.php }}-mysql${{ matrix.mysql }}-v2
 
       - name: Cache Composer cache
         uses: actions/cache@v2
@@ -90,7 +81,6 @@ jobs:
           path: installer
 
       - name: Download MediaWiki
-        if: steps.cache-mediawiki.outputs.cache-hit != 'true'
         working-directory: ~
         run: bash installer/.github/workflows/download-mediawiki.sh ${{ matrix.mw }}
 

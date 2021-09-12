@@ -15,10 +15,10 @@
 		],
 		"test": [
 			"parallel-lint . --exclude node_modules --exclude vendor",
-			"phpcs --config-set ignore_warnings_on_exit 1",
-			"phpcs -p -s",
-			"minus-x check ."
+			"minus-x check .",
+			"@phpcs"
 		],
-		"phan": "phan -d . --long-progress-bar"
+		"phan": "phan -d . --long-progress-bar",
+		"phpcs": "phpcs -sp --cache"
 	}
 }

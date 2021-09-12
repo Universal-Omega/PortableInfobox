@@ -28,13 +28,13 @@ jobs:
           - mw: 'master'
             php: 7.3
             composer: v2
-            continue-on-error: false
+            continue-on-error: true
 
           # Latest MediaWiki master - PHP 7.4
           - mw: 'master'
             php: 7.4
             composer: v2
-            continue-on-error: false
+            continue-on-error: true
 
           # Latest MediaWiki master - PHP 8.0
           - mw: 'master'
@@ -59,21 +59,10 @@ jobs:
           composer update
 
       - name: Check PHP
-        if: ${{ matrix.mw == 'master' && matrix.php == 8.0 }}
         run: |
           sh phpcbf.sh
           composer fix
           composer test
-
-      - name: Cache MediaWiki
-        id: cache-mediawiki
-        uses: actions/cache@v2
-        with:
-          path: |
-            mediawiki
-            !mediawiki/extensions/
-            !mediawiki/vendor/
-          key: mw-${{ matrix.mw }}-php${{ matrix.php }}-v3
 
       - name: Cache Composer cache
         uses: actions/cache@v2
@@ -82,7 +71,6 @@ jobs:
           key: composer-php${{ matrix.php }}
 
       - name: Download MediaWiki
-        if: steps.cache-mediawiki.outputs.cache-hit != 'true'
         run: |
           bash .github/workflows/download-mediawiki.sh ${{ matrix.mw }}
           git clone https://github.com/wikimedia/mediawiki-extensions-PageImages.git --depth=1 --branch=${{ matrix.mw }} mediawiki/extensions/PageImages
@@ -94,7 +82,7 @@ jobs:
 
       # Only patch code when it is a push event
       - name: Push the changes
-        if: ${{ github.event_name == 'push' && matrix.mw == 'master' && matrix.php == 8.0 }}
+        if: ${{ github.event_name == 'push' }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |

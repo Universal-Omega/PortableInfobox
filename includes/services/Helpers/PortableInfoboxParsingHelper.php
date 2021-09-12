@@ -74,7 +74,10 @@ class PortableInfoboxParsingHelper {
 	 */
 	protected function fetchArticleContent( \Title $title ) {
 		if ( $title->exists() ) {
-			$content = \WikiPage::factory( $title )
+			// @phan-suppress-next-line PhanDeprecatedFunction
+			$content = MediaWikiServices::getInstance()
+				->getWikiPageFactory()
+				->newFromTitle( $title )
 				->getContent()
 				->getNativeData();
 		}

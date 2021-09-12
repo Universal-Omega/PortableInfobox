@@ -2,6 +2,8 @@
 
 namespace PortableInfobox\Helpers;
 
+use MediaWiki\MediaWikiServices;
+
 // original class & authors:
 // https://github.com/Wikia/app/blob/dev/includes/wikia/helpers/FileNamespaceSanitizeHelper.php
 class FileNamespaceSanitizeHelper {
@@ -31,7 +33,9 @@ class FileNamespaceSanitizeHelper {
 		$langCode = $contLang->getCode();
 		if ( empty( $this->filePrefixRegex[$langCode] ) ) {
 			$fileNamespaces = [
-				\MWNamespace::getCanonicalName( NS_FILE ),
+				MediaWikiServices::getInstance()
+					->getNamespaceInfo()
+					->getCanonicalName( NS_FILE ),
 				$contLang->getNamespaces()[NS_FILE],
 			];
 

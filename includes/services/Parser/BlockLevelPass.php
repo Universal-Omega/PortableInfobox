@@ -331,7 +331,7 @@ class BlockLevelPass {
 					while ( preg_match( '/<(\\/?)blockquote[\s>]/i', $t,
 						$bqMatch, PREG_OFFSET_CAPTURE, $bqOffset )
 					) {
-						$inBlockquote = !$bqMatch[1][0]; // is this a close tag?
+						$inBlockquote = !$bqMatch[1][0];
 						$bqOffset = $bqMatch[0][1] + strlen( $bqMatch[0][0] );
 					}
 					$inBlockElem = !$closeMatch;

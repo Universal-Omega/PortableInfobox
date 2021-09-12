@@ -42,21 +42,26 @@ class MediaWikiParserService implements ExternalParser {
 			return $this->cache[$wikitext];
 		}
 
-		$parsed = $this->parser->internalParse( $wikitext, false, $this->frame );
+		$parsed = $this->parser->recursiveTagParse( $wikitext, $this->frame );
 		if ( in_array( substr( $parsed, 0, 1 ), [ '*', '#' ] ) ) {
 			// fix for first item list elements
 			$parsed = "\n" . $parsed;
 		}
 		$output = BlockLevelPass::doBlockLevels( $parsed, false );
-		$ready = $this->parser->mStripState->unstripBoth( $output );
+		$ready = $this->parser->getStripState()->unstripBoth( $output );
+
+		// @phan-suppress-next-line PhanDeprecatedFunction
 		$this->parser->replaceLinkHolders( $ready );
+
 		if ( isset( $this->tidyDriver ) ) {
 			$ready = $this->tidyDriver->tidy( $ready );
 		}
+
 		$newlinesstripped = preg_replace( '|[\n\r]|Us', '', $ready );
 		$marksstripped = preg_replace( '|{{{.*}}}|Us', '', $newlinesstripped );
 
 		$this->cache[$wikitext] = $marksstripped;
+
 		return $marksstripped;
 	}
 
@@ -72,7 +77,9 @@ class MediaWikiParserService implements ExternalParser {
 	 * @param \Title $title
 	 */
 	public function addImage( $title ) {
-		$file = wfFindFile( $title );
+		$repoGroup = MediaWikiServices::getInstance()->getRepoGroup();
+
+		$file = $repoGroup->findFile( $title );
 		$tmstmp = $file ? $file->getTimestamp() : null;
 		$sha1 = $file ? $file->getSha1() : null;
 		$this->parser->getOutput()->addImage( $title->getDBkey(), $tmstmp, $sha1 );

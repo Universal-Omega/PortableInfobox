@@ -5,7 +5,7 @@ use MediaWiki\MediaWikiServices;
 class PortableInfoboxHooks {
 
 	public static function onWgQueryPages( array &$queryPages = [] ) {
-		$queryPages[] = [ 'AllinfoboxesQueryPage', 'AllInfoboxes' ];
+		$queryPages[] = [ 'AllInfoboxesQueryPage', 'AllInfoboxes' ];
 
 		return true;
 	}
@@ -14,6 +14,7 @@ class PortableInfoboxHooks {
 		Parser &$parser, ImageGalleryBase &$gallery
 	) {
 		PortableInfobox\Helpers\PortableInfoboxDataBag::getInstance()->setGallery(
+			// @phan-suppress-next-line PhanDeprecatedProperty
 			Parser::MARKER_PREFIX . '-gallery-' . sprintf( '%08X', $parser->mMarkerIndex - 1 ) .
 				Parser::MARKER_SUFFIX,
 			$gallery
@@ -24,7 +25,7 @@ class PortableInfoboxHooks {
 
 	public static function onAllInfoboxesQueryRecached() {
 		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
-		$cache->delete( $cache->makeKey( ApiQueryAllinfoboxes::MCACHE_KEY ) );
+		$cache->delete( $cache->makeKey( ApiQueryAllInfoboxes::MCACHE_KEY ) );
 
 		return true;
 	}
@@ -32,7 +33,7 @@ class PortableInfoboxHooks {
 	/**
 	 * Purge memcache before edit
 	 *
-	 * @param Page|WikiPage $article
+	 * @param Page $article
 	 *
 	 * @return bool
 	 */
@@ -50,7 +51,7 @@ class PortableInfoboxHooks {
 	/**
 	 * Purge memcache, this will not rebuild infobox data
 	 *
-	 * @param Page|WikiPage $article
+	 * @param Page $article
 	 *
 	 * @return bool
 	 */

@@ -17,7 +17,6 @@ class ApiPortableInfobox extends ApiBase {
 		}
 
 		$parser = MediaWikiServices::getInstance()->getParser();
-		$parser->firstCallInit();
 		$parser->startExternalParse(
 			Title::newFromText( $title ),
 			ParserOptions::newFromContext( $this->getContext() ),

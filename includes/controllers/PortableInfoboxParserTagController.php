@@ -1,5 +1,6 @@
 <?php
 
+use MediaWiki\MediaWikiServices;
 use PortableInfobox\Helpers\InfoboxParamsValidator;
 use PortableInfobox\Helpers\InvalidInfoboxParamsException;
 use PortableInfobox\Parser\Nodes;
@@ -139,7 +140,10 @@ class PortableInfoboxParserTagController {
 		}
 
 		// Convert text to language variant
-		$renderedValue = $parser->getTargetLanguage()->convert( $renderedValue );
+		$renderedValue = MediaWikiServices::getInstance()
+			->getLanguageConverterFactory()
+			->getLanguageConverter( $parser->getTargetLanguage() )
+			->convert( $renderedValue );
 
 		return [ $renderedValue, 'markerType' => 'nowiki' ];
 	}
