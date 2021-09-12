@@ -76,7 +76,7 @@ jobs:
             mediawiki
             !mediawiki/extensions/
             !mediawiki/vendor/
-          key: mw-${{ matrix.mw }}-php${{ matrix.php }}-mysql${{ matrix.mysql }}-v1
+          key: mw-${{ matrix.mw }}-php${{ matrix.php }}-mysql${{ matrix.mysql }}
 
       - name: Cache Composer cache
         uses: actions/cache@v2
