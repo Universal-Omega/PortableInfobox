@@ -290,18 +290,11 @@ class BlockLevelPass {
 				# @todo consider using a stack for nestable elements like span, table and div
 
 				// P-wrapping and indent-pre are suppressed inside, not outside
-				$blockElems = 'table|h1|h2|h3|h4|h5|h6|pre|p|ul|ol|dl';
+				$blockElems = 'aside|table|h1|h2|h3|h4|h5|h6|pre|p|ul|ol|dl';
 				// P-wrapping and indent-pre are suppressed outside, not inside
 				$antiBlockElems = 'td|th';
 
-				$openMatch = preg_match( '/(?:<aside|<table|<h1|<h2|<h3|<h4|<h5|<h6|<pre|<tr|<p|<ul|<ol|<li|<\\/tr|<\\/td|<\\/th)/iS', $t );
-
-				$closeMatch = preg_match(
-					'/(?:<\\/?aside|<\\/table|<\\/h1|<\\/h2|<\\/h3|<\\/h4|<\\/h5|<\\/h6|' .
-				#	'<td|<th|<\\/?div|<hr|<\\/pre|<\\/p|'.\Parser::MARKER_PREFIX.'-pre|<\\/li|<\\/ul|<\\/ol|<\\/?center)/iS', $t );
-					'<td|<th|<\\/?div|<\\/?figure|<hr|<\\/pre|<\\/p|' . \Parser::MARKER_PREFIX . '-pre|' . \Parser::MARKER_PREFIX . '-bloglist|' . \Parser::MARKER_PREFIX . '-infobox|<\\/li|<\\/ul|<\\/ol|<\\/?center)/iS', $t );
-
-				/*$openMatch = preg_match(
+				$openMatch = preg_match(
 					'/<('
 						. "({$blockElems})|\\/({$antiBlockElems})|"
 						// Always suppresses
@@ -309,14 +302,15 @@ class BlockLevelPass {
 						. ')\\b/iS',
 					$t
 				);
+
 				$closeMatch = preg_match(
 					'/<('
 						. "\\/({$blockElems})|({$antiBlockElems})|"
 						// Never suppresses
-						. '\\/?(center|blockquote|div|hr|mw:|aside|figure)'
+						. '\\/?(center|blockquote|div|hr|mw:|figure)'
 						. ')\\b/iS',
 					$t
-				);*/
+				);
 
 				// Any match closes the paragraph, but only when `!$closeMatch`
 				// do we enter block mode.  The oddities with table rows and
