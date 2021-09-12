@@ -39,13 +39,12 @@ class MediaWikiParserTest extends MediaWikiTestCase {
 		);
 	}
 
-	/* Fails - it needs a modification in the core to pass
 	public function testAsideTagPWrappedDuringParsing() {
 		$aside = "<aside></aside>";
 		$result = PortableInfobox\Parser\BlockLevelPass::doBlockLevels( $aside, true );
-		//parser adds new line at the end of block
-		$this->assertEquals( $aside . "\n", $result );
-	} */
+
+		$this->assertEquals( $aside, $result );
+	}
 
 	/**
 	 * @dataProvider mwParserWrapperDataProvider
