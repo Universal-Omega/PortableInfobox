@@ -77,9 +77,8 @@ class PortableInfoboxParsingHelper {
 			$content = MediaWikiServices::getInstance()
 				->getWikiPageFactory()
 				->newFromTitle( $title )
-				->getContent();
-
-			$content = $content->getText();
+				->getContent()
+				->getNativeData();
 		}
 
 		return isset( $content ) && $content ? $content : '';
