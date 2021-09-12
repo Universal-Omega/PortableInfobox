@@ -27,7 +27,7 @@
 		"PortableInfobox": "i18n"
 	},
 	"ExtensionMessagesFiles": {
-		"PortableInfoboxAliases": "includes/PortableInfobox.alias.php"
+		"PortableInfoboxAliases": "includes/PortableInfoboxAliases.php"
 	},
 	"ResourceModules": {
 		"ext.PortableInfobox.scripts": {
@@ -50,7 +50,7 @@
 		"remoteExtPath": "PortableInfobox"
 	},
 	"AutoloadClasses": {
-		"PortableInfoboxHooks": "includes/PortableInfobox.hooks.php",
+		"PortableInfoboxHooks": "includes/PortableInfoboxHooks.php",
 		"PortableInfoboxDataService": "includes/services/PortableInfoboxDataService.php",
 		"PortableInfoboxRenderService": "includes/services/PortableInfoboxRenderService.php",
 		"PortableInfoboxErrorRenderService": "includes/services/PortableInfoboxErrorRenderService.php",
@@ -84,8 +84,8 @@
 		"PortableInfoboxParserTagController": "includes/controllers/PortableInfoboxParserTagController.php",
 		"ApiPortableInfobox": "includes/controllers/ApiPortableInfobox.php",
 		"ApiQueryPortableInfobox": "includes/controllers/ApiQueryPortableInfobox.php",
-		"ApiQueryAllinfoboxes": "includes/controllers/ApiQueryAllinfoboxes.php",
-		"AllinfoboxesQueryPage": "includes/querypage/AllinfoboxesQueryPage.php"
+		"ApiQueryAllInfoboxes": "includes/controllers/ApiQueryAllInfoboxes.php",
+		"AllInfoboxesQueryPage": "includes/querypage/AllInfoboxesQueryPage.php"
 	},
 	"Hooks": {
 		"ParserFirstCallInit": "PortableInfoboxParserTagController::parserTagInit",
@@ -97,7 +97,7 @@
 		"ResourceLoaderRegisterModules": "PortableInfoboxHooks::onResourceLoaderRegisterModules"
 	},
 	"SpecialPages": {
-		"AllInfoboxes": "AllinfoboxesQueryPage"
+		"AllInfoboxes": "AllInfoboxesQueryPage"
 	},
 	"APIModules": {
 		"infobox": "ApiPortableInfobox"
@@ -106,7 +106,7 @@
 		"infobox": "ApiQueryPortableInfobox"
 	},
 	"APIListModules": {
-		"allinfoboxes": "ApiQueryAllinfoboxes"
+		"allinfoboxes": "ApiQueryAllInfoboxes"
 	},
 	"manifest_version": 1
 }

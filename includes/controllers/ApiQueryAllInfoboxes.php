@@ -2,9 +2,10 @@
 
 use MediaWiki\MediaWikiServices;
 
-class ApiQueryAllinfoboxes extends ApiQueryBase {
+class ApiQueryAllInfoboxes extends ApiQueryBase {
 
 	private const CACHE_TTL = 86400;
+
 	public const MCACHE_KEY = 'allinfoboxes-list';
 
 	public function execute() {
