@@ -2,6 +2,8 @@
 
 namespace PortableInfobox\Helpers;
 
+use MediaWiki\MediaWikiServices;
+
 class PortableInfoboxImagesHelper {
 	private const MAX_DESKTOP_THUMBNAIL_HEIGHT = 500;
 
@@ -123,7 +125,9 @@ class PortableInfoboxImagesHelper {
 		}
 
 		if ( $file instanceof \Title ) {
-			$file = wfFindFile( $file );
+			$repoGroup = MediaWikiServices::getInstance()->getRepoGroup();
+
+			$file = $repoGroup->findFile( $file );
 		}
 
 		if ( $file instanceof \File && $file->exists() ) {
