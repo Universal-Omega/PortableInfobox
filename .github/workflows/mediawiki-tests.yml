@@ -59,7 +59,6 @@ jobs:
           composer update
 
       - name: Check PHP
-        if: ${{ matrix.mw == 'master' && matrix.php == 8.0 }}
         run: |
           sh phpcbf.sh
           composer fix
@@ -94,7 +93,7 @@ jobs:
 
       # Only patch code when it is a push event
       - name: Push the changes
-        if: ${{ github.event_name == 'push' && matrix.mw == 'master' && matrix.php == 8.0 }}
+        if: ${{ github.event_name == 'push' }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
