@@ -159,7 +159,7 @@ class BlockLevelPass {
 		} else {
 			return '<!-- ERR 3 -->';
 		}
-		return $text . "\n";
+		return $text;
 	}
 
 	/**
@@ -290,7 +290,7 @@ class BlockLevelPass {
 				# @todo consider using a stack for nestable elements like span, table and div
 
 				// P-wrapping and indent-pre are suppressed inside, not outside
-				$blockElems = 'aside|table|h1|h2|h3|h4|h5|h6|pre|p|ul|ol|dl';
+				$blockElems = 'table|h1|h2|h3|h4|h5|h6|pre|p|ul|ol|dl';
 				// P-wrapping and indent-pre are suppressed outside, not inside
 				$antiBlockElems = 'td|th';
 
@@ -302,12 +302,11 @@ class BlockLevelPass {
 						. ')\\b/iS',
 					$t
 				);
-
 				$closeMatch = preg_match(
 					'/<('
 						. "\\/({$blockElems})|({$antiBlockElems})|"
 						// Never suppresses
-						. '\\/?(center|blockquote|div|hr|mw:|figure)'
+						. '\\/?(center|blockquote|div|hr|mw:|aside|figure)'
 						. ')\\b/iS',
 					$t
 				);
