@@ -104,8 +104,10 @@ jobs:
       - name: Run PHPUnit
         continue-on-error: ${{ matrix.continue-on-error }}
         run: |
-          [[ '${{ matrix.mw }}' != 'master' ]] && PHPUNIT_ARGS='--use-normal-tables' ||  PHPUNIT_ARGS=''
-          php tests/phpunit/phpunit.php $PHPUNIT_ARGS extensions/PortableInfobox/tests/phpunit
+          php -d extension=pcov.so -d pcov.enabled=1 -d pcov.directory=extensions/PortableInfobox -d pcov.exclude='@(tests|vendor)@' \
+          tests/phpunit/phpunit.php \
+          --testsuite extensions \
+          "extensions/PortableInfobox/tests/phpunit"
 
       - name: Run PHPUnit for core
         continue-on-error: true
