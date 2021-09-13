@@ -106,10 +106,17 @@ jobs:
           php tests/phpunit/phpunit.php $PHPUNIT_ARGS extensions/PortableInfobox/tests/phpunit
 
       - name: Run PHPUnit for core
-        continue-on-error: ${{ matrix.continue-on-error }}
+        continue-on-error: true
         run: |
           [[ '${{ matrix.mw }}' != 'master' ]] && PHPUNIT_ARGS='--use-normal-tables' ||  PHPUNIT_ARGS=''
           php tests/phpunit/phpunit.php $PHPUNIT_ARGS tests/phpunit
+
+      - name: Run PHPUnit patch coverage check
+        continue-on-error: false
+        run: |
+          ./vendor/bin/phpunit-patch-coverage check \
+          --command "php vendor/bin/phpunit" \
+          --sha1 HEAD
 
         env:
           PHPUNIT_USE_NORMAL_TABLES: 1
