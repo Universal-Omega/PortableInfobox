@@ -116,7 +116,8 @@ jobs:
       - name: Run PHPUnit patch coverage check
         continue-on-error: false
         run: |
-          ../vendor/bin/phpunit-patch-coverage check \
+          cd extensions/PortableInfobox
+          ../../../vendor/bin/phpunit-patch-coverage check \
           --command "php vendor/bin/phpunit" \
           --sha1 HEAD
 
