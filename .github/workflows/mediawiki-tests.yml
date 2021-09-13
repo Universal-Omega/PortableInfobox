@@ -60,7 +60,6 @@ jobs:
 
       - name: Check PHP
         run: |
-          sh phpcbf.sh
           composer fix
           composer test
 
