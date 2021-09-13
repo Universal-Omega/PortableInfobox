@@ -15,35 +15,30 @@ jobs:
           # Latest stable MW - PHP 7.3
           - mw: 'REL1_36'
             php: 7.3
-            composer: v2
             mysql: '5.7'
             continue-on-error: false
 
           # Latest stable MW - PHP 7.4
           - mw: 'REL1_36'
             php: 7.4
-            composer: v2
             mysql: '5.7'
             continue-on-error: false
 
           # Latest MW master - PHP 7.3
           - mw: 'master'
             php: 7.3
-            composer: v2
             mysql: '5.7'
             continue-on-error: false
 
           # Latest MW master - PHP 7.4
           - mw: 'master'
             php: 7.4
-            composer: v2
             mysql: '5.7'
             continue-on-error: false
 
           # Latest MW master - PHP 8.0
           - mw: 'master'
             php: 8.0
-            composer: v2
             mysql: '8.0'
             continue-on-error: true
     runs-on: ubuntu-latest
@@ -67,7 +62,7 @@ jobs:
         with:
           php-version: ${{ matrix.php }}
           extensions: intl
-          tools: composer:${{ matrix.composer }}
+          tools: composer:v2
 
       - name: Cache Composer cache
         uses: actions/cache@v2
