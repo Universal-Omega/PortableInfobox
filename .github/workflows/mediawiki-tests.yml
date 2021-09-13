@@ -7,7 +7,7 @@ on:
 
 jobs:
   test:
-    name: "MediaWiki ${{ matrix.mw }} | PHP ${{ matrix.php }}"
+    name: "MediaWiki ${{ matrix.mw }} | PHP '${{ matrix.php }}'"
     continue-on-error: true
     strategy:
       matrix:
@@ -34,7 +34,7 @@ jobs:
 
           # Latest MediaWiki master - PHP 8.0
           - mw: 'master'
-            php: '8.0'
+            php: 8.0
             continue-on-error: true
 
           # Latest MediaWiki master - PHP 8.1
