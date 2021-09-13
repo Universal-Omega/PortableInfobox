@@ -64,11 +64,11 @@ jobs:
           composer validate
           composer update
 
-      - name: Check PHP
-        run: |
-          sh phpcbf.sh
-          composer fix
-          composer test
+     # - name: Check PHP
+      #  run: |
+       #   sh phpcbf.sh
+        #  composer fix
+         # composer test
 
       - name: 'PHPCS: check code style to show results in PR'
         if: ${{ matrix.php == 7.4 }}
