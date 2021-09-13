@@ -10,13 +10,14 @@
 		"php-parallel-lint/php-parallel-lint": "1.3.1"
 	},
 	"scripts": {
-		"fix": [
-			"minus-x fix ."
-		],
 		"test": [
 			"parallel-lint . --exclude node_modules --exclude vendor",
 			"minus-x check .",
 			"@phpcs"
+		],
+		"fix": [
+			"minus-x fix .",
+			"phpcbf"
 		],
 		"phan": "phan -d . --long-progress-bar",
 		"phpcs": "phpcs -sp --cache"
