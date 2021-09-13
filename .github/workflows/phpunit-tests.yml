@@ -109,9 +109,7 @@ jobs:
 
       - name: Run PHPUnit for core
         continue-on-error: true
-        run: |
-          [[ '${{ matrix.mw }}' != 'master' ]] && PHPUNIT_ARGS='--use-normal-tables' ||  PHPUNIT_ARGS=''
-          php tests/phpunit/phpunit.php $PHPUNIT_ARGS tests/phpunit
+        run: vendor/bin/phpunit
 
       - name: Run PHPUnit patch coverage check
         continue-on-error: false
