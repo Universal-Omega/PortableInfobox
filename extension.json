@@ -17,11 +17,21 @@
 		}
 	},
 	"config": {
-		"AllInfoboxesSubpagesBlacklist": [ "doc", "draft", "test" ],
-		"PortableInfoboxCacheRenderers": false,
-		"PortableInfoboxCustomImageWidth": 300,
-		"PortableInfoboxUseHeadings": true,
-		"PortableInfoboxUseTidy": true
+		"AllInfoboxesSubpagesBlacklist": {
+			"value": [ "doc", "draft", "test" ]
+		},
+		"PortableInfoboxCacheRenderers": {
+			"value": false
+		},
+		"PortableInfoboxCustomImageWidth": {
+			"value": 300
+		},
+		"PortableInfoboxUseHeadings": {
+			"value": true
+		},
+		"PortableInfoboxUseTidy": {
+			"value": true
+		}
 	},
 	"MessagesDirs": {
 		"PortableInfobox": "i18n"
@@ -86,5 +96,5 @@
 	"APIListModules": {
 		"allinfoboxes": "ApiQueryAllInfoboxes"
 	},
-	"manifest_version": 1
+	"manifest_version": 2
 }
