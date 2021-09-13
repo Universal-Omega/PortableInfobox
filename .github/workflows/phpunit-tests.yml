@@ -102,13 +102,13 @@ jobs:
       - name: Run PHPUnit
         continue-on-error: ${{ matrix.continue-on-error }}
         run: |
-          [[ '${{ matrix.mw }}' != 'master2' ]] && PHPUNIT_ARGS='--use-normal-tables' ||  PHPUNIT_ARGS=''
+          [[ '${{ matrix.mw }}' != 'master' ]] && PHPUNIT_ARGS='--use-normal-tables' ||  PHPUNIT_ARGS=''
           php tests/phpunit/phpunit.php $PHPUNIT_ARGS extensions/PortableInfobox/tests/phpunit
 
       - name: Run PHPUnit for core
         continue-on-error: ${{ matrix.continue-on-error }}
         run: |
-          [[ '${{ matrix.mw }}' != 'master2' ]] && PHPUNIT_ARGS='--use-normal-tables' ||  PHPUNIT_ARGS=''
+          [[ '${{ matrix.mw }}' != 'master' ]] && PHPUNIT_ARGS='--use-normal-tables' ||  PHPUNIT_ARGS=''
           php tests/phpunit/phpunit.php $PHPUNIT_ARGS tests/phpunit
 
         env:
