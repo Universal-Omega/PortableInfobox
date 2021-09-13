@@ -34,7 +34,7 @@ jobs:
 
           # Latest MediaWiki master - PHP 8.0
           - mw: 'master'
-            php: 8.0
+            php: '8.0'
             continue-on-error: true
 
           # Latest MediaWiki master - PHP 8.1
