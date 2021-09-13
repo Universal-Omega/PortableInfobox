@@ -114,6 +114,7 @@ jobs:
       - name: Run PHPUnit patch coverage check
         continue-on-error: false
         run: |
+          composer require "mediawiki/phpunit-patch-coverage:0.0.10"
           cd vendor/phpunit && ls && cd ../..
           vendor/bin/phpunit-patch-coverage check \
           --command "php vendor/bin/phpunit" \
