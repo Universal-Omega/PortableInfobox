@@ -73,7 +73,7 @@ jobs:
       - name: 'PHPCS: check code style to show results in PR'
         if: ${{ matrix.php == 7.4 }}
         continue-on-error: true
-        run: php bin/phpcs --no-cache --parallel=1 --report-full --report-checkstyle=./phpcs-report.xml
+        run: php vendor/bin/phpcs --no-cache --parallel=1 --report-full --report-checkstyle=./phpcs-report.xml
 
       - name: Show PHPCS results in PR
         if: ${{ matrix.php == 7.4 }}
