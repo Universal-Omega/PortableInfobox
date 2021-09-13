@@ -41,6 +41,13 @@ jobs:
             php: 8.0
             mysql: '8.0'
             continue-on-error: true
+
+          # Latest MW master - PHP 8.1
+          - mw: 'master'
+            php: 8.1
+            mysql: '8.0'
+            continue-on-error: true
+
     runs-on: ubuntu-latest
     defaults:
       run:
