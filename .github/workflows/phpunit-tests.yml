@@ -86,7 +86,7 @@ jobs:
         working-directory: ~
         run: |
           composer require "mediawiki/phpunit-patch-coverage:0.0.10"
-          bash installer/.github/workflows/download-mediawiki.sh ${{ matrix.mw }}
+          bash installer/.github/workflows/download-mediawiki-git.sh ${{ matrix.mw }}
 
       - name: Install MediaWiki
         working-directory: ~
