@@ -25,12 +25,12 @@ jobs:
           # Latest MediaWiki release branch - PHP 7.3
           - mw: 'REL1_37'
             php: 7.3
-            continue-on-error: false
+            continue-on-error: true
 
           # Latest MediaWiki release branch - PHP 7.4
           - mw: 'REL1_37'
             php: 7.4
-            continue-on-error: false
+            continue-on-error: true
 
           # Latest MediaWiki master - PHP 7.3
           - mw: 'master'
