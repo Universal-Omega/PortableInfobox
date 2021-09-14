@@ -114,9 +114,10 @@ jobs:
       - name: Run PHPUnit
         continue-on-error: ${{ matrix.continue-on-error }}
         run: |
-          [[ '${{ matrix.mw }}' != 'master' ]] && PHPUNIT_ARGS='--use-normal-tables' ||  PHPUNIT_ARGS=''
+          [[ '${{ matrix.mw }}' != 'master' && '${{ matrix.mw }}' != 'REL1_37' ]] && PHPUNIT_ARGS='--use-normal-tables' ||  PHPUNIT_ARGS=''
           php tests/phpunit/phpunit.php $PHPUNIT_ARGS extensions/PortableInfobox/tests/phpunit
 #         php tests/phpunit/phpunit.php tests/phpunit/includes/Storage/PageUpdaterTest.php
 
+        # In MediaWiki 1.37.0+ this is now an environmental variable
         env:
           PHPUNIT_USE_NORMAL_TABLES: 1
