@@ -43,5 +43,6 @@ php maintenance/install.php \
 	echo '$wgShowExceptionDetails = true;'
 	echo '$wgShowDBErrorBacktrace = true;'
 	echo '$wgDevelopmentWarnings = true;'
+	echo 'wfLoadSkin( "Vector" );'
 	echo 'wfLoadExtension( "PortableInfobox" );'
 } >> LocalSettings.php
