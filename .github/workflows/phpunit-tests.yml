@@ -116,6 +116,3 @@ jobs:
           ../../../vendor/bin/phpunit-patch-coverage check \
           --command "php vendor/bin/phpunit" \
           --sha1 HEAD
-
-        env:
-          PHPUNIT_USE_NORMAL_TABLES: 1
