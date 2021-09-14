@@ -81,7 +81,7 @@
 		"wgQueryPages": "PortableInfoboxHooks::onWgQueryPages",
 		"AllInfoboxesQueryRecached": "PortableInfoboxHooks::onAllInfoboxesQueryRecached",
 		"ArticlePurge": "PortableInfoboxHooks::onArticlePurge",
-		"PageContentSave": "PortableInfoboxHooks::onPageContentSave",
+		"MultiContentSave": "PortableInfoboxHooks::onMultiContentSave",
 		"ResourceLoaderRegisterModules": "PortableInfoboxHooks::onResourceLoaderRegisterModules"
 	},
 	"SpecialPages": {
