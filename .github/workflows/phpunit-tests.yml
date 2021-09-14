@@ -104,7 +104,7 @@ jobs:
         run: |
           [[ '${{ matrix.mw }}' != 'master' ]] && PHPUNIT_ARGS='--use-normal-tables' ||  PHPUNIT_ARGS=''
           php tests/phpunit/phpunit.php $PHPUNIT_ARGS extensions/PortableInfobox/tests/phpunit
-          php tests/phpunit/phpunit.php tests/phpunit/includes/Storage/PageUpdaterTest.php
+#         php tests/phpunit/phpunit.php tests/phpunit/includes/Storage/PageUpdaterTest.php
 
         env:
           PHPUNIT_USE_NORMAL_TABLES: 1
