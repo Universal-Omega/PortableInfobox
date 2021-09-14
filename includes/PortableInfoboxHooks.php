@@ -40,11 +40,13 @@ class PortableInfoboxHooks {
 		$articleID = $renderedRevision->getRevision()->getPageId();
 		$title = Title::newFromId( $articleID );
 
-		$dataService = PortableInfoboxDataService::newFromTitle( $title );
-		$dataService->delete();
+		if ( $title ) {
+			$dataService = PortableInfoboxDataService::newFromTitle( $title );
+			$dataService->delete();
 
-		if ( $title->inNamespace( NS_TEMPLATE ) ) {
-			$dataService->reparseArticle();
+			if ( $title->inNamespace( NS_TEMPLATE ) ) {
+				$dataService->reparseArticle();
+			}
 		}
 	}
 
