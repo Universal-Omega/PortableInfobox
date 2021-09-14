@@ -109,6 +109,14 @@ jobs:
           --testsuite extensions \
           "extensions/PortableInfobox/tests/phpunit"
 
+      - name: Run PHPUnit for core
+        continue-on-error: true
+        run: |
+          php -d extension=pcov.so -d pcov.enabled=1 -d pcov.directory=. -d pcov.exclude='@(tests|vendor)@' \
+          tests/phpunit/phpunit.php \
+          --testsuite extensions \
+          "tests/phpunit"
+
       - name: Run PHPUnit patch coverage check
         continue-on-error: true
         run: |
