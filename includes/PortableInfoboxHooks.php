@@ -37,15 +37,12 @@ class PortableInfoboxHooks {
 	 * @param RenderedRevision $renderedRevision
 	 */
 	public static function onMultiContentSave( RenderedRevision $renderedRevision ) {
-		$articleID = $renderedRevision->getRevision()->getPageId();
+		$title = $renderedRevision->getRevision()->getPage();
 
-		$wikiPageFactory = MediaWikiServices::getInstance()->getWikiPageFactory();
-		$wikiPage = $wikiPageFactory->newFromID( $articleID );
-
-		$dataService = PortableInfoboxDataService::newFromTitle( $wikiPage->getTitle() );
+		$dataService = PortableInfoboxDataService::newFromTitle( $title );
 		$dataService->delete();
 
-		if ( $wikiPage->getTitle()->inNamespace( NS_TEMPLATE ) ) {
+		if ( $title->inNamespace( NS_TEMPLATE ) ) {
 			$dataService->reparseArticle();
 		}
 	}
