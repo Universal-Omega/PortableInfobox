@@ -1,6 +1,7 @@
 <?php
 
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Revision\RenderedRevision;
 
 class PortableInfoboxHooks {
 
@@ -33,19 +34,20 @@ class PortableInfoboxHooks {
 	/**
 	 * Purge memcache before edit
 	 *
-	 * @param Page $article
-	 *
-	 * @return bool
+	 * @param RenderedRevision $renderedRevision
 	 */
-	public static function onPageContentSave( Page $article ) {
-		$dataService = PortableInfoboxDataService::newFromTitle( $article->getTitle() );
-		$dataService->delete();
+	public static function onMultiContentSave( RenderedRevision $renderedRevision ) {
+		$articleID = $renderedRevision->getRevision()->getPageId();
+		$title = Title::newFromId( $articleID );
 
-		if ( $article->getTitle()->inNamespace( NS_TEMPLATE ) ) {
-			$dataService->reparseArticle();
+		if ( $title ) {
+			$dataService = PortableInfoboxDataService::newFromTitle( $title );
+			$dataService->delete();
+
+			if ( $title->inNamespace( NS_TEMPLATE ) ) {
+				$dataService->reparseArticle();
+			}
 		}
-
-		return true;
 	}
 
 	/**
