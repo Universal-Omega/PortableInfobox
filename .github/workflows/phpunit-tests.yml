@@ -109,12 +109,8 @@ jobs:
           --testsuite extensions \
           "extensions/PortableInfobox/tests/phpunit"
 
-     # - name: Run PHPUnit for core
-       # continue-on-error: true
-        # run: vendor/bin/phpunit
-
       - name: Run PHPUnit patch coverage check
-        continue-on-error: false
+        continue-on-error: true
         run: |
           cd extensions/PortableInfobox
           ../../../vendor/bin/phpunit-patch-coverage check \
