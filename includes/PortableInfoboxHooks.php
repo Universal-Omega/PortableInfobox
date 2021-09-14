@@ -37,7 +37,8 @@ class PortableInfoboxHooks {
 	 * @param RenderedRevision $renderedRevision
 	 */
 	public static function onMultiContentSave( RenderedRevision $renderedRevision ) {
-		$title = $renderedRevision->getRevision()->getPage();
+		$articleID = $renderedRevision->getRevision()->getPageId();
+		$title = Title::newFromId( $articleID );
 
 		$dataService = PortableInfoboxDataService::newFromTitle( $title );
 		$dataService->delete();
