@@ -121,5 +121,5 @@ jobs:
         run: |
           cd extensions/PortableInfobox
           ../../../vendor/bin/phpunit-patch-coverage check \
-          --command "php vendor/bin/phpunit" \
+          --command "php ../../tests/phpunit/phpunit.php" \
           --sha1 HEAD
