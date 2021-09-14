@@ -84,9 +84,7 @@ jobs:
 
       - name: Download MediaWiki
         working-directory: ~
-        run: |
-          composer require "mediawiki/phpunit-patch-coverage:0.0.10"
-          bash installer/.github/workflows/download-mediawiki.sh ${{ matrix.mw }}
+        run: bash installer/.github/workflows/download-mediawiki.sh ${{ matrix.mw }}
 
       - name: Install MediaWiki
         working-directory: ~
@@ -104,22 +102,8 @@ jobs:
       - name: Run PHPUnit
         continue-on-error: ${{ matrix.continue-on-error }}
         run: |
-          php -d extension=pcov.so -d pcov.enabled=1 -d pcov.directory=extensions/PortableInfobox -d pcov.exclude='@(tests|vendor)@' \
-          tests/phpunit/phpunit.php \
-          --testsuite extensions \
-          "extensions/PortableInfobox/tests/phpunit"
+          [[ '${{ matrix.mw }}' != 'master' ]] && PHPUNIT_ARGS='--use-normal-tables' ||  PHPUNIT_ARGS=''
+          php tests/phpunit/phpunit.php $PHPUNIT_ARGS extensions/PortableInfobox/tests/phpunit
 
-      - name: Run PHPUnit for core
-        continue-on-error: true
-        run: |
-          php -d extension=pcov.so -d pcov.enabled=1 -d pcov.directory=. -d pcov.exclude='@(tests|vendor)@' \
-          tests/phpunit/phpunit.php \
-          "tests/phpunit"
-
-      - name: Run PHPUnit patch coverage check
-        continue-on-error: true
-        run: |
-          cd extensions/PortableInfobox
-          ../../../vendor/bin/phpunit-patch-coverage check \
-          --command "php vendor/bin/phpunit" \
-          --sha1 HEAD
+        env:
+          PHPUNIT_USE_NORMAL_TABLES: 1
