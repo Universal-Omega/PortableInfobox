@@ -116,7 +116,7 @@ jobs:
         run: |
           [[ '${{ matrix.mw }}' != 'master' && '${{ matrix.mw }}' != 'REL1_37' ]] && PHPUNIT_ARGS='--use-normal-tables' ||  PHPUNIT_ARGS=''
           php tests/phpunit/phpunit.php $PHPUNIT_ARGS extensions/PortableInfobox/tests/phpunit
-          phpunit-suite-edit "phpunit.xml.dist"
+          python3 phpunit-suite-edit "phpunit.xml.dist"
           php -d extension=pcov.so -d pcov.enabled=1 -d pcov.directory=. -d pcov.exclude='@(tests|vendor)@' \
           vendor/bin/phpunit \
           --exclude-group Dump,Broken,ParserFuzz,Stub \
