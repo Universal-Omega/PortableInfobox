@@ -116,7 +116,11 @@ jobs:
         run: |
           [[ '${{ matrix.mw }}' != 'master' && '${{ matrix.mw }}' != 'REL1_37' ]] && PHPUNIT_ARGS='--use-normal-tables' ||  PHPUNIT_ARGS=''
           php tests/phpunit/phpunit.php $PHPUNIT_ARGS extensions/PortableInfobox/tests/phpunit
-          php tests/phpunit/phpunit.php tests/phpunit --testsuite core:integration,extensions:integration,skins:integration --exclude-group Dump,Broken
+          phpunit-suite-edit "phpunit.xml.dist"
+          php -d extension=pcov.so -d pcov.enabled=1 -d pcov.directory=. -d pcov.exclude='@(tests|vendor)@' \
+          vendor/bin/phpunit \
+          --exclude-group Dump,Broken,ParserFuzz,Stub \
+          tests/phpunit/unit
 
         # In MediaWiki 1.37.0+ this is now an environmental variable
         env:
