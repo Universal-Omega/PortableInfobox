@@ -8,13 +8,6 @@ on:
       - '*.*'
   pull_request:
 
-env:
-  DOCKER_REGISTRY: docker-registry.wikimedia.org
-  DOCKER_ORG: releng
-  QUIBBLE_DOCKER_IMAGE: quibble-buster-php${{ matrix.php-docker }}
-  COVERAGE_DOCKER_IMAGE: quibble-buster-php${{ matrix.php-docker }}-coverage
-  PHAN_DOCKER_IMAGE: mediawiki-phan-php${{ matrix.php-docker }}
-
 jobs:
   test:
     continue-on-error: true
@@ -77,6 +70,13 @@ jobs:
             continue-on-error: true
 
     runs-on: ubuntu-latest
+
+    env:
+      DOCKER_REGISTRY: docker-registry.wikimedia.org
+      DOCKER_ORG: releng
+      QUIBBLE_DOCKER_IMAGE: quibble-buster-php${{ matrix.php-docker }}
+      COVERAGE_DOCKER_IMAGE: quibble-buster-php${{ matrix.php-docker }}-coverage
+      PHAN_DOCKER_IMAGE: mediawiki-phan-php${{ matrix.php-docker }}
 
     steps:
       - uses: actions/checkout@v2
