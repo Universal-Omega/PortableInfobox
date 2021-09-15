@@ -84,7 +84,7 @@ jobs:
               python3 -c 'import json;print("\n".join(json.loads(input())["tags"]))' |
               grep -v latest | sort -Vr | head -1)" >> $GITHUB_ENV
           elif [ "${{ matrix.stage }}" == 'coverage' ]; then
-            echo "QUIBBLE_DOCKER_LATEST_TAG=${DOCKER_LATEST_TAG}" >> $GITHUB_ENV
+            echo "QUIBBLE_DOCKER_LATEST_TAG=1.0.1" >> $GITHUB_ENV
           fi
 
           # Resolve dependencies
