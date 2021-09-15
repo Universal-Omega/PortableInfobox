@@ -1,4 +1,4 @@
-name: MediaWiki Linting
+name: PHPCS
 
 on:
   push:
@@ -6,7 +6,8 @@ on:
     branches: [ master ]
 
 jobs:
-  linting:
+  phpcs:
+    name: PHPCS
     continue-on-error: true
 
     runs-on: ubuntu-latest
