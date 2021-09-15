@@ -137,11 +137,10 @@ jobs:
           path: /home/runner/cache
           key: ${{ runner.os }}-${{ env.MEDIAWIKI_VERSION }}-${{ hashFiles('**/*.lock') }}
       - name: Setup PHP Action
-        if: ${{ matrix.stage == 'phan' }}
         uses: shivammathur/setup-php@v2
         with:
           php-version: '7.3'
-          tools: composer:v1
+          tools: composer:v2
       - name: Composer install
         if: ${{ matrix.stage == 'phan' }}
         run: |
