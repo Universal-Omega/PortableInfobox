@@ -18,7 +18,7 @@ env:
   DOCKER_REGISTRY: docker-registry.wikimedia.org
   DOCKER_ORG: releng
   QUIBBLE_DOCKER_IMAGE: quibble-buster-php73
-  COVERAGE_DOCKER_IMAGE: quibble-coverage
+  COVERAGE_DOCKER_IMAGE: quibble-buster-php73-coverage
   PHAN_DOCKER_IMAGE: mediawiki-phan-php73
 
 jobs:
