@@ -118,7 +118,7 @@ jobs:
           php tests/phpunit/phpunit.php $PHPUNIT_ARGS extensions/PortableInfobox/tests/phpunit
           python3 extensions/PortableInfobox/.github/workflows/phpunit-suite-edit "phpunit.xml.dist"
           php -d extension=pcov.so -d pcov.enabled=1 -d pcov.directory=. -d pcov.exclude='@(tests|vendor)@' \
-          vendor/bin/phpunit \
+          tests/phpunit/phpunit.php \
           --exclude-group Dump,Broken,ParserFuzz,Stub \
           tests/phpunit/unit
 
