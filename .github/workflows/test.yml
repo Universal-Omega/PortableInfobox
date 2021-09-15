@@ -327,7 +327,7 @@ jobs:
           if [ -e .github/workflows/dependencies ]; then
             cd .github/workflows
             curl -sL https://raw.githubusercontent.com/wikimedia/integration-config/master/zuul/parameter_functions.py -o pf.py
-            curl -sL https://raw.githubusercontent.com/femiwiki/.github/main/scripts/resolve_dependencies.py -o rd.py
+            curl -sL https://raw.githubusercontent.com/Universal-Omega/scripts/master/mediawiki/resolve_dependencies.py -o rd.py
             echo "DEPENDENCIES=$(python3 rd.py)" >> $GITHUB_ENV
           fi
 
@@ -392,7 +392,6 @@ jobs:
           sudo cp -r "${GITHUB_WORKSPACE}" src/extensions/
           mkdir -p cache cover
           chmod 777 src cache cover
-          # chown cache/ https://github.com/femiwiki/.github/issues/3
           sudo chown -R nobody:nogroup src cache
           sudo chown $(id -u):$(id -g) src cache
           # Composer install
