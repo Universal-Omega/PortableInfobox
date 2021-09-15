@@ -124,5 +124,5 @@ jobs:
 
         env:
           MW_SERVER: http://localhost:8080
-          MW_SCRIPT_PATH: /w
+          MW_SCRIPT_PATH: /mediawiki
           PHPUNIT_USE_NORMAL_TABLES: 1
