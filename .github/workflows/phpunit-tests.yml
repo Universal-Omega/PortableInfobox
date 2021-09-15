@@ -122,6 +122,7 @@ jobs:
           php tests/phpunit/phpunit.php tests/phpunit/unit
           npm run selenium-test
 
-        # In MediaWiki 1.37.0+ this is now an environmental variable
         env:
+          MW_SERVER: http://localhost:8080
+          MW_SCRIPT_PATH: /w
           PHPUNIT_USE_NORMAL_TABLES: 1
