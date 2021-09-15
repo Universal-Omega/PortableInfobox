@@ -70,13 +70,6 @@ jobs:
             continue-on-error: false
             stage: coverage
 
-          # Latest stable MW - PHP 7.4
-          - mw: 'REL1_36'
-            php: 7.4
-            php-docker: 74
-            continue-on-error: false
-            stage: coverage
-
           # Latest MediaWiki release branch - PHP 7.3
           - mw: 'REL1_37'
             php: 7.3
@@ -84,24 +77,10 @@ jobs:
             continue-on-error: false
             stage: coverage
 
-          # Latest MediaWiki release branch - PHP 7.4
-          - mw: 'REL1_37'
-            php: 7.4
-            php-docker: 74
-            continue-on-error: false
-            stage: coverage
-
           # Latest MW master - PHP 7.3
           - mw: 'master'
             php: 7.3
             php-docker: 73
-            continue-on-error: false
-            stage: coverage
-
-          # Latest MW master - PHP 7.4
-          - mw: 'master'
-            php: 7.4
-            php-docker: 74
             continue-on-error: false
             stage: coverage
 
@@ -406,6 +385,7 @@ jobs:
           composer install --prefer-dist --no-progress --no-interaction # $GITHUB_WORKSPACE
 
       - name: Main Test
+        continue-on-error: ${{ matrix.continue-on-error }}
         run: |
           cd /home/runner
           # Move our extension
