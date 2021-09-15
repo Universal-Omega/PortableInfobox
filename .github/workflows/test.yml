@@ -11,7 +11,7 @@ on:
 jobs:
   test:
     continue-on-error: true
-    name: "MediaWiki ${{ matrix.mw }} | PHP ${{ matrix.php }} (${{ matrix.stage }})"
+    name: "${{ matrix.mw }} | PHP ${{ matrix.php }} (${{ matrix.stage }})"
 
     strategy:
       matrix:
