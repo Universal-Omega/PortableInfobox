@@ -123,6 +123,6 @@ jobs:
           npm run selenium-test
 
         env:
-          MW_SERVER: http://localhost:8080
+          MW_SERVER: http://localhost:80
           MW_SCRIPT_PATH: /
           PHPUNIT_USE_NORMAL_TABLES: 1
