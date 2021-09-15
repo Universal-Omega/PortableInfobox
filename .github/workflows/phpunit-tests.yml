@@ -96,7 +96,10 @@ jobs:
 
       - name: Download MediaWiki
         working-directory: ~
-        run: bash installer/.github/workflows/download-mediawiki.sh ${{ matrix.mw }}
+        run: |
+          bash installer/.github/workflows/download-mediawiki.sh ${{ matrix.mw }}
+          cd mediawiki
+          npm install --save-dev
 
       - name: Install MediaWiki
         working-directory: ~
@@ -115,12 +118,9 @@ jobs:
         continue-on-error: ${{ matrix.continue-on-error }}
         run: |
           [[ '${{ matrix.mw }}' != 'master' && '${{ matrix.mw }}' != 'REL1_37' ]] && PHPUNIT_ARGS='--use-normal-tables' ||  PHPUNIT_ARGS=''
-          python3 extensions/PortableInfobox/.github/workflows/phpunit-suite-edit "tests/phpunit/suite.xml" --cover-extension "PortableInfobox"
           php tests/phpunit/phpunit.php $PHPUNIT_ARGS extensions/PortableInfobox/tests/phpunit
-          php -d extension=pcov.so -d pcov.enabled=1 -d pcov.directory=. -d pcov.exclude='@(tests|vendor)@' \
-          tests/phpunit/phpunit.php \
-          --exclude-group Dump,Broken,ParserFuzz,Stub \
-          tests/phpunit/unit
+          php tests/phpunit/phpunit.php tests/phpunit/unit
+          npm run selenium-test
 
         # In MediaWiki 1.37.0+ this is now an environmental variable
         env:
