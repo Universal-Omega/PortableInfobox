@@ -23,6 +23,8 @@ env:
 
 jobs:
   test:
+    continue-on-error: true
+
     strategy:
       matrix:
         stage:
