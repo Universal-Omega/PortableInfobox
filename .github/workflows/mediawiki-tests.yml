@@ -14,319 +14,235 @@ jobs:
     strategy:
       matrix:
         include:
-          # Latest stable MediaWiki - PHP 7.3
+          # Latest stable MediaWiki - PHP 7.3 (phan)
           - mw: 'REL1_36'
             php: 7.3
             php-docker: 73
-            continue-on-error: false
+            experimental: false
             stage: phan
 
-          # Latest stable MediaWiki - PHP 7.4
+          # Latest stable MediaWiki - PHP 7.4 (phan)
           - mw: 'REL1_36'
             php: 7.4
             php-docker: 74
-            continue-on-error: false
+            experimental: false
             stage: phan
 
-          # Latest MediaWiki release branch - PHP 7.3
+          # Latest MediaWiki release branch - PHP 7.3 (phan)
           - mw: 'REL1_37'
             php: 7.3
             php-docker: 73
-            continue-on-error: true
+            experimental: true
             stage: phan
 
-          # Latest MediaWiki release branch - PHP 7.4
+          # Latest MediaWiki release branch - PHP 7.4 (phan)
           - mw: 'REL1_37'
             php: 7.4
             php-docker: 74
-            continue-on-error: true
+            experimental: true
             stage: phan
 
-          # Latest MediaWiki master - PHP 7.3
+          # Latest MediaWiki master - PHP 7.3 (phan)
           - mw: 'master'
             php: 7.3
             php-docker: 73
-            continue-on-error: true
+            experimental: true
             stage: phan
 
-          # Latest MediaWiki master - PHP 7.4
+          # Latest MediaWiki master - PHP 7.4 (phan)
           - mw: 'master'
             php: 7.4
             php-docker: 74
-            continue-on-error: true
+            experimental: true
             stage: phan
 
-          # Latest MediaWiki master - PHP 8.0
-          - mw: 'master'
-            php: '8.0'
-            php-docker: 80
-            continue-on-error: true
-            stage: phan
-
-          # Latest stable MediaWiki - PHP 7.3
+          # Latest stable MediaWiki - PHP 7.3 (coverage)
           - mw: 'REL1_36'
             php: 7.3
             php-docker: 73
-            continue-on-error: false
+            experimental: false
             stage: coverage
 
-          # Latest MediaWiki release branch - PHP 7.3
+          # Latest MediaWiki release branch - PHP 7.3 (coverage)
           - mw: 'REL1_37'
             php: 7.3
             php-docker: 73
-            continue-on-error: false
+            experimental: false
             stage: coverage
 
-          # Latest MediaWiki master - PHP 7.3
+          # Latest MediaWiki master - PHP 7.3 (coverage)
           - mw: 'master'
             php: 7.3
             php-docker: 73
-            continue-on-error: false
+            experimental: false
             stage: coverage
 
-          # Latest stable MediaWiki - PHP 7.3
+          # Latest stable MediaWiki - PHP 7.3 (phpunit-unit)
           - mw: 'REL1_36'
             php: 7.3
             php-docker: 73
-            continue-on-error: false
+            experimental: false
             stage: phpunit-unit
 
-          # Latest stable MediaWiki - PHP 7.4
+          # Latest stable MediaWiki - PHP 7.4 (phpunit-unit)
           - mw: 'REL1_36'
             php: 7.4
             php-docker: 74
-            continue-on-error: false
+            experimental: false
             stage: phpunit-unit
 
-          # Latest MediaWiki release branch - PHP 7.3
+          # Latest MediaWiki release branch - PHP 7.3 (phpunit-unit)
           - mw: 'REL1_37'
             php: 7.3
             php-docker: 73
-            continue-on-error: false
+            experimental: false
             stage: phpunit-unit
 
-          # Latest MediaWiki release branch - PHP 7.4
+          # Latest MediaWiki release branch - PHP 7.4 (phpunit-unit)
           - mw: 'REL1_37'
             php: 7.4
             php-docker: 74
-            continue-on-error: false
+            experimental: false
             stage: phpunit-unit
 
-          # Latest MediaWiki master - PHP 7.3
+          # Latest MediaWiki master - PHP 7.3 (phpunit-unit)
           - mw: 'master'
             php: 7.3
             php-docker: 73
-            continue-on-error: false
+            experimental: false
             stage: phpunit-unit
 
-          # Latest MediaWiki master - PHP 7.4
+          # Latest MediaWiki master - PHP 7.4 (phpunit-unit)
           - mw: 'master'
             php: 7.4
             php-docker: 74
-            continue-on-error: false
+            experimental: false
             stage: phpunit-unit
 
-          # Latest MediaWiki master - PHP 8.0
-          - mw: 'master'
-            php: '8.0'
-            php-docker: 80
-            continue-on-error: true
-            stage: phpunit-unit
-
-          # Latest stable MediaWiki - PHP 7.3
+          # Latest stable MediaWiki - PHP 7.3 (phpunit)
           - mw: 'REL1_36'
             php: 7.3
             php-docker: 73
-            continue-on-error: false
+            experimental: false
             stage: phpunit
 
-          # Latest stable MediaWiki - PHP 7.4
+          # Latest stable MediaWiki - PHP 7.4 (phpunit)
           - mw: 'REL1_36'
             php: 7.4
             php-docker: 74
-            continue-on-error: false
+            experimental: false
             stage: phpunit
 
-          # Latest MediaWiki release branch - PHP 7.3
+          # Latest MediaWiki release branch - PHP 7.3 (phpunit)
           - mw: 'REL1_37'
             php: 7.3
             php-docker: 73
-            continue-on-error: false
+            experimental: false
             stage: phpunit
 
-          # Latest MediaWiki release branch - PHP 7.4
+          # Latest MediaWiki release branch - PHP 7.4 (phpunit)
           - mw: 'REL1_37'
             php: 7.4
             php-docker: 74
-            continue-on-error: false
+            experimental: false
             stage: phpunit
 
-          # Latest MediaWiki master - PHP 7.3
+          # Latest MediaWiki master - PHP 7.3 (phpunit)
           - mw: 'master'
             php: 7.3
             php-docker: 73
-            continue-on-error: false
+            experimental: false
             stage: phpunit
 
-          # Latest MediaWiki master - PHP 7.4
+          # Latest MediaWiki master - PHP 7.4 (phpunit)
           - mw: 'master'
             php: 7.4
             php-docker: 74
-            continue-on-error: false
+            experimental: false
             stage: phpunit
 
-          # Latest MediaWiki master - PHP 8.0
-          - mw: 'master'
-            php: '8.0'
-            php-docker: 80
-            continue-on-error: true
-            stage: phpunit
+          # Latest stable MediaWiki - PHP 7.3 (phpunit-standalone)
+#          - mw: 'REL1_36'
+#            php: 7.3
+#            php-docker: 73
+#            experimental: false
+#            stage: phpunit-standalone
 
-          # Latest stable MediaWiki - PHP 7.3
+          # Latest stable MediaWiki - PHP 7.4 (phpunit-standalone)
+#          - mw: 'REL1_36'
+#            php: 7.4
+#            php-docker: 74
+#            experimental: false
+#            stage: phpunit-standalone
+
+          # Latest MediaWiki release branch - PHP 7.3 (phpunit-standalone)
+#          - mw: 'REL1_37'
+#            php: 7.3
+#            php-docker: 73
+#            experimental: false
+#            stage: phpunit-standalone
+
+          # Latest MediaWiki release branch - PHP 7.4 (phpunit-standalone)
+#          - mw: 'REL1_37'
+#            php: 7.4
+#            php-docker: 74
+#            experimental: false
+#            stage: phpunit-standalone
+
+          # Latest MediaWiki master - PHP 7.3 (phpunit-standalone)
+#          - mw: 'master'
+#            php: 7.3
+#            php-docker: 73
+#            experimental: false
+#            stage: phpunit-standalone
+
+          # Latest MediaWiki master - PHP 7.4 (phpunit-standalone)
+#          - mw: 'master'
+#            php: 7.4
+#            php-docker: 74
+#            experimental: false
+#            stage: phpunit-standalone
+
+          # Latest stable MediaWiki - PHP 7.3 (selenium)
           - mw: 'REL1_36'
             php: 7.3
             php-docker: 73
-            continue-on-error: false
-            stage: phpunit-standalone
+            experimental: false
+            stage: selenium
 
-          # Latest stable MediaWiki - PHP 7.4
-          - mw: 'REL1_36'
-            php: 7.4
-            php-docker: 74
-            continue-on-error: false
-            stage: phpunit-standalone
-
-          # Latest MediaWiki release branch - PHP 7.3
+          # Latest MediaWiki release branch - PHP 7.3 (selenium)
           - mw: 'REL1_37'
             php: 7.3
             php-docker: 73
-            continue-on-error: false
-            stage: phpunit-standalone
+            experimental: false
+            stage: selenium
 
-          # Latest MediaWiki release branch - PHP 7.4
-          - mw: 'REL1_37'
-            php: 7.4
-            php-docker: 74
-            continue-on-error: false
-            stage: phpunit-standalone
-
-          # Latest MediaWiki master - PHP 7.3
+          # Latest MediaWiki master - PHP 7.3 (selenium)
           - mw: 'master'
             php: 7.3
             php-docker: 73
-            continue-on-error: false
-            stage: phpunit-standalone
+            experimental: false
+            stage: selenium
 
-          # Latest MediaWiki master - PHP 7.4
-          - mw: 'master'
-            php: 7.4
-            php-docker: 74
-            continue-on-error: false
-            stage: phpunit-standalone
-
-          # Latest MediaWiki master - PHP 8.0
-          - mw: 'master'
-            php: '8.0'
-            php-docker: 80
-            continue-on-error: true
-            stage: phpunit-standalone
-
-          # Latest stable MediaWiki - PHP 7.3
+          # Latest stable MediaWiki - PHP 7.3 (qunit)
           - mw: 'REL1_36'
             php: 7.3
             php-docker: 73
-            continue-on-error: false
-            stage: selenium
-
-          # Latest stable MediaWiki - PHP 7.4
-          - mw: 'REL1_36'
-            php: 7.4
-            php-docker: 74
-            continue-on-error: false
-            stage: selenium
-
-          # Latest MediaWiki release branch - PHP 7.3
-          - mw: 'REL1_37'
-            php: 7.3
-            php-docker: 73
-            continue-on-error: false
-            stage: selenium
-
-          # Latest MediaWiki release branch - PHP 7.4
-          - mw: 'REL1_37'
-            php: 7.4
-            php-docker: 74
-            continue-on-error: false
-            stage: selenium
-
-          # Latest MediaWiki master - PHP 7.3
-          - mw: 'master'
-            php: 7.3
-            php-docker: 73
-            continue-on-error: false
-            stage: selenium
-
-          # Latest MediaWiki master - PHP 7.4
-          - mw: 'master'
-            php: 7.4
-            php-docker: 74
-            continue-on-error: false
-            stage: selenium
-
-          # Latest MediaWiki master - PHP 8.0
-          - mw: 'master'
-            php: '8.0'
-            php-docker: 80
-            continue-on-error: true
-            stage: selenium
-
-          # Latest stable MediaWiki - PHP 7.3
-          - mw: 'REL1_36'
-            php: 7.3
-            php-docker: 73
-            continue-on-error: false
+            experimental: false
             stage: qunit
 
-          # Latest stable MediaWiki - PHP 7.4
-          - mw: 'REL1_36'
-            php: 7.4
-            php-docker: 74
-            continue-on-error: false
-            stage: qunit
-
-          # Latest MediaWiki release branch - PHP 7.3
+          # Latest MediaWiki release branch - PHP 7.3 (qunit)
           - mw: 'REL1_37'
             php: 7.3
             php-docker: 73
-            continue-on-error: false
+            experimental: false
             stage: qunit
 
-          # Latest MediaWiki release branch - PHP 7.4
-          - mw: 'REL1_37'
-            php: 7.4
-            php-docker: 74
-            continue-on-error: false
-            stage: qunit
-
-          # Latest MediaWiki master - PHP 7.3
+          # Latest MediaWiki master - PHP 7.3 (qunit)
           - mw: 'master'
             php: 7.3
             php-docker: 73
-            continue-on-error: false
-            stage: qunit
-
-          # Latest MediaWiki master - PHP 7.4
-          - mw: 'master'
-            php: 7.4
-            php-docker: 74
-            continue-on-error: false
-            stage: qunit
-
-          # Latest MediaWiki master - PHP 8.0
-          - mw: 'master'
-            php: '8.0'
-            php-docker: 80
-            continue-on-error: true
+            experimental: false
             stage: qunit
 
     runs-on: ubuntu-latest
@@ -383,10 +299,12 @@ jobs:
         with:
           path: /home/runner/docker-images/${{ env.DOCKER_IMAGE }}
           key: ${{ env.DOCKER_IMAGE }}:${{ env.DOCKER_LATEST_TAG }}
+
       - name: Load or pull docker image
         run: |
           docker load -i /home/runner/docker-images/"${DOCKER_IMAGE}" || \
             docker pull "${DOCKER_REGISTRY}/${DOCKER_ORG}/${DOCKER_IMAGE}:${DOCKER_LATEST_TAG}"
+
       - name: Cache quibble docker image
         if: ${{ matrix.stage == 'coverage' || matrix.stage == 'phan' }}
         uses: actions/cache@v2
@@ -404,6 +322,7 @@ jobs:
         with:
           path: /home/runner/src
           key: ${{ runner.os }}-${{ env.MEDIAWIKI_VERSION }}-${{ hashFiles('.github/workflows/dependencies') }}
+
       - name: Download MediaWiki and extensions
         run: |
           cd /home/runner
@@ -421,18 +340,21 @@ jobs:
         with:
           path: /home/runner/cache
           key: ${{ runner.os }}-${{ env.MEDIAWIKI_VERSION }}-${{ hashFiles('**/*.lock') }}
+
       - name: Setup PHP Action
+        if: ${{ matrix.stage == 'phan' }}
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php }}
           tools: composer:v2
+
       - name: Composer install
         if: ${{ matrix.stage == 'phan' }}
         run: |
           composer install --prefer-dist --no-progress --no-interaction # $GITHUB_WORKSPACE
 
       - name: Main Test
-        continue-on-error: ${{ matrix.continue-on-error }}
+        continue-on-error: ${{ matrix.experimental }}
         run: |
           cd /home/runner
           # Move our extension
