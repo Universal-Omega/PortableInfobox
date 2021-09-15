@@ -460,7 +460,7 @@ jobs:
           if [ "${{ matrix.stage }}" == 'phan' ]; then
             docker run \
               -e THING_SUBNAME=extensions/"${{ github.event.repository.name }}" \
-              -v "$(pwd)"/src:/src \
+              -v "$(pwd)"/src:/mediawiki \
               "${DOCKER_REGISTRY}/${DOCKER_ORG}/${DOCKER_IMAGE}:${DOCKER_LATEST_TAG}" \
               --color
           elif [ "${{ matrix.stage }}" == 'coverage' ]; then
