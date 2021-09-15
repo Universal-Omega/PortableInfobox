@@ -8,8 +8,8 @@ on:
 
 jobs:
   test:
-    continue-on-error: true
     name: "${{ matrix.mw }} | PHP ${{ matrix.php }} (${{ matrix.stage }})"
+    continue-on-error: true
 
     strategy:
       matrix:
