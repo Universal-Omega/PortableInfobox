@@ -115,8 +115,8 @@ jobs:
         continue-on-error: ${{ matrix.continue-on-error }}
         run: |
           [[ '${{ matrix.mw }}' != 'master' && '${{ matrix.mw }}' != 'REL1_37' ]] && PHPUNIT_ARGS='--use-normal-tables' ||  PHPUNIT_ARGS=''
+          python3 extensions/PortableInfobox/.github/workflows/phpunit-suite-edit "tests/phpunit/suite.xml" --cover-extension "PortableInfobox"
           php tests/phpunit/phpunit.php $PHPUNIT_ARGS extensions/PortableInfobox/tests/phpunit
-          python3 extensions/PortableInfobox/.github/workflows/phpunit-suite-edit "phpunit.xml.dist"
           php -d extension=pcov.so -d pcov.enabled=1 -d pcov.directory=. -d pcov.exclude='@(tests|vendor)@' \
           tests/phpunit/phpunit.php \
           --exclude-group Dump,Broken,ParserFuzz,Stub \
