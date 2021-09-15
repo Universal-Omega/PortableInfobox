@@ -364,12 +364,10 @@ jobs:
             python3 -c 'import json;print("\n".join(json.loads(input())["tags"]))' |
             grep -v latest | sort -Vr | head -1)"
           echo "DOCKER_LATEST_TAG=${DOCKER_LATEST_TAG}" >> $GITHUB_ENV
-          if [ "${{ matrix.stage }}" == 'phan' ]; then
+          if [ "${{ matrix.stage }}" == 'phan' ] || [ "${{ matrix.stage }}" == 'coverage' ]; then
             echo "QUIBBLE_DOCKER_LATEST_TAG=$(curl -sL "https://${DOCKER_REGISTRY}/v2/${DOCKER_ORG}/${QUIBBLE_DOCKER_IMAGE}/tags/list" |
               python3 -c 'import json;print("\n".join(json.loads(input())["tags"]))' |
               grep -v latest | sort -Vr | head -1)" >> $GITHUB_ENV
-          elif [ "${{ matrix.stage }}" == 'coverage' ]; then
-            echo "QUIBBLE_DOCKER_LATEST_TAG=1.0.1" >> $GITHUB_ENV
           fi
 
           # Resolve dependencies
@@ -464,18 +462,15 @@ jobs:
               "${DOCKER_REGISTRY}/${DOCKER_ORG}/${DOCKER_IMAGE}:${DOCKER_LATEST_TAG}" \
               --color
           elif [ "${{ matrix.stage }}" == 'coverage' ]; then
-            # MW1.35 requires PHP7.3 but quibble-coverage is not.
-            if [ "${MEDIAWIKI_VERSION}" == master ]; then
-              docker run \
-                -e ZUUL_PROJECT=mediawiki/extensions/"${{ github.event.repository.name }}" \
-                -v "$(pwd)"/cache:/cache \
-                -v "$(pwd)"/src:/workspace/src \
-                -v "$(pwd)"/cover:/workspace/cover \
-                "${DOCKER_REGISTRY}/${DOCKER_ORG}/${DOCKER_IMAGE}:${DOCKER_LATEST_TAG}" \
-                --skip-zuul \
-                --skip-deps \
-                -c mwext-phpunit-coverage
-            fi
+            docker run \
+              -e ZUUL_PROJECT=mediawiki/extensions/"${{ github.event.repository.name }}" \
+              -v "$(pwd)"/cache:/cache \
+              -v "$(pwd)"/src:/workspace/src \
+              -v "$(pwd)"/cover:/workspace/cover \
+              "${DOCKER_REGISTRY}/${DOCKER_ORG}/${DOCKER_IMAGE}:${DOCKER_LATEST_TAG}" \
+              --skip-zuul \
+              --skip-deps \
+              -c mwext-phpunit-coverage
           else
             docker run \
               -e ZUUL_PROJECT=mediawiki/extensions/"${{ github.event.repository.name }}" \
