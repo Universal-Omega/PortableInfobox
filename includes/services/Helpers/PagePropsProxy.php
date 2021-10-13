@@ -37,8 +37,10 @@ class PagePropsProxy {
 			$dbw->replace(
 				'page_props',
 				[
-					'pp_page',
-					'pp_propname'
+					[
+						'pp_page',
+						'pp_propname'
+					]
 				],
 				[
 					'pp_page' => $id,
