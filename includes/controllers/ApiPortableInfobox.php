@@ -1,6 +1,7 @@
 <?php
 
 use MediaWiki\MediaWikiServices;
+use Wikimedia\ParamValidator\ParamValidator;
 
 class ApiPortableInfobox extends ApiBase {
 
@@ -56,13 +57,13 @@ class ApiPortableInfobox extends ApiBase {
 	public function getAllowedParams() {
 		return [
 			'text' => [
-				ApiBase::PARAM_TYPE => 'string'
+				ParamValidator::PARAM_TYPE => 'string'
 			],
 			'title' => [
-				ApiBase::PARAM_TYPE => 'string'
+				ParamValidator::PARAM_TYPE => 'string'
 			],
 			'args' => [
-				ApiBase::PARAM_TYPE => 'string'
+				ParamValidator::PARAM_TYPE => 'string'
 			]
 		];
 	}
