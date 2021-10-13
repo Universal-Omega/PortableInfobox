@@ -4,6 +4,7 @@ use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\RenderedRevision;
 
 class PortableInfoboxHooks {
+
 	public static function onWgQueryPages( array &$queryPages = [] ) {
 		$queryPages[] = [ 'AllInfoboxesQueryPage', 'AllInfoboxes' ];
 
