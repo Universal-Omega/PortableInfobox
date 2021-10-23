@@ -13,7 +13,8 @@ class SpecialPortableInfoboxBuilder extends SpecialPage {
 		$this->setHeaders();
 		$out->enableOOUI();
 
-		if ( $this->getConfig()->get( 'NamespaceProtection' )[NS_TEMPLATE] ) {}
+		if ( $this->getConfig()->get( 'NamespaceProtection' )[NS_TEMPLATE] ) {
+		}
 
 		$out->addModules( [ 'ext.PortableInfobox.styles', 'ext.PortableInfoboxBuilder' ] );
 		$out->addHTML(
