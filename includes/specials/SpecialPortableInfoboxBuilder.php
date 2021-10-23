@@ -1,20 +1,25 @@
 <?php
 
 class SpecialPortableInfoboxBuilder extends SpecialPage {
-	function __construct() {
+	public function __construct() {
+		global $wgNamespaceProtection;
+
 		parent::__construct( 'InfoboxBuilder' );
 		$this->mRestriction = $wgNamespaceProtection[NS_TEMPLATE];
 	}
 
-	function execute( $par ) {
-		$output = $this->getOutput();
+	public function execute( $par ) {
+		global $wgNamespaceProtection;
+
+		$out = $this->getOutput();
+
 		$this->setHeaders();
-		$output->enableOOUI();
+		$out->enableOOUI();
 
 		if ( $wgNamespaceProtection[NS_TEMPLATE] ) {}
 
-		$output->addModules( [ 'ext.PortableInfobox.styles', 'ext.PortableInfoboxBuilder' ] );
-		$output->addHTML(
+		$out->addModules( [ 'ext.PortableInfobox.styles', 'ext.PortableInfoboxBuilder' ] );
+		$out->addHTML(
 			'<div id="mw-infoboxbuilder" data-title="' . str_replace( '"', '&quot;', $par ) . '">' .
 				new OOUI\ProgressBarWidget( [ 'progress' => false ] ) .
 			'</div>'
