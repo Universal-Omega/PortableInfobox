@@ -1,11 +1,5 @@
 <?php
 
-/**
- * Aliases for the PortableInfobox extension.
- *
- * @ingroup PortableInfobox
- */
-
 $specialPageAliases = [];
 
 /** English **/
