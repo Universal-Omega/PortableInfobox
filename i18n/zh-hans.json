@@ -2,9 +2,9 @@
 	"portable-infobox-desc": "您可以使用类似XML标记创建简便的信息表格，并且可以使用清晰的语义特性HTML标记在任何皮肤或者平台进行呈现",
 	"portable-infobox-unimplemented-infobox-tag": "未生效的信息框标签：<$1>",
 	"portable-infobox-xml-parse-error": "XML 标记不正确。请验证您的 XML。",
-	"portable-infobox-xml-parse-error-info": "解析信息框时出问题",
+	"portable-infobox-xml-parse-error-info": "解析信息框时出现问题",
 	"portable-infobox-xml-parse-error-document-end": "文档末尾的内容多余",
-	"portable-infobox-xml-parse-error-undeclared-entity": "未申报的实体（例如： &nbsp;）",
+	"portable-infobox-xml-parse-error-undeclared-entity": "未声明的实体（例如： &nbsp;）",
 	"portable-infobox-xml-parse-error-attribute-not-started": "属性值应在引号内",
 	"portable-infobox-xml-parse-error-attribute-without-value": "标签属性需要有值",
 	"portable-infobox-xml-parse-error-space-required": "属性结构错误",
@@ -12,5 +12,13 @@
 	"portable-infobox-xml-parse-error-gt-required": "标签定义结束得不恰当",
 	"portable-infobox-xml-parse-error-tag-name-mismatch": "开始和结束标记不匹配",
 	"portable-infobox-xml-parse-error-tag-not-finished": "标签结束得过早",
-	"portable-infobox-xml-parse-error-infobox-tag-attribute-unsupported": "<infobox>标签不支持属性\"$1\""
+	"portable-infobox-xml-parse-error-infobox-tag-attribute-unsupported": "<infobox>标签不支持属性\"$1\"",
+	"allinfoboxes": "所有信息框",
+	"apihelp-infobox-summary": "此模块提供信息框解析器",
+	"apihelp-infobox-param-text": "要解析的信息框（XML字符串）",
+	"apihelp-infobox-param-title": "文本所属页面的标题",
+	"apihelp-infobox-param-args": "解析时使用的变量列表（JSON格式）",
+	"apihelp-query+allinfoboxes-summary": "列出所有信息框",
+	"apihelp-query+infobox-summary": "获取信息框元数据",
+	"apiwarn-infobox-invalidargs": "参数格式不正确"
 }

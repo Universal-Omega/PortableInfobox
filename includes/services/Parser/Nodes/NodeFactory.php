@@ -20,20 +20,17 @@ class NodeFactory {
 	 * @return Node|NodeUnimplemented
 	 */
 	protected static function getInstance( \SimpleXMLElement $xmlNode, array $data ) {
-		//wfProfileIn( __METHOD__ );
 		$tagType = $xmlNode->getName();
 		$className = 'PortableInfobox\\Parser\\Nodes\\' . 'Node' .
 					 mb_convert_case( mb_strtolower( $tagType ), MB_CASE_TITLE );
 		if ( class_exists( $className ) ) {
-			/* @var $instance \Wikia\PortableInfobox\Parser\Nodes\Node */
+			/* @var $instance \PortableInfobox\Parser\Nodes\Node */
 			$instance = new $className( $xmlNode, $data );
-			//wfProfileOut( __METHOD__ );
 
 			if ( $instance instanceof Node ) {
 				return $instance;
 			}
 		}
-		//wfProfileOut( __METHOD__ );
 
 		return new NodeUnimplemented( $xmlNode, $data );
 	}

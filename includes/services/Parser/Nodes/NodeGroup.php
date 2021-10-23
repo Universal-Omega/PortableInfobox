@@ -2,16 +2,16 @@
 namespace PortableInfobox\Parser\Nodes;
 
 class NodeGroup extends Node {
-	const LAYOUT_ATTR_NAME = 'layout';
-	const SHOW_ATTR_NAME = 'show';
-	const LAYOUT_DEFAULT_OPTION = 'default';
-	const LAYOUT_HORIZONTAL_OPTION = 'horizontal';
-	const SHOW_DEFAULT_OPTION = 'default';
-	const SHOW_INCOMPLETE_OPTION = 'incomplete';
-	const COLLAPSE_ATTR_NAME = 'collapse';
-	const COLLAPSE_OPEN_OPTION = 'open';
-	const COLLAPSE_CLOSED_OPTION = 'closed';
-	const ROW_ITEMS_ATTR_NAME = 'row-items';
+	private const LAYOUT_ATTR_NAME = 'layout';
+	private const SHOW_ATTR_NAME = 'show';
+	private const LAYOUT_DEFAULT_OPTION = 'default';
+	private const LAYOUT_HORIZONTAL_OPTION = 'horizontal';
+	private const SHOW_DEFAULT_OPTION = 'default';
+	private const SHOW_INCOMPLETE_OPTION = 'incomplete';
+	private const COLLAPSE_ATTR_NAME = 'collapse';
+	private const COLLAPSE_OPEN_OPTION = 'open';
+	private const COLLAPSE_CLOSED_OPTION = 'closed';
+	private const ROW_ITEMS_ATTR_NAME = 'row-items';
 
 	private $supportedGroupLayouts = [
 		self::LAYOUT_DEFAULT_OPTION,
@@ -45,7 +45,7 @@ class NodeGroup extends Node {
 	public function getRenderData() {
 		$value = $this->showIncomplete() ?
 			array_map(
-				function ( Node $item ) {
+				static function ( Node $item ) {
 					return $item->getRenderData();
 				},
 				$this->getChildNodes()

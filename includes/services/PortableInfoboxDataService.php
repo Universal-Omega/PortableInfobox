@@ -1,14 +1,15 @@
 <?php
 
+use MediaWiki\MediaWikiServices;
 use PortableInfobox\Helpers\PagePropsProxy;
 use PortableInfobox\Helpers\PortableInfoboxParsingHelper;
 use PortableInfobox\Parser\Nodes\NodeInfobox;
 
 class PortableInfoboxDataService {
 
-	const CACHE_TTL = 86400; // 24 hours
-	const IMAGE_FIELD_TYPE = 'image';
-	const INFOBOXES_PROPERTY_NAME = 'infoboxes';
+	private const CACHE_TTL = 86400;
+	private const IMAGE_FIELD_TYPE = 'image';
+	public const INFOBOXES_PROPERTY_NAME = 'infoboxes';
 
 	protected $title;
 	protected $parsingHelper;
@@ -22,11 +23,11 @@ class PortableInfoboxDataService {
 	 *
 	 * @internal param $helper
 	 */
-	protected function __construct( $title ) {
-		$this->title = $title !== null ? $title : new Title();
+	protected function __construct( Title $title ) {
+		$this->title = $title;
 		$this->parsingHelper = new PortableInfoboxParsingHelper();
 		$this->propsProxy = new PagePropsProxy();
-		$this->memcached = ObjectCache::getMainWANInstance();
+		$this->memcached = MediaWikiServices::getInstance()->getMainWANObjectCache();
 		$this->cachekey = $this->memcached->makeKey(
 			__CLASS__,
 			$this->title->getArticleID(),
@@ -64,7 +65,7 @@ class PortableInfoboxDataService {
 	public function getData() {
 		$result = $this->get();
 
-		return $result ? $result : [];
+		return $result ?: [];
 	}
 
 	/**
@@ -128,15 +129,14 @@ class PortableInfoboxDataService {
 	 * @return $this
 	 */
 	public function save( NodeInfobox $raw ) {
-		if ( $raw ) {
-			$stored = $this->get();
-			$stored[] = [
-				'parser_tag_version' => PortableInfoboxParserTagController::PARSER_TAG_VERSION,
-				'data' => $raw->getRenderData(),
-				'metadata' => $raw->getMetadata()
-			];
-			$this->set( $stored );
-		}
+		$stored = $this->get();
+		$stored[] = [
+			'parser_tag_version' => PortableInfoboxParserTagController::PARSER_TAG_VERSION,
+			'data' => $raw->getRenderData(),
+			'metadata' => $raw->getMetadata()
+		];
+
+		$this->set( $stored );
 
 		return $this;
 	}
@@ -146,6 +146,8 @@ class PortableInfoboxDataService {
 	 */
 	public function delete() {
 		$this->clear();
+
+		// @phan-suppress-next-line PhanTypeObjectUnsetDeclaredProperty
 		unset( $this->cache );
 
 		return $this;
@@ -156,6 +158,8 @@ class PortableInfoboxDataService {
 	 */
 	public function purge() {
 		$this->memcached->delete( $this->cachekey );
+
+		// @phan-suppress-next-line PhanTypeObjectUnsetDeclaredProperty
 		unset( $this->cache );
 
 		return $this;

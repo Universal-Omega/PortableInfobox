@@ -1,21 +1,24 @@
 <?php
 
-class ApiQueryAllinfoboxes extends ApiQueryBase {
+use MediaWiki\MediaWikiServices;
 
-	const CACHE_TTL = 86400;
-	const MCACHE_KEY = 'allinfoboxes-list';
+class ApiQueryAllInfoboxes extends ApiQueryBase {
+
+	private const CACHE_TTL = 86400;
+
+	public const MCACHE_KEY = 'allinfoboxes-list';
 
 	public function execute() {
 		$db = $this->getDB();
 		$res = $this->getResult();
-		$cache = ObjectCache::getMainWANInstance();
+		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
 		$cachekey = $cache->makeKey( self::MCACHE_KEY );
 
 		$data = $cache->getWithSetCallback( $cachekey, self::CACHE_TTL, function () use ( $db ) {
 			$out = [];
 
 			$res = ( new AllinfoboxesQueryPage() )->doQuery();
-			while ( $row = $res->fetchObject() ) {
+			foreach ( $res as $row ) {
 				$out[] = [
 					'pageid' => $row->value,
 					'title' => $row->title,

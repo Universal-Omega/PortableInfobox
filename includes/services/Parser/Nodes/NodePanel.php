@@ -2,9 +2,9 @@
 namespace PortableInfobox\Parser\Nodes;
 
 class NodePanel extends Node {
-	const COLLAPSE_ATTR_NAME = 'collapse';
-	const COLLAPSE_OPEN_OPTION = 'open';
-	const COLLAPSE_CLOSED_OPTION = 'closed';
+	private const COLLAPSE_ATTR_NAME = 'collapse';
+	private const COLLAPSE_OPEN_OPTION = 'open';
+	private const COLLAPSE_CLOSED_OPTION = 'closed';
 
 	private $supportedPanelCollapses = [
 		self::COLLAPSE_OPEN_OPTION,

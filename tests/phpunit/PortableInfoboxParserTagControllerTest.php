@@ -1,4 +1,7 @@
 <?php
+
+use MediaWiki\MediaWikiServices;
+
 /**
  * @group PortableInfobox
  * @covers PortableInfoboxParserTagController
@@ -14,24 +17,25 @@ class PortableInfoboxParserTagControllerTest extends MediaWikiTestCase {
 	/** @var PortableInfoboxParserTagController */
 	protected $controller;
 
-	protected function setUp() {
+	protected function setUp(): void {
 		parent::setUp();
 
 		$this->parser = $this->setUpParser();
 		$this->controller = new PortableInfoboxParserTagController();
 	}
 
-	protected function tearDown() {
+	protected function tearDown(): void {
 		// we use libxml only for tests here
 		libxml_clear_errors();
 		parent::tearDown();
 	}
 
 	protected function setUpParser() {
-		$parser = new Parser();
-		$options = new ParserOptions();
+		$parser = MediaWikiServices::getInstance()->getParser();
+		$user = $this->getTestUser()->getUser();
+		$options = new ParserOptions( $user );
 		$title = Title::newFromText( 'Test' );
-		$parser->Options( $options );
+		$parser->setOptions( $options );
 		$parser->startExternalParse( $title, $options, 'text', true );
 
 		return $parser;

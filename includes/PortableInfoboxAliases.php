@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Aliases for the PortableInfobox extension.
  *

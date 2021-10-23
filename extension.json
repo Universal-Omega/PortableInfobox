@@ -1,29 +1,43 @@
 {
 	"name": "Portable Infobox",
 	"author": [
-		"Wikia, Inc (Adam Robak, Diana Falkowska, Jacek Jursza, Mateusz Rybarski, Rafał Leszczyński, Sebastian Marzjan)",
-		"Luqgreg (Łukasz K.)"
+		"Universal Omega",
+		"Luqgreg (Łukasz K.)",
+		"..."
 	],
-	"url": "https://github.com/Luqgreg/mediawiki-PortableInfobox",
+	"url": "https://github.com/Universal-Omega/PortableInfobox",
 	"descriptionmsg": "portable-infobox-desc",
-	"version": "0.3-dev.infoboxbuilder",
+	"version": "0.5-dev.infoboxbuilder",
 	"type": "parserhook",
 	"license-name": "GPL-3.0-or-later",
 	"requires": {
-		"MediaWiki": ">= 1.27.0"
+		"MediaWiki": ">= 1.36.0",
+		"platform": {
+			"php": ">= 7.3"
+		}
 	},
 	"config": {
-		"AllInfoboxesSubpagesBlacklist": [ "doc", "draft", "test" ],
-		"PortableInfoboxCacheRenderers": false,
-		"PortableInfoboxCustomImageWidth": 300,
-		"PortableInfoboxUseHeadings": true,
-		"PortableInfoboxUseTidy": true
+		"AllInfoboxesSubpagesBlacklist": {
+			"value": [ "doc", "draft", "test" ]
+		},
+		"PortableInfoboxCacheRenderers": {
+			"value": false
+		},
+		"PortableInfoboxCustomImageWidth": {
+			"value": 300
+		},
+		"PortableInfoboxUseHeadings": {
+			"value": true
+		},
+		"PortableInfoboxUseTidy": {
+			"value": true
+		}
 	},
 	"MessagesDirs": {
 		"PortableInfobox": "i18n"
 	},
 	"ExtensionMessagesFiles": {
-		"PortableInfoboxAliases": "includes/PortableInfobox.alias.php"
+		"PortableInfoboxAliases": "includes/PortableInfoboxAliases.php"
 	},
 	"ResourceModules": {
 		"ext.PortableInfobox.scripts": {
@@ -81,42 +95,21 @@
 		"localBasePath": "",
 		"remoteExtPath": "PortableInfobox"
 	},
+	"AutoloadNamespaces": {
+		"PortableInfobox\\Helpers\\": "includes/services/Helpers/",
+		"PortableInfobox\\Parser\\": "includes/services/Parser/",
+		"PortableInfobox\\Parser\\Nodes\\": "includes/services/Parser/Nodes/"
+	},
 	"AutoloadClasses": {
-		"PortableInfoboxHooks": "includes/PortableInfobox.hooks.php",
+		"PortableInfoboxHooks": "includes/PortableInfoboxHooks.php",
 		"PortableInfoboxDataService": "includes/services/PortableInfoboxDataService.php",
 		"PortableInfoboxRenderService": "includes/services/PortableInfoboxRenderService.php",
 		"PortableInfoboxErrorRenderService": "includes/services/PortableInfoboxErrorRenderService.php",
-		"PortableInfobox\\Parser\\ExternalParser": "includes/services/Parser/ExternalParser.php",
-		"PortableInfobox\\Parser\\SimpleParser": "includes/services/Parser/SimpleParser.php",
-		"PortableInfobox\\Parser\\XmlParser": "includes/services/Parser/XmlParser.php",
-		"PortableInfobox\\Parser\\MediaWikiParserService": "includes/services/Parser/MediaWikiParserService.php",
-		"PortableInfobox\\Parser\\Nodes\\NodeFactory": "includes/services/Parser/Nodes/NodeFactory.php",
-		"PortableInfobox\\Parser\\Nodes\\Node": "includes/services/Parser/Nodes/Node.php",
-		"PortableInfobox\\Parser\\Nodes\\NodeAudio": "includes/services/Parser/Nodes/NodeAudio.php",
-		"PortableInfobox\\Parser\\Nodes\\NodeData": "includes/services/Parser/Nodes/NodeData.php",
-		"PortableInfobox\\Parser\\Nodes\\NodeInfobox": "includes/services/Parser/Nodes/NodeInfobox.php",
-		"PortableInfobox\\Parser\\Nodes\\NodeGroup": "includes/services/Parser/Nodes/NodeGroup.php",
-		"PortableInfobox\\Parser\\Nodes\\NodeHeader": "includes/services/Parser/Nodes/NodeHeader.php",
-		"PortableInfobox\\Parser\\Nodes\\NodeImage": "includes/services/Parser/Nodes/NodeImage.php",
-		"PortableInfobox\\Parser\\Nodes\\NodeMedia": "includes/services/Parser/Nodes/NodeMedia.php",
-		"PortableInfobox\\Parser\\Nodes\\NodeNavigation": "includes/services/Parser/Nodes/NodeNavigation.php",
-		"PortableInfobox\\Parser\\Nodes\\NodePanel": "includes/services/Parser/Nodes/NodePanel.php",
-		"PortableInfobox\\Parser\\Nodes\\NodeSection": "includes/services/Parser/Nodes/NodeSection.php",
-		"PortableInfobox\\Parser\\Nodes\\NodeTitle": "includes/services/Parser/Nodes/NodeTitle.php",
-		"PortableInfobox\\Parser\\Nodes\\NodeVideo": "includes/services/Parser/Nodes/NodeVideo.php",
-		"PortableInfobox\\Parser\\Nodes\\NodeUnimplemented": "includes/services/Parser/Nodes/NodeUnimplemented.php",
-		"PortableInfobox\\Helpers\\FileNamespaceSanitizeHelper": "includes/services/Helpers/FileNamespaceSanitizeHelper.php",
-		"PortableInfobox\\Helpers\\InfoboxParamsValidator": "includes/services/Helpers/InfoboxParamsValidator.php",
-		"PortableInfobox\\Helpers\\PortableInfoboxDataBag": "includes/services/Helpers/PortableInfoboxDataBag.php",
-		"PortableInfobox\\Helpers\\PortableInfoboxTemplateEngine": "includes/services/Helpers/PortableInfoboxTemplateEngine.php",
-		"PortableInfobox\\Helpers\\PortableInfoboxImagesHelper": "includes/services/Helpers/PortableInfoboxImagesHelper.php",
-		"PortableInfobox\\Helpers\\PortableInfoboxParsingHelper": "includes/services/Helpers/PortableInfoboxParsingHelper.php",
-		"PortableInfobox\\Helpers\\PagePropsProxy": "includes/services/Helpers/PagePropsProxy.php",
 		"PortableInfoboxParserTagController": "includes/controllers/PortableInfoboxParserTagController.php",
 		"ApiPortableInfobox": "includes/controllers/ApiPortableInfobox.php",
 		"ApiQueryPortableInfobox": "includes/controllers/ApiQueryPortableInfobox.php",
-		"ApiQueryAllinfoboxes": "includes/controllers/ApiQueryAllinfoboxes.php",
-		"AllinfoboxesQueryPage": "includes/querypage/AllinfoboxesQueryPage.php",
+		"ApiQueryAllInfoboxes": "includes/controllers/ApiQueryAllInfoboxes.php",
+		"AllInfoboxesQueryPage": "includes/querypage/AllInfoboxesQueryPage.php",
 		"SpecialPortableInfoboxBuilder": "includes/specials/SpecialPortableInfoboxBuilder.php"
 	},
 	"Hooks": {
@@ -125,11 +118,11 @@
 		"wgQueryPages": "PortableInfoboxHooks::onWgQueryPages",
 		"AllInfoboxesQueryRecached": "PortableInfoboxHooks::onAllInfoboxesQueryRecached",
 		"ArticlePurge": "PortableInfoboxHooks::onArticlePurge",
-		"PageContentSave": "PortableInfoboxHooks::onPageContentSave",
+		"MultiContentSave": "PortableInfoboxHooks::onMultiContentSave",
 		"ResourceLoaderRegisterModules": "PortableInfoboxHooks::onResourceLoaderRegisterModules"
 	},
 	"SpecialPages": {
-		"AllInfoboxes": "AllinfoboxesQueryPage",
+		"AllInfoboxes": "AllInfoboxesQueryPage",
 		"InfoboxBuilder": "SpecialPortableInfoboxBuilder"
 	},
 	"APIModules": {
@@ -139,7 +132,7 @@
 		"infobox": "ApiQueryPortableInfobox"
 	},
 	"APIListModules": {
-		"allinfoboxes": "ApiQueryAllinfoboxes"
+		"allinfoboxes": "ApiQueryAllInfoboxes"
 	},
-	"manifest_version": 1
+	"manifest_version": 2
 }

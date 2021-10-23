@@ -2,6 +2,8 @@
 
 namespace PortableInfobox\Helpers;
 
+use MediaWiki\MediaWikiServices;
+
 // original class & authors:
 // https://github.com/Wikia/app/blob/dev/includes/wikia/helpers/FileNamespaceSanitizeHelper.php
 class FileNamespaceSanitizeHelper {
@@ -15,7 +17,7 @@ class FileNamespaceSanitizeHelper {
 	 * @return null|FileNamespaceSanitizeHelper
 	 */
 	public static function getInstance() {
-		if ( is_null( self::$instance ) ) {
+		if ( self::$instance === null ) {
 			self::$instance = new self;
 		}
 
@@ -31,7 +33,9 @@ class FileNamespaceSanitizeHelper {
 		$langCode = $contLang->getCode();
 		if ( empty( $this->filePrefixRegex[$langCode] ) ) {
 			$fileNamespaces = [
-				\MWNamespace::getCanonicalName( NS_FILE ),
+				MediaWikiServices::getInstance()
+					->getNamespaceInfo()
+					->getCanonicalName( NS_FILE ),
 				$contLang->getNamespaces()[NS_FILE],
 			];
 
@@ -43,12 +47,12 @@ class FileNamespaceSanitizeHelper {
 			}
 
 			// be able to match user-provided file namespaces that may contain both underscores and spaces
-			$fileNamespaces = array_map( function ( $namespace ) {
+			$fileNamespaces = array_map( static function ( $namespace ) {
 				return mb_ereg_replace( '_', '(_|\ )', $namespace );
 			}, $fileNamespaces );
 
 			// be able to match both upper- and lowercase first letters of the namespace
-			$lowercaseFileNamespaces = array_map( function ( $namespace ) {
+			$lowercaseFileNamespaces = array_map( static function ( $namespace ) {
 				return mb_convert_case( $namespace, MB_CASE_LOWER, "UTF-8" );
 			}, $fileNamespaces );
 

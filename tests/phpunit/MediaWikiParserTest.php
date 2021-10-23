@@ -1,4 +1,7 @@
 <?php
+
+use MediaWiki\MediaWikiServices;
+
 /**
  * @group PortableInfobox
  * @covers PortableInfobox\Parser\MediaWikiParserService
@@ -8,19 +11,17 @@ class MediaWikiParserTest extends MediaWikiTestCase {
 	/** @var Parser */
 	protected $parser;
 
-	public function setUp() {
-		$this->parser = new Parser();
+	public function setUp(): void {
+		$this->parser = MediaWikiServices::getInstance()->getParser();
 		$title = Title::newFromText( 'test' );
-		$options = new ParserOptions();
-		// Required for MW >= 1.30
-		if ( method_exists( $options, 'setOption' ) ) {
-			$options->setOption( 'wrapclass', false );
-		}
+		$user = $this->getTestUser()->getUser();
+		$options = new ParserOptions( $user );
+		$options->setOption( 'wrapclass', false );
 		$this->parser->startExternalParse( $title, $options, 'text', true );
 		parent::setUp();
 	}
 
-	public function tearDown() {
+	public function tearDown(): void {
 		unset( $this->parser );
 		parent::tearDown();
 	}
@@ -38,13 +39,12 @@ class MediaWikiParserTest extends MediaWikiTestCase {
 		);
 	}
 
-	/* Fails - it needs a modification in the core to pass
 	public function testAsideTagPWrappedDuringParsing() {
 		$aside = "<aside></aside>";
-		$result = ( new Parser() )->doBlockLevels( $aside, true );
-		//parser adds new line at the end of block
-		$this->assertEquals( $aside . "\n", $result );
-	} */
+		$result = PortableInfobox\Parser\BlockLevelPass::doBlockLevels( $aside, true );
+
+		$this->assertEquals( $aside, $result );
+	}
 
 	/**
 	 * @dataProvider mwParserWrapperDataProvider

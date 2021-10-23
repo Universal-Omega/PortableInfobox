@@ -1,34 +1,16 @@
 <?php
 
-class AllinfoboxesQueryPage extends PageQueryPage {
+use MediaWiki\MediaWikiServices;
 
-	const ALL_INFOBOXES_TYPE = 'AllInfoboxes';
+class AllInfoboxesQueryPage extends PageQueryPage {
 
-	function __construct() {
+	private const ALL_INFOBOXES_TYPE = 'AllInfoboxes';
+
+	public function __construct() {
 		parent::__construct( self::ALL_INFOBOXES_TYPE );
 	}
 
-	function getGroupName() {
-		return 'pages';
-	}
-
-	public function sortDescending() {
-		return false;
-	}
-
-	public function isExpensive() {
-		return true;
-	}
-
-	public function getOrderFields() {
-		return [ 'title' ];
-	}
-
-	public function getCacheOrderFields() {
-		return $this->getOrderFields();
-	}
-
-	function getQueryInfo() {
+	public function getQueryInfo() {
 		$query = [
 			'tables' => [ 'page', 'page_props' ],
 			'fields' => [
@@ -51,9 +33,11 @@ class AllinfoboxesQueryPage extends PageQueryPage {
 			]
 		];
 
-		$subpagesBlacklist = $this->getConfig( 'AllInfoboxesSubpagesBlacklist' );
+		$dbr = $this->getDBLoadBalancer()->getConnectionRef( DB_REPLICA );
+
+		$subpagesBlacklist = $this->getConfig()->get( 'AllInfoboxesSubpagesBlacklist' );
 		foreach ( $subpagesBlacklist as $subpage ) {
-			$query['conds'][] = 'page.page_title NOT LIKE %/' . mysql_real_escape_string( $subpage );
+			$query['conds'][] = 'page.page_title NOT ' . $dbr->buildLike( "/{$subpage}" );
 		}
 
 		return $query;
@@ -72,7 +56,29 @@ class AllinfoboxesQueryPage extends PageQueryPage {
 	public function recache( $limit = false, $ignoreErrors = true ) {
 		$res = parent::recache( $limit, $ignoreErrors );
 
-		Hooks::run( 'AllInfoboxesQueryRecached' );
+		$hookContainer = MediaWikiServices::getInstance()->getHookContainer();
+		$hookContainer->run( 'AllInfoboxesQueryRecached' );
+
 		return $res;
+	}
+
+	public function isExpensive() {
+		return true;
+	}
+
+	protected function getOrderFields() {
+		return [ 'title' ];
+	}
+
+	protected function getCacheOrderFields() {
+		return $this->getOrderFields();
+	}
+
+	protected function sortDescending() {
+		return false;
+	}
+
+	protected function getGroupName() {
+		return 'pages';
 	}
 }

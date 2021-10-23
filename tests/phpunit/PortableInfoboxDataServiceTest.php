@@ -4,9 +4,17 @@ use PortableInfobox\Parser\Nodes\NodeFactory;
 
 /**
  * @group PortableInfobox
+ * @group Database
  * @covers PortableInfoboxDataService
  */
 class PortableInfoboxDataServiceTest extends MediaWikiTestCase {
+
+	/**
+	 * @return bool
+	 */
+	public function needsDB() {
+		return true;
+	}
 
 	/**
 	 * @param $id
@@ -15,7 +23,7 @@ class PortableInfoboxDataServiceTest extends MediaWikiTestCase {
 	 * @return Title
 	 */
 	protected function prepareTitle( $id = 0, $ns = NS_MAIN ) {
-		$title = new Title();
+		$title = $this->getExistingTestPage( 'Test' )->getTitle();
 		$title->mArticleID = $id;
 		$title->mNamespace = $ns;
 
@@ -181,18 +189,6 @@ class PortableInfoboxDataServiceTest extends MediaWikiTestCase {
 			->getImages();
 
 		$this->assertEquals( [ 'Test.jpg', 'Test2.jpg' ], $images );
-	}
-
-	public function testTitleNullConstructor() {
-		$service = PortableInfoboxDataService::newFromTitle( null );
-		$result = $service->getData();
-		$this->assertEquals( [], $result );
-	}
-
-	public function testConstructor() {
-		$service = PortableInfoboxDataService::newFromPageID( null );
-		$result = $service->getData();
-		$this->assertEquals( [], $result );
 	}
 
 	protected function getInfoboxPageProps() {

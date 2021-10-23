@@ -1,5 +1,8 @@
 <?php
+
 namespace PortableInfobox\Parser;
+
+use MediaWiki\MediaWikiServices;
 
 class MediaWikiParserService implements ExternalParser {
 
@@ -16,10 +19,14 @@ class MediaWikiParserService implements ExternalParser {
 		$this->frame = $frame;
 
 		if ( $wgPortableInfoboxUseTidy && class_exists( '\MediaWiki\Tidy\RemexDriver' ) ) {
-			$this->tidyDriver = \MWTidy::factory( [
+			global $wgTidyConfig;
+
+			$wgTidyConfig = [
 				'driver' => 'RemexHtml',
 				'pwrap' => false
-			] );
+			];
+
+			$this->tidyDriver = MediaWikiServices::getInstance()->getTidy();
 		}
 	}
 
@@ -35,21 +42,26 @@ class MediaWikiParserService implements ExternalParser {
 			return $this->cache[$wikitext];
 		}
 
-		$parsed = $this->parser->internalParse( $wikitext, false, $this->frame );
+		$parsed = $this->parser->recursiveTagParse( $wikitext, $this->frame );
 		if ( in_array( substr( $parsed, 0, 1 ), [ '*', '#' ] ) ) {
-			//fix for first item list elements
+			// fix for first item list elements
 			$parsed = "\n" . $parsed;
 		}
-		$output = $this->parser->doBlockLevels( $parsed, false );
-		$ready = $this->parser->mStripState->unstripBoth( $output );
+		$output = BlockLevelPass::doBlockLevels( $parsed, false );
+		$ready = $this->parser->getStripState()->unstripBoth( $output );
+
+		// @phan-suppress-next-line PhanDeprecatedFunction
 		$this->parser->replaceLinkHolders( $ready );
+
 		if ( isset( $this->tidyDriver ) ) {
 			$ready = $this->tidyDriver->tidy( $ready );
 		}
+
 		$newlinesstripped = preg_replace( '|[\n\r]|Us', '', $ready );
 		$marksstripped = preg_replace( '|{{{.*}}}|Us', '', $newlinesstripped );
 
 		$this->cache[$wikitext] = $marksstripped;
+
 		return $marksstripped;
 	}
 
@@ -65,10 +77,12 @@ class MediaWikiParserService implements ExternalParser {
 	 * @param \Title $title
 	 */
 	public function addImage( $title ) {
-		$file = wfFindFile( $title );
-		$tmstmp = $file ? $file->getTimestamp() : false;
-		$sha1 = $file ? $file->getSha1() : false;
-		$this->parser->getOutput()->addImage( $title, $tmstmp, $sha1 );
+		$repoGroup = MediaWikiServices::getInstance()->getRepoGroup();
+
+		$file = $repoGroup->findFile( $title );
+		$tmstmp = $file ? $file->getTimestamp() : null;
+		$sha1 = $file ? $file->getSha1() : null;
+		$this->parser->getOutput()->addImage( $title->getDBkey(), $tmstmp, $sha1 );
 
 		// Pass PI images to PageImages extension if available (Popups and og:image)
 		if ( \method_exists(

@@ -1,10 +1,12 @@
 <?php
 
-// phpcs:ignore MediaWiki.Files.ClassMatchesFilename.NotMatch
+use MediaWiki\MediaWikiServices;
+use MediaWiki\Revision\RenderedRevision;
+
 class PortableInfoboxHooks {
 
 	public static function onWgQueryPages( array &$queryPages = [] ) {
-		$queryPages[] = [ 'AllinfoboxesQueryPage', 'AllInfoboxes' ];
+		$queryPages[] = [ 'AllInfoboxesQueryPage', 'AllInfoboxes' ];
 
 		return true;
 	}
@@ -13,6 +15,7 @@ class PortableInfoboxHooks {
 		Parser &$parser, ImageGalleryBase &$gallery
 	) {
 		PortableInfobox\Helpers\PortableInfoboxDataBag::getInstance()->setGallery(
+			// @phan-suppress-next-line PhanDeprecatedProperty
 			Parser::MARKER_PREFIX . '-gallery-' . sprintf( '%08X', $parser->mMarkerIndex - 1 ) .
 				Parser::MARKER_SUFFIX,
 			$gallery
@@ -22,8 +25,8 @@ class PortableInfoboxHooks {
 	}
 
 	public static function onAllInfoboxesQueryRecached() {
-		$cache = ObjectCache::getMainWANInstance();
-		$cache->delete( $cache->makeKey( ApiQueryAllinfoboxes::MCACHE_KEY ) );
+		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
+		$cache->delete( $cache->makeKey( ApiQueryAllInfoboxes::MCACHE_KEY ) );
 
 		return true;
 	}
@@ -31,25 +34,26 @@ class PortableInfoboxHooks {
 	/**
 	 * Purge memcache before edit
 	 *
-	 * @param Page|WikiPage $article
-	 *
-	 * @return bool
+	 * @param RenderedRevision $renderedRevision
 	 */
-	public static function onPageContentSave( Page $article ) {
-		$dataService = PortableInfoboxDataService::newFromTitle( $article->getTitle() );
-		$dataService->delete();
+	public static function onMultiContentSave( RenderedRevision $renderedRevision ) {
+		$articleID = $renderedRevision->getRevision()->getPageId();
+		$title = Title::newFromId( $articleID );
 
-		if ( $article->getTitle()->inNamespace( NS_TEMPLATE ) ) {
-			$dataService->reparseArticle( true );
+		if ( $title ) {
+			$dataService = PortableInfoboxDataService::newFromTitle( $title );
+			$dataService->delete();
+
+			if ( $title->inNamespace( NS_TEMPLATE ) ) {
+				$dataService->reparseArticle();
+			}
 		}
-
-		return true;
 	}
 
 	/**
 	 * Purge memcache, this will not rebuild infobox data
 	 *
-	 * @param Page|WikiPage $article
+	 * @param Page $article
 	 *
 	 * @return bool
 	 */

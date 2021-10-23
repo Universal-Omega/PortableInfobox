@@ -3,6 +3,7 @@
 namespace PortableInfobox\Helpers;
 
 use MediaWiki\Logger\LoggerFactory;
+use MediaWiki\MediaWikiServices;
 
 class PortableInfoboxParsingHelper {
 
@@ -21,13 +22,15 @@ class PortableInfoboxParsingHelper {
 	 *
 	 * @return mixed false when no infoboxes found, Array with infoboxes on success
 	 */
-	public function parseIncludeonlyInfoboxes( $title ) {
+	public function parseIncludeonlyInfoboxes( \Title $title ) {
 		// for templates we need to check for include tags
 		$templateText = $this->fetchArticleContent( $title );
 
 		if ( $templateText ) {
-			$parser = new \Parser();
-			$parserOptions = new \ParserOptions();
+			$parser = MediaWikiServices::getInstance()->getParser();
+			$parser->setTitle( $title );
+			$parserOptions = \ParserOptions::newFromAnon();
+			$parser->setOptions( $parserOptions );
 			$frame = $parser->getPreprocessor()->newFrame();
 
 			$includeonlyText = $parser->getPreloadText( $templateText, $title, $parserOptions );
@@ -52,8 +55,10 @@ class PortableInfoboxParsingHelper {
 	}
 
 	public function reparseArticle( \Title $title ) {
-		$parser = new \Parser();
-		$parserOptions = new \ParserOptions();
+		$parser = MediaWikiServices::getInstance()->getParser();
+		$user = \RequestContext::getMain()->getUser();
+
+		$parserOptions = new \ParserOptions( $user );
 		$parser->parse( $this->fetchArticleContent( $title ), $title, $parserOptions );
 
 		return json_decode(
@@ -68,9 +73,12 @@ class PortableInfoboxParsingHelper {
 	 * @return string
 	 */
 	protected function fetchArticleContent( \Title $title ) {
-		if ( $title && $title->exists() ) {
-			$content = \WikiPage::factory( $title )
-				->getContent( \Revision::FOR_PUBLIC )
+		if ( $title->exists() ) {
+			// @phan-suppress-next-line PhanDeprecatedFunction
+			$content = MediaWikiServices::getInstance()
+				->getWikiPageFactory()
+				->newFromTitle( $title )
+				->getContent()
 				->getNativeData();
 		}
 

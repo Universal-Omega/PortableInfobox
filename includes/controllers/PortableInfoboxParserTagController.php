@@ -1,23 +1,25 @@
 <?php
 
-use PortableInfobox\Parser\Nodes;
-use PortableInfobox\Helpers\InvalidInfoboxParamsException;
+use MediaWiki\MediaWikiServices;
 use PortableInfobox\Helpers\InfoboxParamsValidator;
-use PortableInfobox\Parser\XmlMarkupParseErrorException;
+use PortableInfobox\Helpers\InvalidInfoboxParamsException;
+use PortableInfobox\Parser\Nodes;
 use PortableInfobox\Parser\Nodes\UnimplementedNodeException;
+use PortableInfobox\Parser\XmlMarkupParseErrorException;
 
 class PortableInfoboxParserTagController {
-	const PARSER_TAG_NAME = 'infobox';
-	const PARSER_TAG_VERSION = 2;
-	const DEFAULT_THEME_NAME = 'default';
-	const DEFAULT_LAYOUT_NAME = 'default';
-	const INFOBOX_THEME_PREFIX = 'pi-theme-';
-	const INFOBOX_LAYOUT_PREFIX = 'pi-layout-';
-	const INFOBOX_TYPE_PREFIX = 'pi-type-';
-	const ACCENT_COLOR = 'accent-color';
-	const ACCENT_COLOR_TEXT = 'accent-color-text';
-	const ERR_UNIMPLEMENTEDNODE = 'portable-infobox-unimplemented-infobox-tag';
-	const ERR_UNSUPPORTEDATTR = 'portable-infobox-xml-parse-error-infobox-tag-attribute-unsupported';
+	public const PARSER_TAG_VERSION = 2;
+	public const DEFAULT_THEME_NAME = 'default';
+	public const INFOBOX_THEME_PREFIX = 'pi-theme-';
+
+	private const PARSER_TAG_NAME = 'infobox';
+	private const DEFAULT_LAYOUT_NAME = 'default';
+	private const INFOBOX_LAYOUT_PREFIX = 'pi-layout-';
+	private const INFOBOX_TYPE_PREFIX = 'pi-type-';
+	private const ACCENT_COLOR = 'accent-color';
+	private const ACCENT_COLOR_TEXT = 'accent-color-text';
+	private const ERR_UNIMPLEMENTEDNODE = 'portable-infobox-unimplemented-infobox-tag';
+	private const ERR_UNSUPPORTEDATTR = 'portable-infobox-xml-parse-error-infobox-tag-attribute-unsupported';
 
 	private $infoboxParamsValidator = null;
 
@@ -87,7 +89,7 @@ class PortableInfoboxParserTagController {
 	 */
 	public function prepareInfobox( $markup, Parser $parser, PPFrame $frame, $params = null ) {
 		$frameArguments = $frame->getArguments();
-		$infoboxNode = Nodes\NodeFactory::newFromXML( $markup, $frameArguments ? $frameArguments : [] );
+		$infoboxNode = Nodes\NodeFactory::newFromXML( $markup, $frameArguments ?: [] );
 		$infoboxNode->setExternalParser(
 			new PortableInfobox\Parser\MediaWikiParserService( $parser, $frame )
 		);
@@ -114,7 +116,7 @@ class PortableInfoboxParserTagController {
 	 * @param Parser $parser
 	 * @param PPFrame $frame
 	 *
-	 * @return string $html
+	 * @return string|array
 	 */
 	public function renderInfobox( $text, $params, $parser, $frame ) {
 		$markup = '<' . self::PARSER_TAG_NAME . '>' . $text . '</' . self::PARSER_TAG_NAME . '>';
@@ -137,6 +139,12 @@ class PortableInfoboxParserTagController {
 			);
 		}
 
+		// Convert text to language variant
+		$renderedValue = MediaWikiServices::getInstance()
+			->getLanguageConverterFactory()
+			->getLanguageConverter( $parser->getTargetLanguage() )
+			->convert( $renderedValue );
+
 		return [ $renderedValue, 'markerType' => 'nowiki' ];
 	}
 
@@ -144,25 +152,24 @@ class PortableInfoboxParserTagController {
 		// parser output stores this in page_props table,
 		// therefore we can reuse the data in data provider service
 		// (see: PortableInfoboxDataService.class.php)
-		if ( $raw ) {
-			$infoboxes = json_decode(
-				$parserOutput->getProperty( PortableInfoboxDataService::INFOBOXES_PROPERTY_NAME ),
-				true
-			);
 
-			// When you modify this structure, remember to bump the version
-			// Version is checked in PortableInfoboxDataService::load()
-			$infoboxes[] = [
-				'parser_tag_version' => self::PARSER_TAG_VERSION,
-				'data' => $raw->getRenderData(),
-				'metadata' => $raw->getMetadata()
-			];
+		$infoboxes = json_decode(
+			$parserOutput->getProperty( PortableInfoboxDataService::INFOBOXES_PROPERTY_NAME ),
+			true
+		);
 
-			$parserOutput->setProperty(
-				PortableInfoboxDataService::INFOBOXES_PROPERTY_NAME,
-				json_encode( $infoboxes )
-			);
-		}
+		// When you modify this structure, remember to bump the version
+		// Version is checked in PortableInfoboxDataService::load()
+		$infoboxes[] = [
+			'parser_tag_version' => self::PARSER_TAG_VERSION,
+			'data' => $raw->getRenderData(),
+			'metadata' => $raw->getMetadata()
+		];
+
+		$parserOutput->setProperty(
+			PortableInfoboxDataService::INFOBOXES_PROPERTY_NAME,
+			json_encode( $infoboxes )
+		);
 	}
 
 	private function handleError( $message ) {
@@ -172,9 +179,10 @@ class PortableInfoboxParserTagController {
 	}
 
 	private function handleXmlParseError( $errors, $xmlMarkup ) {
-		global $wgTitle;
 		$errorRenderer = new PortableInfoboxErrorRenderService( $errors );
-		if ( $wgTitle && $wgTitle->getNamespace() == NS_TEMPLATE ) {
+
+		$title = RequestContext::getMain()->getTitle();
+		if ( $title && $title->getNamespace() == NS_TEMPLATE ) {
 			$renderedValue = $errorRenderer->renderMarkupDebugView( $xmlMarkup );
 		} else {
 			$renderedValue = $errorRenderer->renderArticleMsgView();
@@ -202,7 +210,7 @@ class PortableInfoboxParserTagController {
 		// use default global theme if not present
 		$themes = !empty( $themes ) ? $themes : [ self::DEFAULT_THEME_NAME ];
 
-		return array_map( function ( $name ) {
+		return array_map( static function ( $name ) {
 			return Sanitizer::escapeClass(
 				self::INFOBOX_THEME_PREFIX . preg_replace( '|\s+|s', '-', $name )
 			);
@@ -210,7 +218,7 @@ class PortableInfoboxParserTagController {
 	}
 
 	private function getLayout( $params ) {
-		$layoutName = isset( $params['layout'] ) ? $params['layout'] : false;
+		$layoutName = $params['layout'] ?? false;
 		if ( $this->getParamsValidator()->validateLayout( $layoutName ) ) {
 			// make sure no whitespaces, prevents side effects
 			return self::INFOBOX_LAYOUT_PREFIX . $layoutName;

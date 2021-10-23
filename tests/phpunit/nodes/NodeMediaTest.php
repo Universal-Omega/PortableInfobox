@@ -143,7 +143,9 @@ class NodeMediaTest extends MediaWikiTestCase {
 		$fileMock = is_null( $mediaType ) ? null : new FileMock( $mediaType );
 		$node = NodeFactory::newFromXML( $markup, $params );
 
-		$helper = $this->getMock( PortableInfoboxImagesHelper::class, [ 'getFile', 'extendImageData' ] );
+		$helper = $this->getMockBuilder( PortableInfoboxImagesHelper::class )
+			->setMethods( [ 'getFile', 'extendImageData' ] )
+			->getMock();
 		$helper->expects( $this->any() )
 			->method( 'getFile' )
 			->willReturn( $fileMock );

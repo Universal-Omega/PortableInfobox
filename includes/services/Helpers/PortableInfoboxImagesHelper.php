@@ -2,8 +2,10 @@
 
 namespace PortableInfobox\Helpers;
 
+use MediaWiki\MediaWikiServices;
+
 class PortableInfoboxImagesHelper {
-	const MAX_DESKTOP_THUMBNAIL_HEIGHT = 500;
+	private const MAX_DESKTOP_THUMBNAIL_HEIGHT = 500;
 
 	/**
 	 * extends image data
@@ -19,7 +21,7 @@ class PortableInfoboxImagesHelper {
 		$file = $this->getFile( $file );
 
 		if ( !$file || !in_array( $file->getMediaType(), [ MEDIATYPE_BITMAP, MEDIATYPE_DRAWING ] ) ) {
-			return false;
+			return [];
 		}
 
 		// get dimensions
@@ -53,7 +55,7 @@ class PortableInfoboxImagesHelper {
 			'height' => round( $fileDimensions['height'] * $ratio * 2 ),
 		] );
 		if ( !$thumbnail || $thumbnail->isError() || !$thumbnail2x || $thumbnail2x->isError() ) {
-			return false;
+			return [];
 		}
 
 		return [
@@ -70,7 +72,7 @@ class PortableInfoboxImagesHelper {
 	 */
 	public function extendImageCollectionData( $images ) {
 		$images = array_map(
-			function ( $image, $index ) {
+			static function ( $image, $index ) {
 				$image['ref'] = $index + 1;
 
 				if ( empty( $image['caption'] ) ) {
@@ -123,7 +125,9 @@ class PortableInfoboxImagesHelper {
 		}
 
 		if ( $file instanceof \Title ) {
-			$file = wfFindFile( $file );
+			$repoGroup = MediaWikiServices::getInstance()->getRepoGroup();
+
+			$file = $repoGroup->findFile( $file );
 		}
 
 		if ( $file instanceof \File && $file->exists() ) {

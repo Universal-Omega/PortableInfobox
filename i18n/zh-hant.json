@@ -1,16 +1,21 @@
 {
-	"portable-infobox-desc": "您可以使用類似XML標記創建簡便的信息表格，並且可以使用清晰的語義特性HTML標記在任何皮膚或者平台進行呈現",
-	"portable-infobox-unimplemented-infobox-tag": "未生效的信息框標籤：<$1>",
+	"portable-infobox-desc": "您可以使用類似XML的標記建立簡便的資訊框，並且可以使用清晰的語義特性HTML標記在任何外觀或平台呈現",
+	"portable-infobox-unimplemented-infobox-tag": "未生效的資訊框標籤：<$1>",
+	"portable-infobox-xml-parse-error-info": "解析資訊框時出現問題",
 	"portable-infobox-xml-parse-error": "XML標記不正確。請驗證。",
-	"portable-infobox-xml-parse-error-info": "解析資訊框時出問題",
-	"portable-infobox-xml-parse-error-document-end": "文檔末尾的內容多餘",
-	"portable-infobox-xml-parse-error-undeclared-entity": "未申報的實體（例如：&nbsp;）",
+	"portable-infobox-xml-parse-error-document-end": "文件末尾的內容多餘",
+	"portable-infobox-xml-parse-error-undeclared-entity": "未宣告的實體（例如：&nbsp;）",
 	"portable-infobox-xml-parse-error-attribute-not-started": "屬性值應該在引號內",
 	"portable-infobox-xml-parse-error-attribute-without-value": "標記屬性需要有值",
 	"portable-infobox-xml-parse-error-space-required": "屬性結構錯誤",
 	"portable-infobox-xml-parse-error-name-required": "解析屬性名稱時出錯",
-	"portable-infobox-xml-parse-error-gt-required": "標記的定義結束得不正確",
+	"portable-infobox-xml-parse-error-gt-required": "標記的定義結束的不正確",
 	"portable-infobox-xml-parse-error-tag-name-mismatch": "開始和結束標記不匹配",
 	"portable-infobox-xml-parse-error-tag-not-finished": "標記結束得過早",
-	"portable-infobox-xml-parse-error-infobox-tag-attribute-unsupported": "<infobox>標記不支持屬性\"$1\""
+	"portable-infobox-xml-parse-error-infobox-tag-attribute-unsupported": "<infobox>標記不支援屬性\"$1\"",
+	"allinfoboxes": "所有資訊框",
+	"apihelp-infobox-summary": "此模組提供資訊框解析器",
+	"apihelp-infobox-param-text": "要解析的資訊框（xml字串）",
+	"apihelp-query+allinfoboxes-summary": "所有資訊框清單",
+	"apihelp-query+infobox-summary": "取得資訊框元資料"
 }
