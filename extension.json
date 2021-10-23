@@ -62,7 +62,7 @@
 			"styles": "resources/PortableInfoboxBuilder.less",
 			"dependencies": [
 				"mediawiki.jqueryMsg",
-				"jquery.ui.sortable",
+				"jquery.ui",
 				"oojs-ui-core",
 				"oojs-ui-widgets",
 				"oojs-ui-windows"
