@@ -41,7 +41,7 @@ class MediaWikiParserTest extends MediaWikiTestCase {
 
 	public function testAsideTagPWrappedDuringParsing() {
 		$aside = "<aside></aside>";
-		$result = PortableInfobox\Parser\BlockLevelPass::doBlockLevels( $aside, true );
+		$result = \BlockLevelPass::doBlockLevels( $aside, true );
 
 		$this->assertEquals( $aside, $result );
 	}
