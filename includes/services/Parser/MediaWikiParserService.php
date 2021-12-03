@@ -47,7 +47,9 @@ class MediaWikiParserService implements ExternalParser {
 			// fix for first item list elements
 			$parsed = "\n" . $parsed;
 		}
-		$output = BlockLevelPass::doBlockLevels( $parsed, false );
+
+		// @phan-suppress-next-line PhanAccessMethodInternal
+		$output = \BlockLevelPass::doBlockLevels( $parsed, false );
 		$ready = $this->parser->getStripState()->unstripBoth( $output );
 
 		// @phan-suppress-next-line PhanDeprecatedFunction
