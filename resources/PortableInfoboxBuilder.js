@@ -251,13 +251,12 @@
 					return;
 				}
 
-				this.api.post( {
+				this.api.postWithToken( {
 					action: 'edit',
 					title: title,
 					text: this.getInfoboxMarkup(),
 					summary: this.msg( 'editsummary' ),
-					notminor: true,
-					token: mw.user.tokens.get( 'csrfToken' )
+					notminor: true
 				} ).done( () => {
 					window.location.assign( mw.config.get( 'wgArticlePath' ).replace( '$1', title ) )
 				} ).fail( ( code, err ) => {
