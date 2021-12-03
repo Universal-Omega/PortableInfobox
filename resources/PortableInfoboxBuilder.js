@@ -257,7 +257,7 @@
 					text: this.getInfoboxMarkup(),
 					summary: this.msg( 'editsummary' ),
 					notminor: true,
-					token: mw.user.tokens.get( 'editToken' )
+					token: mw.user.tokens.get( 'csrfToken' )
 				} ).done( () => {
 					window.location.assign( mw.config.get( 'wgArticlePath' ).replace( '$1', title ) )
 				} ).fail( ( code, err ) => {
