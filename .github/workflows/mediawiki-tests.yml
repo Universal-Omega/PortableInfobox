@@ -14,27 +14,13 @@ jobs:
       matrix:
         include:
           # Latest stable MediaWiki - PHP 7.3 (phan)
-          - mw: 'REL1_36'
-            php: 7.3
-            php-docker: 73
-            experimental: false
-            stage: phan
-
-          # Latest stable MediaWiki - PHP 7.4 (phan)
-          - mw: 'REL1_36'
-            php: 7.4
-            php-docker: 74
-            experimental: false
-            stage: phan
-
-          # Latest MediaWiki release branch - PHP 7.3 (phan)
           - mw: 'REL1_37'
             php: 7.3
             php-docker: 73
             experimental: true
             stage: phan
 
-          # Latest MediaWiki release branch - PHP 7.4 (phan)
+          # Latest stable MediaWiki - PHP 7.4 (phan)
           - mw: 'REL1_37'
             php: 7.4
             php-docker: 74
@@ -56,13 +42,6 @@ jobs:
             stage: phan
 
           # Latest stable MediaWiki - PHP 7.3 (coverage)
-          - mw: 'REL1_36'
-            php: 7.3
-            php-docker: 73
-            experimental: false
-            stage: coverage
-
-          # Latest MediaWiki release branch - PHP 7.3 (coverage)
           - mw: 'REL1_37'
             php: 7.3
             php-docker: 73
@@ -77,27 +56,13 @@ jobs:
             stage: coverage
 
           # Latest stable MediaWiki - PHP 7.3 (phpunit-unit)
-          - mw: 'REL1_36'
-            php: 7.3
-            php-docker: 73
-            experimental: false
-            stage: phpunit-unit
-
-          # Latest stable MediaWiki - PHP 7.4 (phpunit-unit)
-          - mw: 'REL1_36'
-            php: 7.4
-            php-docker: 74
-            experimental: false
-            stage: phpunit-unit
-
-          # Latest MediaWiki release branch - PHP 7.3 (phpunit-unit)
           - mw: 'REL1_37'
             php: 7.3
             php-docker: 73
             experimental: false
             stage: phpunit-unit
 
-          # Latest MediaWiki release branch - PHP 7.4 (phpunit-unit)
+          # Latest stable MediaWiki - PHP 7.4 (phpunit-unit)
           - mw: 'REL1_37'
             php: 7.4
             php-docker: 74
@@ -119,27 +84,13 @@ jobs:
             stage: phpunit-unit
 
           # Latest stable MediaWiki - PHP 7.3 (phpunit)
-          - mw: 'REL1_36'
-            php: 7.3
-            php-docker: 73
-            experimental: false
-            stage: phpunit
-
-          # Latest stable MediaWiki - PHP 7.4 (phpunit)
-          - mw: 'REL1_36'
-            php: 7.4
-            php-docker: 74
-            experimental: false
-            stage: phpunit
-
-          # Latest MediaWiki release branch - PHP 7.3 (phpunit)
           - mw: 'REL1_37'
             php: 7.3
             php-docker: 73
             experimental: false
             stage: phpunit
 
-          # Latest MediaWiki release branch - PHP 7.4 (phpunit)
+          # Latest stable MediaWiki - PHP 7.4 (phpunit)
           - mw: 'REL1_37'
             php: 7.4
             php-docker: 74
@@ -161,27 +112,13 @@ jobs:
             stage: phpunit
 
           # Latest stable MediaWiki - PHP 7.3 (phpunit-standalone)
-#          - mw: 'REL1_36'
-#            php: 7.3
-#            php-docker: 73
-#            experimental: false
-#            stage: phpunit-standalone
-
-          # Latest stable MediaWiki - PHP 7.4 (phpunit-standalone)
-#          - mw: 'REL1_36'
-#            php: 7.4
-#            php-docker: 74
-#            experimental: false
-#            stage: phpunit-standalone
-
-          # Latest MediaWiki release branch - PHP 7.3 (phpunit-standalone)
 #          - mw: 'REL1_37'
 #            php: 7.3
 #            php-docker: 73
 #            experimental: false
 #            stage: phpunit-standalone
 
-          # Latest MediaWiki release branch - PHP 7.4 (phpunit-standalone)
+          # Latest stable MediaWiki - PHP 7.4 (phpunit-standalone)
 #          - mw: 'REL1_37'
 #            php: 7.4
 #            php-docker: 74
@@ -203,13 +140,6 @@ jobs:
 #            stage: phpunit-standalone
 
           # Latest stable MediaWiki - PHP 7.3 (selenium)
-          - mw: 'REL1_36'
-            php: 7.3
-            php-docker: 73
-            experimental: false
-            stage: selenium
-
-          # Latest MediaWiki release branch - PHP 7.3 (selenium)
           - mw: 'REL1_37'
             php: 7.3
             php-docker: 73
@@ -224,13 +154,6 @@ jobs:
             stage: selenium
 
           # Latest stable MediaWiki - PHP 7.3 (qunit)
-          - mw: 'REL1_36'
-            php: 7.3
-            php-docker: 73
-            experimental: false
-            stage: qunit
-
-          # Latest MediaWiki release branch - PHP 7.3 (qunit)
           - mw: 'REL1_37'
             php: 7.3
             php-docker: 73
@@ -243,15 +166,8 @@ jobs:
             php-docker: 73
             experimental: true
             stage: qunit
-            
-          # Latest stable MediaWiki - PHP 7.3 (npm-test)
-          - mw: 'REL1_36'
-            php: 7.3
-            php-docker: 73
-            experimental: false
-            stage: npm-test
 
-          # Latest MediaWiki release branch - PHP 7.3 (npm-test)
+          # Latest stable MediaWiki - PHP 7.3 (npm-test)
           - mw: 'REL1_37'
             php: 7.3
             php-docker: 73
@@ -264,15 +180,8 @@ jobs:
             php-docker: 73
             experimental: true
             stage: npm-test
-            
-          # Latest stable MediaWiki - PHP 7.3 (composer-test)
-          - mw: 'REL1_36'
-            php: 7.3
-            php-docker: 73
-            experimental: false
-            stage: composer-test
 
-          # Latest MediaWiki release branch - PHP 7.3 (composer-test)
+          # Latest stable MediaWiki - PHP 7.3 (composer-test)
           - mw: 'REL1_37'
             php: 7.3
             php-docker: 73
