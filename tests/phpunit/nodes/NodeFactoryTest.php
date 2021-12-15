@@ -6,7 +6,7 @@ use PortableInfobox\Parser\Nodes\NodeFactory;
  * @group PortableInfobox
  * @covers PortableInfobox\Parser\Nodes\NodeFactory
  */
-class NodeFactoryTest extends MediaWikiTestCase {
+class NodeFactoryTest extends MediaWikiIntegrationTestCase {
 
 	/**
 	 * @dataProvider newFromXMLProvider
