@@ -1,5 +1,5 @@
 # PortableInfobox
-Port of FANDOM's https://github.com/Wikia/app/tree/dev/extensions/wikia/PortableInfobox extension to MediaWiki 1.36.0+
+Port of FANDOM's https://github.com/Wikia/app/tree/dev/extensions/wikia/PortableInfobox extension to MediaWiki 1.37.0+
 
 ## Installation
 Grab the latest release from [GitHub](https://github.com/Universal-Omega/PortableInfobox) and unpack it into `extensions\PortableInfobox` directory in your MediaWiki installation or clone this repository, by using these commands:
