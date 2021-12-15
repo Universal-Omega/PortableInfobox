@@ -13,7 +13,7 @@ class ApiQueryAllInfoboxes extends ApiQueryBase {
 	 * @param string $moduleName
 	 */
 	public function __construct( ApiQuery $query, $moduleName ) {
-		parent::__construct( $query, $moduleName, 'ai' );
+		parent::__construct( $query, $moduleName, 'api' );
 	}
 
 	public function execute() {
