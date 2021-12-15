@@ -3,7 +3,7 @@
 use ApiTestCase;
 
 /**
- * @group PortableInfobox
+ * @group medium
  * @covers ApiQueryAllInfoboxes
  */
 class QueryAllInfoboxesTest extends ApiTestCase {
