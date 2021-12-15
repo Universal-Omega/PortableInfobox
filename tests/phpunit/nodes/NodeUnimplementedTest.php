@@ -6,7 +6,7 @@ use PortableInfobox\Parser\Nodes\NodeUnimplemented;
  * @group PortableInfobox
  * @covers PortableInfobox\Parser\Nodes\NodeUnimplemented
  */
-class NodeUnimplementedTest extends MediaWikiTestCase {
+class NodeUnimplementedTest extends MediaWikiIntegrationTestCase {
 
 	public function testNewFromXML() {
 		$this->expectException( PortableInfobox\Parser\Nodes\UnimplementedNodeException::class );
