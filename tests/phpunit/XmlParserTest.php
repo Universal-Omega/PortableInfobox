@@ -3,7 +3,7 @@
  * @group PortableInfobox
  * @covers PortableInfobox\Parser\XmlParser
  */
-class XmlParserTest extends MediaWikiTestCase {
+class XmlParserTest extends MediaWikiIntegrationTestCase {
 
 	/** @dataProvider contentTagsDataProvider */
 	public function testXHTMLParsing( $tag, $content ) {
