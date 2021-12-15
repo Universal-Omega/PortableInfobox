@@ -8,6 +8,14 @@ class ApiQueryAllInfoboxes extends ApiQueryBase {
 
 	public const MCACHE_KEY = 'allinfoboxes-list';
 
+	/**
+	 * @param ApiQuery $query
+	 * @param string $moduleName
+	 */
+	public function __construct( ApiQuery $query, $moduleName ) {
+		parent::__construct( $query, $moduleName, 'api' );
+	}
+
 	public function execute() {
 		$db = $this->getDB();
 		$res = $this->getResult();
