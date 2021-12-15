@@ -3,7 +3,7 @@
  * @group PortableInfobox
  * @covers PortableInfobox\Parser\Nodes\NodeNavigation
  */
-class NodeNavigationTest extends MediaWikiTestCase {
+class NodeNavigationTest extends MediaWikiIntegrationTestCase {
 
 	/**
 	 * @covers       PortableInfobox\Parser\Nodes\NodeNavigation::getData
