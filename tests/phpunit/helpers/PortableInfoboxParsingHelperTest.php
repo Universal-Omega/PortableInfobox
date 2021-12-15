@@ -5,7 +5,7 @@
  * @group Database
  * @covers PortableInfobox\Helpers\PortableInfoboxParsingHelper
  */
-class PortableInfoboxParsingHelperTest extends MediaWikiTestCase {
+class PortableInfoboxParsingHelperTest extends MediaWikiIntegrationTestCase {
 
 	/**
 	 * @return bool
