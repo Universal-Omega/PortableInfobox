@@ -20,7 +20,8 @@ class ApiQueryPortableInfobox extends ApiQueryBase {
 		$res = $pageSet->getResult();
 
 		foreach ( $articles as $id => $articleTitle ) {
-			$parsedInfoboxes = PortableInfoboxDataService::newFromTitle( $articleTitle )
+			$title = Title::castFromPageIdentity( $articleTitle );
+			$parsedInfoboxes = PortableInfoboxDataService::newFromTitle( $title )
 				->setPagePropsProxy( $this->propsProxy )
 				->getData();
 
