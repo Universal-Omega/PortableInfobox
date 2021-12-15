@@ -5,7 +5,7 @@ use PortableInfobox\Helpers\FileNamespaceSanitizeHelper;
 
 /**
  * @group PortableInfobox
- * @covers FileNamespaceSanitizeHelper
+ * @covers PortableInfobox\Helpers\FileNamespaceSanitizeHelper
  */
 class FileNamespaceSanitizeHelperTest extends MediaWikiIntegrationTestCase {
 	/** @var FileNamespaceSanitizeHelper $fileNamespaceSanitizeHelper */
