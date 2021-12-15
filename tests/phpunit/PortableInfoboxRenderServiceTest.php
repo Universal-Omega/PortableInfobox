@@ -3,7 +3,7 @@
  * @group PortableInfobox
  * @covers PortableInfoboxRenderService
  */
-class PortableInfoboxRenderServiceTest extends MediaWikiTestCase {
+class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 
 	/**
 	 * @param $html
