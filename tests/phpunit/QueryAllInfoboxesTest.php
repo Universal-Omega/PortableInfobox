@@ -2,13 +2,13 @@
 
 /**
  * @group medium
- * @coversDefaultClass ApiQueryAllInfoboxes
+ * @covers ApiQueryAllInfoboxes
  */
 class QueryAllInfoboxesTest extends ApiTestCase {
 
 	/**
-	 * @covers ::__construct
-	 * @covers ::execute
+	 * @covers ApiQueryAllInfoboxes::__construct
+	 * @covers ApiQueryAllInfoboxes::execute
 	 */
 	public function testQueryAllInfoboxes() {
 		$this->doApiRequest( [
