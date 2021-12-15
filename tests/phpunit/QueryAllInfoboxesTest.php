@@ -1,7 +1,5 @@
 <?php
 
-use ApiTestCase;
-
 /**
  * @group medium
  * @covers ApiQueryAllInfoboxes
