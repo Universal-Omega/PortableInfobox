@@ -3,7 +3,7 @@
  * @group PortableInfobox
  * @covers PortableInfobox\Helpers\PortableInfoboxTemplateEngine
  */
-class PortableInfoboxTemplateEngineTest extends MediaWikiTestCase {
+class PortableInfoboxTemplateEngineTest extends MediaWikiIntegrationTestCase {
 
 	/**
 	 * @covers PortableInfobox\Helpers\PortableInfoboxTemplateEngine::isSupportedType
