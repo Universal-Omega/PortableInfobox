@@ -9,7 +9,7 @@ use PortableInfobox\Parser\Nodes\NodeMedia;
  * @group PortableInfobox
  * @covers PortableInfobox\Parser\Nodes\NodeMedia
  */
-class NodeMediaTest extends MediaWikiTestCase {
+class NodeMediaTest extends MediaWikiIntegrationTestCase {
 
 	/**
 	 * @covers       PortableInfobox\Parser\Nodes\NodeMedia::getGalleryData
