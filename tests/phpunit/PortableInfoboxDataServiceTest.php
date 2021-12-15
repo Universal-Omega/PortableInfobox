@@ -7,7 +7,7 @@ use PortableInfobox\Parser\Nodes\NodeFactory;
  * @group Database
  * @covers PortableInfoboxDataService
  */
-class PortableInfoboxDataServiceTest extends MediaWikiTestCase {
+class PortableInfoboxDataServiceTest extends MediaWikiIntegrationTestCase {
 
 	/**
 	 * @return bool
