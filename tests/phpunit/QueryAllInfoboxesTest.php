@@ -8,8 +8,9 @@ class QueryAllInfoboxesTest extends ApiTestCase {
 
 	/**
 	 * @covers ::__construct
+	 * @covers ::execute
 	 */
-	public function testConstruct() {
+	public function testQueryAllInfoboxes() {
 		$this->doApiRequest( [
 			'action' => 'query',
 			'list' => 'allinfoboxes',
