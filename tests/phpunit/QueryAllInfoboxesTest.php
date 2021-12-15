@@ -2,7 +2,7 @@
 
 /**
  * @group medium
- * @covers ApiQueryAllInfoboxes
+ * @coversDefaultClass ApiQueryAllInfoboxes
  */
 class QueryAllInfoboxesTest extends ApiTestCase {
 
