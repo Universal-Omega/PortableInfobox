@@ -6,7 +6,7 @@ use PortableInfobox\Helpers\PortableInfoboxImagesHelper;
  * @group PortableInfobox
  * @covers PortableInfobox\Helpers\PortableInfoboxImagesHelper
  */
-class PortableInfoboxImagesHelperTest extends MediaWikiTestCase {
+class PortableInfoboxImagesHelperTest extends MediaWikiIntegrationTestCase {
 	private $helper;
 
 	protected function setUp(): void {
