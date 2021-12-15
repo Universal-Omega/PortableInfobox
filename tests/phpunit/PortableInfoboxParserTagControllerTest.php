@@ -6,7 +6,7 @@ use MediaWiki\MediaWikiServices;
  * @group PortableInfobox
  * @covers PortableInfoboxParserTagController
  */
-class PortableInfoboxParserTagControllerTest extends MediaWikiTestCase {
+class PortableInfoboxParserTagControllerTest extends MediaWikiIntegrationTestCase {
 
 	const THEME_PREFIX = PortableInfoboxParserTagController::INFOBOX_THEME_PREFIX;
 	const THEME_DEFAULT = self::THEME_PREFIX . PortableInfoboxParserTagController::DEFAULT_THEME_NAME;

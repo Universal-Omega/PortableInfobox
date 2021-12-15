@@ -3,7 +3,7 @@
  * @group PortableInfobox
  * @covers PortableInfobox\Helpers\InfoboxParamsValidator
  */
-class InfoboxParamsValidatorTest extends MediaWikiTestCase {
+class InfoboxParamsValidatorTest extends MediaWikiIntegrationTestCase {
 	/** @var PortableInfobox\Helpers\InfoboxParamsValidator $InfoboxParamsValidator */
 	private $InfoboxParamsValidator;
 

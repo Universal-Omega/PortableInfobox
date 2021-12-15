@@ -2,14 +2,13 @@
 
 use MediaWiki\MediaWikiServices;
 use PortableInfobox\Helpers\FileNamespaceSanitizeHelper;
-use PHPUnit\Framework\TestCase;
 
 /**
  * @group PortableInfobox
  * @covers PortableInfobox\Helpers\FileNamespaceSanitizeHelper
  */
-class FileNamespaceSanitizeHelperTest extends TestCase {
-	/** @var PortableInfobox\Helpers\FileNamespaceSanitizeHelper $fileNamespaceSanitizeHelper */
+class FileNamespaceSanitizeHelperTest extends MediaWikiIntegrationTestCase {
+	/** @var FileNamespaceSanitizeHelper $fileNamespaceSanitizeHelper */
 	private $fileNamespaceSanitizeHelper;
 
 	protected function setUp(): void {

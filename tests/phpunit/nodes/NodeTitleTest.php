@@ -3,7 +3,7 @@
  * @group PortableInfobox
  * @covers PortableInfobox\Parser\Nodes\NodeTitle
  */
-class NodeTitleTest extends MediaWikiTestCase {
+class NodeTitleTest extends MediaWikiIntegrationTestCase {
 
 	/**
 	 * @covers       PortableInfobox\Parser\Nodes\NodeTitle::getData

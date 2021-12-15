@@ -4,7 +4,7 @@
  * @group PortableInfobox
  * @covers PortableInfobox\Parser\Nodes\NodeInfobox
  */
-class NodeInfoboxTest extends MediaWikiTestCase {
+class NodeInfoboxTest extends MediaWikiIntegrationTestCase {
 
 	/**
 	 * @covers       PortableInfobox\Parser\Nodes\NodeInfobox::getParams

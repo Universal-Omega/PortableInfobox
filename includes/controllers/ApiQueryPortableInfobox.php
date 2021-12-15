@@ -16,11 +16,17 @@ class ApiQueryPortableInfobox extends ApiQueryBase {
 	}
 
 	protected function runOnPageSet( ApiPageSet $pageSet ) {
-		$articles = $pageSet->getGoodTitles();
+		$articles = $pageSet->getGoodPages();
 		$res = $pageSet->getResult();
 
 		foreach ( $articles as $id => $articleTitle ) {
-			$parsedInfoboxes = PortableInfoboxDataService::newFromTitle( $articleTitle )
+			$title = Title::castFromPageIdentity( $articleTitle );
+
+			if ( $title === null ) {
+				continue;
+			}
+
+			$parsedInfoboxes = PortableInfoboxDataService::newFromTitle( $title )
 				->setPagePropsProxy( $this->propsProxy )
 				->getData();
 

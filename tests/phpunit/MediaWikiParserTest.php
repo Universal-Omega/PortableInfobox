@@ -6,7 +6,7 @@ use MediaWiki\MediaWikiServices;
  * @group PortableInfobox
  * @covers PortableInfobox\Parser\MediaWikiParserService
  */
-class MediaWikiParserTest extends MediaWikiTestCase {
+class MediaWikiParserTest extends MediaWikiIntegrationTestCase {
 
 	/** @var Parser */
 	protected $parser;
