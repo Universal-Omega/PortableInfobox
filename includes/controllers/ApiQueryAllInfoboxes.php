@@ -25,7 +25,7 @@ class ApiQueryAllInfoboxes extends ApiQueryBase {
 		$data = $cache->getWithSetCallback( $cachekey, self::CACHE_TTL, function () use ( $db ) {
 			$out = [];
 
-			$res = ( new AllinfoboxesQueryPage() )->doQuery();
+			$res = ( new AllInfoboxesQueryPage() )->doQuery();
 			foreach ( $res as $row ) {
 				$out[] = [
 					'pageid' => $row->value,
