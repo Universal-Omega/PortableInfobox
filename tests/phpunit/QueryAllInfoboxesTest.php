@@ -1,6 +1,8 @@
 <?php
 
 /**
+ * @group PortableInfobox
+ * @group Database
  * @group medium
  * @coversDefaultClass ApiQueryAllInfoboxes
  */
