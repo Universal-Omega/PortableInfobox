@@ -359,7 +359,7 @@
 
 		clearChildren() {
 			this.children = [];
-			this.element.empty();
+			$( this.element ).empty();
 			dataId = 0;
 		}
 
