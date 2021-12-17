@@ -339,7 +339,6 @@
 		constructor( params ) {
 			super( document.implementation.createDocument( '', '' ), params );
 
-			this.$element = [];
 			this.children = [];
 			this.elementClasses = 'portable-infobox pi-background';
 			this.elementSelectable = false;
