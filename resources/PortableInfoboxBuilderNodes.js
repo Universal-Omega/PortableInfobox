@@ -394,7 +394,7 @@
 				tolerance: 'pointer',
 				deactivate: ( e, ui ) => {
 					ui.item.attr( 'style', '' );
-					this.reorderChildren( this.$element.sortable( 'toArray' ), true );
+					this.reorderChildren( $( this.element ).sortable( 'toArray' ), true );
 				}
 			} );
 
