@@ -251,7 +251,7 @@
 					return;
 				}
 
-				this.api.postWithToken( {
+				this.api.postWithToken( 'csrf', {
 					action: 'edit',
 					title: title,
 					text: this.getInfoboxMarkup(),
