@@ -367,7 +367,7 @@
 			let i = this.children.indexOf( children );
 			if ( i >= 0 ) {
 				this.children.splice( i, 1 );
-				children.$element.remove();
+				$( children.element ).remove();
 			}
 		}
 
