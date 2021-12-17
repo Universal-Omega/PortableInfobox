@@ -175,7 +175,7 @@
 		}
 
 		remove() {
-			this.$element.remove();
+			$( this.element ).remove();
 		}
 
 		supports() {
