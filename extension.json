@@ -7,7 +7,7 @@
 	],
 	"url": "https://github.com/Universal-Omega/PortableInfobox",
 	"descriptionmsg": "portable-infobox-desc",
-	"version": "0.5",
+	"version": "0.6",
 	"type": "parserhook",
 	"license-name": "GPL-3.0-or-later",
 	"requires": {
@@ -53,6 +53,42 @@
 				"desktop",
 				"mobile"
 			]
+		},
+		"ext.PortableInfoboxBuilder": {
+			"scripts": [
+				"resources/PortableInfoboxBuilderNodes.js",
+				"resources/PortableInfoboxBuilder.js"
+			],
+			"styles": "resources/PortableInfoboxBuilder.less",
+			"dependencies": [
+				"mediawiki.jqueryMsg",
+				"jquery.ui",
+				"oojs-ui-core",
+				"oojs-ui-widgets",
+				"oojs-ui-windows"
+			],
+			"messages": [
+				"confirmable-confirm",
+				"infoboxbuilder-action-addnode",
+				"infoboxbuilder-action-clear",
+				"infoboxbuilder-action-deletenode",
+				"infoboxbuilder-action-publish",
+				"infoboxbuilder-editerror",
+				"infoboxbuilder-editerrorunknown",
+				"infoboxbuilder-editsummary",
+				"infoboxbuilder-node-title",
+				"infoboxbuilder-node-title-value",
+				"infoboxbuilder-node-title-value-pagename",
+				"infoboxbuilder-node-data",
+				"infoboxbuilder-node-data-value-source",
+				"infoboxbuilder-node-media",
+				"infoboxbuilder-nodeerror-invalidsource",
+				"infoboxbuilder-nodeerror-nosourceordefault",
+				"infoboxbuilder-nodeparam-default",
+				"infoboxbuilder-nodeparam-label",
+				"infoboxbuilder-nodeparam-source",
+				"infoboxbuilder-templatename"
+			]
 		}
 	},
 	"ResourceFileModulePaths": {
@@ -73,7 +109,8 @@
 		"ApiPortableInfobox": "includes/controllers/ApiPortableInfobox.php",
 		"ApiQueryPortableInfobox": "includes/controllers/ApiQueryPortableInfobox.php",
 		"ApiQueryAllInfoboxes": "includes/controllers/ApiQueryAllInfoboxes.php",
-		"AllInfoboxesQueryPage": "includes/querypage/AllInfoboxesQueryPage.php"
+		"AllInfoboxesQueryPage": "includes/querypage/AllInfoboxesQueryPage.php",
+		"SpecialPortableInfoboxBuilder": "includes/specials/SpecialPortableInfoboxBuilder.php"
 	},
 	"Hooks": {
 		"ParserFirstCallInit": "PortableInfoboxParserTagController::parserTagInit",
@@ -85,7 +122,8 @@
 		"ResourceLoaderRegisterModules": "PortableInfoboxHooks::onResourceLoaderRegisterModules"
 	},
 	"SpecialPages": {
-		"AllInfoboxes": "AllInfoboxesQueryPage"
+		"AllInfoboxes": "AllInfoboxesQueryPage",
+		"InfoboxBuilder": "SpecialPortableInfoboxBuilder"
 	},
 	"APIModules": {
 		"infobox": "ApiPortableInfobox"

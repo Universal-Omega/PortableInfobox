@@ -4,10 +4,12 @@ $specialPageAliases = [];
 
 /** English **/
 $specialPageAliases['en'] = [
-	'AllInfoboxes' => [ 'AllInfoboxes' ]
+	'AllInfoboxes' => [ 'AllInfoboxes' ],
+	'InfoboxBuilder' => [ 'InfoboxBuilder' ]
 ];
 
 /** Polish */
 $specialPageAliases['pl'] = [
-	'AllInfoboxes' => [ 'Wszystkie infoboksy' ]
+	'AllInfoboxes' => [ 'Wszystkie infoboksy' ],
+	'InfoboxBuilder' => [ 'Kreator infoboksów' ]
 ];
