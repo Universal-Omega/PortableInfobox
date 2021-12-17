@@ -349,7 +349,7 @@
 		addChildren( children ) {
 			if ( children instanceof PINode ) {
 				this.children.push( children );
-				this.$element.append( children.html() );
+				this.element.append( children.html() );
 			}
 		}
 
@@ -359,7 +359,7 @@
 
 		clearChildren() {
 			this.children = [];
-			this.$element.empty();
+			this.element.empty();
 			dataId = 0;
 		}
 
