@@ -316,7 +316,7 @@
 			a.className = 'image image-thumbnail';
 			a.appendChild( img );
 			img.className = 'pi-image-thumbnail';
-			img.src = '/resources/assets/mediawiki.png';
+			img.src = mw.config.get( 'wgScriptPath' ) + '/resources/assets/mediawiki.png';
 			this.element.appendChild( a );
 
 			return this.element;
