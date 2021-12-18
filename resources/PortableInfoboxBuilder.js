@@ -233,12 +233,10 @@
 				}
 			}
 
-			console.log( this.xmlSerializer.serializeToString( markup ) );
 			return this.xmlSerializer.serializeToString( markup );
 		}
 
 		publishInfobox() {
-			console.log( this.getInfoboxMarkup() );
 			OO.ui.prompt( this.msg( 'templatename' ), {
 				size: 'large',
 				textInput: {
