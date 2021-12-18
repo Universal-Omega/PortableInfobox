@@ -52,7 +52,7 @@ jobs:
           - mw: 'master'
             php: 7.3
             php-docker: 73
-            experimental: true
+            experimental: false
             stage: coverage
 
           # Latest stable MediaWiki - PHP 7.3 (phpunit-unit)
@@ -73,7 +73,7 @@ jobs:
           - mw: 'master'
             php: 7.3
             php-docker: 73
-            experimental: true
+            experimental: false
             stage: phpunit-unit
 
           # Latest MediaWiki master - PHP 7.4 (phpunit-unit)
@@ -101,43 +101,15 @@ jobs:
           - mw: 'master'
             php: 7.3
             php-docker: 73
-            experimental: true
+            experimental: false
             stage: phpunit
 
           # Latest MediaWiki master - PHP 7.4 (phpunit)
           - mw: 'master'
             php: 7.4
             php-docker: 74
-            experimental: true
+            experimental: false
             stage: phpunit
-
-          # Latest stable MediaWiki - PHP 7.3 (phpunit-standalone)
-#          - mw: 'REL1_37'
-#            php: 7.3
-#            php-docker: 73
-#            experimental: false
-#            stage: phpunit-standalone
-
-          # Latest stable MediaWiki - PHP 7.4 (phpunit-standalone)
-#          - mw: 'REL1_37'
-#            php: 7.4
-#            php-docker: 74
-#            experimental: false
-#            stage: phpunit-standalone
-
-          # Latest MediaWiki master - PHP 7.3 (phpunit-standalone)
-#          - mw: 'master'
-#            php: 7.3
-#            php-docker: 73
-#            experimental: true
-#            stage: phpunit-standalone
-
-          # Latest MediaWiki master - PHP 7.4 (phpunit-standalone)
-#          - mw: 'master'
-#            php: 7.4
-#            php-docker: 74
-#            experimental: true
-#            stage: phpunit-standalone
 
           # Latest stable MediaWiki - PHP 7.3 (selenium)
           - mw: 'REL1_37'
@@ -150,7 +122,7 @@ jobs:
           - mw: 'master'
             php: 7.3
             php-docker: 73
-            experimental: true
+            experimental: false
             stage: selenium
 
           # Latest stable MediaWiki - PHP 7.3 (qunit)
@@ -164,7 +136,7 @@ jobs:
           - mw: 'master'
             php: 7.3
             php-docker: 73
-            experimental: true
+            experimental: false
             stage: qunit
 
           # Latest stable MediaWiki - PHP 7.3 (npm-test)
@@ -173,26 +145,12 @@ jobs:
             php-docker: 73
             experimental: false
             stage: npm-test
-
-          # Latest MediaWiki master - PHP 7.3 (npm-test)
-          - mw: 'master'
-            php: 7.3
-            php-docker: 73
-            experimental: true
-            stage: npm-test
-
+  
           # Latest stable MediaWiki - PHP 7.3 (composer-test)
           - mw: 'REL1_37'
             php: 7.3
             php-docker: 73
             experimental: false
-            stage: composer-test
-
-          # Latest MediaWiki master - PHP 7.3 (composer-test)
-          - mw: 'master'
-            php: 7.3
-            php-docker: 73
-            experimental: true
             stage: composer-test
 
     runs-on: ubuntu-latest
@@ -205,13 +163,19 @@ jobs:
       PHAN_DOCKER_IMAGE: mediawiki-phan-php${{ matrix.php-docker }}
 
     steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.9.1
+        with:
+          access_token: ${{ github.token }}
+
       - uses: actions/checkout@v2
 
       # /home/runner/cache/                               Cache
       # /home/runner/src/                                 Mediawiki installation
       # /home/runner/src/extensions/EXTENSION_NAME/       Clone of the extension repository
       # /home/runner/docker-images/                       Docker images which exported with docker-save command
-      # $GITHUB_WORKSPACE/.github/workflows/dependencies  Used by actions/cache
+      # $GITHUB_WORKSPACE/.github/workflows/dependencies  Necessary dependencies - YAML syntax
+      # $GITHUB_WORKSPACE/.github/workflows/globals.php   Add global configuration options for MediaWiki
       - name: Set up
         run: |
           echo MEDIAWIKI_VERSION="${{ matrix.mw }}" >> $GITHUB_ENV
@@ -276,10 +240,20 @@ jobs:
             for dep in $DEPENDENCIES; do
               dependency=$(echo $dep | cut -d'|' -f1)
               repository=$(echo $dep | cut -sd'|' -f2)
-              branch=$(echo $dep | cut -sd'|' -f3)
-              git clone --recurse-submodules -b "${branch:-${MEDIAWIKI_VERSION}}" --depth 1 "${repository:-https://gerrit.wikimedia.org/r/${dep}}" src/"$(echo $dependency | cut -d'/' -f2,3)"
+              branch=$(echo $dep | rev | cut -sd'|' -f1 | rev)
+
+              if [ $repository == $branch ]; then
+                repository=""
+              fi
+
+              git clone --recurse-submodules -b "${branch:-${MEDIAWIKI_VERSION}}" --depth 1 "${repository:-https://gerrit.wikimedia.org/r/${dependency}}" src/"$(echo $dependency | cut -d'/' -f2,3)"
             done
           fi
+
+          if [ -e "$GITHUB_WORKSPACE"/.github/workflows/globals.php ]; then
+            echo 'require_once __DIR__ . "/../extensions/${{ github.event.repository.name }}/.github/workflows/globals.php";' >> src/includes/DevelopmentSettings.php
+          fi
+
           git -C src/ log -n 1 --format="%H"
 
       - name: Cache dependencies (composer and npm)
@@ -300,6 +274,28 @@ jobs:
         run: |
           if [ -e composer.json ]; then
             composer install --prefer-dist --no-progress --no-interaction
+          fi
+
+      - name: Fix PHPCS violations
+        continue-on-error: true
+        if: ${{ github.event_name == 'pull_request' && matrix.stage == 'composer-test' }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if [ -e composer.json ]; then
+            composer install --prefer-dist --no-progress --no-interaction
+            composer fix
+
+            rm composer.lock
+
+            git config --global user.name "github-actions"
+            git config --global user.email "github-actions@users.noreply.github.com"
+            git remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+            git checkout -b ${GITHUB_HEAD_REF}
+            git add .
+            git commit -am "CI: lint code to MediaWiki standards" -m "Check commit and GitHub actions for more details" || echo "No changes to commit"
+            git pull origin ${GITHUB_HEAD_REF} --rebase
+            git push --set-upstream origin ${GITHUB_HEAD_REF}
           fi
 
       - name: Main Test
