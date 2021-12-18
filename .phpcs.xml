@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <ruleset>
 	<file>.</file>
+	<exclude-pattern>*/tests/*</exclude-pattern>
 	<rule ref="./vendor/mediawiki/mediawiki-codesniffer/MediaWiki">
 		<exclude name="Generic.Files.LineLength.TooLong" />
 		<exclude name="MediaWiki.Commenting" />
