@@ -256,7 +256,9 @@
 					title: title,
 					text: this.getInfoboxMarkup(),
 					summary: this.msg( 'editsummary' ),
-					notminor: true
+					notminor: true,
+					recreate: true,
+					createonly: true
 				} ).done( () => {
 					window.location.assign( mw.config.get( 'wgArticlePath' ).replace( '$1', title ) )
 				} ).fail( ( code, err ) => {
