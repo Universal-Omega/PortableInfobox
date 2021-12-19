@@ -1,5 +1,5 @@
 {
-	"portable-infobox-desc": "Create portable infoboxes which can be rendered using clean semantic HTML markup on any skin / platform using using easy to understand powerful XML-like markup",
+	"portable-infobox-desc": "Create portable infoboxes which can be rendered using clean semantic HTML markup on any skin / platform using using easy to understand powerful XML-like markup. Also includes a portable infobox builder at [[Special:InfoboxBuilder]].",
 	"portable-infobox-unimplemented-infobox-tag": "Unimplemented infobox tag: <$1>",
 	"portable-infobox-xml-parse-error-info": "There is a problem with parsing the infobox",
 	"portable-infobox-xml-parse-error": "Incorrect XML markup. Please validate your XML",
