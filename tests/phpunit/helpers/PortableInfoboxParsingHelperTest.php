@@ -8,13 +8,6 @@
 class PortableInfoboxParsingHelperTest extends MediaWikiIntegrationTestCase {
 
 	/**
-	 * @return bool
-	 */
-	public function needsDB() {
-		return true;
-	}
-
-	/**
 	 * @dataProvider parsingIncludeonlyInfoboxesDataProvider
 	 */
 	public function testParsingIncludeonlyInfoboxes( $markup, $expected ) {
