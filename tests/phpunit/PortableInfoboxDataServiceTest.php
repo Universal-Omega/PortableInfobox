@@ -10,13 +10,6 @@ use PortableInfobox\Parser\Nodes\NodeFactory;
 class PortableInfoboxDataServiceTest extends MediaWikiIntegrationTestCase {
 
 	/**
-	 * @return bool
-	 */
-	public function needsDB() {
-		return true;
-	}
-
-	/**
 	 * @param $id
 	 * @param int $ns
 	 *
