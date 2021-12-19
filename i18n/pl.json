@@ -13,7 +13,7 @@
 	"portable-infobox-xml-parse-error-tag-name-mismatch": "Niezgodność otwierającego i kończącego znacznika",
 	"portable-infobox-xml-parse-error-tag-not-finished": "Przedwczesny koniec znacznika",
 	"portable-infobox-xml-parse-error-infobox-tag-attribute-unsupported": "Atrybut \"$1\" nie jest obsługiwany w tagu <infobox>",
-	"allinfoboxes": "Wszystkie infoboksy",
+	"allinfoboxes": "Wszystkie Infoboksy",
 	"apihelp-infobox-summary": "Parsuje kod infoboksu",
 	"apihelp-infobox-param-text": "Infoboks do przeparsowania (w formacie XML)",
 	"apihelp-infobox-param-title": "Tytuł strony",
@@ -21,7 +21,6 @@
 	"apihelp-query+allinfoboxes-summary": "Wymień wszystkie infoboksy",
 	"apihelp-query+infobox-summary": "Pobierz metadane infoboksu",
 	"apiwarn-infobox-invalidargs": "Nieprawidłowy format parametru args",
-	"infoboxbuilder": "Kreator infoboksów",
 	"infoboxbuilder-action-addnode": "Dodaj element infoboksu",
 	"infoboxbuilder-action-clear": "Wyczyść infoboks",
 	"infoboxbuilder-action-deletenode": "Usuń element",
@@ -40,5 +39,6 @@
 	"infoboxbuilder-nodeparam-default": "Domyślna wartosć",
 	"infoboxbuilder-nodeparam-label": "Etykieta",
 	"infoboxbuilder-nodeparam-source": "Parametr",
-	"infoboxbuilder-templatename": "Nazwa szablonu"
+	"infoboxbuilder-templatename": "Nazwa szablonu",
+	"portableinfoboxbuilder": "Kreator Infoboksów"
 }

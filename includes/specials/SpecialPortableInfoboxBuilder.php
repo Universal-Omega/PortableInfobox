@@ -3,7 +3,7 @@
 class SpecialPortableInfoboxBuilder extends SpecialPage {
 	public function __construct() {
 		$restriction = $this->getConfig()->get( 'NamespaceProtection' )[NS_TEMPLATE] ?? '';
-		parent::__construct( 'InfoboxBuilder', $restriction );
+		parent::__construct( 'PortableInfoboxBuilder', $restriction );
 	}
 
 	public function execute( $par ) {
