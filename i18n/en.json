@@ -13,7 +13,7 @@
 	"portable-infobox-xml-parse-error-tag-name-mismatch": "Opening and ending tag mismatch",
 	"portable-infobox-xml-parse-error-tag-not-finished": "Premature end of tag",
 	"portable-infobox-xml-parse-error-infobox-tag-attribute-unsupported": "Attribute \"$1\" is not supported in <infobox> tag",
-	"allinfoboxes": "All infoboxes",
+	"allinfoboxes": "All Infoboxes",
 	"apihelp-infobox-summary": "This module provides infobox parser",
 	"apihelp-infobox-param-text": "Infobox to parse (xml string)",
 	"apihelp-infobox-param-title": "Title of page the text belongs to",
@@ -21,7 +21,6 @@
 	"apihelp-query+allinfoboxes-summary": "List all infoboxes",
 	"apihelp-query+infobox-summary": "Get infobox metadata",
 	"apiwarn-infobox-invalidargs": "Args param format is incorrect",
-	"infoboxbuilder": "Infobox builder",
 	"infoboxbuilder-action-addnode": "Add infobox elements",
 	"infoboxbuilder-action-clear": "Clear infobox",
 	"infoboxbuilder-action-deletenode": "Delete element",
@@ -40,5 +39,6 @@
 	"infoboxbuilder-nodeparam-default": "Default value",
 	"infoboxbuilder-nodeparam-label": "Label",
 	"infoboxbuilder-nodeparam-source": "Source parameter",
-	"infoboxbuilder-templatename": "Template name"
+	"infoboxbuilder-templatename": "Template name",
+	"portableinfoboxbuilder": "Portable Infobox Builder"
 }
