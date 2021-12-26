@@ -30,7 +30,7 @@ jobs:
           # Latest stable MediaWiki - PHP 8.0 (phan)
           - mw: 'REL1_37'
             php: 8.0
-            php-docker: 74
+            php-docker: 80
             experimental: false
             stage: phan
 
@@ -119,7 +119,7 @@ jobs:
             stage: phpunit
 
           # Latest MediaWiki master - PHP 8.0 (phpunit)
-          - mw: 'master'
+          - mw: 'REL1_37'
             php: 8.0
             php-docker: 80
             experimental: true
