@@ -245,13 +245,15 @@
 					required: true
 				}
 			} ).done( ( title ) => {
-				if ( title === null || title.trim() === "" ) {
+				if ( title === null || title.trim() === '' ) {
 					return;
 				}
 
+				let namespace = ( title.substring( 0, 9 ) !== 'Template:' ? 'Template:' : '' );
+
 				this.api.postWithToken( 'csrf', {
 					action: 'edit',
-					title: title,
+					title: namespace + title,
 					text: this.getInfoboxMarkup(),
 					summary: this.msg( 'editsummary' ),
 					notminor: true,
