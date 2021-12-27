@@ -237,15 +237,17 @@
 		}
 
 		publishInfobox() {
+			let namespace = ( this.config.title.substring( 0, 9 ) !== 'Template:' ? 'Template:' : '' );
+
 			OO.ui.prompt( this.msg( 'templatename' ), {
 				size: 'large',
 				textInput: {
 					placeholder: this.msg( 'templatename' ),
-					value: this.config.title,
+					value: namespace + this.config.title,
 					required: true
 				}
 			} ).done( ( title ) => {
-				if ( title === null || title.trim() === "" ) {
+				if ( title === null || title.trim() === '' ) {
 					return;
 				}
 
