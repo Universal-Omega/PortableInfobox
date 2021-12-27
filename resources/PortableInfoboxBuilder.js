@@ -237,13 +237,11 @@
 		}
 
 		publishInfobox() {
-			let namespace = ( this.config.title.substring( 0, 9 ) !== 'Template:' ? 'Template:' : '' );
-
 			OO.ui.prompt( this.msg( 'templatename' ), {
 				size: 'large',
 				textInput: {
 					placeholder: this.msg( 'templatename' ),
-					value: namespace + this.config.title,
+					value: this.config.title,
 					required: true
 				}
 			} ).done( ( title ) => {
@@ -251,9 +249,11 @@
 					return;
 				}
 
+				let namespace = ( title.substring( 0, 9 ) !== 'Template:' ? 'Template:' : '' );
+
 				this.api.postWithToken( 'csrf', {
 					action: 'edit',
-					title: title,
+					title: namespace + title,
 					text: this.getInfoboxMarkup(),
 					summary: this.msg( 'editsummary' ),
 					notminor: true,
