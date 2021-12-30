@@ -12,6 +12,8 @@ class SpecialPortableInfoboxBuilder extends SpecialPage {
 		$this->setHeaders();
 		$out->enableOOUI();
 
+		$this->checkPermissions();
+
 		$out->addModules( [ 'ext.PortableInfobox.styles', 'ext.PortableInfoboxBuilder' ] );
 		$out->addHTML(
 			'<div id="mw-infoboxbuilder" data-title="' . str_replace( '"', '&quot;', $par ) . '">' .
