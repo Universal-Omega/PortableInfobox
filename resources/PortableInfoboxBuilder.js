@@ -249,18 +249,18 @@
 					return;
 				}
 
-				let namespace = ( title.substring( 0, 9 ) !== 'Template:' ? 'Template:' : '' ),
-					template = title + namespace;
+				let namespace = ( title.substring( 0, 9 ) !== 'Template:' ? 'Template:' : '' );
+
 				this.api.postWithToken( 'csrf', {
 					action: 'edit',
-					title: template,
+					title: namespace + title,
 					text: this.getInfoboxMarkup(),
 					summary: this.msg( 'editsummary' ),
 					notminor: true,
 					recreate: true,
 					createonly: true
 				} ).done( () => {
-					window.location.assign( mw.config.get( 'wgArticlePath' ).replace( '$1', template ) )
+					window.location.assign( mw.config.get( 'wgArticlePath' ).replace( '$1', namespace + title ) )
 				} ).fail( ( code, err ) => {
 					OO.ui.alert(
 						err.error && err.error.info ? this.msg( 'editerror', err.error.info ) :
