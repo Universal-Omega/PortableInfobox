@@ -260,7 +260,7 @@
 					recreate: true,
 					createonly: true
 				} ).done( () => {
-					window.location.assign( mw.config.get( 'wgArticlePath' ).replace( '$1', title ) )
+					window.location.assign( mw.config.get( 'wgArticlePath' ).replace( '$1', namespace + title ) )
 				} ).fail( ( code, err ) => {
 					OO.ui.alert(
 						err.error && err.error.info ? this.msg( 'editerror', err.error.info ) :
