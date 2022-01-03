@@ -250,17 +250,17 @@
 				}
 
 				let namespace = ( title.substring( 0, 9 ) !== 'Template:' ? 'Template:' : '' ),
-					page = title + namespace;
+					template = title + namespace;
 				this.api.postWithToken( 'csrf', {
 					action: 'edit',
-					title: page,
+					title: template,
 					text: this.getInfoboxMarkup(),
 					summary: this.msg( 'editsummary' ),
 					notminor: true,
 					recreate: true,
 					createonly: true
 				} ).done( () => {
-					window.location.assign( mw.config.get( 'wgArticlePath' ).replace( '$1', page ) )
+					window.location.assign( mw.config.get( 'wgArticlePath' ).replace( '$1', template ) )
 				} ).fail( ( code, err ) => {
 					OO.ui.alert(
 						err.error && err.error.info ? this.msg( 'editerror', err.error.info ) :
