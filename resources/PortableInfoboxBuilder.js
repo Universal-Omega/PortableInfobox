@@ -249,7 +249,8 @@
 					return;
 				}
 
-				let namespace = ( title.substring( 0, 9 ) !== 'Template:' ? 'Template:' : '' );
+				let template = mw.config.get( 'wgFormattedNamespaces' )[10],
+					namespace = ( title.substring( 0, template.length ) !== template ? ( template + ':' ) : '' );
 
 				this.api.postWithToken( 'csrf', {
 					action: 'edit',
