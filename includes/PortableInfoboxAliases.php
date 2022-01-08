@@ -5,7 +5,7 @@ $specialPageAliases = [];
 /** English **/
 $specialPageAliases['en'] = [
 	'AllInfoboxes' => [ 'AllInfoboxes' ],
-	'PortableInfoboxBuilder' => [ 'PortableInfoboxBuilder' ]
+	'PortableInfoboxBuilder' => [ 'InfoboxBuilder', 'PortableInfoboxBuilder' ]
 ];
 
 /** Polish */
