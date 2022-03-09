@@ -3,6 +3,7 @@
 namespace PortableInfobox\Parser;
 
 use MediaWiki\MediaWikiServices;
+use PageImages\Hooks\ParserFileProcessingHookHandlers;
 
 class MediaWikiParserService implements ExternalParser {
 
@@ -87,12 +88,21 @@ class MediaWikiParserService implements ExternalParser {
 		$this->parser->getOutput()->addImage( $title->getDBkey(), $tmstmp, $sha1 );
 
 		// Pass PI images to PageImages extension if available (Popups and og:image)
-		if ( \method_exists(
-			'\PageImages\Hooks\ParserFileProcessingHookHandlers', 'onParserMakeImageParams'
+		if ( method_exists(
+			ParserFileProcessingHookHandlers::class, 'onParserMakeImageParams'
 		) ) {
 			$params = [];
-			\PageImages\Hooks\ParserFileProcessingHookHandlers::onParserMakeImageParams(
+			ParserFileProcessingHookHandlers::onParserMakeImageParams(
 				$title, $file, $params, $this->parser
+			);
+		} elseif ( method_exists(
+			ParserFileProcessingHookHandlers::class, 'onParserModifyImageHTML'
+		) ) {
+			// 1.38+
+			$params = [];
+			$html = '';
+			ParserFileProcessingHookHandlers::onParserModifyImageHTML(
+				$this->parser, $file, $params, $html
 			);
 		}
 	}
