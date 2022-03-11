@@ -7,10 +7,10 @@ use DOMXpath;
 use File;
 use MediaWiki\MediaWikiServices;
 use Parser;
-use PortableInfoboxRenderService;
 use PortableInfobox\Helpers\FileNamespaceSanitizeHelper;
 use PortableInfobox\Helpers\PortableInfoboxDataBag;
 use PortableInfobox\Helpers\PortableInfoboxImagesHelper;
+use PortableInfoboxRenderService;
 use Title;
 
 class NodeMedia extends Node {
