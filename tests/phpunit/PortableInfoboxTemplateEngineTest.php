@@ -1,18 +1,21 @@
 <?php
+
+use PortableInfobox\Helpers\PortableInfoboxTemplateEngine;
+
 /**
  * @group PortableInfobox
- * @covers PortableInfobox\Helpers\PortableInfoboxTemplateEngine
+ * @coversDefaultClass \PortableInfobox\Helpers\PortableInfoboxTemplateEngine
  */
 class PortableInfoboxTemplateEngineTest extends MediaWikiIntegrationTestCase {
 
 	/**
-	 * @covers PortableInfobox\Helpers\PortableInfoboxTemplateEngine::isSupportedType
+	 * @covers ::isSupportedType
 	 * @dataProvider isTypeSupportedInTemplatesDataProvider
 	 */
 	public function testIsTypeSupportedInTemplates( $type, $result, $description ) {
 		$this->assertEquals(
 			$result,
-			PortableInfobox\Helpers\PortableInfoboxTemplateEngine::isSupportedType( $type ),
+			PortableInfoboxTemplateEngine::isSupportedType( $type ),
 			$description
 		);
 	}
