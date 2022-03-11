@@ -4,6 +4,7 @@ use PortableInfobox\Parser\Nodes\NodeFactory;
 
 /**
  * @group PortableInfobox
+ * @covers \PortableInfobox\Parser\Nodes\NodeTitle
  * @coversDefaultClass \PortableInfobox\Parser\Nodes\NodeTitle
  */
 class NodeTitleTest extends MediaWikiIntegrationTestCase {
