@@ -1,7 +1,7 @@
 <?php
 /**
  * @group PortableInfobox
- * @covers PortableInfoboxRenderService
+ * @coversDefaultClass PortableInfoboxRenderService
  */
 class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 
@@ -23,8 +23,7 @@ class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers PortableInfoboxRenderService::renderInfobox
-	 * @covers PortableInfobox\Helpers\PortableInfoboxTemplateEngine
+	 * @covers ::renderInfobox
 	 * @param $input
 	 * @param $expectedOutput
 	 * @param $description
