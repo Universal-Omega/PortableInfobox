@@ -1,8 +1,11 @@
 <?php
 
 use MediaWiki\MediaWikiServices;
+use Nodes\NodeFactory;
+use Nodes\NodeInfobox;
 use PortableInfobox\Helpers\InfoboxParamsValidator;
 use PortableInfobox\Helpers\InvalidInfoboxParamsException;
+use PortableInfobox\Parser\MediaWikiParserService;
 use PortableInfobox\Parser\Nodes;
 use PortableInfobox\Parser\Nodes\UnimplementedNodeException;
 use PortableInfobox\Parser\XmlMarkupParseErrorException;
@@ -89,14 +92,14 @@ class PortableInfoboxParserTagController {
 	 */
 	public function prepareInfobox( $markup, Parser $parser, PPFrame $frame, $params = null ) {
 		$frameArguments = $frame->getArguments();
-		$infoboxNode = Nodes\NodeFactory::newFromXML( $markup, $frameArguments ?: [] );
+		$infoboxNode = NodeFactory::newFromXML( $markup, $frameArguments ?: [] );
 		$infoboxNode->setExternalParser(
-			new PortableInfobox\Parser\MediaWikiParserService( $parser, $frame )
+			new MediaWikiParserService( $parser, $frame )
 		);
 
 		// get params if not overridden
 		if ( !isset( $params ) ) {
-			$params = ( $infoboxNode instanceof Nodes\NodeInfobox ) ? $infoboxNode->getParams() : [];
+			$params = ( $infoboxNode instanceof NodeInfobox ) ? $infoboxNode->getParams() : [];
 		}
 
 		$this->getParamsValidator()->validateParams( $params );
@@ -148,7 +151,7 @@ class PortableInfoboxParserTagController {
 		return [ $renderedValue, 'markerType' => 'nowiki' ];
 	}
 
-	protected function saveToParserOutput( \ParserOutput $parserOutput, Nodes\NodeInfobox $raw ) {
+	protected function saveToParserOutput( ParserOutput $parserOutput, NodeInfobox $raw ) {
 		// parser output stores this in page_props table,
 		// therefore we can reuse the data in data provider service
 		// (see: PortableInfoboxDataService.class.php)
