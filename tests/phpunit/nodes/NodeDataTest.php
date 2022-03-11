@@ -6,6 +6,7 @@ use PortableInfobox\Parser\SimpleParser;
 
 /**
  * @group PortableInfobox
+ * @covers \PortableInfobox\Parser\Nodes\Node
  * @coversDefaultClass \PortableInfobox\Parser\Nodes\Node
  */
 class NodeDataTest extends MediaWikiIntegrationTestCase {
