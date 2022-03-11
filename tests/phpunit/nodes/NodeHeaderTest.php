@@ -1,20 +1,23 @@
 <?php
+
+use PortableInfobox\Parser\Nodes\NodeFactory;
+
 /**
  * @group PortableInfobox
- * @covers PortableInfobox\Parser\Nodes\NodeHeader
+ * @coversDefaultClass \PortableInfobox\Parser\Nodes\NodeHeader
  */
 class NodeHeaderTest extends MediaWikiIntegrationTestCase {
 
 	/**
-	 * @covers       PortableInfobox\Parser\Nodes\NodeHeader::getData
-	 * @covers       PortableInfobox\Parser\Nodes\Node::getInnerValue
+	 * @covers ::getData
+	 * @covers \PortableInfobox\Parser\Nodes\Node::getInnerValue
 	 * @dataProvider dataProvider
 	 *
 	 * @param $markup
 	 * @param $expected
 	 */
 	public function testData( $markup, $expected ) {
-		$node = PortableInfobox\Parser\Nodes\NodeFactory::newFromXML( $markup );
+		$node = NodeFactory::newFromXML( $markup );
 
 		$this->assertEquals( $expected, $node->getData() );
 	}
