@@ -1,12 +1,11 @@
 <?php
 
 use MediaWiki\MediaWikiServices;
-use Nodes\NodeFactory;
-use Nodes\NodeInfobox;
 use PortableInfobox\Helpers\InfoboxParamsValidator;
 use PortableInfobox\Helpers\InvalidInfoboxParamsException;
 use PortableInfobox\Parser\MediaWikiParserService;
-use PortableInfobox\Parser\Nodes;
+use PortableInfobox\Parser\Nodes\NodeFactory;
+use PortableInfobox\Parser\Nodes\NodeInfobox;
 use PortableInfobox\Parser\Nodes\UnimplementedNodeException;
 use PortableInfobox\Parser\XmlMarkupParseErrorException;
 
