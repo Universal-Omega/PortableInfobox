@@ -4,7 +4,7 @@ use PortableInfobox\Helpers\PortableInfoboxImagesHelper;
 
 /**
  * @group PortableInfobox
- * @covers PortableInfobox\Helpers\PortableInfoboxImagesHelper
+ * @covers \PortableInfobox\Helpers\PortableInfoboxImagesHelper
  */
 class PortableInfoboxImagesHelperTest extends MediaWikiIntegrationTestCase {
 	private $helper;

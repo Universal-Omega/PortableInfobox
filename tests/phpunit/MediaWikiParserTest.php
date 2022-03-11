@@ -1,10 +1,11 @@
 <?php
 
 use MediaWiki\MediaWikiServices;
+use PortableInfobox\Parser\MediaWikiParserService;
 
 /**
  * @group PortableInfobox
- * @covers PortableInfobox\Parser\MediaWikiParserService
+ * @covers \PortableInfobox\Parser\MediaWikiParserService
  */
 class MediaWikiParserTest extends MediaWikiIntegrationTestCase {
 
@@ -41,7 +42,7 @@ class MediaWikiParserTest extends MediaWikiIntegrationTestCase {
 
 	public function testAsideTagPWrappedDuringParsing() {
 		$aside = "<aside></aside>";
-		$result = \BlockLevelPass::doBlockLevels( $aside, true );
+		$result = BlockLevelPass::doBlockLevels( $aside, true );
 
 		$this->assertEquals( $aside, $result );
 	}
@@ -54,7 +55,7 @@ class MediaWikiParserTest extends MediaWikiIntegrationTestCase {
 	 */
 	public function testWrapper( $wikitext, $params, $newline ) {
 		$frame = $this->parser->getPreprocessor()->newCustomFrame( $params );
-		$wrapper = new PortableInfobox\Parser\MediaWikiParserService( $this->parser, $frame );
+		$wrapper = new MediaWikiParserService( $this->parser, $frame );
 
 		$output = $wrapper->parseRecursive( $wikitext );
 

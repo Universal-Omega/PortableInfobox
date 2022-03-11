@@ -1,19 +1,23 @@
 <?php
+
+use PortableInfobox\Parser\Nodes\NodeFactory;
+
 /**
  * @group PortableInfobox
- * @covers PortableInfobox\Parser\Nodes\NodeGroup
+ * @covers \PortableInfobox\Parser\Nodes\NodeGroup
+ * @coversDefaultClass \PortableInfobox\Parser\Nodes\NodeGroup
  */
 class NodeGroupTest extends MediaWikiIntegrationTestCase {
 
 	/**
-	 * @covers       PortableInfobox\Parser\Nodes\NodeGroup::getData
+	 * @covers ::getData
 	 * @dataProvider groupNodeCollapseTestProvider
 	 *
 	 * @param $markup
 	 * @param $expected
 	 */
 	public function testNodeGroupCollapse( $markup, $expected ) {
-		$node = PortableInfobox\Parser\Nodes\NodeFactory::newFromXML( $markup );
+		$node = NodeFactory::newFromXML( $markup );
 		$this->assertEquals( $expected, $node->getData()['collapse'] );
 	}
 
@@ -27,15 +31,15 @@ class NodeGroupTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers       PortableInfobox\Parser\Nodes\NodeGroup::getData
-	 * @covers       PortableInfobox\Parser\Nodes\NodeGroup::getRenderData
+	 * @covers ::getData
+	 * @covers ::getRenderData
 	 * @dataProvider groupNodeRowItemsTestProvider
 	 *
 	 * @param $markup
 	 * @param $expected
 	 */
 	public function testNodeGroupRowItems( $markup, $expected ) {
-		$node = PortableInfobox\Parser\Nodes\NodeFactory::newFromXML( $markup );
+		$node = NodeFactory::newFromXML( $markup );
 		$this->assertEquals( $expected, $node->getData()['row-items'] );
 		$this->assertEquals( $expected, $node->getRenderData()['data']['row-items'] );
 	}
@@ -51,7 +55,7 @@ class NodeGroupTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers       PortableInfobox\Parser\Nodes\NodeGroup::getData
+	 * @covers ::getData
 	 * @dataProvider groupNodeTestProvider
 	 *
 	 * @param $markup
@@ -59,7 +63,7 @@ class NodeGroupTest extends MediaWikiIntegrationTestCase {
 	 * @param $expected
 	 */
 	public function testNodeGroup( $markup, $params, $expected ) {
-		$node = PortableInfobox\Parser\Nodes\NodeFactory::newFromXML( $markup, $params );
+		$node = NodeFactory::newFromXML( $markup, $params );
 
 		$this->assertEquals( $expected, $node->getData() );
 	}

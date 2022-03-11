@@ -1,20 +1,23 @@
 <?php
 
+use PortableInfobox\Parser\Nodes\NodeFactory;
+
 /**
  * @group PortableInfobox
- * @covers PortableInfobox\Parser\Nodes\NodeInfobox
+ * @covers \PortableInfobox\Parser\Nodes\NodeInfobox
+ * @coversDefaultClass \PortableInfobox\Parser\Nodes\NodeInfobox
  */
 class NodeInfoboxTest extends MediaWikiIntegrationTestCase {
 
 	/**
-	 * @covers       PortableInfobox\Parser\Nodes\NodeInfobox::getParams
+	 * @covers ::getParams
 	 * @dataProvider paramsProvider
 	 *
 	 * @param $markup
 	 * @param $expected
 	 */
 	public function testParams( $markup, $expected ) {
-		$node = PortableInfobox\Parser\Nodes\NodeFactory::newFromXML( $markup, [] );
+		$node = NodeFactory::newFromXML( $markup, [] );
 
 		$this->assertEquals( $expected, $node->getParams() );
 	}

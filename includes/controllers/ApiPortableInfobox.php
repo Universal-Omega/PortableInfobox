@@ -1,6 +1,9 @@
 <?php
 
 use MediaWiki\MediaWikiServices;
+use PortableInfobox\Helpers\InvalidInfoboxParamsException;
+use PortableInfobox\Parser\Nodes\UnimplementedNodeException;
+use PortableInfobox\Parser\XmlMarkupParseErrorException;
 use Wikimedia\ParamValidator\ParamValidator;
 
 class ApiPortableInfobox extends ApiBase {
@@ -36,14 +39,14 @@ class ApiPortableInfobox extends ApiBase {
 		try {
 			$output = PortableInfoboxParserTagController::getInstance()->render( $text, $parser, $frame );
 			$this->getResult()->addValue( null, $this->getModuleName(), [ 'text' => [ '*' => $output ] ] );
-		} catch ( \PortableInfobox\Parser\Nodes\UnimplementedNodeException $e ) {
+		} catch ( UnimplementedNodeException $e ) {
 			$this->dieWithError(
 				$this->msg( 'portable-infobox-unimplemented-infobox-tag', [ $e->getMessage() ] )->escaped(),
 				'notimplemented'
 			);
-		} catch ( \PortableInfobox\Parser\XmlMarkupParseErrorException $e ) {
+		} catch ( XmlMarkupParseErrorException $e ) {
 			$this->dieWithError( $this->msg( 'portable-infobox-xml-parse-error' )->text(), 'badxml' );
-		} catch ( \PortableInfobox\Helpers\InvalidInfoboxParamsException $e ) {
+		} catch ( InvalidInfoboxParamsException $e ) {
 			$this->dieWithError(
 				$this->msg(
 					'portable-infobox-xml-parse-error-infobox-tag-attribute-unsupported',

@@ -1,9 +1,11 @@
 <?php
 
+use PortableInfobox\Helpers\PortableInfoboxParsingHelper;
+
 /**
  * @group PortableInfobox
  * @group Database
- * @covers PortableInfobox\Helpers\PortableInfoboxParsingHelper
+ * @covers \PortableInfobox\Helpers\PortableInfoboxParsingHelper
  */
 class PortableInfoboxParsingHelperTest extends MediaWikiIntegrationTestCase {
 
@@ -11,7 +13,7 @@ class PortableInfoboxParsingHelperTest extends MediaWikiIntegrationTestCase {
 	 * @dataProvider parsingIncludeonlyInfoboxesDataProvider
 	 */
 	public function testParsingIncludeonlyInfoboxes( $markup, $expected ) {
-		$helper = $this->getMockBuilder( PortableInfobox\Helpers\PortableInfoboxParsingHelper::class )
+		$helper = $this->getMockBuilder( PortableInfoboxParsingHelper::class )
 			->setMethods( [ 'fetchArticleContent' ] )
 			->getMock();
 		$helper->expects( $this->once() )

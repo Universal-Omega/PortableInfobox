@@ -1,20 +1,24 @@
 <?php
+
+use PortableInfobox\Parser\Nodes\NodeFactory;
+use PortableInfobox\Parser\Nodes\NodeNavigation;
+
 /**
  * @group PortableInfobox
- * @covers PortableInfobox\Parser\Nodes\NodeNavigation
+ * @covers \PortableInfobox\Parser\Nodes\NodeNavigation
  */
 class NodeNavigationTest extends MediaWikiIntegrationTestCase {
 
 	/**
-	 * @covers       PortableInfobox\Parser\Nodes\NodeNavigation::getData
-	 * @covers       PortableInfobox\Parser\Nodes\Node::getInnerValue
+	 * @covers \PortableInfobox\Parser\Nodes\NodeNavigation::getData
+	 * @covers \PortableInfobox\Parser\Nodes\Node::getInnerValue
 	 * @dataProvider dataProvider
 	 *
 	 * @param $markup
 	 * @param $expected
 	 */
 	public function testData( $markup, $expected ) {
-		$node = PortableInfobox\Parser\Nodes\NodeFactory::newFromXML( $markup );
+		$node = NodeFactory::newFromXML( $markup );
 
 		$this->assertEquals( $expected, $node->getData() );
 	}
@@ -45,7 +49,7 @@ class NodeNavigationTest extends MediaWikiIntegrationTestCase {
 	 */
 	public function testIsEmpty( $string, $expectedOutput ) {
 		$xml = simplexml_load_string( $string );
-		$node = new PortableInfobox\Parser\Nodes\NodeNavigation( $xml, [] );
+		$node = new NodeNavigation( $xml, [] );
 		$data = $node->getData();
 		$this->assertTrue( $node->isEmpty( $data ) == $expectedOutput );
 	}

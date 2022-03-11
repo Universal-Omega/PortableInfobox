@@ -2,6 +2,7 @@
 
 namespace PortableInfobox\Helpers;
 
+use Language;
 use MediaWiki\MediaWikiServices;
 
 // original class & authors:
@@ -25,7 +26,7 @@ class FileNamespaceSanitizeHelper {
 	}
 
 	/**
-	 * @param \Language $contLang
+	 * @param Language $contLang
 	 * Used as local cache for getting string to remove
 	 */
 	private function getFilePrefixRegex( $contLang ) {
@@ -65,7 +66,7 @@ class FileNamespaceSanitizeHelper {
 
 	/**
 	 * @param string $filename
-	 * @param \Language $contLang
+	 * @param Language $contLang
 	 *
 	 * @return mixed
 	 */
