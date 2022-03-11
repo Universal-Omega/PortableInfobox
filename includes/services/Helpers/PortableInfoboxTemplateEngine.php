@@ -2,8 +2,11 @@
 
 namespace PortableInfobox\Helpers;
 
+use Closure;
+use LightnCandy\LightnCandy;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
+use PortableInfoboxParserTagController;
 
 class PortableInfoboxTemplateEngine {
 	private const CACHE_TTL = 86400;
@@ -31,7 +34,7 @@ class PortableInfoboxTemplateEngine {
 
 	public function __construct() {
 		if ( !isset( self::$lightncandy ) ) {
-			self::$lightncandy = \LightnCandy\LightnCandy::class;
+			self::$lightncandy = LightnCandy::class;
 			self::$compileFlags = self::$lightncandy::FLAG_BESTPERFORMANCE | self::$lightncandy::FLAG_PARENT | self::$lightncandy::FLAG_HANDLEBARS;
 		}
 
@@ -60,7 +63,7 @@ class PortableInfoboxTemplateEngine {
 	 * Returns a template renderer
 	 *
 	 * @param string $type Template type
-	 * @return \Closure
+	 * @return Closure
 	 */
 	public function getRenderer( $type ) {
 		global $wgPortableInfoboxCacheRenderers;
@@ -70,7 +73,7 @@ class PortableInfoboxTemplateEngine {
 
 			if ( $wgPortableInfoboxCacheRenderers ) {
 				$cachekey = self::$memcache->makeKey(
-					__CLASS__, \PortableInfoboxParserTagController::PARSER_TAG_VERSION, $type
+					__CLASS__, PortableInfoboxParserTagController::PARSER_TAG_VERSION, $type
 				);
 				$template = self::$memcache->getWithSetCallback(
 					$cachekey, self::CACHE_TTL, static function () use ( $path ) {

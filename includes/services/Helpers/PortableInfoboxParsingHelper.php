@@ -2,8 +2,14 @@
 
 namespace PortableInfobox\Helpers;
 
+use Exception;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
+use ParserOptions;
+use PortableInfoboxDataService;
+use PortableInfoboxParserTagController;
+use RequestContext;
+use Title;
 
 class PortableInfoboxParsingHelper {
 
@@ -11,25 +17,25 @@ class PortableInfoboxParsingHelper {
 	protected $logger;
 
 	public function __construct() {
-		$this->parserTagController = \PortableInfoboxParserTagController::getInstance();
+		$this->parserTagController = PortableInfoboxParserTagController::getInstance();
 		$this->logger = LoggerFactory::getInstance( 'PortableInfobox' );
 	}
 
 	/**
 	 * Try to find out if infobox got "hidden" inside includeonly tag. Parse it if that's the case.
 	 *
-	 * @param \Title $title
+	 * @param Title $title
 	 *
 	 * @return mixed false when no infoboxes found, Array with infoboxes on success
 	 */
-	public function parseIncludeonlyInfoboxes( \Title $title ) {
+	public function parseIncludeonlyInfoboxes( Title $title ) {
 		// for templates we need to check for include tags
 		$templateText = $this->fetchArticleContent( $title );
 
 		if ( $templateText ) {
 			$parser = MediaWikiServices::getInstance()->getParser();
 			$parser->setPage( $title );
-			$parserOptions = \ParserOptions::newFromAnon();
+			$parserOptions = ParserOptions::newFromAnon();
 			$parser->setOptions( $parserOptions );
 			$frame = $parser->getPreprocessor()->newFrame();
 
@@ -40,13 +46,13 @@ class PortableInfoboxParsingHelper {
 				foreach ( $infoboxes as $infobox ) {
 					try {
 						$this->parserTagController->prepareInfobox( $infobox, $parser, $frame );
-					} catch ( \Exception $e ) {
+					} catch ( Exception $e ) {
 						$this->logger->info( 'Invalid infobox syntax' );
 					}
 				}
 
 				return json_decode(
-					$parser->getOutput()->getProperty( \PortableInfoboxDataService::INFOBOXES_PROPERTY_NAME ),
+					$parser->getOutput()->getProperty( PortableInfoboxDataService::INFOBOXES_PROPERTY_NAME ),
 					true
 				);
 			}
@@ -54,25 +60,25 @@ class PortableInfoboxParsingHelper {
 		return false;
 	}
 
-	public function reparseArticle( \Title $title ) {
+	public function reparseArticle( Title $title ) {
 		$parser = MediaWikiServices::getInstance()->getParser();
-		$user = \RequestContext::getMain()->getUser();
+		$user = RequestContext::getMain()->getUser();
 
-		$parserOptions = new \ParserOptions( $user );
+		$parserOptions = new ParserOptions( $user );
 		$parser->parse( $this->fetchArticleContent( $title ), $title, $parserOptions );
 
 		return json_decode(
-			$parser->getOutput()->getProperty( \PortableInfoboxDataService::INFOBOXES_PROPERTY_NAME ),
+			$parser->getOutput()->getProperty( PortableInfoboxDataService::INFOBOXES_PROPERTY_NAME ),
 			true
 		);
 	}
 
 	/**
-	 * @param \Title $title
+	 * @param Title $title
 	 *
 	 * @return string
 	 */
-	protected function fetchArticleContent( \Title $title ) {
+	protected function fetchArticleContent( Title $title ) {
 		if ( $title->exists() ) {
 			// @phan-suppress-next-line PhanDeprecatedFunction
 			$content = MediaWikiServices::getInstance()
@@ -86,10 +92,10 @@ class PortableInfoboxParsingHelper {
 	}
 
 	/**
-	 * @param \Title $title
+	 * @param Title $title
 	 * @return string[] array of strings (infobox markups)
 	 */
-	public function getMarkup( \Title $title ) {
+	public function getMarkup( Title $title ) {
 		$content = $this->fetchArticleContent( $title );
 		return $this->getInfoboxes( $content );
 	}

@@ -2,8 +2,13 @@
 
 namespace PortableInfobox\Parser;
 
+use BlockLevelPass;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Tidy\RemexDriver;
 use PageImages\Hooks\ParserFileProcessingHookHandlers;
+use Parser;
+use PPFrame;
+use Title;
 
 class MediaWikiParserService implements ExternalParser {
 
@@ -13,13 +18,13 @@ class MediaWikiParserService implements ExternalParser {
 	protected $tidyDriver;
 	protected $cache = [];
 
-	public function __construct( \Parser $parser, \PPFrame $frame ) {
+	public function __construct( Parser $parser, PPFrame $frame ) {
 		global $wgPortableInfoboxUseTidy;
 
 		$this->parser = $parser;
 		$this->frame = $frame;
 
-		if ( $wgPortableInfoboxUseTidy && class_exists( '\MediaWiki\Tidy\RemexDriver' ) ) {
+		if ( $wgPortableInfoboxUseTidy && class_exists( RemexDriver::class ) ) {
 			global $wgTidyConfig;
 
 			$wgTidyConfig = [
@@ -50,7 +55,7 @@ class MediaWikiParserService implements ExternalParser {
 		}
 
 		// @phan-suppress-next-line PhanAccessMethodInternal
-		$output = \BlockLevelPass::doBlockLevels( $parsed, false );
+		$output = BlockLevelPass::doBlockLevels( $parsed, false );
 		$ready = $this->parser->getStripState()->unstripBoth( $output );
 
 		// @phan-suppress-next-line PhanDeprecatedFunction
@@ -77,7 +82,7 @@ class MediaWikiParserService implements ExternalParser {
 	/**
 	 * Add image to parser output for later usage
 	 *
-	 * @param \Title $title
+	 * @param Title $title
 	 */
 	public function addImage( $title ) {
 		$repoGroup = MediaWikiServices::getInstance()->getRepoGroup();

@@ -1,14 +1,17 @@
 <?php
+
+use PortableInfobox\Parser\XmlParser;
+
 /**
  * @group PortableInfobox
- * @covers PortableInfobox\Parser\XmlParser
+ * @covers \PortableInfobox\Parser\XmlParser
  */
 class XmlParserTest extends MediaWikiIntegrationTestCase {
 
 	/** @dataProvider contentTagsDataProvider */
 	public function testXHTMLParsing( $tag, $content ) {
 		$markup = "<data source=\"asdfd\"><{$tag}>{$content}</{$tag}></data>";
-		$result = PortableInfobox\Parser\XmlParser::parseXmlString( $markup );
+		$result = XmlParser::parseXmlString( $markup );
 
 		$this->assertEquals( $content, (string)$result->{$tag} );
 	}
@@ -25,7 +28,7 @@ class XmlParserTest extends MediaWikiIntegrationTestCase {
 	 * @dataProvider entitiesTestDataProvider
 	 */
 	public function testHTMLEntities( $markup, $expectedResult ) {
-		$result = PortableInfobox\Parser\XmlParser::parseXmlString( $markup );
+		$result = XmlParser::parseXmlString( $markup );
 		$this->assertEquals( $expectedResult, $result[ 0 ] );
 	}
 

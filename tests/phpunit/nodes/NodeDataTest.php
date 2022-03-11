@@ -1,12 +1,18 @@
 <?php
+
+use PortableInfobox\Parser\Nodes\NodeData;
+use PortableInfobox\Parser\Nodes\NodeFactory;
+use PortableInfobox\Parser\SimpleParser;
+
 /**
  * @group PortableInfobox
- * @covers PortableInfobox\Parser\Nodes\Node
+ * @covers \PortableInfobox\Parser\Nodes\Node
+ * @coversDefaultClass \PortableInfobox\Parser\Nodes\Node
  */
 class NodeDataTest extends MediaWikiIntegrationTestCase {
 
 	/**
-	 * @covers       PortableInfobox\Parser\Nodes\Node::getSources
+	 * @covers ::getSources
 	 * @dataProvider sourceDataProvider
 	 *
 	 * @param $markup
@@ -14,7 +20,7 @@ class NodeDataTest extends MediaWikiIntegrationTestCase {
 	 * @param $expected
 	 */
 	public function testSource( $markup, $params, $expected ) {
-		$node = PortableInfobox\Parser\Nodes\NodeFactory::newFromXML( $markup, $params );
+		$node = NodeFactory::newFromXML( $markup, $params );
 
 		$this->assertEquals( $expected, $node->getSources() );
 	}
@@ -77,7 +83,7 @@ class NodeDataTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers       PortableInfobox\Parser\Nodes\Node::getSourcesMetadata
+	 * @covers ::getSourcesMetadata
 	 * @dataProvider sourcesMetadataDataProvider
 	 *
 	 * @param $markup
@@ -85,7 +91,7 @@ class NodeDataTest extends MediaWikiIntegrationTestCase {
 	 * @param $expected
 	 */
 	public function testSourcesMetadata( $markup, $params, $expected ) {
-		$node = PortableInfobox\Parser\Nodes\NodeFactory::newFromXML( $markup, $params );
+		$node = NodeFactory::newFromXML( $markup, $params );
 
 		$this->assertEquals( $expected, $node->getSourcesMetadata() );
 	}
@@ -332,8 +338,8 @@ class NodeDataTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers       PortableInfobox\Parser\Nodes\Node::getMetadata
-	 * @covers       PortableInfobox\Parser\Nodes\NodeInfobox::getMetadata
+	 * @covers ::getMetadata
+	 * @covers \PortableInfobox\Parser\Nodes\NodeInfobox::getMetadata
 	 * @dataProvider metadataDataProvider
 	 *
 	 * @param $markup
@@ -341,7 +347,7 @@ class NodeDataTest extends MediaWikiIntegrationTestCase {
 	 * @param $expected
 	 */
 	public function testMetadata( $markup, $params, $expected ) {
-		$node = PortableInfobox\Parser\Nodes\NodeFactory::newFromXML( $markup, $params );
+		$node = NodeFactory::newFromXML( $markup, $params );
 
 		$this->assertEquals( $expected, $node->getMetadata() );
 	}
@@ -493,28 +499,28 @@ class NodeDataTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers       PortableInfobox\Parser\Nodes\Node::getExternalParser
-	 * @covers       PortableInfobox\Parser\Nodes\Node::setExternalParser
+	 * @covers ::getExternalParser
+	 * @covers ::setExternalParser
 	 * @dataProvider parserTestDataProvider
 	 *
 	 * @param $parser
 	 * @param $expected
 	 */
 	public function testExternalParserSetUp( $parser, $expected ) {
-		$node = PortableInfobox\Parser\Nodes\NodeFactory::newFromXML( '<data></data>', [] );
+		$node = NodeFactory::newFromXML( '<data></data>', [] );
 
 		$this->assertEquals( $expected, $node->setExternalParser( $parser )->getExternalParser() );
 	}
 
 	public function parserTestDataProvider() {
 		return [
-			[ null, new PortableInfobox\Parser\SimpleParser() ],
-			[ new PortableInfobox\Parser\SimpleParser(), new PortableInfobox\Parser\SimpleParser() ]
+			[ null, new SimpleParser() ],
+			[ new SimpleParser(), new SimpleParser() ]
 		];
 	}
 
 	/**
-	 * @covers       PortableInfobox\Parser\Nodes\NodeData::getData
+	 * @covers \PortableInfobox\Parser\Nodes\NodeData::getData
 	 * @dataProvider dataProvider
 	 *
 	 * @param $markup
@@ -522,7 +528,7 @@ class NodeDataTest extends MediaWikiIntegrationTestCase {
 	 * @param $expected
 	 */
 	public function testData( $markup, $params, $expected ) {
-		$node = PortableInfobox\Parser\Nodes\NodeFactory::newFromXML( $markup, $params );
+		$node = NodeFactory::newFromXML( $markup, $params );
 
 		$this->assertEquals( $expected, $node->getData() );
 	}
@@ -727,9 +733,9 @@ class NodeDataTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers       PortableInfobox\Parser\Nodes\Node::getRenderData
-	 * @covers       PortableInfobox\Parser\Nodes\NodeData::getLayout
-	 * @covers       PortableInfobox\Parser\Nodes\NodeData::getSpan
+	 * @covers ::getRenderData
+	 * @covers \PortableInfobox\Parser\Nodes\NodeData::getLayout
+	 * @covers \PortableInfobox\Parser\Nodes\NodeData::getSpan
 	 * @dataProvider dataRenderProvider
 	 *
 	 * @param $markup
@@ -737,7 +743,7 @@ class NodeDataTest extends MediaWikiIntegrationTestCase {
 	 * @param $expected
 	 */
 	public function testRenderData( $markup, $params, $expected ) {
-		$node = PortableInfobox\Parser\Nodes\NodeFactory::newFromXML( $markup, $params );
+		$node = NodeFactory::newFromXML( $markup, $params );
 
 		$this->assertEquals( $expected, $node->getRenderData() );
 	}
@@ -853,7 +859,7 @@ class NodeDataTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers       PortableInfobox\Parser\Nodes\Node::isType
+	 * @covers ::isType
 	 * @dataProvider isTypeDataProvider
 	 *
 	 * @param $markup
@@ -861,7 +867,7 @@ class NodeDataTest extends MediaWikiIntegrationTestCase {
 	 * @param $expected
 	 */
 	public function testIsType( $markup, $typeToCheck, $expected ) {
-		$node = PortableInfobox\Parser\Nodes\NodeFactory::newFromXML( $markup, [] );
+		$node = NodeFactory::newFromXML( $markup, [] );
 
 		$this->assertEquals( $expected, $node->isType( $typeToCheck ) );
 	}
@@ -875,14 +881,14 @@ class NodeDataTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers       PortableInfobox\Parser\Nodes\Node::getType
+	 * @covers ::getType
 	 * @dataProvider typeDataProvider
 	 *
 	 * @param $markup
 	 * @param $expected
 	 */
 	public function testType( $markup, $expected ) {
-		$node = PortableInfobox\Parser\Nodes\NodeFactory::newFromXML( $markup, [] );
+		$node = NodeFactory::newFromXML( $markup, [] );
 
 		$this->assertEquals( $expected, $node->getType() );
 	}
@@ -901,7 +907,7 @@ class NodeDataTest extends MediaWikiIntegrationTestCase {
 		$string = '<data source="season"><label>Season</label></data>';
 		$xml = simplexml_load_string( $string );
 
-		$node = new PortableInfobox\Parser\Nodes\NodeData( $xml, [ 'season' => $season ] );
+		$node = new NodeData( $xml, [ 'season' => $season ] );
 		$nodeData = $node->getData();
 		$this->assertTrue( $node->isEmpty( $nodeData ) == $expectedOutput );
 	}

@@ -2,7 +2,9 @@
 
 namespace PortableInfobox\Helpers;
 
+use File;
 use MediaWiki\MediaWikiServices;
+use Title;
 
 class PortableInfoboxImagesHelper {
 	private const MAX_DESKTOP_THUMBNAIL_HEIGHT = 500;
@@ -10,7 +12,7 @@ class PortableInfoboxImagesHelper {
 	/**
 	 * extends image data
 	 *
-	 * @param \File|\Title|string $file image
+	 * @param File|Title|string $file image
 	 * @param int $thumbnailFileWidth preferred thumbnail file width
 	 * @param int|null $thumbnailImgTagWidth preferred thumbnail img tag width
 	 * @return array|bool false on failure
@@ -116,21 +118,21 @@ class PortableInfoboxImagesHelper {
 	 * Note: this method turns a string $file into an object, affecting the calling code version
 	 * of this variable
 	 *
-	 * @param \File|\Title|string $file
-	 * @return \File|null file
+	 * @param File|Title|string $file
+	 * @return File|null file
 	 */
 	public function getFile( $file ) {
 		if ( is_string( $file ) ) {
-			$file = \Title::newFromText( $file, NS_FILE );
+			$file = Title::newFromText( $file, NS_FILE );
 		}
 
-		if ( $file instanceof \Title ) {
+		if ( $file instanceof Title ) {
 			$repoGroup = MediaWikiServices::getInstance()->getRepoGroup();
 
 			$file = $repoGroup->findFile( $file );
 		}
 
-		if ( $file instanceof \File && $file->exists() ) {
+		if ( $file instanceof File && $file->exists() ) {
 			return $file;
 		}
 
