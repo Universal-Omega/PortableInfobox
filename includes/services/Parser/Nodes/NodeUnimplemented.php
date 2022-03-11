@@ -1,5 +1,8 @@
 <?php
+
 namespace PortableInfobox\Parser\Nodes;
+
+use Exception;
 
 class NodeUnimplemented extends Node {
 
@@ -11,5 +14,5 @@ class NodeUnimplemented extends Node {
 }
 
 // phpcs:ignore Generic.Files.OneObjectStructurePerFile.MultipleFound
-class UnimplementedNodeException extends \Exception {
+class UnimplementedNodeException extends Exception {
 }
