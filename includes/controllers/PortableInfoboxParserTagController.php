@@ -124,8 +124,8 @@ class PortableInfoboxParserTagController {
 		$markup = '<' . self::PARSER_TAG_NAME . '>' . $text . '</' . self::PARSER_TAG_NAME . '>';
 		$parserOutput = $parser->getOutput();
 
-		$parserOutput->addModuleStyles( 'ext.PortableInfobox.styles' );
-		$parserOutput->addModules( 'ext.PortableInfobox.scripts' );
+		$parserOutput->addModuleStyles( [ 'ext.PortableInfobox.styles' ] );
+		$parserOutput->addModules( [ 'ext.PortableInfobox.scripts' ] );
 
 		try {
 			$renderedValue = $this->render( $markup, $parser, $frame, $params );
