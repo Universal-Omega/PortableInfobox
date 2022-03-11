@@ -8,6 +8,7 @@ use PortableInfobox\Parser\XmlMarkupParseErrorException;
 
 /**
  * @group PortableInfobox
+ * @covers \PortableInfobox\Parser\Nodes\NodeMedia
  * @coversDefaultClass \PortableInfobox\Parser\Nodes\NodeMedia
  */
 class NodeMediaTest extends MediaWikiIntegrationTestCase {
