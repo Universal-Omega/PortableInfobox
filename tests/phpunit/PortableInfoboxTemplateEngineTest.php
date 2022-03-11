@@ -4,6 +4,7 @@ use PortableInfobox\Helpers\PortableInfoboxTemplateEngine;
 
 /**
  * @group PortableInfobox
+ * @covers \PortableInfobox\Helpers\PortableInfoboxTemplateEngine
  * @coversDefaultClass \PortableInfobox\Helpers\PortableInfoboxTemplateEngine
  */
 class PortableInfoboxTemplateEngineTest extends MediaWikiIntegrationTestCase {
