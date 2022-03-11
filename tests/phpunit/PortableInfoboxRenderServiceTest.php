@@ -1,6 +1,7 @@
 <?php
 /**
  * @group PortableInfobox
+ * @covers PortableInfoboxRenderService
  * @coversDefaultClass PortableInfoboxRenderService
  */
 class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
