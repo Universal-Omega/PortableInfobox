@@ -9,6 +9,7 @@ use MediaWiki\Tidy\RemexDriver;
 use PageImages\Hooks\ParserFileProcessingHookHandlers;
 use Parser;
 use PPFrame;
+use Sanitizer;
 use Title;
 
 class MediaWikiParserService implements ExternalParser {
@@ -57,21 +58,9 @@ class MediaWikiParserService implements ExternalParser {
 		// @phan-suppress-next-line PhanDeprecatedFunction
 		$this->parser->replaceLinkHolders( $ready );
 
-		/* if ( isset( $this->tidyDriver ) ) {
-			$ready = $this->tidyDriver->tidy( $ready );
-		} */
-
-		$tidy = static function ( $ready ) {
-			return static function () use ( $ready ) {
-				$tidy = new RemexDriver( new ServiceOptions( [ 'TidyConfig' ], [
-					'TidyConfig' => [ 'pwrap' => false ],
-				] ) );
-
-				$tidy->tidy( $ready );
-			};
-		};
-
-		$ready = $tidy( $ready );
+		if ( isset( $this->tidyDriver ) ) {
+			$ready = $this->tidyDriver->tidy( $ready, [ Sanitizer::class, 'armorFrenchSpaces' ] );
+		}
 
 		$newlinesstripped = preg_replace( '|[\n\r]|Us', '', $ready );
 		$marksstripped = preg_replace( '|{{{.*}}}|Us', '', $newlinesstripped );
