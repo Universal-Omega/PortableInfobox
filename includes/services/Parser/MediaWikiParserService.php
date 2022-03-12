@@ -60,6 +60,7 @@ class MediaWikiParserService implements ExternalParser {
 
 		if ( isset( $this->tidyDriver ) ) {
 			$ready = $this->tidyDriver->tidy( $ready, [ Sanitizer::class, 'armorFrenchSpaces' ] );
+			$ready = Sanitizer::normalizeCharReferences( Sanitizer::removeHTMLtags( $ready ) );
 		}
 
 		$newlinesstripped = preg_replace( '|[\n\r]|Us', '', $ready );
