@@ -57,9 +57,21 @@ class MediaWikiParserService implements ExternalParser {
 		// @phan-suppress-next-line PhanDeprecatedFunction
 		$this->parser->replaceLinkHolders( $ready );
 
-		if ( isset( $this->tidyDriver ) ) {
+		/* if ( isset( $this->tidyDriver ) ) {
 			$ready = $this->tidyDriver->tidy( $ready );
-		}
+		} */
+
+		$tidy = static function ( $ready ) {
+			return static function () use ( $ready ) {
+				$tidy = new RemexDriver( new ServiceOptions( [ 'TidyConfig' ], [
+					'TidyConfig' => [ 'pwrap' => false ],
+				] ) );
+
+				$tidy->tidy( $ready );
+			};
+		};
+
+		$ready = $tidy( $ready );
 
 		$newlinesstripped = preg_replace( '|[\n\r]|Us', '', $ready );
 		$marksstripped = preg_replace( '|{{{.*}}}|Us', '', $newlinesstripped );
