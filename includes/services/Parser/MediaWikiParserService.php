@@ -29,7 +29,10 @@ class MediaWikiParserService implements ExternalParser {
 		if ( $wgPortableInfoboxUseTidy && class_exists( RemexDriver::class ) ) {
 			$this->tidyDriver = new RemexDriver( new ServiceOptions(
 				RemexDriver::CONSTRUCTOR_OPTIONS,
-				new HashConfig( [ 'TidyConfig' => [ 'pwrap' => false ] ] )
+				new HashConfig( [ 'TidyConfig' => [
+					'driver' => 'RemexHtml',
+					'pwrap' => false
+				] ] )
 			) );
 		}
 	}
