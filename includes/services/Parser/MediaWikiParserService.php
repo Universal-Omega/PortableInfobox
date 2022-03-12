@@ -3,29 +3,35 @@
 namespace PortableInfobox\Parser;
 
 use BlockLevelPass;
+use HashConfig;
+use MediaWiki\Config\ServiceOptions;
 use MediaWiki\MediaWikiServices;
-use MediaWiki\Tidy\RemexCompatFormatter;
 use MediaWiki\Tidy\RemexDriver;
 use PageImages\Hooks\ParserFileProcessingHookHandlers;
 use Parser;
 use PPFrame;
 use Title;
-use Wikimedia\RemexHtml\HTMLData;
-use Wikimedia\RemexHtml\Serializer\Serializer;
-use Wikimedia\RemexHtml\Tokenizer\Tokenizer;
-use Wikimedia\RemexHtml\TreeBuilder\Dispatcher;
-use Wikimedia\RemexHtml\TreeBuilder\TreeBuilder;
 
 class MediaWikiParserService implements ExternalParser {
 
 	protected $parser;
 	protected $frame;
 	protected $localParser;
+	protected $tidyDriver;
 	protected $cache = [];
 
 	public function __construct( Parser $parser, PPFrame $frame ) {
+		global $wgPortableInfoboxUseTidy;
+
 		$this->parser = $parser;
 		$this->frame = $frame;
+
+		if ( $wgPortableInfoboxUseTidy && class_exists( RemexDriver::class ) ) {
+			$this->tidyDriver = new RemexDriver( new ServiceOptions(
+				RemexDriver::CONSTRUCTOR_OPTIONS,
+				new HashConfig( [ 'TidyConfig' => [ 'pwrap' => false ] ] )
+			) );
+		}
 	}
 
 	/**
@@ -36,8 +42,6 @@ class MediaWikiParserService implements ExternalParser {
 	 * @return string HTML outcome
 	 */
 	public function parseRecursive( $wikitext ) {
-		global $wgPortableInfoboxUseTidy;
-
 		if ( isset( $this->cache[$wikitext] ) ) {
 			return $this->cache[$wikitext];
 		}
@@ -55,8 +59,8 @@ class MediaWikiParserService implements ExternalParser {
 		// @phan-suppress-next-line PhanDeprecatedFunction
 		$this->parser->replaceLinkHolders( $ready );
 
-		if ( $wgPortableInfoboxUseTidy && class_exists( RemexDriver::class ) ) {
-			$ready = self::tidy( $ready );
+		if ( isset( $this->tidyDriver ) ) {
+			$ready = $this->tidyDriver->tidy( $ready );
 		}
 
 		$newlinesstripped = preg_replace( '|[\n\r]|Us', '', $ready );
@@ -106,30 +110,5 @@ class MediaWikiParserService implements ExternalParser {
 				$this->parser, $file, $params, $html
 			);
 		}
-	}
-
-	private static function tidy( $text ) {
-		$formatter = new RemexCompatFormatter( [ 'textProcessor' => null ] );
-		$serializer = new Serializer( $formatter );
-
-		$treeBuilder = new TreeBuilder( $serializer, [
-			'ignoreErrors' => true,
-			'ignoreNulls' => true,
-		] );
-
-		$dispatcher = new Dispatcher( $treeBuilder );
-		$tokenizer = new Tokenizer( $dispatcher, $text, [
-			'ignoreErrors' => true,
-			'ignoreCharRefs' => true,
-			'ignoreNulls' => true,
-			'skipPreprocess' => true,
-		] );
-
-		$tokenizer->execute( [
-			'fragmentNamespace' => HTMLData::NS_HTML,
-			'fragmentName' => 'body'
-		] );
-
-		return $serializer->getResult();
 	}
 }
