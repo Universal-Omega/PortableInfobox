@@ -37,7 +37,8 @@
 		"PortableInfobox": "i18n"
 	},
 	"ExtensionMessagesFiles": {
-		"PortableInfoboxAliases": "includes/PortableInfoboxAliases.php"
+		"PortableInfoboxAliases": "includes/PortableInfoboxAliases.php",
+		"PortableInfoboxMagic": "includes/PortableInfoboxMagic.php"
 	},
 	"ResourceModules": {
 		"ext.PortableInfobox.scripts": {
