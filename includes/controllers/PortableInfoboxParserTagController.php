@@ -174,19 +174,21 @@ class PortableInfoboxParserTagController {
 	}
 
 	private static function parserOutputGetPageProperty( \ParserOutput $parserOutput, string $name ) {
-		if ( function_exists( \ParserOutput::class, 'getPageProperty' ) ) {
+		if ( method_exists( \ParserOutput::class, 'getPageProperty' ) ) {
 			return $parserOutput->getPageProperty( $name );
+		} else {
+			// deprecated since 1.38
+			return $parserOutput->getProperty( $name );
 		}
-		// deprecated since 1.38
-		return $parserOutput->getProperty( $name );
 	}
 
 	private static function parserOutputSetPageProperty( \ParserOutput $parserOutput, string $name, $value ) {
-		if ( function_exists( \ParserOutput::class, 'getPageProperty' ) ) {
+		if ( method_exists( \ParserOutput::class, 'setPageProperty' ) ) {
 			$parserOutput->setPageProperty( $name, $value );
+		} else {
+			// deprecated since 1.38
+			$parserOutput->setProperty( $name, $value );
 		}
-		// deprecated since 1.38
-		$parserOutput->setProperty( $name, $value );
 	}
 
 	private function handleError( $message ) {
