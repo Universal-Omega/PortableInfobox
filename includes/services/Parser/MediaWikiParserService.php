@@ -97,6 +97,7 @@ class MediaWikiParserService implements ExternalParser {
 			ParserFileProcessingHookHandlers::class, 'onParserMakeImageParams'
 		) ) {
 			$params = [];
+			// @phan-suppress-next-line PhanUndeclaredStaticMethod
 			ParserFileProcessingHookHandlers::onParserMakeImageParams(
 				$title, $file, $params, $this->parser
 			);
