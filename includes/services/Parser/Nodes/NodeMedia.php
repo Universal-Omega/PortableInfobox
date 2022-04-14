@@ -2,10 +2,16 @@
 
 namespace PortableInfobox\Parser\Nodes;
 
+use DOMDocument;
+use DOMXpath;
+use File;
 use MediaWiki\MediaWikiServices;
+use Parser;
 use PortableInfobox\Helpers\FileNamespaceSanitizeHelper;
 use PortableInfobox\Helpers\PortableInfoboxDataBag;
 use PortableInfobox\Helpers\PortableInfoboxImagesHelper;
+use PortableInfoboxRenderService;
+use Title;
 
 class NodeMedia extends Node {
 	private const GALLERY = 'GALLERY';
@@ -21,7 +27,7 @@ class NodeMedia extends Node {
 	private $helper;
 
 	public static function getMarkers( $value, $ext ) {
-		$regex = '/' . \Parser::MARKER_PREFIX . "-$ext-[A-F0-9]{8}" . \Parser::MARKER_SUFFIX . '/i';
+		$regex = '/' . Parser::MARKER_PREFIX . "-$ext-[A-F0-9]{8}" . Parser::MARKER_SUFFIX . '/i';
 		if ( preg_match_all( $regex, $value, $out ) ) {
 			return $out[0];
 		} else {
@@ -42,7 +48,7 @@ class NodeMedia extends Node {
 	public static function getTabberData( $html ) {
 		$data = [];
 
-		$doc = new \DOMDocument();
+		$doc = new DOMDocument();
 		$libXmlErrorSetting = libxml_use_internal_errors( true );
 
 		// encode for correct load
@@ -51,7 +57,7 @@ class NodeMedia extends Node {
 		libxml_clear_errors();
 		libxml_use_internal_errors( $libXmlErrorSetting );
 
-		$xpath = new \DOMXpath( $doc );
+		$xpath = new DOMXpath( $doc );
 		$divs = $xpath->query( '//div[@class=\'tabbertab\']' );
 		foreach ( $divs as $div ) {
 			if ( preg_match( '# src="(?:[^"]*/)?(?:\d+px-)?([^"]*?)"#', $doc->saveXml( $div ), $out ) ) {
@@ -137,14 +143,14 @@ class NodeMedia extends Node {
 	 */
 	private function getImageData( $title, $alt, $caption ) {
 		$helper = $this->getImageHelper();
-		$titleObj = $title instanceof \Title ? $title : $this->getImageAsTitleObject( $title );
+		$titleObj = $title instanceof Title ? $title : $this->getImageAsTitleObject( $title );
 		$fileObj = $helper->getFile( $titleObj );
 
 		if ( !isset( $fileObj ) || !$this->isTypeAllowed( $fileObj->getMediaType() ) ) {
 			return [];
 		}
 
-		if ( $titleObj instanceof \Title ) {
+		if ( $titleObj instanceof Title ) {
 			$this->getExternalParser()->addImage( $titleObj );
 		}
 
@@ -164,8 +170,8 @@ class NodeMedia extends Node {
 		if ( $image['isImage'] ) {
 			$image = array_merge( $image, $helper->extendImageData(
 				$fileObj,
-				\PortableInfoboxRenderService::DEFAULT_DESKTOP_THUMBNAIL_WIDTH,
-				\PortableInfoboxRenderService::DEFAULT_DESKTOP_INFOBOX_WIDTH
+				PortableInfoboxRenderService::DEFAULT_DESKTOP_THUMBNAIL_WIDTH,
+				PortableInfoboxRenderService::DEFAULT_DESKTOP_INFOBOX_WIDTH
 			) );
 		}
 
@@ -199,7 +205,7 @@ class NodeMedia extends Node {
 	private function getImageAsTitleObject( $imageName ) {
 		$contLang = MediaWikiServices::getInstance()->getContentLanguage();
 
-		$title = \Title::makeTitleSafe(
+		$title = Title::makeTitleSafe(
 			NS_FILE,
 			FileNamespaceSanitizeHelper::getInstance()->sanitizeImageFileName( $imageName, $contLang )
 		);
@@ -216,7 +222,7 @@ class NodeMedia extends Node {
 
 	/**
 	 * Returns image url for given image title
-	 * @param \File|null $file
+	 * @param File|null $file
 	 * @return string url or '' if image doesn't exist
 	 */
 	public function resolveImageUrl( $file ) {

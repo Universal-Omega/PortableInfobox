@@ -1,10 +1,17 @@
 <?php
 
+use PortableInfobox\Parser\Nodes\NodeData;
 use PortableInfobox\Parser\Nodes\NodeFactory;
+use PortableInfobox\Parser\Nodes\NodeImage;
+use PortableInfobox\Parser\Nodes\NodeInfobox;
+use PortableInfobox\Parser\Nodes\NodeMedia;
+use PortableInfobox\Parser\Nodes\NodeUnimplemented;
+use PortableInfobox\Parser\XmlMarkupParseErrorException;
+use PortableInfobox\Parser\XmlParser;
 
 /**
  * @group PortableInfobox
- * @covers PortableInfobox\Parser\Nodes\NodeFactory
+ * @covers \PortableInfobox\Parser\Nodes\NodeFactory
  */
 class NodeFactoryTest extends MediaWikiIntegrationTestCase {
 
@@ -12,7 +19,7 @@ class NodeFactoryTest extends MediaWikiIntegrationTestCase {
 	 * @dataProvider newFromXMLProvider
 	 * @param $markup
 	 * @param $expected
-	 * @throws PortableInfobox\Parser\XmlMarkupParseErrorException
+	 * @throws XmlMarkupParseErrorException
 	 */
 	public function testNewFromXML( $markup, $expected ) {
 		$node = NodeFactory::newFromXML( $markup, [] );
@@ -23,10 +30,10 @@ class NodeFactoryTest extends MediaWikiIntegrationTestCase {
 	 * @dataProvider newFromXMLProvider
 	 * @param $markup
 	 * @param $expected
-	 * @throws PortableInfobox\Parser\XmlMarkupParseErrorException
+	 * @throws XmlMarkupParseErrorException
 	 */
 	public function testNewFromSimpleXml( $markup, $expected ) {
-		$xmlObj = PortableInfobox\Parser\XmlParser::parseXmlString( $markup );
+		$xmlObj = XmlParser::parseXmlString( $markup );
 		$node = NodeFactory::newFromSimpleXml( $xmlObj, [] );
 		$this->assertEquals( $expected, get_class( $node ) );
 	}
@@ -35,23 +42,23 @@ class NodeFactoryTest extends MediaWikiIntegrationTestCase {
 		return [
 			[
 				'<infobox />',
-				PortableInfobox\Parser\Nodes\NodeInfobox::class
+				NodeInfobox::class
 			],
 			[
 				'<data />',
-				PortableInfobox\Parser\Nodes\NodeData::class
+				NodeData::class
 			],
 			[
 				'<MEDIA />',
-				PortableInfobox\Parser\Nodes\NodeMedia::class
+				NodeMedia::class
 			],
 			[
 				'<image><default></default><othertag></othertag></image>',
-				PortableInfobox\Parser\Nodes\NodeImage::class
+				NodeImage::class
 			],
 			[
 				'<idonotexist />',
-				PortableInfobox\Parser\Nodes\NodeUnimplemented::class
+				NodeUnimplemented::class
 			]
 		];
 	}

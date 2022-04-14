@@ -4,16 +4,18 @@ use PortableInfobox\Helpers\PortableInfoboxDataBag;
 use PortableInfobox\Helpers\PortableInfoboxImagesHelper;
 use PortableInfobox\Parser\Nodes\NodeFactory;
 use PortableInfobox\Parser\Nodes\NodeMedia;
+use PortableInfobox\Parser\XmlMarkupParseErrorException;
 
 /**
  * @group PortableInfobox
- * @covers PortableInfobox\Parser\Nodes\NodeMedia
+ * @covers \PortableInfobox\Parser\Nodes\NodeMedia
+ * @coversDefaultClass \PortableInfobox\Parser\Nodes\NodeMedia
  */
 class NodeMediaTest extends MediaWikiIntegrationTestCase {
 
 	/**
-	 * @covers       PortableInfobox\Parser\Nodes\NodeMedia::getGalleryData
-	 * @covers       PortableInfobox\Helpers\PortableInfoboxDataBag
+	 * @covers ::getGalleryData
+	 * @covers \PortableInfobox\Helpers\PortableInfoboxDataBag
 	 * @dataProvider galleryDataProvider
 	 * @param $marker
 	 * @param $expected
@@ -83,7 +85,7 @@ class NodeMediaTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers       PortableInfobox\Parser\Nodes\NodeMedia::getTabberData
+	 * @covers ::getTabberData
 	 */
 	public function testTabberData() {
 		$input = '<div class="tabber"><div class="tabbertab" title="_title_">' .
@@ -98,7 +100,7 @@ class NodeMediaTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers       PortableInfobox\Parser\Nodes\NodeMedia::getMarkers
+	 * @covers ::getMarkers
 	 * @dataProvider markersProvider
 	 * @param $ext
 	 * @param $value
@@ -131,7 +133,7 @@ class NodeMediaTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers       PortableInfobox\Parser\Nodes\NodeMedia::getData
+	 * @covers ::getData
 	 * @dataProvider dataProvider
 	 *
 	 * @param $markup
@@ -298,7 +300,7 @@ class NodeMediaTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers       PortableInfobox\Parser\Nodes\NodeMedia::isEmpty
+	 * @covers ::isEmpty
 	 * @dataProvider isEmptyProvider
 	 *
 	 * @param $markup
@@ -318,7 +320,7 @@ class NodeMediaTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers       PortableInfobox\Parser\Nodes\NodeMedia::getSources
+	 * @covers ::getSources
 	 * @dataProvider sourcesProvider
 	 *
 	 * @param $markup
@@ -388,19 +390,19 @@ class NodeMediaTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers PortableInfobox\Parser\Nodes\NodeMedia::isTypeAllowed
-	 * @covers PortableInfobox\Parser\Nodes\NodeAudio
-	 * @covers PortableInfobox\Parser\Nodes\NodeImage
-	 * @covers PortableInfobox\Parser\Nodes\NodeVideo
+	 * @covers ::isTypeAllowed
+	 * @covers \PortableInfobox\Parser\Nodes\NodeAudio
+	 * @covers \PortableInfobox\Parser\Nodes\NodeImage
+	 * @covers \PortableInfobox\Parser\Nodes\NodeVideo
 	 * @dataProvider isTypeAllowedProvider
 	 * @param $markup
 	 * @param $expected
-	 * @throws PortableInfobox\Parser\XmlMarkupParseErrorException
+	 * @throws XmlMarkupParseErrorException
 	 */
 	public function testIsTypeAllowed( $markup, $expected ) {
 		$types = [ MEDIATYPE_BITMAP, MEDIATYPE_DRAWING, MEDIATYPE_VIDEO, MEDIATYPE_AUDIO, 'unknown' ];
 
-		$node = PortableInfobox\Parser\Nodes\NodeFactory::newFromXML( $markup, [] );
+		$node = NodeFactory::newFromXML( $markup, [] );
 
 		$reflection = new ReflectionClass( $node );
 		$reflection_method = $reflection->getMethod( 'isTypeAllowed' );

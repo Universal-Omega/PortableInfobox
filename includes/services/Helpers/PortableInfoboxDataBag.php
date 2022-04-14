@@ -2,10 +2,6 @@
 
 namespace PortableInfobox\Helpers;
 
-/**
- * Class PortableInfoboxDataBag
- * @package PortableInfobox\Helpers
- */
 class PortableInfoboxDataBag {
 	private static $instance = null;
 	private $galleries = [];

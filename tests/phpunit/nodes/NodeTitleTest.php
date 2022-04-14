@@ -1,12 +1,16 @@
 <?php
+
+use PortableInfobox\Parser\Nodes\NodeFactory;
+
 /**
  * @group PortableInfobox
- * @covers PortableInfobox\Parser\Nodes\NodeTitle
+ * @covers \PortableInfobox\Parser\Nodes\NodeTitle
+ * @coversDefaultClass \PortableInfobox\Parser\Nodes\NodeTitle
  */
 class NodeTitleTest extends MediaWikiIntegrationTestCase {
 
 	/**
-	 * @covers       PortableInfobox\Parser\Nodes\NodeTitle::getData
+	 * @covers ::getData
 	 * @dataProvider dataProvider
 	 *
 	 * @param $markup
@@ -14,7 +18,7 @@ class NodeTitleTest extends MediaWikiIntegrationTestCase {
 	 * @param $expected
 	 */
 	public function testData( $markup, $params, $expected ) {
-		$node = PortableInfobox\Parser\Nodes\NodeFactory::newFromXML( $markup, $params );
+		$node = NodeFactory::newFromXML( $markup, $params );
 
 		$this->assertEquals( $expected, $node->getData() );
 	}

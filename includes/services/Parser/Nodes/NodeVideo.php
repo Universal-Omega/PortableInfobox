@@ -1,4 +1,5 @@
 <?php
+
 namespace PortableInfobox\Parser\Nodes;
 
 class NodeVideo extends NodeMedia {

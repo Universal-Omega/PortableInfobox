@@ -1,8 +1,11 @@
 <?php
+
 namespace PortableInfobox\Parser\Nodes;
 
 use PortableInfobox\Parser\ExternalParser;
 use PortableInfobox\Parser\SimpleParser;
+use Sanitizer;
+use SimpleXMLElement;
 
 class Node {
 
@@ -26,7 +29,7 @@ class Node {
 	 */
 	protected $externalParser;
 
-	public function __construct( \SimpleXMLElement $xmlNode, $infoboxData ) {
+	public function __construct( SimpleXMLElement $xmlNode, $infoboxData ) {
 		$this->xmlNode = $xmlNode;
 		$this->infoboxData = $infoboxData;
 	}
@@ -43,7 +46,7 @@ class Node {
 		$metadata = [];
 		$sources = $this->getSources();
 		$sourcesLength = count( $sources );
-		$baseLabel = \Sanitizer::stripAllTags(
+		$baseLabel = Sanitizer::stripAllTags(
 			$this->getInnerValue( $this->xmlNode->{self::LABEL_TAG_NAME} )
 		);
 
@@ -196,7 +199,7 @@ class Node {
 		}, $this->getChildNodes() );
 	}
 
-	protected function getValueWithDefault( \SimpleXMLElement $xmlNode ) {
+	protected function getValueWithDefault( SimpleXMLElement $xmlNode ) {
 		$value = $this->extractDataFromSource( $xmlNode );
 		$isEmpty = $value === null || $value === '';
 		if ( $isEmpty && $xmlNode->{self::DEFAULT_TAG_NAME} ) {
@@ -209,7 +212,7 @@ class Node {
 		return $value;
 	}
 
-	protected function getRawValueWithDefault( \SimpleXMLElement $xmlNode ) {
+	protected function getRawValueWithDefault( SimpleXMLElement $xmlNode ) {
 		$value = $this->getRawInfoboxData( $this->getXmlAttribute( $xmlNode, self::DATA_SRC_ATTR_NAME ) );
 		if ( !$value && $xmlNode->{self::DEFAULT_TAG_NAME} ) {
 			$value = $this->getExternalParser()->replaceVariables(
@@ -220,17 +223,17 @@ class Node {
 		return $value;
 	}
 
-	protected function getValueWithData( \SimpleXMLElement $xmlNode ) {
+	protected function getValueWithData( SimpleXMLElement $xmlNode ) {
 		$value = $this->extractDataFromSource( $xmlNode );
 
 		return $value ?: $this->getInnerValue( $xmlNode );
 	}
 
-	protected function getInnerValue( \SimpleXMLElement $xmlNode ) {
+	protected function getInnerValue( SimpleXMLElement $xmlNode ) {
 		return $this->getExternalParser()->parseRecursive( (string)$xmlNode );
 	}
 
-	protected function getXmlAttribute( \SimpleXMLElement $xmlNode, $attribute ) {
+	protected function getXmlAttribute( SimpleXMLElement $xmlNode, $attribute ) {
 		return ( isset( $xmlNode[$attribute] ) ) ? (string)$xmlNode[$attribute]
 			: null;
 	}
@@ -244,11 +247,11 @@ class Node {
 	}
 
 	/**
-	 * @param \SimpleXMLElement $xmlNode
+	 * @param SimpleXMLElement $xmlNode
 	 *
 	 * @return mixed
 	 */
-	protected function extractDataFromSource( \SimpleXMLElement $xmlNode ) {
+	protected function extractDataFromSource( SimpleXMLElement $xmlNode ) {
 		$source = $this->getXmlAttribute( $xmlNode, self::DATA_SRC_ATTR_NAME );
 
 		return ( !empty( $source ) || $source == '0' ) ? $this->getInfoboxData( $source )
@@ -256,11 +259,11 @@ class Node {
 	}
 
 	/**
-	 * @param \SimpleXMLElement $xmlNode
+	 * @param SimpleXMLElement $xmlNode
 	 *
 	 * @return array
 	 */
-	protected function extractSourcesFromNode( \SimpleXMLElement $xmlNode ) {
+	protected function extractSourcesFromNode( SimpleXMLElement $xmlNode ) {
 		$sources = $this->hasPrimarySource( $xmlNode ) ?
 			[ $this->getXmlAttribute( $xmlNode, self::DATA_SRC_ATTR_NAME ) ] : [];
 
@@ -274,11 +277,11 @@ class Node {
 		return $sources;
 	}
 
-	protected function hasPrimarySource( \SimpleXMLElement $xmlNode ) {
+	protected function hasPrimarySource( SimpleXMLElement $xmlNode ) {
 		return (bool)$this->getXmlAttribute( $xmlNode, self::DATA_SRC_ATTR_NAME );
 	}
 
-	protected function matchVariables( \SimpleXMLElement $node, array $source ) {
+	protected function matchVariables( SimpleXMLElement $node, array $source ) {
 		preg_match_all( self::EXTRACT_SOURCE_REGEX, (string)$node, $sources );
 
 		return array_unique( array_merge( $source, $sources[1] ) );
