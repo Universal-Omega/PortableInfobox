@@ -156,7 +156,7 @@ class PortableInfoboxParserTagController {
 		// (see: PortableInfoboxDataService.class.php)
 
 		$infoboxes = json_decode(
-			$parserOutput->getProperty( PortableInfoboxDataService::INFOBOXES_PROPERTY_NAME ),
+			self::parserOutputGetPageProperty( $parserOutput, PortableInfoboxDataService::INFOBOXES_PROPERTY_NAME ),
 			true
 		);
 
@@ -168,10 +168,31 @@ class PortableInfoboxParserTagController {
 			'metadata' => $raw->getMetadata()
 		];
 
-		$parserOutput->setProperty(
+		self::parserOutputSetPageProperty(
+			$parserOutput,
 			PortableInfoboxDataService::INFOBOXES_PROPERTY_NAME,
 			json_encode( $infoboxes )
 		);
+	}
+
+	private static function parserOutputGetPageProperty( \ParserOutput $parserOutput, string $name ) {
+		if ( method_exists( \ParserOutput::class, 'getPageProperty' ) ) {
+			// @phan-suppress-next-line PhanUndeclaredMethod since 1.38
+			return $parserOutput->getPageProperty( $name );
+		} else {
+			// @phan-suppress-next-line PhanDeprecatedFunction deprecated since 1.38
+			return $parserOutput->getProperty( $name );
+		}
+	}
+
+	private static function parserOutputSetPageProperty( \ParserOutput $parserOutput, string $name, $value ) {
+		if ( method_exists( \ParserOutput::class, 'setPageProperty' ) ) {
+			// @phan-suppress-next-line PhanUndeclaredMethod since 1.38
+			$parserOutput->setPageProperty( $name, $value );
+		} else {
+			// @phan-suppress-next-line PhanDeprecatedFunction deprecated since 1.38
+			$parserOutput->setProperty( $name, $value );
+		}
 	}
 
 	private function handleError( $message ) {
