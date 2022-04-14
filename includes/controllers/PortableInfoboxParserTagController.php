@@ -177,7 +177,7 @@ class PortableInfoboxParserTagController {
 		if ( method_exists( \ParserOutput::class, 'getPageProperty' ) ) {
 			return $parserOutput->getPageProperty( $name );
 		} else {
-			// deprecated since 1.38
+			// @phan-suppress-next-line PhanUndeclaredMethod deprecated since 1.38
 			return $parserOutput->getProperty( $name );
 		}
 	}
@@ -186,7 +186,7 @@ class PortableInfoboxParserTagController {
 		if ( method_exists( \ParserOutput::class, 'setPageProperty' ) ) {
 			$parserOutput->setPageProperty( $name, $value );
 		} else {
-			// deprecated since 1.38
+			// @phan-suppress-next-line PhanUndeclaredMethod deprecated since 1.38
 			$parserOutput->setProperty( $name, $value );
 		}
 	}
