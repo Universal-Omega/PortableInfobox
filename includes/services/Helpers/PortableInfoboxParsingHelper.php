@@ -46,7 +46,7 @@ class PortableInfoboxParsingHelper {
 				}
 
 				return json_decode(
-					$parser->getOutput()->getProperty( \PortableInfoboxDataService::INFOBOXES_PROPERTY_NAME ),
+					self::parserOutputGetPageProperty( $parser->getOutput(), \PortableInfoboxDataService::INFOBOXES_PROPERTY_NAME ),
 					true
 				);
 			}
@@ -62,9 +62,17 @@ class PortableInfoboxParsingHelper {
 		$parser->parse( $this->fetchArticleContent( $title ), $title, $parserOptions );
 
 		return json_decode(
-			$parser->getOutput()->getProperty( \PortableInfoboxDataService::INFOBOXES_PROPERTY_NAME ),
+			self::parserOutputGetPageProperty( $parser->getOutput(), \PortableInfoboxDataService::INFOBOXES_PROPERTY_NAME ),
 			true
 		);
+	}
+
+	private static function parserOutputGetPageProperty( \ParserOutput $parserOutput, string $name ) {
+		if ( method_exists( \ParserOutput::class, 'getPageProperty' ) ) {
+			return $parserOutput->getPageProperty( $name );
+		} else {
+			return $parserOutput->getProperty( $name );
+		}
 	}
 
 	/**
