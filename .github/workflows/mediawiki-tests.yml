@@ -12,6 +12,7 @@ jobs:
 
     strategy:
       matrix:
+        fail-fast: false
         include:
           # Latest stable MediaWiki - PHP 7.3 (phan)
           - mw: 'REL1_37'
@@ -145,7 +146,7 @@ jobs:
             php-docker: 73
             experimental: false
             stage: npm-test
-  
+
           # Latest stable MediaWiki - PHP 7.3 (composer-test)
           - mw: 'REL1_37'
             php: 7.3
