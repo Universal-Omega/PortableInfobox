@@ -16,9 +16,9 @@ class PortableInfoboxDataServiceTest extends MediaWikiIntegrationTestCase {
 	 * @return Title
 	 */
 	protected function prepareTitle( $id = 0, $ns = NS_MAIN ) {
-		$title = $this->getExistingTestPage( 'Test' )->getTitle();
+		$title = Title::newFromText( 'Test', $ns );
+		$title = $this->getExistingTestPage( $title )->getTitle();
 		$title->mArticleID = $id;
-		$title->mNamespace = $ns;
 
 		return $title;
 	}
