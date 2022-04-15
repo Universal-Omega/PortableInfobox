@@ -214,11 +214,11 @@ class InfoboxParamsValidator {
 	 * @return bool
 	 */
 	public function validateColorValue( $color ) {
+		$color = strtolower( preg_replace( '/\s+/', '', $color ) );
+
 		if ( preg_match( self::REGEX_HEXRGB, $color ) ) {
 			return substr( $color, 0, 1 ) === '#' ? $color : '#' . $color;
 		}
-
-		$color = strtolower( preg_replace( '/\s+/', '', $color ) );
 
 		if ( isset( self::$colorNamesFlipped[$color] ) ||
 			preg_match( self::REGEX_RGB,  $color ) ||
