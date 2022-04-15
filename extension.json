@@ -115,7 +115,7 @@
 	},
 	"Hooks": {
 		"ParserFirstCallInit": "PortableInfoboxParserTagController::parserTagInit",
-		"BeforeParserrenderImageGallery": "PortableInfoboxHooks::onBeforeParserrenderImageGallery",
+		"AfterParserFetchFileAndTitle": "PortableInfoboxHooks::onAfterParserFetchFileAndTitle",
 		"wgQueryPages": "PortableInfoboxHooks::onWgQueryPages",
 		"AllInfoboxesQueryRecached": "PortableInfoboxHooks::onAllInfoboxesQueryRecached",
 		"ArticlePurge": "PortableInfoboxHooks::onArticlePurge",
