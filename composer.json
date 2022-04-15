@@ -2,9 +2,6 @@
 	"name": "mediawiki/portableinfobox",
 	"description": "",
 	"license": "GPL-3.0-or-later",
-	"require": {
-		"wikimedia/css-sanitizer": "3.0.0"
-	},
 	"require-dev": {
 		"mediawiki/mediawiki-codesniffer": "38.0.0",
 		"mediawiki/mediawiki-phan-config": "0.11.1",
