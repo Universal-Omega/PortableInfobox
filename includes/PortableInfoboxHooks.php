@@ -12,8 +12,8 @@ class PortableInfoboxHooks {
 		return true;
 	}
 
-	public static function onBeforeParserrenderImageGallery(
-		Parser &$parser, ImageGalleryBase &$gallery
+	public static function onAfterParserFetchFileAndTitle(
+		Parser $parser, ImageGalleryBase $gallery, string &$html
 	) {
 		PortableInfoboxDataBag::getInstance()->setGallery(
 			// @phan-suppress-next-line PhanDeprecatedProperty
