@@ -20,7 +20,6 @@ You can use several variables to modify extension's behaviour:
 - `$wgPortableInfoboxCustomImageWidth` (int) - size of image thumbnails used in infoboxes. (default: 300)
 - `$wgPortableInfoboxUseHeadings` (bool) - use heading tags for infobox titles and group headers, it may cause incompatibilities with other extensions. (default: true)
 - `$wgPortableInfoboxUseTidy` (bool) - use [RemexHtml](https://www.mediawiki.org/wiki/RemexHtml) for validating HTML in infoboxes (default: true)
-- `$wgPortableInfoboxResponsiblyOpenCollapsed` (bool) - open collapsed groups when the screen is narrow. (default: true)
 
 ## Usage
 See: https://community.fandom.com/wiki/Help:Infoboxes
@@ -54,5 +53,5 @@ In the 0.3 version, the `<media/>` tag was introduced in favor of `<image/>`, wh
 - `.pi-image-collection` classes were changed to `.pi-media-collection`.
 - `accent-color-*` attributes allow more color formats.
 - More HTML tags are allowed in captions.
-- Mobile skin doesn't get separate styling except floating and collapsing group features are disabled by default. Set `$wgPortableInfoboxResponsiblyOpenCollapsed` to `false` if you need collapsing group on mobile.
+- Mobile skin doesn't get separate styling except the infobox is not floating.
 - It may be *a little* more buggy :)

@@ -355,8 +355,7 @@
 	}
 
 }
-
-.pi-collapse() {
+.client-js {
 	.pi-collapse .pi-header:first-child {
 		padding-right: 25px;
 		position: relative;
@@ -389,17 +388,6 @@
 				display: none;
 			}
 		}
-	}
-}
-
-.client-js {
-	@media screen and ( min-width: 720px ) {
-		& when ( @responsibly-open-collapsed = 1 ) {
-			.pi-collapse()
-		}
-	}
-	& when not ( @responsibly-open-collapsed = 1 ) {
-		.pi-collapse()
 	}
 }
 

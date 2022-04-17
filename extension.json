@@ -31,9 +31,6 @@
 		},
 		"PortableInfoboxUseTidy": {
 			"value": true
-		},
-		"PortableInfoboxResponsiblyOpenCollapsed": {
-			"value": true
 		}
 	},
 	"MessagesDirs": {
@@ -52,7 +49,6 @@
 			]
 		},
 		"ext.PortableInfobox.styles": {
-			"class": "PortableInfoboxResourceLoaderModule",
 			"styles": "resources/PortableInfobox.less",
 			"targets": [
 				"desktop",
@@ -109,7 +105,6 @@
 		"PortableInfoboxHooks": "includes/PortableInfoboxHooks.php",
 		"PortableInfoboxDataService": "includes/services/PortableInfoboxDataService.php",
 		"PortableInfoboxRenderService": "includes/services/PortableInfoboxRenderService.php",
-		"PortableInfoboxResourceLoaderModule": "includes/resourceloader/PortableInfoboxResourceLoaderModule.php",
 		"PortableInfoboxErrorRenderService": "includes/services/PortableInfoboxErrorRenderService.php",
 		"PortableInfoboxParserTagController": "includes/controllers/PortableInfoboxParserTagController.php",
 		"ApiPortableInfobox": "includes/controllers/ApiPortableInfobox.php",
