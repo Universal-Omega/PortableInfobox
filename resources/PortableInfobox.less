@@ -355,41 +355,51 @@
 	}
 
 }
-@media screen and ( min-width: 720px ) {
-	.client-js {
-		.pi-collapse .pi-header:first-child {
-			padding-right: 25px;
-			position: relative;
-			&::after {
-				border-color: currentColor;
-				border-style: solid;
-				border-width: 2px 2px 0 0;
-				content: '';
-				display: block;
-				height: 5px;
-				right: 10px;
-				position: absolute;
-				top: 50%;
-				width: 5px;
-				.transform( rotate( -45deg ) );
-				margin-top: -3px;
-			}
+
+.pi-collapse() {
+	.pi-collapse .pi-header:first-child {
+		padding-right: 25px;
+		position: relative;
+		&::after {
+			border-color: currentColor;
+			border-style: solid;
+			border-width: 2px 2px 0 0;
+			content: '';
+			display: block;
+			height: 5px;
+			right: 10px;
+			position: absolute;
+			top: 50%;
+			width: 5px;
+			.transform( rotate( -45deg ) );
+			margin-top: -3px;
 		}
-		.pi-collapse-closed {
-			.pi-header:first-child::after {
-				.transform( rotate( 135deg ) );
-				margin-top: -5px;
-			}
-			> :nth-child( n+2 ) {
+	}
+	.pi-collapse-closed {
+		.pi-header:first-child::after {
+			.transform( rotate( 135deg ) );
+			margin-top: -5px;
+		}
+		> :nth-child( n+2 ) {
+			display: none;
+		}
+		.pi-horizontal-group {
+			thead,
+			tbody {
 				display: none;
 			}
-			.pi-horizontal-group {
-				thead,
-				tbody {
-					display: none;
-				}
-			}
 		}
+	}
+}
+
+.client-js {
+	@media screen and ( min-width: 720px ) {
+		& when ( @responsibly-open-collapsed = 1 ) {
+			.pi-collapse()
+		}
+	}
+	& when not ( @responsibly-open-collapsed = 1 ) {
+		.pi-collapse()
 	}
 }
 
