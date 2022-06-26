@@ -227,7 +227,13 @@
 
 			if ( this.xsltProcessor ) {
 				let transformed = this.xsltProcessor.transformToDocument( markup );
+
 				if ( transformed ) {
+					let result = transformed.xml;
+					if ( result.indexOf( '<transformiix:result' ) > -1 ) {
+						return result.substring( result.indexOf( '>' ) + 1, result.lastIndexOf( '<' ) );
+					}
+
 					return this.xmlSerializer.serializeToString( transformed )
 						.replace( /(?<=^ *)  /mg, '\t' );
 				}
