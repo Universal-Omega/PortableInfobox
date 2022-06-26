@@ -229,7 +229,9 @@
 				let transformed = this.xsltProcessor.transformToDocument( markup );
 
 				if ( transformed ) {
-					let result = transformed.xml;
+					let result = this.xmlSerializer.serializeToString( transformed )
+						.replace( /(?<=^ *)  /mg, '\t' );
+
 					if ( result.indexOf( '<transformiix:result' ) > -1 ) {
 						return result.substring( result.indexOf( '>' ) + 1, result.lastIndexOf( '<' ) );
 					}
