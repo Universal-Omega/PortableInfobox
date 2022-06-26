@@ -234,8 +234,7 @@
 						return result.substring( result.indexOf( '>' ) + 1, result.lastIndexOf( '<' ) );
 					}
 
-					return this.xmlSerializer.serializeToString( transformed )
-						.replace( /(?<=^ *)  /mg, '\t' );
+					return result;
 				}
 			}
 
