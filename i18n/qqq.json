@@ -1,4 +1,9 @@
 {
+	"@metadata": {
+		"authors": [
+			"lkucharczyk"
+		]
+	},
 	"portable-infobox-desc": "Portable Infobox extension description",
 	"portable-infobox-unimplemented-infobox-tag": "Error message for using unimplemented infobox tag; $1 is the tag name without pointy braces",
 	"portable-infobox-xml-parse-error-info": "General message for parsing problem",
