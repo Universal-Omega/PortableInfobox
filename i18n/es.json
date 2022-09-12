@@ -1,8 +1,13 @@
 {
+	"@metadata": {
+		"authors": [
+			"Csbotero"
+		]
+	},
 	"portable-infobox-desc": "Crea infoboxes portátiles usando marcadores XML de fácil comprensión y renderizádolas en cualquier diseño/plataforma con un claro marcado semántico HTML",
 	"portable-infobox-unimplemented-infobox-tag": "Etiqueta de infobox no implementada: <$1>",
-	"portable-infobox-xml-parse-error": "Marcador XML incorrecto. Valida tu XML",
 	"portable-infobox-xml-parse-error-info": "Hay un problema con el análisis del infobox",
+	"portable-infobox-xml-parse-error": "Marcador XML incorrecto. Valida tu XML",
 	"portable-infobox-xml-parse-error-document-end": "Contenido adicional al final del documento",
 	"portable-infobox-xml-parse-error-undeclared-entity": "Entidad no declarada (por ejemplo: &nbsp;)",
 	"portable-infobox-xml-parse-error-attribute-not-started": "El valor del atributo debe estar dentro de comillas",
@@ -12,5 +17,6 @@
 	"portable-infobox-xml-parse-error-gt-required": "La definición de la etiqueta no se termina correctamente",
 	"portable-infobox-xml-parse-error-tag-name-mismatch": "No coinciden las etiquetas de inicio y de fin",
 	"portable-infobox-xml-parse-error-tag-not-finished": "Fin prematuro de etiqueta",
-	"portable-infobox-xml-parse-error-infobox-tag-attribute-unsupported": "El atributo \"$1\" no está respaldado en la etiqueta <infobox>"
+	"portable-infobox-xml-parse-error-infobox-tag-attribute-unsupported": "El atributo \"$1\" no está respaldado en la etiqueta <infobox>",
+	"apiwarn-infobox-invalidargs": "El formato del parámetro Args es incorrecto"
 }

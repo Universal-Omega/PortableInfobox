@@ -1,8 +1,11 @@
 {
+	"@metadata": {
+		"authors": []
+	},
 	"portable-infobox-desc": "您可以使用类似XML标记创建简便的信息表格，并且可以使用清晰的语义特性HTML标记在任何皮肤或者平台进行呈现",
 	"portable-infobox-unimplemented-infobox-tag": "未生效的信息框标签：<$1>",
-	"portable-infobox-xml-parse-error": "XML 标记不正确。请验证您的 XML。",
 	"portable-infobox-xml-parse-error-info": "解析信息框时出现问题",
+	"portable-infobox-xml-parse-error": "XML 标记不正确。请验证您的 XML。",
 	"portable-infobox-xml-parse-error-document-end": "文档末尾的内容多余",
 	"portable-infobox-xml-parse-error-undeclared-entity": "未声明的实体（例如： &nbsp;）",
 	"portable-infobox-xml-parse-error-attribute-not-started": "属性值应在引号内",

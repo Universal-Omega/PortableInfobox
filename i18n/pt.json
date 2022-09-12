@@ -1,16 +1,21 @@
 {
+	"@metadata": {
+		"authors": [
+			"Hamilton Abreu"
+		]
+	},
 	"portable-infobox-desc": "Cria infoboxes portáteis usando marcadores semânticos de HTML claros em qualquer skin/ plataforma usando marcadores XML de fácil compreensão",
-	"portable-infobox-unimplemented-infobox-tag": "Etiqueta de infobox não implementada: <$1>",
-	"portable-infobox-xml-parse-error": "Marcador XML incorreto. Por favor, confirme o seu XML",
-	"portable-infobox-xml-parse-error-info": "Há um problema com a análise da infobox",
+	"portable-infobox-unimplemented-infobox-tag": "Etiqueta de caixa informativa não implementada: <$1>",
+	"portable-infobox-xml-parse-error-info": "Ocorreu um problema na análise da caixa informativa",
+	"portable-infobox-xml-parse-error": "Notação XML incorreta. Valide o seu XML, por favor",
 	"portable-infobox-xml-parse-error-document-end": "Conteúdo extra no final do documento",
 	"portable-infobox-xml-parse-error-undeclared-entity": "Entidade não declarada (por exemplo: &nbsp;)",
-	"portable-infobox-xml-parse-error-attribute-not-started": "O valor do atributo deve estar dentro de aspas",
-	"portable-infobox-xml-parse-error-attribute-without-value": "O atributo de marcação precisa ter valor",
+	"portable-infobox-xml-parse-error-attribute-not-started": "O valor do atributo deve estar entre aspas",
+	"portable-infobox-xml-parse-error-attribute-without-value": "O atributo da etiqueta tem de ter um valor",
 	"portable-infobox-xml-parse-error-space-required": "Erro de construção de atributos",
-	"portable-infobox-xml-parse-error-name-required": "Erro ao analisar o nome do atributo",
-	"portable-infobox-xml-parse-error-gt-required": "A definição da marcação não está finalizada adequadamente",
-	"portable-infobox-xml-parse-error-tag-name-mismatch": "A marcação de abertura e fechamento não correspondem",
-	"portable-infobox-xml-parse-error-tag-not-finished": "Fim prematuro da marcação",
-	"portable-infobox-xml-parse-error-infobox-tag-attribute-unsupported": "O atributo \"$1\" não é suportado na marcação <infobox>"
+	"portable-infobox-xml-parse-error-name-required": "Erro na análise sintática do nome do atributo",
+	"portable-infobox-xml-parse-error-gt-required": "A definição da etiqueta não foi devidamente terminada",
+	"portable-infobox-xml-parse-error-tag-name-mismatch": "As etiquetas de abertura e fecho não correspondem",
+	"portable-infobox-xml-parse-error-tag-not-finished": "Fim da etiqueta prematuro",
+	"portable-infobox-xml-parse-error-infobox-tag-attribute-unsupported": "O atributo \"$1\" não é suportado na etiqueta <infobox>"
 }

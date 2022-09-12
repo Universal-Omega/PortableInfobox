@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Robby",
 			"lkucharczyk"
 		]
 	},
@@ -25,5 +26,6 @@
 	"apihelp-infobox-param-args": "{{doc-apihelp-param|infobox|args}}",
 	"apihelp-query+allinfoboxes-summary": "{{doc-apihelp-summary|query+allinfoboxes}}",
 	"apihelp-query+infobox-summary": "{{doc-apihelp-summary|query+infobox}}",
-	"apiwarn-infobox-invalidargs": "Invalid \"args\" parameter in api.php?action=infobox"
+	"apiwarn-infobox-invalidargs": "Invalid \"args\" parameter in api.php?action=infobox",
+	"infoboxbuilder-node-media": "{{identical|Image}}"
 }
