@@ -27,5 +27,7 @@
 	"apihelp-query+allinfoboxes-summary": "{{doc-apihelp-summary|query+allinfoboxes}}",
 	"apihelp-query+infobox-summary": "{{doc-apihelp-summary|query+infobox}}",
 	"apiwarn-infobox-invalidargs": "Invalid \"args\" parameter in api.php?action=infobox",
-	"infoboxbuilder-node-media": "{{identical|Image}}"
+	"infoboxbuilder-node-title": "{{identical|Title}}",
+	"infoboxbuilder-node-media": "{{identical|Image}}",
+	"infoboxbuilder-nodeparam-label": "{{identical|Label}}"
 }

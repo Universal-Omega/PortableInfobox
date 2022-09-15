@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"MathXplore"
+			"MathXplore",
+			"Omotecho"
 		]
 	},
-	"portable-infobox-desc": "分かりやすくてパワフルなXML的マークアップを使ってポータブル・インフォボックスを作成し、どんなスキンやプラットフォーム上でも整ったセマンティックHTMLでの表示を可能にします",
+	"portable-infobox-desc": "分かりやすくてパワフルなXML的マークアップを使ってポータブルな情報ボックスを作成し、どんなスキンやプラットフォーム上でも整ったセマンティックHTMLでの表示を可能にします。またポータブルな情報ボックスの作成機能 [[Special:PortableInfoboxBuilder]] を同梱します。",
 	"portable-infobox-unimplemented-infobox-tag": "実装されていないインフォボックスのタグです：<$1>",
 	"portable-infobox-xml-parse-error-info": "インフォボックスの解析中にエラーが発生しました",
 	"portable-infobox-xml-parse-error": "XMLマークアップに誤りがあります。XMLをもう一度ご確認ください",
