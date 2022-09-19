@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Deltaspace",
 			"Pacha Tchernof"
 		]
 	},
@@ -17,5 +18,15 @@
 	"portable-infobox-xml-parse-error-gt-required": "Тег объявлен неправильно",
 	"portable-infobox-xml-parse-error-tag-name-mismatch": "Несоответствие открывающего и закрывающего тегов",
 	"portable-infobox-xml-parse-error-tag-not-finished": "Закрывающий тег объявлен слишком рано",
-	"portable-infobox-xml-parse-error-infobox-tag-attribute-unsupported": "Атрибут \"$1\" не поддерживается тегом <infobox>"
+	"portable-infobox-xml-parse-error-infobox-tag-attribute-unsupported": "Атрибут \"$1\" не поддерживается тегом <infobox>",
+	"apihelp-infobox-param-title": "Заголовок страницы, которой принадлежит текст",
+	"apiwarn-infobox-invalidargs": "Неверный формат параметра args",
+	"infoboxbuilder-action-addnode": "Добавьте элементы инфобокса",
+	"infoboxbuilder-action-deletenode": "Удалить элемент",
+	"infoboxbuilder-editsummary": "Инфобокс создан с помощью конструктора инфобоксов.",
+	"infoboxbuilder-node-title-value": "Заголовок инфобокса",
+	"infoboxbuilder-node-data": "Данные",
+	"infoboxbuilder-node-media": "Изображение",
+	"infoboxbuilder-nodeparam-label": "Метка",
+	"portableinfoboxbuilder": "Портативный конструктор инфобоксов"
 }
