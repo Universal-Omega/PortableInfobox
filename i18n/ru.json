@@ -25,6 +25,7 @@
 	"infoboxbuilder-action-deletenode": "Удалить элемент",
 	"infoboxbuilder-editsummary": "Инфобокс создан с помощью конструктора инфобоксов.",
 	"infoboxbuilder-node-title-value": "Заголовок инфобокса",
+	"infoboxbuilder-node-title-value-pagename": "Название страницы",
 	"infoboxbuilder-node-data": "Данные",
 	"infoboxbuilder-node-media": "Изображение",
 	"infoboxbuilder-nodeparam-label": "Метка",
