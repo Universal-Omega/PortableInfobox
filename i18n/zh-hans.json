@@ -1,8 +1,10 @@
 {
 	"@metadata": {
-		"authors": []
+		"authors": [
+			"Lakejason0"
+		]
 	},
-	"portable-infobox-desc": "您可以使用类似XML标记创建简便的信息表格，并且可以使用清晰的语义特性HTML标记在任何皮肤或者平台进行呈现",
+	"portable-infobox-desc": "您可以使用类似XML标记创建简便的信息表格，并且可以使用清晰的语义特性HTML标记在任何皮肤或者平台进行呈现。在[[Special:PortableInfoboxBuilder]]有移动化信息框生成器。",
 	"portable-infobox-unimplemented-infobox-tag": "未生效的信息框标签：<$1>",
 	"portable-infobox-xml-parse-error-info": "解析信息框时出现问题",
 	"portable-infobox-xml-parse-error": "XML 标记不正确。请验证您的 XML。",
@@ -23,5 +25,25 @@
 	"apihelp-infobox-param-args": "解析时使用的变量列表（JSON格式）",
 	"apihelp-query+allinfoboxes-summary": "列出所有信息框",
 	"apihelp-query+infobox-summary": "获取信息框元数据",
-	"apiwarn-infobox-invalidargs": "参数格式不正确"
+	"apiwarn-infobox-invalidargs": "参数格式不正确",
+	"infoboxbuilder-action-addnode": "添加信息框元素",
+	"infoboxbuilder-action-clear": "清除信息框",
+	"infoboxbuilder-action-deletenode": "删除元素",
+	"infoboxbuilder-action-publish": "发布信息框",
+	"infoboxbuilder-editerror": "在信息框发布时发生错误：$1",
+	"infoboxbuilder-editerrorunknown": "在信息框发布时发生未知错误。",
+	"infoboxbuilder-editsummary": "使用信息框生成器创建的信息框。",
+	"infoboxbuilder-node-title": "标题",
+	"infoboxbuilder-node-title-value": "信息框标题",
+	"infoboxbuilder-node-title-value-pagename": "页面名称",
+	"infoboxbuilder-node-data": "数据",
+	"infoboxbuilder-node-data-value-source": "$1的值",
+	"infoboxbuilder-node-media": "图像",
+	"infoboxbuilder-nodeerror-invalidsource": "源参数无效。",
+	"infoboxbuilder-nodeerror-nosourceordefault": "没有源参数或默认值的元素不会被显示。",
+	"infoboxbuilder-nodeparam-default": "默认值",
+	"infoboxbuilder-nodeparam-label": "标签",
+	"infoboxbuilder-nodeparam-source": "源参数",
+	"infoboxbuilder-templatename": "模板名称",
+	"portableinfoboxbuilder": "移动化信息框生成器"
 }
