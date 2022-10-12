@@ -1,8 +1,13 @@
 {
-	"portable-infobox-desc": "Create portable infoboxes which can be rendered using clean semantic HTML markup on any skin / platform using using easy to understand powerful XML-like markup",
+	"@metadata": {
+		"authors": [
+			"McDutchie"
+		]
+	},
+	"portable-infobox-desc": "Maakt overdraagbare infoboxen die kunnen worden weergegeven met behulp van zuivere semantische HTML-opmaak, op iedere vormgeving en op ieder platform, met behulp van een eenvoudig te begrijpen, krachtige, XML-achtige notatie. Bevat ook een bouwprogramma voor overdraagbare infoboxen op [[Special:PortableInfoboxBuilder]].",
 	"portable-infobox-unimplemented-infobox-tag": "Unimplemented infobox tag: <$1>",
-	"portable-infobox-xml-parse-error": "Incorrect XML markup. Please validate your XML",
 	"portable-infobox-xml-parse-error-info": "There is a problem with parsing the infobox",
+	"portable-infobox-xml-parse-error": "Incorrect XML markup. Please validate your XML",
 	"portable-infobox-xml-parse-error-document-end": "Extra content at the end of the document",
 	"portable-infobox-xml-parse-error-undeclared-entity": "Undeclared entity (for example: &nbsp;)",
 	"portable-infobox-xml-parse-error-attribute-not-started": "Attribute value should be inside quotation marks",

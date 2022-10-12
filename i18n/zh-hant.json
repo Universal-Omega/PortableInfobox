@@ -1,5 +1,10 @@
 {
-	"portable-infobox-desc": "您可以使用類似XML的標記建立簡便的資訊框，並且可以使用清晰的語義特性HTML標記在任何外觀或平台呈現",
+	"@metadata": {
+		"authors": [
+			"Lakejason0"
+		]
+	},
+	"portable-infobox-desc": "您可以使用類似XML的標記建立簡便的資訊框，並且可以使用清晰的語義特性HTML標記在任何外觀或平台呈現。在[[Special:PortableInfoboxBuilder]]有行動化資訊框產生器。",
 	"portable-infobox-unimplemented-infobox-tag": "未生效的資訊框標籤：<$1>",
 	"portable-infobox-xml-parse-error-info": "解析資訊框時出現問題",
 	"portable-infobox-xml-parse-error": "XML標記不正確。請驗證。",
@@ -16,6 +21,29 @@
 	"allinfoboxes": "所有資訊框",
 	"apihelp-infobox-summary": "此模組提供資訊框解析器",
 	"apihelp-infobox-param-text": "要解析的資訊框（xml字串）",
+	"apihelp-infobox-param-title": "文字所屬頁面的標題",
+	"apihelp-infobox-param-args": "解析時使用的變數清單（JSON格式）",
 	"apihelp-query+allinfoboxes-summary": "所有資訊框清單",
-	"apihelp-query+infobox-summary": "取得資訊框元資料"
+	"apihelp-query+infobox-summary": "取得資訊框元資料",
+	"apiwarn-infobox-invalidargs": "參數格式不正確",
+	"infoboxbuilder-action-addnode": "加入資訊框元素",
+	"infoboxbuilder-action-clear": "清除資訊框",
+	"infoboxbuilder-action-deletenode": "刪除元素",
+	"infoboxbuilder-action-publish": "發布資訊框",
+	"infoboxbuilder-editerror": "在資訊框發布時發生錯誤：$1",
+	"infoboxbuilder-editerrorunknown": "資訊框發布時發生未知錯誤。",
+	"infoboxbuilder-editsummary": "使用資訊框產生器建立的資訊框。",
+	"infoboxbuilder-node-title": "標題",
+	"infoboxbuilder-node-title-value": "資訊框標題",
+	"infoboxbuilder-node-title-value-pagename": "頁面名稱",
+	"infoboxbuilder-node-data": "資料",
+	"infoboxbuilder-node-data-value-source": "$1的值",
+	"infoboxbuilder-node-media": "圖片",
+	"infoboxbuilder-nodeerror-invalidsource": "源參數無效。",
+	"infoboxbuilder-nodeerror-nosourceordefault": "沒有源參數或預設值的元素不會被顯示。",
+	"infoboxbuilder-nodeparam-default": "預設值",
+	"infoboxbuilder-nodeparam-label": "標籤",
+	"infoboxbuilder-nodeparam-source": "源參數",
+	"infoboxbuilder-templatename": "模板名稱",
+	"portableinfoboxbuilder": "行動化資訊框產生器"
 }

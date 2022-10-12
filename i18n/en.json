@@ -1,4 +1,10 @@
 {
+	"@metadata": {
+		"authors": [
+			"Universal Omega",
+			"lkucharczyk"
+		]
+	},
 	"portable-infobox-desc": "Create portable infoboxes which can be rendered using clean semantic HTML markup on any skin / platform using using easy to understand powerful XML-like markup. Also includes a portable infobox builder at [[Special:PortableInfoboxBuilder]].",
 	"portable-infobox-unimplemented-infobox-tag": "Unimplemented infobox tag: <$1>",
 	"portable-infobox-xml-parse-error-info": "There is a problem with parsing the infobox",

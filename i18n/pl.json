@@ -1,8 +1,11 @@
 {
+	"@metadata": {
+		"authors": []
+	},
 	"portable-infobox-desc": "Twórz przenośne infoboksy używając prostej do zrozumienia i zarazem potężnej składni podobnej do XML. W efekcie powstanie czysta semantyczna składnia HTML, która pozwoli na wyświetlanie infoboksu na każdej skórce i platformie",
 	"portable-infobox-unimplemented-infobox-tag": "Niezaimplementowany tag infoboksa: <$1>",
-	"portable-infobox-xml-parse-error": "Błędna składnia XML. Proszę sprawdź kod XML",
 	"portable-infobox-xml-parse-error-info": "Wystąpił problem z parsowaniem infoboksu",
+	"portable-infobox-xml-parse-error": "Błędna składnia XML. Proszę sprawdź kod XML",
 	"portable-infobox-xml-parse-error-document-end": "Dodatkowa treść na końcu dokumentu",
 	"portable-infobox-xml-parse-error-undeclared-entity": "Niezadeklarowany obiekt (na przykład: &nbsp;)",
 	"portable-infobox-xml-parse-error-attribute-not-started": "Wartość atrybutu powinna być zawarta wewnątrz cudzysłowów",

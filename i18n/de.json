@@ -1,8 +1,13 @@
 {
-	"portable-infobox-desc": "Erstelle in einem einfachen mächtigen XML-Format portable Infoboxen, die in jedem Skin und auf jeder Plattform in sauberem semantischen HTML dargestellt werden.",
+	"@metadata": {
+		"authors": [
+			"Justman10000"
+		]
+	},
+	"portable-infobox-desc": "Erstelle tragbare Infoboxen, die mit sauberem semantischem HTML-Markup auf jeder Oberfläche / Plattform gerendert werden können, indem du leicht verständliches, leistungsstarkes XML-ähnliches Markup verwendest. Enthält auch einen portablen Infobox-Builder unter [[Special:PortableInfoboxBuilder]].",
 	"portable-infobox-unimplemented-infobox-tag": "Nicht implementiertes Infobox-Tag: <$1>",
-	"portable-infobox-xml-parse-error": "Fehler im XML-Format. Bitte überprüfe deinen XML-Code.",
 	"portable-infobox-xml-parse-error-info": "Beim Parsen der Infobox ist ein Problem aufgetreten",
+	"portable-infobox-xml-parse-error": "Fehler im XML-Format. Bitte überprüfe deinen XML-Code.",
 	"portable-infobox-xml-parse-error-document-end": "Zusätzlicher Inhalt am Ende des Dokuments",
 	"portable-infobox-xml-parse-error-undeclared-entity": "Nicht deklarierte Entität (zum Beispiel: &nbsp;)",
 	"portable-infobox-xml-parse-error-attribute-not-started": "Attributwert muss in Anführungszeichen stehen",

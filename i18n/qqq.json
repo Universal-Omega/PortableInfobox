@@ -1,4 +1,10 @@
 {
+	"@metadata": {
+		"authors": [
+			"Robby",
+			"lkucharczyk"
+		]
+	},
 	"portable-infobox-desc": "Portable Infobox extension description",
 	"portable-infobox-unimplemented-infobox-tag": "Error message for using unimplemented infobox tag; $1 is the tag name without pointy braces",
 	"portable-infobox-xml-parse-error-info": "General message for parsing problem",
@@ -20,5 +26,8 @@
 	"apihelp-infobox-param-args": "{{doc-apihelp-param|infobox|args}}",
 	"apihelp-query+allinfoboxes-summary": "{{doc-apihelp-summary|query+allinfoboxes}}",
 	"apihelp-query+infobox-summary": "{{doc-apihelp-summary|query+infobox}}",
-	"apiwarn-infobox-invalidargs": "Invalid \"args\" parameter in api.php?action=infobox"
+	"apiwarn-infobox-invalidargs": "Invalid \"args\" parameter in api.php?action=infobox",
+	"infoboxbuilder-node-title": "{{identical|Title}}",
+	"infoboxbuilder-node-media": "{{identical|Image}}",
+	"infoboxbuilder-nodeparam-label": "{{identical|Label}}"
 }

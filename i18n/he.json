@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"Amire80",
+			"מקף"
+		]
+	},
+	"portable-infobox-xml-parse-error-infobox-tag-attribute-unsupported": "המאפיין \"$1\" אינו נתמך בתג <infobox>",
+	"allinfoboxes": "כל תבניות המידע",
+	"apiwarn-infobox-invalidargs": "תסדיר Args param שגוי",
+	"infoboxbuilder-action-clear": "ניקוי תבנית מידע",
+	"infoboxbuilder-action-deletenode": "מחיקת רכיב",
+	"infoboxbuilder-action-publish": "פרסום תבנית המידע",
+	"infoboxbuilder-node-title": "כותרת",
+	"infoboxbuilder-node-title-value": "כותרת תבנית המידע",
+	"infoboxbuilder-node-title-value-pagename": "שם הדף",
+	"infoboxbuilder-node-data": "נתונים",
+	"infoboxbuilder-node-data-value-source": "ערך של $1",
+	"infoboxbuilder-node-media": "תמונה",
+	"infoboxbuilder-templatename": "שם התבנית"
+}
