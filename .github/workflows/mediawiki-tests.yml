@@ -13,13 +13,6 @@ jobs:
     strategy:
       matrix:
         include:
-          # Latest stable MediaWiki - PHP 7.3 (phan)
-          - mw: 'REL1_37'
-            php: 7.3
-            php-docker: 73
-            experimental: false
-            stage: phan
-
           # Latest stable MediaWiki - PHP 7.4 (phan)
           - mw: 'REL1_37'
             php: 7.4
@@ -41,13 +34,6 @@ jobs:
             experimental: false
             stage: coverage
 
-          # Latest stable MediaWiki - PHP 7.3 (phpunit-unit)
-          - mw: 'REL1_37'
-            php: 7.3
-            php-docker: 73
-            experimental: false
-            stage: phpunit-unit
-
           # Latest stable MediaWiki - PHP 7.4 (phpunit-unit)
           - mw: 'REL1_37'
             php: 7.4
@@ -61,13 +47,6 @@ jobs:
             php-docker: 74
             experimental: false
             stage: phpunit-unit
-
-          # Latest stable MediaWiki - PHP 7.3 (phpunit)
-          - mw: 'REL1_37'
-            php: 7.3
-            php-docker: 73
-            experimental: false
-            stage: phpunit
 
           # Latest stable MediaWiki - PHP 7.4 (phpunit)
           - mw: 'REL1_37'
@@ -83,10 +62,10 @@ jobs:
             experimental: true
             stage: phpunit
 
-          # Latest stable MediaWiki - PHP 7.3 (selenium)
+          # Latest stable MediaWiki - PHP 7.4 (selenium)
           - mw: 'REL1_37'
-            php: 7.3
-            php-docker: 73
+            php: 7.4
+            php-docker: 74
             experimental: false
             stage: selenium
 
@@ -97,10 +76,10 @@ jobs:
             experimental: false
             stage: selenium
 
-          # Latest stable MediaWiki - PHP 7.3 (qunit)
+          # Latest stable MediaWiki - PHP 7.4 (qunit)
           - mw: 'REL1_37'
-            php: 7.3
-            php-docker: 73
+            php: 7.4
+            php-docker: 74
             experimental: false
             stage: qunit
 
