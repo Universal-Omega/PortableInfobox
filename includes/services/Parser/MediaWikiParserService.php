@@ -94,22 +94,19 @@ class MediaWikiParserService implements ExternalParser {
 
 		// Pass PI images to PageImages extension if available (Popups and og:image)
 		if ( method_exists(
-			ParserFileProcessingHookHandlers::class, 'onParserMakeImageParams'
-		) ) {
-			$params = [];
-			// @phan-suppress-next-line PhanUndeclaredStaticMethod
-			ParserFileProcessingHookHandlers::onParserMakeImageParams(
-				$title, $file, $params, $this->parser
-			);
-		} elseif ( method_exists(
 			ParserFileProcessingHookHandlers::class, 'onParserModifyImageHTML'
 		) ) {
-			// 1.38+
+			$mainWANObjectCache = MediaWikiServices::getInstance()->getMainWANObjectCache();
+			$parserFileProcessingHookHandlers = new ParserFileProcessingHookHandlers(
+				$repoGroup,
+				$mainWANObjectCache
+			);
+
 			$params = [];
 			$html = '';
 
 			// @phan-suppress-next-line PhanUndeclaredStaticMethod
-			ParserFileProcessingHookHandlers::onParserModifyImageHTML(
+			$parserFileProcessingHookHandlers->onParserModifyImageHTML(
 				$this->parser, $file, $params, $html
 			);
 		}
