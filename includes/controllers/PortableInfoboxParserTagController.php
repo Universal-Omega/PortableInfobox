@@ -176,23 +176,11 @@ class PortableInfoboxParserTagController {
 	}
 
 	private static function parserOutputGetPageProperty( \ParserOutput $parserOutput, string $name ) {
-		if ( method_exists( \ParserOutput::class, 'getPageProperty' ) ) {
-			// @phan-suppress-next-line PhanUndeclaredMethod since 1.38
-			return $parserOutput->getPageProperty( $name );
-		} else {
-			// @phan-suppress-next-line PhanDeprecatedFunction deprecated since 1.38
-			return $parserOutput->getProperty( $name );
-		}
+		return $parserOutput->getPageProperty( $name );
 	}
 
 	private static function parserOutputSetPageProperty( \ParserOutput $parserOutput, string $name, $value ) {
-		if ( method_exists( \ParserOutput::class, 'setPageProperty' ) ) {
-			// @phan-suppress-next-line PhanUndeclaredMethod since 1.38
-			$parserOutput->setPageProperty( $name, $value );
-		} else {
-			// @phan-suppress-next-line PhanDeprecatedFunction deprecated since 1.38
-			$parserOutput->setProperty( $name, $value );
-		}
+		$parserOutput->setPageProperty( $name, $value );
 	}
 
 	private function handleError( $message ) {
