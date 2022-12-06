@@ -96,12 +96,12 @@ class MediaWikiParserService implements ExternalParser {
 		if ( method_exists(
 			ParserFileProcessingHookHandlers::class, 'onParserModifyImageHTML'
 		) ) {
-			$parserFileProcessingHookHandlers = new ParserFileProcessingHookHandlers();
+			$handler = new ParserFileProcessingHookHandlers();
 
 			$params = [];
 			$html = '';
 
-			$parserFileProcessingHookHandlers->onParserModifyImageHTML(
+			$handler->onParserModifyImageHTML(
 				$this->parser, $file, $params, $html
 			);
 		}
