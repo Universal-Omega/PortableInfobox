@@ -2,6 +2,8 @@
 
 namespace PortableInfobox\Helpers;
 
+use MediaWiki\MediaWikiServices;
+
 class PagePropsProxy {
 
 	protected $atomicStarted;
@@ -12,7 +14,8 @@ class PagePropsProxy {
 	}
 
 	public function get( $id, $property ) {
-		$dbr = wfGetDB( DB_REPLICA );
+		$dbLoadBalancer = MediaWikiServices::getInstance()->getDBLoadBalancer();
+		$dbr = $dbLoadBalancer->getConnection( DB_REPLICA );
 		$propValue = $dbr->selectField(
 			'page_props',
 			'pp_value',
@@ -26,7 +29,8 @@ class PagePropsProxy {
 	}
 
 	public function set( $id, array $props ) {
-		$dbw = wfGetDB( DB_PRIMARY );
+		$dbLoadBalancer = MediaWikiServices::getInstance()->getDBLoadBalancer();
+		$dbw = $dbLoadBalancer->getConnection( DB_PRIMARY );
 
 		if ( !$this->atomicStarted ) {
 			$dbw->startAtomic( __METHOD__ );
@@ -59,7 +63,10 @@ class PagePropsProxy {
 
 	public function write() {
 		if ( $this->atomicStarted && $this->manualWrite ) {
-			wfGetDB( DB_PRIMARY )->endAtomic( __CLASS__ . '::set' );
+			$dbLoadBalancer = MediaWikiServices::getInstance()->getDBLoadBalancer();
+			$dbLoadBalancer->getConnection( DB_PRIMARY )
+				->endAtomic( __CLASS__ . '::set' );
+
 			$this->atomicStarted = false;
 		}
 	}

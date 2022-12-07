@@ -74,13 +74,7 @@ class PortableInfoboxParsingHelper {
 	}
 
 	private static function parserOutputGetPageProperty( \ParserOutput $parserOutput, string $name ) {
-		if ( method_exists( \ParserOutput::class, 'getPageProperty' ) ) {
-			// @phan-suppress-next-line PhanUndeclaredMethod since 1.38
-			return $parserOutput->getPageProperty( $name );
-		} else {
-			// @phan-suppress-next-line PhanDeprecatedFunction deprecated since 1.38
-			return $parserOutput->getProperty( $name );
-		}
+		return $parserOutput->getPageProperty( $name );
 	}
 
 	/**
