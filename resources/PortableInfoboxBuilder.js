@@ -233,7 +233,7 @@
 						.replace( /(?<=^ *)  /mg, '\t' );
 
 					if ( result.indexOf( '<transformiix:result' ) > -1 ) {
-						return result.substring( result.indexOf( '>' ) + 1, result.lastIndexOf( '<' ) );
+						return '<infobox>' + result.substring( result.indexOf( '>' ) + 1, result.lastIndexOf( '<' ) ) + '</infobox>';
 					}
 
 					return result;
