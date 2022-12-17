@@ -227,9 +227,16 @@
 
 			if ( this.xsltProcessor ) {
 				let transformed = this.xsltProcessor.transformToDocument( markup );
+
 				if ( transformed ) {
-					return this.xmlSerializer.serializeToString( transformed )
+					let result = this.xmlSerializer.serializeToString( transformed )
 						.replace( /(?<=^ *)  /mg, '\t' );
+
+					if ( result.indexOf( '<transformiix:result' ) > -1 ) {
+						return '<infobox>' + result.substring( result.indexOf( '>' ) + 1, result.lastIndexOf( '<' ) ) + '</infobox>';
+					}
+
+					return result;
 				}
 			}
 
