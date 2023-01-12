@@ -4,6 +4,7 @@
 			"Eleassar"
 		]
 	},
+	"portable-infobox-desc": "Ustvarite prenosna infopolja, ki jih je mogoče upodobiti, s čistim semantičnim HTML-označevanjem v kateri koli preobleki/platformi z uporabo lahko razumljivega zmogljivega XML-podobnega označevanja. Vključuje tudi prenosni gradilnik infopolj na [[Special:PortableInfoboxBuilder]].",
 	"portable-infobox-unimplemented-infobox-tag": "Neprepoznana oznaka infopolja: <$1>",
 	"portable-infobox-xml-parse-error-info": "Pri razčlenjevanju infopolja je prišlo do težave",
 	"portable-infobox-xml-parse-error": "Nepravilno označevanje XML. Prosimo, preverite vneseni XML.",
@@ -16,6 +17,7 @@
 	"portable-infobox-xml-parse-error-gt-required": "Opredelitev oznake ni pravilno zaključena",
 	"portable-infobox-xml-parse-error-tag-name-mismatch": "Neujemanje začetne in končne oznake",
 	"portable-infobox-xml-parse-error-tag-not-finished": "Prezgodnji konec oznake",
+	"portable-infobox-xml-parse-error-infobox-tag-attribute-unsupported": "Atribut »$1« v znački <infobox> ni podprt",
 	"allinfoboxes": "Vsa Infopolja",
 	"apihelp-infobox-summary": "Ta modul omogoča razčlenjevalnik infopolj",
 	"apihelp-infobox-param-text": "Infopolje za razčlenitev (niz xml)",
