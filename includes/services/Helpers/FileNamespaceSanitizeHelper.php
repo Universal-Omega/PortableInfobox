@@ -65,13 +65,13 @@ class FileNamespaceSanitizeHelper {
 	}
 
 	/**
-	 * @param string $filename
+	 * @param string|null $filename
 	 * @param Language $contLang
 	 *
 	 * @return mixed
 	 */
 	public function sanitizeImageFileName( $filename, $contLang ) {
-		$plainText = $this->convertToPlainText( $filename );
+		$plainText = $this->convertToPlainText( $filename ?? '' );
 		$filePrefixRegex = $this->getFilePrefixRegex( $contLang );
 		$textLines = explode( PHP_EOL, $plainText );
 
@@ -87,7 +87,7 @@ class FileNamespaceSanitizeHelper {
 	}
 
 	/**
-	 * @param $filename
+	 * @param string $filename
 	 *
 	 * @return string
 	 */
