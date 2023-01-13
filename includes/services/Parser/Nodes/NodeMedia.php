@@ -28,7 +28,7 @@ class NodeMedia extends Node {
 
 	public static function getMarkers( $value, $ext ) {
 		$regex = '/' . Parser::MARKER_PREFIX . "-$ext-[A-F0-9]{8}" . Parser::MARKER_SUFFIX . '/i';
-		if ( preg_match_all( $regex, $value, $out ) ) {
+		if ( preg_match_all( $regex, $value ?? '', $out ) ) {
 			return $out[0];
 		} else {
 			return [];

@@ -156,7 +156,7 @@ class PortableInfoboxParserTagController {
 		// (see: PortableInfoboxDataService.class.php)
 
 		$infoboxes = json_decode(
-			self::parserOutputGetPageProperty( $parserOutput, PortableInfoboxDataService::INFOBOXES_PROPERTY_NAME ),
+			self::parserOutputGetPageProperty( $parserOutput, PortableInfoboxDataService::INFOBOXES_PROPERTY_NAME ) ?? '',
 			true
 		);
 
