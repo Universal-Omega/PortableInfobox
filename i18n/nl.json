@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Mainframe98",
 			"McDutchie"
 		]
 	},
@@ -17,5 +18,10 @@
 	"portable-infobox-xml-parse-error-gt-required": "Tagdefinitie is niet juist afgesloten.",
 	"portable-infobox-xml-parse-error-tag-name-mismatch": "Openings- en eindtag komen niet overeen.",
 	"portable-infobox-xml-parse-error-tag-not-finished": "Voortijdig einde van tag.",
-	"portable-infobox-xml-parse-error-infobox-tag-attribute-unsupported": "Het attribuut \"$1\" wordt niet ondersteund bij de tag <infobox>."
+	"portable-infobox-xml-parse-error-infobox-tag-attribute-unsupported": "Het attribuut \"$1\" wordt niet ondersteund bij de tag <infobox>.",
+	"infoboxbuilder-node-title": "Titel",
+	"infoboxbuilder-node-title-value-pagename": "Paginanaam",
+	"infoboxbuilder-node-media": "Afbeelding",
+	"infoboxbuilder-nodeparam-default": "Standaardwaarde",
+	"infoboxbuilder-templatename": "Sjabloonnaam"
 }
