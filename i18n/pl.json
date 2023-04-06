@@ -1,9 +1,11 @@
 {
 	"@metadata": {
-		"authors": []
+		"authors": [
+			"Rail"
+		]
 	},
-	"portable-infobox-desc": "Twórz przenośne infoboksy używając prostej do zrozumienia i zarazem potężnej składni podobnej do XML. W efekcie powstanie czysta semantyczna składnia HTML, która pozwoli na wyświetlanie infoboksu na każdej skórce i platformie",
-	"portable-infobox-unimplemented-infobox-tag": "Niezaimplementowany tag infoboksa: <$1>",
+	"portable-infobox-desc": "Twórz przenośne infoboksy, które mogą być wyświetlane za pomocą czystej i semantycznej składni HTML na każdej skórce i platformie przy użyciu prostej do zrozumienia, a zarazem potężnej składni podobnej do języka XML. Udostępnia również kreator infoboksów na [[{{#special:PortableInfoboxBuilder}}]].",
+	"portable-infobox-unimplemented-infobox-tag": "Niezaimplementowany tag infoboksu: <$1>",
 	"portable-infobox-xml-parse-error-info": "Wystąpił problem z parsowaniem infoboksu",
 	"portable-infobox-xml-parse-error": "Błędna składnia XML. Proszę sprawdź kod XML",
 	"portable-infobox-xml-parse-error-document-end": "Dodatkowa treść na końcu dokumentu",
@@ -15,8 +17,8 @@
 	"portable-infobox-xml-parse-error-gt-required": "Definicja tagu nie jest zakończona prawidłowo",
 	"portable-infobox-xml-parse-error-tag-name-mismatch": "Niezgodność otwierającego i kończącego znacznika",
 	"portable-infobox-xml-parse-error-tag-not-finished": "Przedwczesny koniec znacznika",
-	"portable-infobox-xml-parse-error-infobox-tag-attribute-unsupported": "Atrybut \"$1\" nie jest obsługiwany w tagu <infobox>",
-	"allinfoboxes": "Wszystkie Infoboksy",
+	"portable-infobox-xml-parse-error-infobox-tag-attribute-unsupported": "Atrybut „$1” nie jest obsługiwany w tagu <infobox>",
+	"allinfoboxes": "Wszystkie infoboksy",
 	"apihelp-infobox-summary": "Parsuje kod infoboksu",
 	"apihelp-infobox-param-text": "Infoboks do przeparsowania (w formacie XML)",
 	"apihelp-infobox-param-title": "Tytuł strony",
@@ -39,9 +41,9 @@
 	"infoboxbuilder-node-media": "Obraz",
 	"infoboxbuilder-nodeerror-invalidsource": "Parametr zawiera niedozwolone znaki.",
 	"infoboxbuilder-nodeerror-nosourceordefault": "Element bez parametru lub domyślnej wartości nie będzie się wyświetlał.",
-	"infoboxbuilder-nodeparam-default": "Domyślna wartosć",
+	"infoboxbuilder-nodeparam-default": "Domyślna wartość",
 	"infoboxbuilder-nodeparam-label": "Etykieta",
 	"infoboxbuilder-nodeparam-source": "Parametr",
 	"infoboxbuilder-templatename": "Nazwa szablonu",
-	"portableinfoboxbuilder": "Kreator Infoboksów"
+	"portableinfoboxbuilder": "Kreator infoboksów"
 }
