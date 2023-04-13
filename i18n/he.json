@@ -17,5 +17,7 @@
 	"infoboxbuilder-node-data": "נתונים",
 	"infoboxbuilder-node-data-value-source": "ערך של $1",
 	"infoboxbuilder-node-media": "תמונה",
+	"infoboxbuilder-nodeparam-default": "ערך התחלתי",
+	"infoboxbuilder-nodeparam-label": "תווית",
 	"infoboxbuilder-templatename": "שם התבנית"
 }
