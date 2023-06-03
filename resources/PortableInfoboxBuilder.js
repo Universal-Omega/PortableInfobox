@@ -212,7 +212,7 @@
 		}
 
 		clearInfobox() {
-			OO.ui.confirm( mw.message( 'confirmable-confirm', mw.user.getName() ).text() )
+			OO.ui.confirm( mw.message( 'confirmable-confirm', mw.config.get("wgUserName") ).text() )
 				.done( ( confirmed ) => {
 					if ( confirmed ) {
 						this.deselect();
