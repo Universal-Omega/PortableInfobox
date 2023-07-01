@@ -85,7 +85,9 @@ class MediaWikiParserService implements ExternalParser {
 	 * @param Title $title
 	 */
 	public function addImage( $title ) {
-		$repoGroup = MediaWikiServices::getInstance()->getRepoGroup();
+		$services = MediaWikiServices::getInstance();
+
+		$repoGroup = $services->getRepoGroup();
 
 		$file = $repoGroup->findFile( $title );
 		$tmstmp = $file ? $file->getTimestamp() : null;
@@ -96,7 +98,11 @@ class MediaWikiParserService implements ExternalParser {
 		if ( method_exists(
 			ParserFileProcessingHookHandlers::class, 'onParserModifyImageHTML'
 		) ) {
-			$handler = new ParserFileProcessingHookHandlers();
+			$handler = new ParserFileProcessingHookHandlers(
+				$repoGroup,
+				$services->getMainWANObjectCache(),
+				$services->getHttpRequestFactory()
+			);
 
 			$params = [];
 			$html = '';
