@@ -98,11 +98,15 @@ class MediaWikiParserService implements ExternalParser {
 		if ( method_exists(
 			ParserFileProcessingHookHandlers::class, 'onParserModifyImageHTML'
 		) ) {
-			$handler = new ParserFileProcessingHookHandlers(
-				$repoGroup,
-				$services->getMainWANObjectCache(),
-				$services->getHttpRequestFactory()
-			);
+			if( version_compare( MW_VERSION, '1.40', '>=' ) ) {
+				$handler = new ParserFileProcessingHookHandlers(
+					$repoGroup,
+					$services->getMainWANObjectCache(),
+					$services->getHttpRequestFactory()
+				);
+			} else {
+				$handler = new ParserFileProcessingHookHandlers();
+			}
 
 			$params = [];
 			$html = '';
