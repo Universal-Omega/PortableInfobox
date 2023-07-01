@@ -98,6 +98,7 @@ class MediaWikiParserService implements ExternalParser {
 		if ( method_exists(
 			ParserFileProcessingHookHandlers::class, 'onParserModifyImageHTML'
 		) ) {
+			// @phan-suppress-next-line PhanParamTooMany
 			$handler = new ParserFileProcessingHookHandlers(
 				$repoGroup,
 				$services->getMainWANObjectCache(),
