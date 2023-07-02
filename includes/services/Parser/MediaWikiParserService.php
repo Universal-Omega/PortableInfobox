@@ -102,7 +102,9 @@ class MediaWikiParserService implements ExternalParser {
 			$handler = new ParserFileProcessingHookHandlers(
 				$repoGroup,
 				$services->getMainWANObjectCache(),
-				$services->getHttpRequestFactory()
+				$services->getHttpRequestFactory(),
+				$services->getDBLoadBalancerFactory(),
+				$services->getTitleFactory()
 			);
 
 			$params = [];
