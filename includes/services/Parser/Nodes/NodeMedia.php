@@ -160,7 +160,8 @@ class NodeMedia extends Node {
 			'isVideo' => $mediatype === MEDIATYPE_VIDEO,
 			'isAudio' => $mediatype === MEDIATYPE_AUDIO,
 			'source' => $this->getPrimarySource(),
-			'item-name' => $this->getItemName()
+			'item-name' => $this->getItemName(),
+			'htmlAfter' => null,
 		];
 
 		if ( $titleObj instanceof Title ) {
