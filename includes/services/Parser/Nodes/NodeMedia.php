@@ -150,10 +150,6 @@ class NodeMedia extends Node {
 			return [];
 		}
 
-		if ( $titleObj instanceof Title ) {
-			$this->getExternalParser()->addImage( $titleObj );
-		}
-
 		$mediatype = $fileObj->getMediaType();
 		$image = [
 			'url' => $this->resolveImageUrl( $fileObj ),
@@ -166,6 +162,11 @@ class NodeMedia extends Node {
 			'source' => $this->getPrimarySource(),
 			'item-name' => $this->getItemName()
 		];
+
+		if ( $titleObj instanceof Title ) {
+			// This call may produce extra HTML from, for example, the PageImages integration
+			$image['htmlAfter'] = $this->getExternalParser()->addImage( $titleObj );
+		}
 
 		if ( $image['isImage'] ) {
 			$image = array_merge( $image, $helper->extendImageData(

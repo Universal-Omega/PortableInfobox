@@ -7,5 +7,5 @@ interface ExternalParser {
 
 	public function replaceVariables( $text );
 
-	public function addImage( $title );
+	public function addImage( $title ): ?string;
 }

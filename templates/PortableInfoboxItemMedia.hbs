@@ -3,7 +3,7 @@
 		{{#if isImage}}<img src="{{thumbnail}}" srcset="{{thumbnail}} 1x, {{thumbnail2x}} 2x" class="pi-image-thumbnail" alt="{{alt}}" width="{{{width}}}" height="{{{height}}}"/>
 		{{else}}{{#if isVideo}}<video src="{{url}}" class="pi-video-player" controls="true" controlsList="nodownload" preload="metadata">{{alt}}</video>
 		{{else}}{{#if isAudio}}<audio src="{{url}}" class="pi-audio-player" controls="true" controlsList="nodownload">{{alt}}</audio>
-		{{else}}{{alt}}{{/if}}{{/if}}{{/if}}
+		{{else}}{{alt}}{{/if}}{{/if}}{{/if}}{{{htmlAfter}}}
 	</a>
 	{{#if caption}}<figcaption class="pi-item-spacing pi-caption">{{{caption}}}</figcaption>{{/if}}
 </figure>
