@@ -83,8 +83,9 @@ class MediaWikiParserService implements ExternalParser {
 	 * Add image to parser output for later usage
 	 *
 	 * @param Title $title
+	 * @return ?string PageImages markers, if any.
 	 */
-	public function addImage( $title ) {
+	public function addImage( $title ): ?string {
 		$services = MediaWikiServices::getInstance();
 
 		$repoGroup = $services->getRepoGroup();
@@ -94,7 +95,8 @@ class MediaWikiParserService implements ExternalParser {
 		$sha1 = $file ? $file->getSha1() : null;
 		$this->parser->getOutput()->addImage( $title->getDBkey(), $tmstmp, $sha1 );
 
-		// Pass PI images to PageImages extension if available (Popups and og:image)
+		// Pass PI images to PageImages extension if available (Popups and og:image). Since 1.38, this produces an HTML
+		// comment that must be present in the rendered HTML for the image to qualify for selection.
 		if ( method_exists(
 			ParserFileProcessingHookHandlers::class, 'onParserModifyImageHTML'
 		) ) {
@@ -113,6 +115,10 @@ class MediaWikiParserService implements ExternalParser {
 			$handler->onParserModifyImageHTML(
 				$this->parser, $file, $params, $html
 			);
+
+			return $html;
 		}
+
+		return null;
 	}
 }

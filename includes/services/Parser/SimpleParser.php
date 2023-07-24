@@ -11,7 +11,8 @@ class SimpleParser implements ExternalParser {
 		return $text;
 	}
 
-	public function addImage( $title ) {
+	public function addImage( $title ): ?string {
 		// do nothing
+		return null;
 	}
 }
