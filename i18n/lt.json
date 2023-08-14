@@ -1,0 +1,25 @@
+{
+	"@metadata": {
+		"authors": [
+			"Nokeoo"
+		]
+	},
+	"portable-infobox-xml-parse-error-document-end": "Papildomas turinys dokumento pabaigoje",
+	"portable-infobox-xml-parse-error-undeclared-entity": "Nedeklaruotas objektas (pvz.: &nbsp;)",
+	"portable-infobox-xml-parse-error-attribute-not-started": "Atributo reikšmė turėtų būti kabutėse",
+	"portable-infobox-xml-parse-error-attribute-without-value": "Žymos atributas turi turėti reikšmę",
+	"portable-infobox-xml-parse-error-space-required": "Atributų konstrukcijos klaida",
+	"portable-infobox-xml-parse-error-tag-not-finished": "Ankstyva žymos pabaiga",
+	"portable-infobox-xml-parse-error-infobox-tag-attribute-unsupported": "Atributas „$1“ nepalaikomas <infobox> žymoje",
+	"infoboxbuilder-action-deletenode": "Ištrinti elementą",
+	"infoboxbuilder-node-title": "Pavadinimas",
+	"infoboxbuilder-node-title-value-pagename": "Puslapio pavadinimas",
+	"infoboxbuilder-node-data": "Duomenys",
+	"infoboxbuilder-node-data-value-source": "$1 reikšmė",
+	"infoboxbuilder-node-media": "Paveikslėlis",
+	"infoboxbuilder-nodeerror-invalidsource": "Šaltinio parametras negalimas.",
+	"infoboxbuilder-nodeparam-default": "Numatytoji reikšmė",
+	"infoboxbuilder-nodeparam-label": "Etiketė",
+	"infoboxbuilder-nodeparam-source": "Šaltinio parametras",
+	"infoboxbuilder-templatename": "Šablono pavadinimas"
+}
