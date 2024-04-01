@@ -29,7 +29,7 @@ class MediaWikiParserService implements ExternalParser {
 		if ( $wgPortableInfoboxUseTidy && class_exists( RemexDriver::class ) ) {
 			$this->tidyDriver = new RemexDriver(
 				new ServiceOptions(
-					@phan - suppress - next - line PhanAccessClassConstantInternal
+					// @phan-suppress-next-line PhanAccessClassConstantInternal
 					RemexDriver::CONSTRUCTOR_OPTIONS,
 					[
 						MainConfigNames::TidyConfig => [
