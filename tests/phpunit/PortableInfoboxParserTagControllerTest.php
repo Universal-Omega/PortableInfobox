@@ -37,7 +37,7 @@ class PortableInfoboxParserTagControllerTest extends MediaWikiIntegrationTestCas
 		$options = new ParserOptions( $user );
 		$title = Title::newFromText( 'Test' );
 		$parser->setOptions( $options );
-		$parser->startExternalParse( $title, $options, 'text', true );
+		$parser->startExternalParse( $title, $options, Parser::OT_PLAIN, true );
 
 		return $parser;
 	}
