@@ -25,7 +25,7 @@ class MediaWikiParserTest extends MediaWikiIntegrationTestCase {
 		$user = $this->getTestUser()->getUser();
 		$options = new ParserOptions( $user );
 		$options->setOption( 'wrapclass', false );
-		$this->parser->startExternalParse( $title, $options, 'text', true );
+		$this->parser->startExternalParse( $title, $options, Parser::OT_PLAIN, true );
 		parent::setUp();
 	}
 
