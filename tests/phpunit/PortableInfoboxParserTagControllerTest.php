@@ -4,6 +4,7 @@ use MediaWiki\MediaWikiServices;
 
 /**
  * @group PortableInfobox
+ * @group Database
  * @covers PortableInfoboxParserTagController
  */
 class PortableInfoboxParserTagControllerTest extends MediaWikiIntegrationTestCase {
@@ -36,7 +37,7 @@ class PortableInfoboxParserTagControllerTest extends MediaWikiIntegrationTestCas
 		$options = new ParserOptions( $user );
 		$title = Title::newFromText( 'Test' );
 		$parser->setOptions( $options );
-		$parser->startExternalParse( $title, $options, 'text', true );
+		$parser->startExternalParse( $title, $options, Parser::OT_PLAIN, true );
 
 		return $parser;
 	}

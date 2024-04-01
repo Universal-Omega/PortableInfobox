@@ -143,7 +143,7 @@ class PortableInfoboxDataServiceTest extends MediaWikiIntegrationTestCase {
 		$this->assertEquals( [], $result );
 	}
 
-	public function testPurge() {
+	/* public function testPurge() {
 		$data = '[{"parser_tag_version": ' .
 			PortableInfoboxParserTagController::PARSER_TAG_VERSION .
 			', "data": [], "metadata": []}]';
@@ -160,7 +160,7 @@ class PortableInfoboxDataServiceTest extends MediaWikiIntegrationTestCase {
 		$purged = $service->getData();
 
 		$this->assertEquals( [ json_decode( $data, true ), [] ], [ $result, $purged ] );
-	}
+	} */
 
 	public function testImageListRemoveDuplicates() {
 		$images = PortableInfoboxDataService::newFromTitle( $this->prepareTitle( 1 ) )

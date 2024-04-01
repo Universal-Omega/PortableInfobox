@@ -5,6 +5,7 @@ use PortableInfobox\Parser\MediaWikiParserService;
 
 /**
  * @group PortableInfobox
+ * @group Database
  * @covers \PortableInfobox\Parser\MediaWikiParserService
  */
 class MediaWikiParserTest extends MediaWikiIntegrationTestCase {
@@ -13,12 +14,18 @@ class MediaWikiParserTest extends MediaWikiIntegrationTestCase {
 	protected $parser;
 
 	public function setUp(): void {
+		$this->setMwGlobals( 'wgParserEnableLegacyMediaDOM', false );
+		$this->setMwGlobals( 'wgTidyConfig', [
+			'driver' => 'RemexHtml',
+			'pwrap' => false,
+		] );
+
 		$this->parser = MediaWikiServices::getInstance()->getParser();
 		$title = Title::newFromText( 'test' );
 		$user = $this->getTestUser()->getUser();
 		$options = new ParserOptions( $user );
 		$options->setOption( 'wrapclass', false );
-		$this->parser->startExternalParse( $title, $options, 'text', true );
+		$this->parser->startExternalParse( $title, $options, Parser::OT_PLAIN, true );
 		parent::setUp();
 	}
 

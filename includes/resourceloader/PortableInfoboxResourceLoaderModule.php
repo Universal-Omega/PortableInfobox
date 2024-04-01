@@ -1,8 +1,12 @@
 <?php
 
-class PortableInfoboxResourceLoaderModule extends ResourceLoaderFileModule {
+use MediaWiki\ResourceLoader\Context;
+use MediaWiki\ResourceLoader\FileModule;
+
+class PortableInfoboxResourceLoaderModule extends FileModule {
+
 	/** @inheritDoc */
-	protected function getLessVars( ResourceLoaderContext $context ) {
+	protected function getLessVars( Context $context ) {
 		$lessVars = parent::getLessVars( $context );
 		$lessVars[ 'responsibly-open-collapsed'] =
 			(bool)$this->getConfig()->get( 'PortableInfoboxResponsiblyOpenCollapsed' );
