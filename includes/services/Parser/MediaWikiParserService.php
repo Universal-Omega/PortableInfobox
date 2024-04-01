@@ -3,6 +3,8 @@
 namespace PortableInfobox\Parser;
 
 use BlockLevelPass;
+use MediaWiki\Config\ServiceOptions;
+use MediaWiki\MainConfigNames;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Tidy\RemexDriver;
 use PageImages\Hooks\ParserFileProcessingHookHandlers;
@@ -25,14 +27,18 @@ class MediaWikiParserService implements ExternalParser {
 		$this->frame = $frame;
 
 		if ( $wgPortableInfoboxUseTidy && class_exists( RemexDriver::class ) ) {
-			global $wgTidyConfig;
-
-			$wgTidyConfig = [
-				'driver' => 'RemexHtml',
-				'pwrap' => false
-			];
-
-			$this->tidyDriver = MediaWikiServices::getInstance()->getTidy();
+			$this->tidyDriver = new RemexDriver(
+				new ServiceOptions(
+					RemexDriver::CONSTRUCTOR_OPTIONS,
+					[
+						MainConfigNames::TidyConfig => [
+							'driver' => 'RemexHtml',
+							'pwrap' => false,
+						],
+					],
+					[ MainConfigNames::ParserEnableLegacyMediaDOM => false ]
+				)
+			);
 		}
 	}
 
