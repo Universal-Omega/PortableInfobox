@@ -4,6 +4,7 @@ use MediaWiki\MediaWikiServices;
 
 /**
  * @group PortableInfobox
+ * @group Database
  * @covers PortableInfoboxParserTagController
  */
 class PortableInfoboxParserTagControllerTest extends MediaWikiIntegrationTestCase {
