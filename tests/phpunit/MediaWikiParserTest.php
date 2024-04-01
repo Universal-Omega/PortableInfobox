@@ -14,6 +14,12 @@ class MediaWikiParserTest extends MediaWikiIntegrationTestCase {
 	protected $parser;
 
 	public function setUp(): void {
+		$this->setMwGlobals( 'wgParserEnableLegacyMediaDOM', false );
+		$this->setMwGlobals( 'wgTidyConfig', [
+			'driver' => 'RemexHtml',
+			'pwrap' => false,
+		] );
+
 		$this->parser = MediaWikiServices::getInstance()->getParser();
 		$title = Title::newFromText( 'test' );
 		$user = $this->getTestUser()->getUser();
@@ -60,7 +66,7 @@ class MediaWikiParserTest extends MediaWikiIntegrationTestCase {
 
 		$output = $wrapper->parseRecursive( $wikitext );
 
-		$this->assertEquals( $this->parse( $wikitext, $params, $newline ), preg_replace( '/<\/?p[^>]*>/', '', $output ) );
+		$this->assertEquals( $this->parse( $wikitext, $params, $newline ), $output );
 	}
 
 	public function mwParserWrapperDataProvider() {
