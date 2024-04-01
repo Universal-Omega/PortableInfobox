@@ -5,6 +5,7 @@ use PortableInfobox\Parser\MediaWikiParserService;
 
 /**
  * @group PortableInfobox
+ * @group Database
  * @covers \PortableInfobox\Parser\MediaWikiParserService
  */
 class MediaWikiParserTest extends MediaWikiIntegrationTestCase {
