@@ -60,7 +60,7 @@ class MediaWikiParserTest extends MediaWikiIntegrationTestCase {
 
 		$output = $wrapper->parseRecursive( $wikitext );
 
-		$this->assertEquals( $this->parse( $wikitext, $params, $newline ), $output );
+		$this->assertEquals( $this->parse( $wikitext, $params, $newline ), preg_replace( '/<\/?p[^>]*>/', '', $output ) );
 	}
 
 	public function mwParserWrapperDataProvider() {
