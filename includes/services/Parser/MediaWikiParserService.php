@@ -107,14 +107,26 @@ class MediaWikiParserService implements ExternalParser {
 		if ( method_exists(
 			ParserFileProcessingHookHandlers::class, 'onParserModifyImageHTML'
 		) ) {
-			// @phan-suppress-next-line PhanParamTooMany
-			$handler = new ParserFileProcessingHookHandlers(
-				$repoGroup,
-				$services->getMainWANObjectCache(),
-				$services->getHttpRequestFactory(),
-				$services->getDBLoadBalancerFactory(),
-				$services->getTitleFactory()
-			);
+			if ( version_compare( MW_VERSION, '1.42', '>=' ) ) {
+				// @phan-suppress-next-line PhanParamTooMany
+				$handler = new ParserFileProcessingHookHandlers(
+					$repoGroup,
+					$services->getMainWANObjectCache(),
+					$services->getHttpRequestFactory(),
+					$services->getConnectionProvider(),
+					$services->getTitleFactory(),
+					$services->getLinksMigration()
+				);
+			} else {
+				// @phan-suppress-next-line PhanParamTooMany
+				$handler = new ParserFileProcessingHookHandlers(
+					$repoGroup,
+					$services->getMainWANObjectCache(),
+					$services->getHttpRequestFactory(),
+					$services->getDBLoadBalancerFactory(),
+					$services->getTitleFactory()
+				);
+			}
 
 			$params = [];
 			$html = '';
