@@ -113,6 +113,7 @@ class MediaWikiParserService implements ExternalParser {
 					$repoGroup,
 					$services->getMainWANObjectCache(),
 					$services->getHttpRequestFactory(),
+					// @phan-suppress-next-line PhanUndeclaredMethod
 					$services->getConnectionProvider(),
 					$services->getTitleFactory(),
 					$services->getLinksMigration()
