@@ -21,6 +21,7 @@ You can use several variables to modify extension's behaviour:
 - `$wgPortableInfoboxUseHeadings` (bool) - use heading tags for infobox titles and group headers, it may cause incompatibilities with other extensions. (default: true)
 - `$wgPortableInfoboxUseTidy` (bool) - use [RemexHtml](https://www.mediawiki.org/wiki/RemexHtml) for validating HTML in infoboxes (default: true)
 - `$wgPortableInfoboxResponsiblyOpenCollapsed` (bool) - open collapsed groups when the screen is narrow. (default: true)
+- `$wgPortableInfoboxUseFileDescriptionPage` (bool) - control whether or not embedded images in the infobox will link to their file description page instead of directly to the file. (default: false)
 
 ## Usage
 See: https://community.fandom.com/wiki/Help:Infoboxes

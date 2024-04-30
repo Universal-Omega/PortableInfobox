@@ -152,7 +152,7 @@ class NodeMedia extends Node {
 
 		$mediatype = $fileObj->getMediaType();
 		$image = [
-			'url' => $this->resolveImageUrl( $fileObj ),
+			'url' => $this->resolveImageUrl( $fileObj, $titleObj ),
 			'name' => $titleObj ? $titleObj->getText() : '',
 			'alt' => $alt ?? ( $titleObj ? $titleObj->getText() : null ),
 			'caption' => $caption ?: null,
@@ -225,9 +225,16 @@ class NodeMedia extends Node {
 	/**
 	 * Returns image url for given image title
 	 * @param File|null $file
+	 * @param Title|null $title
 	 * @return string url or '' if image doesn't exist
 	 */
-	public function resolveImageUrl( $file ) {
+	public function resolveImageUrl( $file, $title ) {
+		global $wgPortableInfoboxUseFileDescriptionPage;
+
+		if ( $wgPortableInfoboxUseFileDescriptionPage && $title ) {
+			return $title->getLocalURL();
+		}
+
 		return $file ? $file->getUrl() : '';
 	}
 
