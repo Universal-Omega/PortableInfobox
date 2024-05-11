@@ -347,8 +347,7 @@
 
 		getDefaultParams() {
 			return {
-				source: this.msg( 'node-header' ).toLowerCase(),
-				default: 'Header'
+				source: this.msg( 'node-header' ).toLowerCase()
 			};
 		}
 
