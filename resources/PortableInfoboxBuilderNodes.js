@@ -17,6 +17,7 @@
 		'video'
 	];
 	const NODE_CONTENTNODES = [
+		'header',
 		'label',
 		'format',
 		'default'
@@ -361,9 +362,7 @@
 		}
 
 		supports() {
-			return {
-				value: true
-			};
+			return {};
 		}
 	}
 
