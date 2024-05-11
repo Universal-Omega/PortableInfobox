@@ -40,6 +40,8 @@
 	"infoboxbuilder-node-data": "Data",
 	"infoboxbuilder-node-data-value-source": "Value of $1",
 	"infoboxbuilder-node-media": "Image",
+	"infoboxbuilder-node-header": "Header",
+	"infoboxbuilder-node-header-value": "Infobox header",
 	"infoboxbuilder-nodeerror-invalidsource": "Source parameter is invalid.",
 	"infoboxbuilder-nodeerror-nosourceordefault": "Element without source parameter or default value won't be displayed.",
 	"infoboxbuilder-nodeparam-default": "Default value",
