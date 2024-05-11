@@ -35,6 +35,7 @@
 			this.infobox.children = [
 				Nodes.Node.factory( this.infobox.markupDoc, 'title' ),
 				Nodes.Node.factory( this.infobox.markupDoc, 'media' ),
+				Nodes.Node.factory( this.infobox.markupDoc, 'header' ),
 				Nodes.Node.factory( this.infobox.markupDoc, 'data' ),
 				Nodes.Node.factory( this.infobox.markupDoc, 'data' )
 			];
