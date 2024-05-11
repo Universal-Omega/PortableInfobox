@@ -495,6 +495,6 @@
 		NodeMedia: NodeMedia,
 		NodeTitle: NodeTitle,
 		NodeInfobox: NodeInfobox,
-		NODE_LIST: [ 'data', 'title', 'header', 'media' ]
+		NODE_LIST: [ 'data', 'title', 'media', 'header', 'navigation' ]
 	};
 })(window, jQuery);
