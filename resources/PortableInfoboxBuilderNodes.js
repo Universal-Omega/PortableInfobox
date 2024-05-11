@@ -348,14 +348,15 @@
 
 		getDefaultParams() {
 			return {
-				value: this.msg( 'node-header' ).toLowerCase()
+				value: this.msg( 'node-header' )
 			};
 		}
 
 		html() {
 			super.html();
 
-			this.element.textContent = this.msg( 'node-header-value' );
+			this.element.textContent = this.params.value === this.msg( 'node-header' ) ?
+				this.msg( 'node-header-value' ) : this.params.value;
 
 			return this.element;
 		}
