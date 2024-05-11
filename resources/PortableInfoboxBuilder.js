@@ -131,6 +131,10 @@
 				placeholder: this.msg( 'nodeparam-default' ),
 				disabled: true
 			} );
+			this.nodeInputValue = new OO.ui.TextInputWidget( {
+				placeholder: this.msg( 'nodeparam-value' ),
+				disabled: true
+			} );
 			this.deleteNodeButton = new OO.ui.ButtonWidget( {
 				label: this.msg( 'action-deletenode' ),
 				icon: 'trash',
@@ -156,6 +160,12 @@
 					help: this.msg( 'nodeparamhelp-default', [], true ),
 					disabled: true
 				} ).$element,
+				new OO.ui.FieldLayout( this.nodeInputValue, {
+					label: this.msg( 'nodeparam-value' ),
+					align: 'top',
+					help: this.msg( 'nodeparamhelp-value', [], true ),
+					disabled: true
+				} ).$element,
 				this.deleteNodeButton.$element
 			)
 		}
@@ -171,6 +181,7 @@
 			this.toggleNodeMenuWidget( this.nodeInputSource, supports.source, 'source' );
 			this.toggleNodeMenuWidget( this.nodeInputLabel, supports.label, 'label' );
 			this.toggleNodeMenuWidget( this.nodeInputDefault, supports.default, 'default' );
+			this.toggleNodeMenuWidget( this.nodeInputValue, supports.value, 'value' );
 		}
 
 		toggleNodeMenuWidget( widget, enabled, param ) {
