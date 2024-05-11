@@ -91,6 +91,8 @@
 					return new NodeMedia( markupDoc, params );
 				case 'header':
 					return new NodeHeader( markupDoc, params );
+				case 'navigation':
+					return new NodeNavigation( markupDoc, params );
 				case 'infobox':
 					throw new TypeError( 'Use new NodeInfobox() instead.' );
 				default:
@@ -357,6 +359,36 @@
 
 			this.element.textContent = this.params.value === this.msg( 'node-header' ) ?
 				this.msg( 'node-header-value' ) : this.params.value;
+
+			return this.element;
+		}
+
+		supports() {
+			return {
+				value: true
+			};
+		}
+	}
+
+	class NodeNavigation extends PINode {
+		constructor( markupDoc, params ) {
+			super( markupDoc, params );
+			this.elementTag = 'nav';
+			this.elementClasses = 'pi-navigation pi-item-spacing pi-secondary-background pi-secondary-font';
+			this.markupTag = 'navigation';
+			this.markupContentTag = true;
+		}
+
+		getDefaultParams() {
+			return {
+				value: this.msg( 'node-navigation' )
+			};
+		}
+
+		html() {
+			super.html();
+
+			this.element.textContent = this.params.value;
 
 			return this.element;
 		}
