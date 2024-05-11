@@ -17,7 +17,6 @@
 		'video'
 	];
 	const NODE_CONTENTNODES = [
-		'header',
 		'label',
 		'format',
 		'default'
@@ -190,7 +189,7 @@
 				throw new NodeValidationError( this.msg( 'nodeerror-invalidsource' ) );
 			}
 
-			if ( !this.params.source && !this.params.default ) {
+			if ( !this.params.source && !this.params.default && !this.params.value ) {
 				throw new NodeValidationWarning( this.msg( 'nodeerror-nosourceordefault' ) );
 			}
 
@@ -362,10 +361,10 @@
 		}
 
 		supports() {
-			return {};
+			return {
+				value: true
+			};
 		}
-
-		validate() {}
 	}
 
 	class NodeInfobox extends PINode {
