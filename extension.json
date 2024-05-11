@@ -89,6 +89,7 @@
 				"infoboxbuilder-node-title-value-pagename",
 				"infoboxbuilder-node-header",
 				"infoboxbuilder-node-header-value",
+				"infoboxbuilder-node-navigation",
 				"infoboxbuilder-node-data",
 				"infoboxbuilder-node-data-value-source",
 				"infoboxbuilder-node-media",
@@ -97,6 +98,7 @@
 				"infoboxbuilder-nodeparam-default",
 				"infoboxbuilder-nodeparam-label",
 				"infoboxbuilder-nodeparam-source",
+				"infoboxbuilder-nodeparam-value",
 				"infoboxbuilder-templatename"
 			]
 		}
