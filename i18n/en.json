@@ -42,11 +42,13 @@
 	"infoboxbuilder-node-media": "Image",
 	"infoboxbuilder-node-header": "Header",
 	"infoboxbuilder-node-header-value": "Infobox header",
+	"infoboxbuilder-node-navigation": "Navigation",
 	"infoboxbuilder-nodeerror-invalidsource": "Source parameter is invalid.",
 	"infoboxbuilder-nodeerror-nosourceordefault": "Element without source parameter or default value won't be displayed.",
 	"infoboxbuilder-nodeparam-default": "Default value",
 	"infoboxbuilder-nodeparam-label": "Label",
 	"infoboxbuilder-nodeparam-source": "Source parameter",
+	"infoboxbuilder-nodeparam-value": "Value",
 	"infoboxbuilder-templatename": "Template name",
 	"portableinfoboxbuilder": "Portable Infobox Builder"
 }
