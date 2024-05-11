@@ -186,7 +186,7 @@
 		}
 
 		validate() {
-			if ( this.params.source.match( /["|={}]/ ) ) {
+			if ( this.params.source?.match( /["|={}]/ ) ) {
 				throw new NodeValidationError( this.msg( 'nodeerror-invalidsource' ) );
 			}
 
@@ -364,6 +364,8 @@
 		supports() {
 			return {};
 		}
+
+		validate() {}
 	}
 
 	class NodeInfobox extends PINode {
