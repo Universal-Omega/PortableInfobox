@@ -343,11 +343,12 @@
 			this.elementTag = 'h2';
 			this.elementClasses += 'pi-item-spacing pi-header pi-secondary-font pi-secondary-background';
 			this.markupTag = 'header';
+			this.markupContentTag = true;
 		}
 
 		getDefaultParams() {
 			return {
-				source: this.msg( 'node-header' ).toLowerCase()
+				value: this.msg( 'node-header' ).toLowerCase()
 			};
 		}
 
@@ -361,9 +362,7 @@
 
 		supports() {
 			return {
-				source: true,
-				format: true,
-				default: true
+				value: true
 			};
 		}
 	}
