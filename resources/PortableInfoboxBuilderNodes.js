@@ -89,6 +89,10 @@
 					return new NodeTitle( markupDoc, params );
 				case 'media':
 					return new NodeMedia( markupDoc, params );
+				case 'header':
+					return new NodeHeader( markupDoc, params );
+				case 'navigation':
+					return new NodeNavigation( markupDoc, params );
 				case 'infobox':
 					throw new TypeError( 'Use new NodeInfobox() instead.' );
 				default:
@@ -183,11 +187,11 @@
 		}
 
 		validate() {
-			if ( this.params.source.match( /["|={}]/ ) ) {
+			if ( this.params.source?.match( /["|={}]/ ) ) {
 				throw new NodeValidationError( this.msg( 'nodeerror-invalidsource' ) );
 			}
 
-			if ( !this.params.source && !this.params.default ) {
+			if ( !this.params.source && !this.params.default && !this.params.value ) {
 				throw new NodeValidationWarning( this.msg( 'nodeerror-nosourceordefault' ) );
 			}
 
@@ -334,6 +338,67 @@
 			};
 		}
 	}
+	
+	class NodeHeader extends PINode {
+		constructor( markupDoc, params ) {
+			super( markupDoc, params );
+			this.elementTag = 'h2';
+			this.elementClasses += 'pi-item-spacing pi-header pi-secondary-font pi-secondary-background';
+			this.markupTag = 'header';
+			this.markupContentTag = true;
+		}
+
+		getDefaultParams() {
+			return {
+				value: this.msg( 'node-header' )
+			};
+		}
+
+		html() {
+			super.html();
+
+			this.element.textContent = this.params.value === this.msg( 'node-header' ) ?
+				this.msg( 'node-header-value' ) : this.params.value;
+
+			return this.element;
+		}
+
+		supports() {
+			return {
+				value: true
+			};
+		}
+	}
+
+	class NodeNavigation extends PINode {
+		constructor( markupDoc, params ) {
+			super( markupDoc, params );
+			this.elementTag = 'nav';
+			this.elementClasses = 'pi-navigation pi-item-spacing pi-secondary-background pi-secondary-font';
+			this.markupTag = 'navigation';
+			this.markupContentTag = true;
+		}
+
+		getDefaultParams() {
+			return {
+				value: this.msg( 'node-navigation' )
+			};
+		}
+
+		html() {
+			super.html();
+
+			this.element.textContent = this.params.value;
+
+			return this.element;
+		}
+
+		supports() {
+			return {
+				value: true
+			};
+		}
+	}
 
 	class NodeInfobox extends PINode {
 		constructor( params ) {
@@ -430,6 +495,6 @@
 		NodeMedia: NodeMedia,
 		NodeTitle: NodeTitle,
 		NodeInfobox: NodeInfobox,
-		NODE_LIST: [ 'data', 'title', 'media' ]
+		NODE_LIST: [ 'data', 'title', 'media', 'header', 'navigation' ]
 	};
 })(window, jQuery);
