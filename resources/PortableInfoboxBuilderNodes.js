@@ -85,6 +85,8 @@
 			switch ( type ) {
 				case 'data':
 					return new NodeData( markupDoc, params );
+				case 'header':
+					return new NodeTitle( markupDoc, params );
 				case 'title':
 					return new NodeTitle( markupDoc, params );
 				case 'media':
