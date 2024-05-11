@@ -85,12 +85,12 @@
 			switch ( type ) {
 				case 'data':
 					return new NodeData( markupDoc, params );
-				case 'header':
-					return new NodeTitle( markupDoc, params );
 				case 'title':
 					return new NodeTitle( markupDoc, params );
 				case 'media':
 					return new NodeMedia( markupDoc, params );
+				case 'header':
+					return new NodeHeader( markupDoc, params );
 				case 'infobox':
 					throw new TypeError( 'Use new NodeInfobox() instead.' );
 				default:
@@ -332,6 +332,38 @@
 				video: true,
 				alt: true,
 				caption: true,
+				default: true
+			};
+		}
+	}
+	
+	class NodeHeader extends PINode {
+		constructor( markupDoc, params ) {
+			super( markupDoc, params );
+			this.elementTag = 'h2';
+			this.elementClasses += 'pi-item-spacing pi-header pi-secondary-font pi-secondary-background';
+			this.markupTag = 'header';
+		}
+
+		getDefaultParams() {
+			return {
+				source: this.msg( 'node-header' ).toLowerCase(),
+				default: 'Header'
+			};
+		}
+
+		html() {
+			super.html();
+
+			this.element.textContent = this.msg( 'node-header-value' );
+
+			return this.element;
+		}
+
+		supports() {
+			return {
+				source: true,
+				format: true,
 				default: true
 			};
 		}
