@@ -40,11 +40,15 @@
 	"infoboxbuilder-node-data": "נתונים",
 	"infoboxbuilder-node-data-value-source": "ערך של $1",
 	"infoboxbuilder-node-media": "תמונה",
+	"infoboxbuilder-node-header": "כותרת",
+	"infoboxbuilder-node-header-value": "כותרת תיבת מידע",
+	"infoboxbuilder-node-navigation": "ניווט",
 	"infoboxbuilder-nodeerror-invalidsource": "פרמטר המקור אינו תקין.",
 	"infoboxbuilder-nodeerror-nosourceordefault": "רכיב ללא פרמטר מקור או ערך ברירת מחדל לא יוצג.",
 	"infoboxbuilder-nodeparam-default": "ערך התחלתי",
 	"infoboxbuilder-nodeparam-label": "תווית",
 	"infoboxbuilder-nodeparam-source": "פרמטר מקור",
+	"infoboxbuilder-nodeparam-value": "ערך",
 	"infoboxbuilder-templatename": "שם התבנית",
 	"portableinfoboxbuilder": "בונה תיבות מידע ניידות"
 }

@@ -39,11 +39,15 @@
 	"infoboxbuilder-node-data": "Wiersz",
 	"infoboxbuilder-node-data-value-source": "Wartość $1",
 	"infoboxbuilder-node-media": "Obraz",
+	"infoboxbuilder-node-header": "Nagłówek",
+	"infoboxbuilder-node-header-value": "Nagłówek infoboksu",
+	"infoboxbuilder-node-navigation": "Nawigacja",
 	"infoboxbuilder-nodeerror-invalidsource": "Parametr zawiera niedozwolone znaki.",
 	"infoboxbuilder-nodeerror-nosourceordefault": "Element bez parametru lub domyślnej wartości nie będzie się wyświetlał.",
 	"infoboxbuilder-nodeparam-default": "Domyślna wartość",
 	"infoboxbuilder-nodeparam-label": "Etykieta",
 	"infoboxbuilder-nodeparam-source": "Parametr",
+	"infoboxbuilder-nodeparam-value": "Wartość",
 	"infoboxbuilder-templatename": "Nazwa szablonu",
 	"portableinfoboxbuilder": "Kreator infoboksów"
 }

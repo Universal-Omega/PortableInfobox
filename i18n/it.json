@@ -18,5 +18,8 @@
 	"portable-infobox-xml-parse-error-tag-name-mismatch": "Mancata corrispondenza tra il tag di apertura e quello di chiusura",
 	"portable-infobox-xml-parse-error-tag-not-finished": "Fine prematura del tag",
 	"portable-infobox-xml-parse-error-infobox-tag-attribute-unsupported": "L'attributo \"$1\" non è supportato nel tag <infobox>",
-	"infoboxbuilder-node-media": "Immagine"
+	"infoboxbuilder-node-media": "Immagine",
+	"infoboxbuilder-node-header": "Intestazione",
+	"infoboxbuilder-node-navigation": "Navigazione",
+	"infoboxbuilder-nodeparam-value": "Valore"
 }

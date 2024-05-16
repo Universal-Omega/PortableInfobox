@@ -39,11 +39,15 @@
 	"infoboxbuilder-node-data": "Податоци",
 	"infoboxbuilder-node-data-value-source": "Вредност на $1",
 	"infoboxbuilder-node-media": "Слика",
+	"infoboxbuilder-node-header": "Заглавие",
+	"infoboxbuilder-node-header-value": "Заглавие на инфокутијата",
+	"infoboxbuilder-node-navigation": "Прегледник",
 	"infoboxbuilder-nodeerror-invalidsource": "Изворниот параметар е неважечки.",
 	"infoboxbuilder-nodeerror-nosourceordefault": "Нема да се прикаже елемент без изворен параметар или стандардна вредност.",
 	"infoboxbuilder-nodeparam-default": "Стандардна вредност",
 	"infoboxbuilder-nodeparam-label": "Натпис",
 	"infoboxbuilder-nodeparam-source": "Изворен параметар",
+	"infoboxbuilder-nodeparam-value": "Вредност",
 	"infoboxbuilder-templatename": "Назив на предлошката",
 	"portableinfoboxbuilder": "Градител на преносливи инфокутии"
 }
