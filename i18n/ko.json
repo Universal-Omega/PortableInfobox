@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Markingdots",
 			"Ykhwong"
 		]
 	},
@@ -14,6 +15,8 @@
 	"infoboxbuilder-node-data": "데이터",
 	"infoboxbuilder-node-data-value-source": "$1의 값",
 	"infoboxbuilder-node-media": "이미지",
+	"infoboxbuilder-node-header-value": "정보상자 헤더",
+	"infoboxbuilder-node-navigation": "둘러보기",
 	"infoboxbuilder-nodeparam-default": "기본값",
 	"infoboxbuilder-nodeparam-label": "레이블"
 }

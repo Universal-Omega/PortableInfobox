@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Kly",
 			"Lakejason0"
 		]
 	},
@@ -39,11 +40,15 @@
 	"infoboxbuilder-node-data": "資料",
 	"infoboxbuilder-node-data-value-source": "$1的值",
 	"infoboxbuilder-node-media": "圖片",
+	"infoboxbuilder-node-header": "標頭",
+	"infoboxbuilder-node-header-value": "資訊框標頭",
+	"infoboxbuilder-node-navigation": "導覽",
 	"infoboxbuilder-nodeerror-invalidsource": "源參數無效。",
 	"infoboxbuilder-nodeerror-nosourceordefault": "沒有源參數或預設值的元素不會被顯示。",
 	"infoboxbuilder-nodeparam-default": "預設值",
 	"infoboxbuilder-nodeparam-label": "標籤",
 	"infoboxbuilder-nodeparam-source": "源參數",
+	"infoboxbuilder-nodeparam-value": "值",
 	"infoboxbuilder-templatename": "模板名稱",
 	"portableinfoboxbuilder": "行動化資訊框產生器"
 }
