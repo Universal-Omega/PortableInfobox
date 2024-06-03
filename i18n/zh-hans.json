@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Googology",
 			"Lakejason0"
 		]
 	},
@@ -44,6 +45,7 @@
 	"infoboxbuilder-nodeparam-default": "默认值",
 	"infoboxbuilder-nodeparam-label": "标签",
 	"infoboxbuilder-nodeparam-source": "源参数",
+	"infoboxbuilder-nodeparam-value": "值",
 	"infoboxbuilder-templatename": "模板名称",
 	"portableinfoboxbuilder": "移动化信息框生成器"
 }
