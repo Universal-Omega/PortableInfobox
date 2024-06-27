@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"SleaY",
 			"Verdy p"
 		]
 	},
@@ -39,6 +40,7 @@
 	"infoboxbuilder-node-data": "Données",
 	"infoboxbuilder-node-data-value-source": "Valeur de $1",
 	"infoboxbuilder-node-media": "Image",
+	"infoboxbuilder-node-header": "Entête",
 	"infoboxbuilder-nodeerror-invalidsource": "Le paramètre source n’est pas valide.",
 	"infoboxbuilder-nodeerror-nosourceordefault": "Un élément sans paramètre source ni valeur par défaut ne sera pas affiché.",
 	"infoboxbuilder-nodeparam-default": "Valeur par défaut",
