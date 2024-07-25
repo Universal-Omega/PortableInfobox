@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Pisceskaze"
+			"Pisceskaze",
+			"SongNgu.xyz"
 		]
 	},
 	"portable-infobox-desc": "Tạo các hộp thông tin di động có cấu trúc bằng cách sử dụng đánh dấu HTML ngữ nghĩa rõ ràng trên bất kỳ giao diện/nền tảng nào bằng cách sử dụng đánh dấu mạnh mẽ giống như XML dễ hiểu. Cũng bao gồm trình tạo hộp thông tin tại [[Đặc biệt:PortableInfoboxBuilder]].",
