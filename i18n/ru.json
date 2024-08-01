@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Deltaspace",
-			"Pacha Tchernof"
+			"Pacha Tchernof",
+			"Yurina Tatiana"
 		]
 	},
 	"portable-infobox-desc": "Создавайте модульные инфобоксы, которые при использовании простой семантической HTML-разметки могут отображаться в любой теме оформления/на любой платформе, используйте для этого простую и эффективную XML-подобную разметку. Также доступен портативный конструктор инфобоксов на [[Special:PortableInfoboxBuilder]].",
@@ -24,10 +25,15 @@
 	"infoboxbuilder-action-addnode": "Добавьте элементы инфобокса",
 	"infoboxbuilder-action-deletenode": "Удалить элемент",
 	"infoboxbuilder-editsummary": "Инфобокс создан с помощью конструктора инфобоксов.",
+	"infoboxbuilder-node-title": "Заголовок",
 	"infoboxbuilder-node-title-value": "Заголовок инфобокса",
 	"infoboxbuilder-node-title-value-pagename": "Название страницы",
 	"infoboxbuilder-node-data": "Данные",
 	"infoboxbuilder-node-media": "Изображение",
+	"infoboxbuilder-node-navigation": "Навигация",
+	"infoboxbuilder-nodeparam-default": "Значение по умолчанию",
 	"infoboxbuilder-nodeparam-label": "Метка",
+	"infoboxbuilder-nodeparam-value": "Значение",
+	"infoboxbuilder-templatename": "Название шаблона",
 	"portableinfoboxbuilder": "Портативный конструктор инфобоксов"
 }
