@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Mainframe98",
-			"McDutchie"
+			"McDutchie",
+			"Siebrand"
 		]
 	},
 	"portable-infobox-desc": "Maakt overdraagbare infoboxen die kunnen worden weergegeven met behulp van zuivere semantische HTML-opmaak, op iedere vormgeving en op ieder platform, met behulp van een eenvoudig te begrijpen, krachtige, XML-achtige notatie. Bevat ook een bouwprogramma voor overdraagbare infoboxen op [[Special:PortableInfoboxBuilder]].",
@@ -19,9 +20,36 @@
 	"portable-infobox-xml-parse-error-tag-name-mismatch": "Openings- en eindtag komen niet overeen.",
 	"portable-infobox-xml-parse-error-tag-not-finished": "Voortijdig einde van tag.",
 	"portable-infobox-xml-parse-error-infobox-tag-attribute-unsupported": "Het attribuut \"$1\" wordt niet ondersteund bij de tag <infobox>.",
+	"allinfoboxes": "Alle infoboxen",
+	"apihelp-infobox-summary": "Deze module biedt een parser voor infoboxen",
+	"apihelp-infobox-param-text": "Te parsen infobox (xml-string)",
+	"apihelp-infobox-param-title": "Titel van de pagina waar de tekst bij hoort",
+	"apihelp-infobox-param-args": "Variabelenlijst die gebruikt moet worden tijdens het verwerken (json-formaat)",
+	"apihelp-query+allinfoboxes-summary": "Alle infoboxen weergeven",
+	"apihelp-query+infobox-summary": "Infobox-metadata ophalen",
+	"apiwarn-infobox-invalidargs": "De opgegeven parameter args is onjuist",
+	"infoboxbuilder-action-addnode": "Infobox-elementen toevoegen",
+	"infoboxbuilder-action-clear": "Infobox wissen",
+	"infoboxbuilder-action-deletenode": "Element verwijderen",
+	"infoboxbuilder-action-publish": "Infobox publiceren",
+	"infoboxbuilder-editerror": "Er is een fout opgetreden tijdens het publiceren van de infobox: $1",
+	"infoboxbuilder-editerrorunknown": "Er is een onbekende fout opgetreden tijdens het publiceren van de infobox.",
+	"infoboxbuilder-editsummary": "Infobox gemaakt met infobox builder.",
 	"infoboxbuilder-node-title": "Titel",
+	"infoboxbuilder-node-title-value": "Infobox-titel",
 	"infoboxbuilder-node-title-value-pagename": "Paginanaam",
+	"infoboxbuilder-node-data": "Gegevens",
+	"infoboxbuilder-node-data-value-source": "Waarde van $1",
 	"infoboxbuilder-node-media": "Afbeelding",
+	"infoboxbuilder-node-header": "Koptekst",
+	"infoboxbuilder-node-header-value": "Infobox-koptekst",
+	"infoboxbuilder-node-navigation": "Navigatie",
+	"infoboxbuilder-nodeerror-invalidsource": "Bronparameter is ongeldig.",
+	"infoboxbuilder-nodeerror-nosourceordefault": "Elementen zonder bronparameter of standaardwaarde worden niet weergegeven.",
 	"infoboxbuilder-nodeparam-default": "Standaardwaarde",
-	"infoboxbuilder-templatename": "Sjabloonnaam"
+	"infoboxbuilder-nodeparam-label": "Label",
+	"infoboxbuilder-nodeparam-source": "Bronparameter",
+	"infoboxbuilder-nodeparam-value": "Waarde",
+	"infoboxbuilder-templatename": "Sjabloonnaam",
+	"portableinfoboxbuilder": "Overdraagbare Infobox Builder"
 }
