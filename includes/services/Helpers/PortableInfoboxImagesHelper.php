@@ -101,6 +101,31 @@ class PortableInfoboxImagesHelper {
 	 * @return array [ 'width' => int, 'height' => int ]
 	 */
 	public function getThumbnailSizes( $preferredWidth, $maxHeight, $originalWidth, $originalHeight ) {
+		// Prevent division by zero by ensuring width and height are valid
+		if ( $originalWidth == 0 && $originalHeight == 0 ) {
+			// Return default sizes if both original dimensions are zero
+			return [ 'height' => 0, 'width' => 0 ];
+		}
+	
+		// Handle case where only the original width is zero
+		if ( $originalWidth == 0 ) {
+			$height = min( $maxHeight, $originalHeight );
+			return [ 'height' => round( $height ), 'width' => 0 ]; // No width can be calculated
+		}
+
+		// Handle case where only the original height is zero
+		if ( $originalHeight == 0 ) {
+			$width = min( $preferredWidth, $originalWidth );
+			return [ 'height' => 0, 'width' => round( $width ) ]; // No height can be calculated
+		}
+	
+		// Prevent issues with invalid maxHeight or preferredWidth
+		if ( $preferredWidth == 0 || $maxHeight == 0 ) {
+			// If either maxHeight or preferredWidth is zero, return the original dimensions
+			return [ 'height' => $originalHeight, 'width' => $originalWidth ];
+		}
+
+		// Standard aspect ratio handling if all dimensions are valid
 		if ( ( $originalHeight / $originalWidth ) > ( $maxHeight / $preferredWidth ) ) {
 			$height = min( $maxHeight, $originalHeight );
 			$width = min( $preferredWidth, $height * $originalWidth / $originalHeight );
