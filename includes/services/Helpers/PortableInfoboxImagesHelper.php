@@ -106,7 +106,7 @@ class PortableInfoboxImagesHelper {
 			// Return default sizes if both original dimensions are zero
 			return [ 'height' => 0, 'width' => 0 ];
 		}
-	
+
 		// Handle case where only the original width is zero
 		if ( $originalWidth == 0 ) {
 			$height = min( $maxHeight, $originalHeight );
@@ -118,7 +118,7 @@ class PortableInfoboxImagesHelper {
 			$width = min( $preferredWidth, $originalWidth );
 			return [ 'height' => 0, 'width' => round( $width ) ]; // No height can be calculated
 		}
-	
+
 		// Prevent issues with invalid maxHeight or preferredWidth
 		if ( $preferredWidth == 0 || $maxHeight == 0 ) {
 			// If either maxHeight or preferredWidth is zero, return the original dimensions
