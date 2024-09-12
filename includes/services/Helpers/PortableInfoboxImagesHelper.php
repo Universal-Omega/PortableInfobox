@@ -110,13 +110,15 @@ class PortableInfoboxImagesHelper {
 		// Handle case where only the original width is zero
 		if ( $originalWidth == 0 ) {
 			$height = min( $maxHeight, $originalHeight );
-			return [ 'height' => round( $height ), 'width' => 0 ]; // No width can be calculated
+			// No width can be calculated
+			return [ 'height' => round( $height ), 'width' => 0 ];
 		}
 
 		// Handle case where only the original height is zero
 		if ( $originalHeight == 0 ) {
 			$width = min( $preferredWidth, $originalWidth );
-			return [ 'height' => 0, 'width' => round( $width ) ]; // No height can be calculated
+			// No height can be calculated
+			return [ 'height' => 0, 'width' => round( $width ) ];
 		}
 
 		// Prevent issues with invalid maxHeight or preferredWidth
