@@ -5,7 +5,7 @@
 			"SongNgu.xyz"
 		]
 	},
-	"portable-infobox-desc": "Tạo các hộp thông tin di động có cấu trúc bằng cách sử dụng đánh dấu HTML ngữ nghĩa rõ ràng trên bất kỳ giao diện/nền tảng nào bằng cách sử dụng đánh dấu mạnh mẽ giống như XML dễ hiểu. Cũng bao gồm trình tạo hộp thông tin tại [[Đặc biệt:PortableInfoboxBuilder]].",
+	"portable-infobox-desc": "Tạo các hộp thông tin di động có cấu trúc bằng cách sử dụng đánh dấu HTML ngữ nghĩa rõ ràng trên bất kỳ giao diện/nền tảng nào với ngôn ngữ định dạng XML dễ hiểu. Cũng bao gồm trình tạo hộp thông tin tại [[Special:PortableInfoboxBuilder]].",
 	"portable-infobox-unimplemented-infobox-tag": "Thẻ hộp thông tin chưa được triển khai: <$1>",
 	"portable-infobox-xml-parse-error-info": "Có vấn đề với việc phân tích hộp thông tin",
 	"portable-infobox-xml-parse-error": "Mã XML không hợp lệ. Vui lòng kiểm tra lại mã XML của bạn",
@@ -40,11 +40,15 @@
 	"infoboxbuilder-node-data": "Dữ liệu",
 	"infoboxbuilder-node-data-value-source": "Giá trị của $1",
 	"infoboxbuilder-node-media": "Hình ảnh",
+	"infoboxbuilder-node-header": "Đầu đề",
+	"infoboxbuilder-node-header-value": "Tiêu đề hộp thông tin",
+	"infoboxbuilder-node-navigation": "Điều hướng",
 	"infoboxbuilder-nodeerror-invalidsource": "Tham số nguồn không hợp lệ.",
 	"infoboxbuilder-nodeerror-nosourceordefault": "Phần tử không có tham số nguồn hoặc giá trị mặc định sẽ không được hiển thị.",
 	"infoboxbuilder-nodeparam-default": "Giá trị mặc định",
 	"infoboxbuilder-nodeparam-label": "Nhãn",
 	"infoboxbuilder-nodeparam-source": "Tham số nguồn",
+	"infoboxbuilder-nodeparam-value": "Giá trị",
 	"infoboxbuilder-templatename": "Tên bản mẫu",
 	"portableinfoboxbuilder": "Trình tạo hộp thông tin"
 }
