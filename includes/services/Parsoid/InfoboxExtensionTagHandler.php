@@ -5,6 +5,7 @@ declare( strict_types=1 );
 namespace PortableInfobox\Parsoid;
 
 use Closure;
+use PortableInfobox\Parser\Nodes\NodeFactory;
 use PortableInfoboxRenderService;
 use Wikimedia\Parsoid\DOM\DocumentFragment;
 use Wikimedia\Parsoid\DOM\Element;
@@ -56,6 +57,8 @@ class InfoboxExtensionTagHandler extends ExtensionTagHandler implements Extensio
 
 		$layout = $kvArgs['layout'] ?? 'default';
 		$theme = $kvArgs['theme'] ?? 'default';
+		$accentColor = $kvArgs['accent-color'] ?? 'default';
+		$accentColorText = $kvArgs['accent-color-text'] ?? 'default';
 
 		// Parse the content and convert it to a DOM fragment
 		$domFragment = $extApi->extTagToDOM( [], $content, [
@@ -64,14 +67,20 @@ class InfoboxExtensionTagHandler extends ExtensionTagHandler implements Extensio
 
 		$contentNode = DiffDOMUtils::firstNonSepChild( $domFragment );
 		if ( $contentNode && DOMCompat::nodeName( $contentNode ) === 'p' &&
-			DiffDOMUtils::nextNonSepSibling( $contentNode ) === null ) {
+			DiffDOMUtils::nextNonSepSibling( $contentNode ) === null &&
+			$contentNode instanceof Element &&
+			DOMDataUtils::noAttrs( $contentNode )
+		   ) {
 			DOMUtils::migrateChildren( $contentNode, $domFragment, $contentNode->nextSibling );
 			$domFragment->removeChild( $contentNode );
 		}
 
+		$infoboxNode = NodeFactory::newFromXML( $content, $kvArgs );
+		$data = $infoboxNode->getRenderData();
+
 		$renderService = new PortableInfoboxRenderService();
 		$infoboxData = $renderService->renderInfobox(
-			$content, $theme, $layout
+			$data, $theme, $layout, $accentColor, $accentColorText, '', ''
 		);
 
 		$dataMw->html = $extApi->domToHtml( $infoboxData, true );
