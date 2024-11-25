@@ -222,7 +222,7 @@ class PortableInfoboxParserTagControllerTest extends MediaWikiIntegrationTestCas
 		return [
 			[
 				[ 'accent-color-default' => '#fff' ],
-				'<aside class="portable-infobox noexcerpt pi-background pi-theme-default pi-layout-default">
+				'<aside class="portable-infobox noexcerpt searchaux pi-background pi-theme-default pi-layout-default">
 					<h2 class="pi-item pi-item-spacing pi-title" style="background-color:#fff;">test</h2>
 				</aside>',
 				'<title><default>test</default></title>',
@@ -231,7 +231,7 @@ class PortableInfoboxParserTagControllerTest extends MediaWikiIntegrationTestCas
 			],
 			[
 				[ 'accent-color-source' => 'color-source' ],
-				'<aside class="portable-infobox noexcerpt pi-background pi-theme-default pi-layout-default">
+				'<aside class="portable-infobox noexcerpt searchaux pi-background pi-theme-default pi-layout-default">
 					<h2 class="pi-item pi-item-spacing pi-title" style="background-color:#000;">test</h2>
 				</aside>',
 				'<title><default>test</default></title>',
@@ -243,7 +243,7 @@ class PortableInfoboxParserTagControllerTest extends MediaWikiIntegrationTestCas
 					'accent-color-default' => '#fff',
 					'accent-color-source' => 'color-source'
 				],
-				'<aside class="portable-infobox noexcerpt pi-background pi-theme-default pi-layout-default">
+				'<aside class="portable-infobox noexcerpt searchaux pi-background pi-theme-default pi-layout-default">
 					<h2 class="pi-item pi-item-spacing pi-title" style="background-color:#000;">test</h2>
 				</aside>',
 				'<title><default>test</default></title>',
@@ -252,7 +252,7 @@ class PortableInfoboxParserTagControllerTest extends MediaWikiIntegrationTestCas
 			],
 			[
 				[ 'accent-color-text-default' => '#fff' ],
-				'<aside class="portable-infobox noexcerpt pi-background pi-theme-default pi-layout-default">
+				'<aside class="portable-infobox noexcerpt searchaux pi-background pi-theme-default pi-layout-default">
 					<h2 class="pi-item pi-item-spacing pi-title" style="color:#fff;">test</h2>
 				</aside>',
 				'<title><default>test</default></title>',
@@ -264,7 +264,7 @@ class PortableInfoboxParserTagControllerTest extends MediaWikiIntegrationTestCas
 					'accent-color-text-default' => '#fff',
 					'accent-color-text-source' => 'color-source'
 				],
-				'<aside class="portable-infobox noexcerpt pi-background pi-theme-default pi-layout-default">
+				'<aside class="portable-infobox noexcerpt searchaux pi-background pi-theme-default pi-layout-default">
 					<h2 class="pi-item pi-item-spacing pi-title" style="color:#000;">test</h2>
 				</aside>',
 				'<title><default>test</default></title>',
@@ -276,7 +276,7 @@ class PortableInfoboxParserTagControllerTest extends MediaWikiIntegrationTestCas
 					'accent-color-text-default' => '#fff',
 					'accent-color-text-source' => 'color-source'
 				],
-				'<aside class="portable-infobox noexcerpt pi-background pi-theme-default pi-layout-default">
+				'<aside class="portable-infobox noexcerpt searchaux pi-background pi-theme-default pi-layout-default">
 					<h2 class="pi-item pi-item-spacing pi-title" style="color:#000;">test</h2>
 				</aside>',
 				'<title><default>test</default></title>',
@@ -290,7 +290,7 @@ class PortableInfoboxParserTagControllerTest extends MediaWikiIntegrationTestCas
 					'accent-color-default' => '#fff' ,
 					'accent-color-source' => 'color-source2'
 				],
-				'<aside class="portable-infobox noexcerpt pi-background pi-theme-default pi-layout-default">
+				'<aside class="portable-infobox noexcerpt searchaux pi-background pi-theme-default pi-layout-default">
 					<h2 class="pi-item pi-item-spacing pi-title"
 						style="background-color:#001;color:#000;">test</h2>
 				</aside>',
@@ -309,7 +309,7 @@ class PortableInfoboxParserTagControllerTest extends MediaWikiIntegrationTestCas
 					'accent-color-default' => 'fff' ,
 					'accent-color-source' => 'color-source2'
 				],
-				'<aside class="portable-infobox noexcerpt pi-background pi-theme-default pi-layout-default">
+				'<aside class="portable-infobox noexcerpt searchaux pi-background pi-theme-default pi-layout-default">
 					<h2 class="pi-item pi-item-spacing pi-title" 
 						style="background-color:#001;color:#000;">test</h2>
 				</aside>',

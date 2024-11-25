@@ -68,7 +68,7 @@ class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 						]
 					]
 				],
-				'output' => '<aside class="portable-infobox noexcerpt pi-background">
+				'output' => '<aside class="portable-infobox noexcerpt searchaux pi-background">
 						<h2 class="pi-item pi-item-spacing pi-title">Test Title</h2>
 					</aside>',
 				'description' => 'Only title',
@@ -86,7 +86,7 @@ class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 						]
 					]
 				],
-				'output' => '<aside class="portable-infobox noexcerpt pi-background">
+				'output' => '<aside class="portable-infobox noexcerpt searchaux pi-background">
 						<h2 class="pi-item pi-item-spacing pi-title" style="background-color:#FFF;color:#000;">Test Title</h2>
 					</aside>',
 				'description' => 'Only title with custom colors',
@@ -113,7 +113,7 @@ class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 						]
 					]
 				],
-				'output' => '<aside class="portable-infobox noexcerpt pi-background">
+				'output' => '<aside class="portable-infobox noexcerpt searchaux pi-background">
 						<figure class="pi-item pi-media pi-image">
 							<a href="http://image.jpg" class="image image-thumbnail" title="image alt">
 								<img src="http://thumbnail.jpg" srcset="http://thumbnail.jpg 1x, http://thumbnail2x.jpg 2x"
@@ -142,7 +142,7 @@ class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 						]
 					]
 				],
-				'output' => '<aside class="portable-infobox noexcerpt pi-background">
+				'output' => '<aside class="portable-infobox noexcerpt searchaux pi-background">
 						<figure class="pi-item pi-media pi-video">
 							<a href="http://image.jpg" class="video" title="image alt">
 								<video src="http://image.jpg" class="pi-video-player" controls="true"
@@ -165,7 +165,7 @@ class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 						]
 					]
 				],
-				'output' => '<aside class="portable-infobox noexcerpt pi-background">
+				'output' => '<aside class="portable-infobox noexcerpt searchaux pi-background">
 						<nav class="pi-navigation pi-item-spacing pi-secondary-background pi-secondary-font">navigation value</nav>
 					</aside>',
 				'description' => 'navigation only',
@@ -184,7 +184,7 @@ class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 						]
 					]
 				],
-				'output' => '<aside class="portable-infobox noexcerpt pi-background">
+				'output' => '<aside class="portable-infobox noexcerpt searchaux pi-background">
 						<div class="pi-item pi-data pi-item-spacing pi-border-color">
 							<h3 class="pi-data-label pi-secondary-font">test label</h3>
 							<div class="pi-data-value pi-font">test value</div>
@@ -230,7 +230,7 @@ class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 						]
 					]
 				],
-				'output' => '<aside class="portable-infobox noexcerpt pi-background">
+				'output' => '<aside class="portable-infobox noexcerpt searchaux pi-background">
 						<h2 class="pi-item pi-item-spacing pi-title">Test Title</h2>
 						<figure class="pi-item pi-media pi-image">
 							<a href="http://image.jpg" class="image image-thumbnail" title="image alt">
@@ -271,7 +271,7 @@ class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 						]
 					]
 				],
-				'output' => '<aside class="portable-infobox noexcerpt pi-background">
+				'output' => '<aside class="portable-infobox noexcerpt searchaux pi-background">
 						<h2 class="pi-item pi-item-spacing pi-title">Test Title</h2>
 						<div class="pi-item pi-data pi-item-spacing pi-border-color">
 							<h3 class="pi-data-label pi-secondary-font">test label</h3>
@@ -301,7 +301,7 @@ class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 						]
 					]
 				],
-				'output' => '<aside class="portable-infobox noexcerpt pi-background">
+				'output' => '<aside class="portable-infobox noexcerpt searchaux pi-background">
 						<h2 class="pi-item pi-item-spacing pi-title">Test Title</h2>
 						<div class="pi-item pi-data pi-item-spacing pi-border-color" data-item-name="testname">
 							<h3 class="pi-data-label pi-secondary-font">test label</h3>
@@ -359,7 +359,7 @@ class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 						]
 					]
 				],
-				'output' => '<aside class="portable-infobox noexcerpt pi-background">
+				'output' => '<aside class="portable-infobox noexcerpt searchaux pi-background">
 						<h2 class="pi-item pi-item-spacing pi-title">Test Title</h2>
 						<section class="pi-item pi-group pi-border-color">
 							<h2 class="pi-item pi-header pi-secondary-font pi-item-spacing pi-secondary-background">Test Header</h2>
@@ -424,7 +424,7 @@ class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 						]
 					]
 				],
-				'output' => '<aside class="portable-infobox noexcerpt pi-background">
+				'output' => '<aside class="portable-infobox noexcerpt searchaux pi-background">
 						<h2 class="pi-item pi-item-spacing pi-title" style="background-color:#FFF;color:#000;">Test Title</h2>
 						<section class="pi-item pi-group pi-border-color">
 							<h2 class="pi-item pi-header pi-secondary-font pi-item-spacing pi-secondary-background" style="background-color:#FFF;color:#000;">Test Header</h2>
@@ -482,7 +482,7 @@ class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 						]
 					]
 				],
-				'output' => '<aside class="portable-infobox noexcerpt pi-background">
+				'output' => '<aside class="portable-infobox noexcerpt searchaux pi-background">
 						<section class="pi-item pi-group pi-border-color">
 							<table class="pi-horizontal-group">
 								<caption class="pi-header pi-secondary-font pi-secondary-background pi-item-spacing">Test header</caption>
@@ -537,7 +537,7 @@ class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 						]
 					]
 				],
-				'output' => '<aside class="portable-infobox noexcerpt pi-background">
+				'output' => '<aside class="portable-infobox noexcerpt searchaux pi-background">
 						<section class="pi-item pi-group pi-border-color">
 							<table class="pi-horizontal-group pi-horizontal-group-no-labels">
 								<tbody>
@@ -563,7 +563,7 @@ class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 						]
 					]
 				],
-				'output' => '<aside class="portable-infobox noexcerpt pi-background">
+				'output' => '<aside class="portable-infobox noexcerpt searchaux pi-background">
 						<nav class="pi-navigation pi-item-spacing pi-secondary-background pi-secondary-font">
 							<p>Links</p>
 						</nav>
@@ -605,7 +605,7 @@ class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 						]
 					]
 				],
-				'output' => '<aside class="portable-infobox noexcerpt pi-background">
+				'output' => '<aside class="portable-infobox noexcerpt searchaux pi-background">
 						<section class="pi-item pi-group pi-border-color">
 							<table class="pi-horizontal-group">
 								<thead>
@@ -667,7 +667,7 @@ class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 						]
 					]
 				],
-				'output' => '<aside class="portable-infobox noexcerpt pi-background">
+				'output' => '<aside class="portable-infobox noexcerpt searchaux pi-background">
 						<section class="pi-item pi-group pi-border-color">
 							<table class="pi-horizontal-group">
 								<caption class="pi-header pi-secondary-font pi-secondary-background pi-item-spacing">test header</caption>
@@ -722,7 +722,7 @@ class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 						]
 					]
 				],
-				'output' => '<aside class="portable-infobox noexcerpt pi-background">
+				'output' => '<aside class="portable-infobox noexcerpt searchaux pi-background">
 						<section class="pi-item pi-group pi-border-color">
 							<table class="pi-horizontal-group pi-horizontal-group-no-labels">
 								<tbody>
@@ -807,7 +807,7 @@ class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 						]
 					]
 				],
-				'output' => '<aside class="portable-infobox noexcerpt pi-background">
+				'output' => '<aside class="portable-infobox noexcerpt searchaux pi-background">
 						<section class="pi-item pi-group pi-border-color">
 							<section class="pi-item pi-smart-group pi-border-color">
 								<section class="pi-smart-group-head">
@@ -895,7 +895,7 @@ class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 						]
 					]
 				],
-				'output' => '<aside class="portable-infobox noexcerpt pi-background">
+				'output' => '<aside class="portable-infobox noexcerpt searchaux pi-background">
 						<section class="pi-item pi-group pi-border-color">
 							<section class="pi-item pi-smart-group pi-border-color">
 								<section class="pi-smart-group-head">
@@ -948,7 +948,7 @@ class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 						]
 					]
 				],
-				'output' => '<aside class="portable-infobox noexcerpt pi-background">
+				'output' => '<aside class="portable-infobox noexcerpt searchaux pi-background">
 					  <section class="pi-item pi-group pi-border-color">
 							<section class="pi-item pi-smart-group pi-border-color">
 								<section class="pi-smart-group-head">
@@ -1000,7 +1000,7 @@ class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 						]
 					]
 				],
-				'output' => '<aside class="portable-infobox noexcerpt pi-background">
+				'output' => '<aside class="portable-infobox noexcerpt searchaux pi-background">
 					  <section class="pi-item pi-group pi-border-color">
 							<section class="pi-item pi-smart-group pi-border-color">
 								<section class="pi-smart-group-head">
@@ -1054,7 +1054,7 @@ class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 						]
 					]
 				],
-				'output' => '<aside class="portable-infobox noexcerpt pi-background">
+				'output' => '<aside class="portable-infobox noexcerpt searchaux pi-background">
 						<section class="pi-item pi-group pi-border-color">
 							<section class="pi-item pi-smart-group pi-border-color">
 								<section class="pi-smart-group-head">
@@ -1119,7 +1119,7 @@ class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 						]
 					]
 				],
-				'output' => '<aside class="portable-infobox noexcerpt pi-background">
+				'output' => '<aside class="portable-infobox noexcerpt searchaux pi-background">
 						<section class="pi-item pi-group pi-border-color">
 							<section class="pi-item pi-smart-group pi-border-color">
 								<section class="pi-smart-group-head">
@@ -1231,7 +1231,7 @@ class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 						]
 					]
 				],
-				'output' => '<aside class="portable-infobox noexcerpt pi-background">
+				'output' => '<aside class="portable-infobox noexcerpt searchaux pi-background">
 						<section class="pi-item pi-group pi-border-color">
 							<section class="pi-item pi-smart-group pi-border-color">
 								<section class="pi-smart-group-head">
@@ -1345,7 +1345,7 @@ class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 						]
 					]
 				],
-				'output' => '<aside class="portable-infobox noexcerpt pi-background">
+				'output' => '<aside class="portable-infobox noexcerpt searchaux pi-background">
 						<section class="pi-item pi-group pi-border-color">
 							<section class="pi-item pi-smart-group pi-border-color">
 								<section class="pi-smart-group-head">
@@ -1426,7 +1426,7 @@ class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 						]
 					]
 				],
-				'output' => '<aside class="portable-infobox noexcerpt pi-background">
+				'output' => '<aside class="portable-infobox noexcerpt searchaux pi-background">
 						<section class="pi-item pi-group pi-border-color">
 							<section class="pi-item pi-smart-group pi-border-color">
 								<section class="pi-smart-group-head">
@@ -1499,7 +1499,7 @@ class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 						]
 					]
 				],
-				'output' => '<aside class="portable-infobox noexcerpt pi-background">
+				'output' => '<aside class="portable-infobox noexcerpt searchaux pi-background">
 						<section class="pi-item pi-group pi-border-color">
 							<section class="pi-item pi-smart-group pi-border-color">
 								<section class="pi-smart-group-head">
@@ -1586,7 +1586,7 @@ class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 						]
 					]
 				],
-				'output' => '<aside class="portable-infobox noexcerpt pi-background">
+				'output' => '<aside class="portable-infobox noexcerpt searchaux pi-background">
 						<section class="pi-item pi-group pi-border-color">
 							<section class="pi-item pi-smart-group pi-border-color">
 								<section class="pi-smart-group-head">
@@ -1679,7 +1679,7 @@ class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 						]
 					]
 				],
-				'output' => '<aside class="portable-infobox noexcerpt pi-background">
+				'output' => '<aside class="portable-infobox noexcerpt searchaux pi-background">
 						<section class="pi-item pi-group pi-border-color">
 							<section class="pi-item pi-smart-group pi-border-color">
 								<section class="pi-smart-group-body">
@@ -1747,7 +1747,7 @@ class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 						]
 					]
 				],
-				'output' => '<aside class="portable-infobox noexcerpt pi-background">
+				'output' => '<aside class="portable-infobox noexcerpt searchaux pi-background">
 						<h2 class="pi-item pi-item-spacing pi-title">Test Title</h2>
 						<div class="pi-media-collection" data-source="src" data-item-name="img">
 							<ul class="pi-media-collection-tabs">
@@ -1824,7 +1824,7 @@ class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 						]
 					]
 				],
-				'output' => '<aside class="portable-infobox noexcerpt pi-background">
+				'output' => '<aside class="portable-infobox noexcerpt searchaux pi-background">
 						<h2 class="pi-item pi-item-spacing pi-title">Test Title</h2>
 						<section class="pi-item pi-group pi-border-color pi-collapse pi-collapse-open">
 							<h2 class="pi-item pi-header pi-secondary-font pi-item-spacing pi-secondary-background">Test Header</h2>
@@ -1889,7 +1889,7 @@ class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 						]
 					]
 				],
-				'output' => '<aside class="portable-infobox noexcerpt pi-background">
+				'output' => '<aside class="portable-infobox noexcerpt searchaux pi-background">
 						<h2 class="pi-item pi-item-spacing pi-title">Test Title</h2>
 						<section class="pi-item pi-group pi-border-color pi-collapse pi-collapse-closed">
 							<h2 class="pi-item pi-header pi-secondary-font pi-item-spacing pi-secondary-background" data-item-name="header">Test Header</h2>
