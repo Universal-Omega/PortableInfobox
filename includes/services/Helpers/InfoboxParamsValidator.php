@@ -221,9 +221,9 @@ class InfoboxParamsValidator {
 		}
 
 		if ( isset( self::$colorNamesFlipped[$color] ) ||
-			preg_match( self::REGEX_RGB,  $color ) ||
+			preg_match( self::REGEX_RGB, $color ) ||
 			preg_match( self::REGEX_RGBA, $color ) ||
-			preg_match( self::REGEX_HSL,  $color ) ||
+			preg_match( self::REGEX_HSL, $color ) ||
 			preg_match( self::REGEX_HSLA, $color )
 		) {
 			return $color;
