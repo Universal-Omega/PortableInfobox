@@ -46,6 +46,7 @@
 	"infoboxbuilder-nodeerror-invalidsource": "Source parameter is invalid.",
 	"infoboxbuilder-nodeerror-nosourceordefault": "Element without source parameter or default value won't be displayed.",
 	"infoboxbuilder-nodeparam-default": "Default value",
+	"infoboxbuilder-nodeparam-format": "Format",
 	"infoboxbuilder-nodeparam-label": "Label",
 	"infoboxbuilder-nodeparam-source": "Source parameter",
 	"infoboxbuilder-nodeparam-value": "Value",

@@ -127,6 +127,10 @@
 				placeholder: this.msg( 'nodeparam-label' ),
 				disabled: true
 			} );
+			this.nodeInputFormat = new OO.ui.TextInputWidget( {
+				placeholder: this.msg( 'nodeparam-format' ),
+				disabled: true
+			} );
 			this.nodeInputDefault = new OO.ui.TextInputWidget( {
 				placeholder: this.msg( 'nodeparam-default' ),
 				disabled: true
@@ -152,6 +156,12 @@
 					label: this.msg( 'nodeparam-label' ),
 					align: 'top',
 					help: this.msg( 'nodeparamhelp-label', [], true ),
+					disabled: true
+				} ).$element,
+				new OO.ui.FieldLayout( this.nodeInputFormat, {
+					label: this.msg( 'nodeparam-format' ),
+					align: 'top',
+					help: this.msg( 'nodeparamhelp-format', [], true ),
 					disabled: true
 				} ).$element,
 				new OO.ui.FieldLayout( this.nodeInputDefault, {
@@ -180,6 +190,7 @@
 
 			this.toggleNodeMenuWidget( this.nodeInputSource, supports.source, 'source' );
 			this.toggleNodeMenuWidget( this.nodeInputLabel, supports.label, 'label' );
+			this.toggleNodeMenuWidget( this.nodeInputFormat, supports.format, 'format' );
 			this.toggleNodeMenuWidget( this.nodeInputDefault, supports.default, 'default' );
 			this.toggleNodeMenuWidget( this.nodeInputValue, supports.value, 'value' );
 		}
