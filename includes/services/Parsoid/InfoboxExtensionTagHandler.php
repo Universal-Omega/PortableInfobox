@@ -7,13 +7,14 @@ namespace PortableInfobox\Parsoid;
 use Closure;
 use PortableInfoboxRenderService;
 use Wikimedia\Parsoid\DOM\DocumentFragment;
+use Wikimedia\Parsoid\Ext\DiffDOMUtils;
+use Wikimedia\Parsoid\Ext\DOMDataUtils;
+use Wikimedia\Parsoid\Ext\DOMUtils;
 use Wikimedia\Parsoid\DOM\Element;
 use Wikimedia\Parsoid\Ext\ExtensionModule;
 use Wikimedia\Parsoid\Ext\ExtensionTagHandler;
 use Wikimedia\Parsoid\Ext\ParsoidExtensionAPI;
-use Wikimedia\Parsoid\Utils\DiffDOMUtils;
 use Wikimedia\Parsoid\Utils\DOMCompat;
-use Wikimedia\Parsoid\Utils\DOMDataUtils;
 
 class InfoboxExtensionTagHandler extends ExtensionTagHandler implements ExtensionModule {
 
