@@ -195,6 +195,7 @@ jobs:
           if [ ! -d src ]; then
             git clone -b "${MEDIAWIKI_VERSION}" --depth 1 https://gerrit.wikimedia.org/r/mediawiki/core src
             git clone --recurse-submodules -b "${MEDIAWIKI_VERSION}" --depth 1 https://gerrit.wikimedia.org/r/mediawiki/skins/Vector src/skins/Vector
+            git clone --recurse-submodules -b "${MEDIAWIKI_VERSION}" --depth 1 https://github.com/wikimedia/mediawiki-extensions-PageImages src/extensions/PageImages
             for dep in $DEPENDENCIES; do
               dependency=$(echo $dep | cut -d'|' -f1)
               repository=$(echo $dep | cut -sd'|' -f2)
