@@ -110,7 +110,8 @@
 	"AutoloadNamespaces": {
 		"PortableInfobox\\Helpers\\": "includes/services/Helpers/",
 		"PortableInfobox\\Parser\\": "includes/services/Parser/",
-		"PortableInfobox\\Parser\\Nodes\\": "includes/services/Parser/Nodes/"
+		"PortableInfobox\\Parser\\Nodes\\": "includes/services/Parser/Nodes/",
+		"PortableInfobox\\Parsoid\\": "includes/services/Parsoid/"
 	},
 	"AutoloadClasses": {
 		"PortableInfoboxHooks": "includes/PortableInfoboxHooks.php",
@@ -134,6 +135,9 @@
 		"MultiContentSave": "PortableInfoboxHooks::onMultiContentSave",
 		"ResourceLoaderRegisterModules": "PortableInfoboxHooks::onResourceLoaderRegisterModules"
 	},
+	"ParsoidModules": [
+		"PortableInfobox\\Parsoid\\InfoboxExtensionTagHandler"
+	],
 	"SpecialPages": {
 		"AllInfoboxes": "AllInfoboxesQueryPage",
 		"PortableInfoboxBuilder": "SpecialPortableInfoboxBuilder"
