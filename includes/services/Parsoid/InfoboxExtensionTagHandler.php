@@ -41,7 +41,6 @@ class InfoboxExtensionTagHandler extends ExtensionTagHandler implements Extensio
     public function processAttributeEmbeddedHTML(
         ParsoidExtensionAPI $extApi, Element $elt, Closure $proc
     ): void {
-        // If necessary, modify the embedded HTML for any attributes
         $dmw = DOMDataUtils::getDataMw($elt);
         if (isset($dmw->html)) {
             $dmw->html = $proc($dmw->html);
