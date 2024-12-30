@@ -45,6 +45,7 @@
 	"infoboxbuilder-nodeerror-invalidsource": "Le parametro de fonte non es valide.",
 	"infoboxbuilder-nodeerror-nosourceordefault": "Elemento sin parametro de fonte o le valor predefinite non essera monstrate.",
 	"infoboxbuilder-nodeparam-default": "Valor predefinite",
+	"infoboxbuilder-nodeparam-format": "Formato",
 	"infoboxbuilder-nodeparam-label": "Etiquetta",
 	"infoboxbuilder-nodeparam-source": "Parametro fonte",
 	"infoboxbuilder-nodeparam-value": "Valor",
