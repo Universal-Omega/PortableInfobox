@@ -62,8 +62,11 @@
 }
 
 @pi-background: #f8f9fa;
+@pi-background-night: #070605;
 @pi-secondary-background: #eaecf0;
+@pi-secondary-background-night: #15130f;
 @pi-border-color: #a2a9b1;
+@pi-border-color-night: #5d564e;
 @pi-item-spacing: 5px 10px;
 @pi-margin: 15px;
 @pi-width: 270px;
@@ -75,6 +78,18 @@
 	--pi-item-spacing: @pi-item-spacing;
 	--pi-margin: @pi-margin;
 	--pi-width: @pi-width;
+}
+:root.skin-theme-clientpref-night {
+	--pi-background: @pi-background-night;
+	--pi-secondary-background: @pi-secondary-background-night;
+	--pi-border-color-night: @pi-border-color-night;
+}
+@media (prefers-color-scheme: dark) {
+	:root.skin-theme-clientpref-os {
+		--pi-background: @pi-background-night;
+		--pi-secondary-background: @pi-secondary-background-night;
+		--pi-border-color-night: @pi-border-color-night;
+	}
 }
 
 .portable-infobox {
