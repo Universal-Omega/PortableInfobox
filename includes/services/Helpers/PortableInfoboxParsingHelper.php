@@ -3,6 +3,7 @@
 namespace PortableInfobox\Helpers;
 
 use Exception;
+use MediaWiki\Content\TextContent;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use ParserOptions;
@@ -84,20 +85,19 @@ class PortableInfoboxParsingHelper {
 
 	/**
 	 * @param Title $title
-	 *
 	 * @return string
 	 */
-	protected function fetchArticleContent( Title $title ) {
+	protected function fetchArticleContent( Title $title ): string {
 		if ( $title->exists() ) {
-			// @phan-suppress-next-line PhanDeprecatedFunction
-			$content = MediaWikiServices::getInstance()
-				->getWikiPageFactory()
-				->newFromTitle( $title )
-				->getContent()
-				->getNativeData();
+			$content = MediaWikiServices::getInstance()->getWikiPageFactory()
+				->newFromTitle( $title )->getContent();
+
+			if ( $content instanceof TextContent ) {
+				return $content->getText();
+			}
 		}
 
-		return isset( $content ) && $content ? $content : '';
+		return '';
 	}
 
 	/**
