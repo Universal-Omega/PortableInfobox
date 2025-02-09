@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Googology",
-			"Lakejason0"
+			"Lakejason0",
+			"沈澄心"
 		]
 	},
 	"portable-infobox-desc": "您可以使用类似XML标记创建简便的信息表格，并且可以使用清晰的语义特性HTML标记在任何皮肤或者平台进行呈现。在[[Special:PortableInfoboxBuilder]]有移动化信息框生成器。",
@@ -40,9 +41,13 @@
 	"infoboxbuilder-node-data": "数据",
 	"infoboxbuilder-node-data-value-source": "$1的值",
 	"infoboxbuilder-node-media": "图像",
+	"infoboxbuilder-node-header": "标题",
+	"infoboxbuilder-node-header-value": "信息框标题",
+	"infoboxbuilder-node-navigation": "导览",
 	"infoboxbuilder-nodeerror-invalidsource": "源参数无效。",
 	"infoboxbuilder-nodeerror-nosourceordefault": "没有源参数或默认值的元素不会被显示。",
 	"infoboxbuilder-nodeparam-default": "默认值",
+	"infoboxbuilder-nodeparam-format": "格式",
 	"infoboxbuilder-nodeparam-label": "标签",
 	"infoboxbuilder-nodeparam-source": "源参数",
 	"infoboxbuilder-nodeparam-value": "值",

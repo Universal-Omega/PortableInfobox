@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Amire80",
 			"Robby",
 			"lkucharczyk"
 		]
@@ -29,5 +30,6 @@
 	"apiwarn-infobox-invalidargs": "Invalid \"args\" parameter in api.php?action=infobox",
 	"infoboxbuilder-node-title": "{{identical|Title}}",
 	"infoboxbuilder-node-media": "{{identical|Image}}",
+	"infoboxbuilder-nodeparam-format": "Refers to formatting the presentation of data, such as currencies, dates, etc.",
 	"infoboxbuilder-nodeparam-label": "{{identical|Label}}"
 }

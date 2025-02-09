@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Kly",
-			"Lakejason0"
+			"Lakejason0",
+			"列维劳德"
 		]
 	},
 	"portable-infobox-desc": "您可以使用類似XML的標記建立簡便的資訊框，並且可以使用清晰的語義特性HTML標記在任何外觀或平台呈現。在[[Special:PortableInfoboxBuilder]]有行動化資訊框產生器。",
@@ -46,6 +47,7 @@
 	"infoboxbuilder-nodeerror-invalidsource": "源參數無效。",
 	"infoboxbuilder-nodeerror-nosourceordefault": "沒有源參數或預設值的元素不會被顯示。",
 	"infoboxbuilder-nodeparam-default": "預設值",
+	"infoboxbuilder-nodeparam-format": "格式",
 	"infoboxbuilder-nodeparam-label": "標籤",
 	"infoboxbuilder-nodeparam-source": "源參數",
 	"infoboxbuilder-nodeparam-value": "值",

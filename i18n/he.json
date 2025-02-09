@@ -46,6 +46,7 @@
 	"infoboxbuilder-nodeerror-invalidsource": "פרמטר המקור אינו תקין.",
 	"infoboxbuilder-nodeerror-nosourceordefault": "רכיב ללא פרמטר מקור או ערך ברירת מחדל לא יוצג.",
 	"infoboxbuilder-nodeparam-default": "ערך התחלתי",
+	"infoboxbuilder-nodeparam-format": "עיצוב נתונים לתצוגה (format)",
 	"infoboxbuilder-nodeparam-label": "תווית",
 	"infoboxbuilder-nodeparam-source": "פרמטר מקור",
 	"infoboxbuilder-nodeparam-value": "ערך",

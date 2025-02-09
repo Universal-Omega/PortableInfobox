@@ -47,6 +47,7 @@
 	"infoboxbuilder-nodeerror-invalidsource": "Bronparameter is ongeldig.",
 	"infoboxbuilder-nodeerror-nosourceordefault": "Elementen zonder bronparameter of standaardwaarde worden niet weergegeven.",
 	"infoboxbuilder-nodeparam-default": "Standaardwaarde",
+	"infoboxbuilder-nodeparam-format": "Opmaak",
 	"infoboxbuilder-nodeparam-label": "Label",
 	"infoboxbuilder-nodeparam-source": "Bronparameter",
 	"infoboxbuilder-nodeparam-value": "Waarde",

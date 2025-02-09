@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Alien333",
+			"Mahabarata",
 			"SleaY",
 			"Verdy p"
 		]
@@ -47,6 +48,7 @@
 	"infoboxbuilder-nodeerror-invalidsource": "Le paramètre source n’est pas valide.",
 	"infoboxbuilder-nodeerror-nosourceordefault": "Un élément sans paramètre source ni valeur par défaut ne sera pas affiché.",
 	"infoboxbuilder-nodeparam-default": "Valeur par défaut",
+	"infoboxbuilder-nodeparam-format": "Format",
 	"infoboxbuilder-nodeparam-label": "Libellé",
 	"infoboxbuilder-nodeparam-source": "Paramètre source",
 	"infoboxbuilder-nodeparam-value": "Valeur",

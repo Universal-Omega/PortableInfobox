@@ -21,5 +21,6 @@
 	"infoboxbuilder-node-media": "Immagine",
 	"infoboxbuilder-node-header": "Intestazione",
 	"infoboxbuilder-node-navigation": "Navigazione",
+	"infoboxbuilder-nodeparam-format": "Formato",
 	"infoboxbuilder-nodeparam-value": "Valore"
 }

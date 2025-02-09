@@ -2,10 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"MathXplore",
-			"Omotecho"
+			"Omotecho",
+			"Waki285"
 		]
 	},
-	"portable-infobox-desc": "分かりやすくてパワフルなXML的マークアップを使ってポータブルな情報ボックスを作成し、どんなスキンやプラットフォーム上でも整ったセマンティックHTMLでの表示を可能にします。またポータブルな情報ボックスの作成機能 [[Special:PortableInfoboxBuilder]] を同梱します。",
+	"portable-infobox-desc": "分かりやすくてパワフルなXML的マークアップを使ってポータブルなインフォボックスを作成し、どんなスキンやプラットフォーム上でも整ったセマンティックHTMLでの表示を可能にします。またポータブルなインフォボックスの作成機能 [[Special:PortableInfoboxBuilder]] を同梱します。",
 	"portable-infobox-unimplemented-infobox-tag": "実装されていないインフォボックスのタグです：<$1>",
 	"portable-infobox-xml-parse-error-info": "インフォボックスの解析中にエラーが発生しました",
 	"portable-infobox-xml-parse-error": "XMLマークアップに誤りがあります。XMLをもう一度ご確認ください",
@@ -19,10 +20,30 @@
 	"portable-infobox-xml-parse-error-tag-name-mismatch": "開始タグと終了タグが一致していません",
 	"portable-infobox-xml-parse-error-tag-not-finished": "タグが未完成です",
 	"portable-infobox-xml-parse-error-infobox-tag-attribute-unsupported": "属性「$1」は<infobox>タグでサポートされていません",
+	"allinfoboxes": "すべてのインフォボックス",
+	"infoboxbuilder-action-addnode": "インフォボックス要素を追加",
+	"infoboxbuilder-action-clear": "インフォボックスをクリア",
+	"infoboxbuilder-action-deletenode": "要素を削除",
+	"infoboxbuilder-action-publish": "インフォボックスを公開",
+	"infoboxbuilder-editerror": "インフォボックスの公開中にエラーが発生しました: $1",
+	"infoboxbuilder-editerrorunknown": "インフォボックスの公開中に不明なエラーが発生しました。",
+	"infoboxbuilder-editsummary": "インフォボックスビルダーによりインフォボックスが作成されました。",
 	"infoboxbuilder-node-title": "タイトル",
+	"infoboxbuilder-node-title-value": "インフォボックスのタイトル",
 	"infoboxbuilder-node-title-value-pagename": "ページ名",
 	"infoboxbuilder-node-data": "データ",
+	"infoboxbuilder-node-data-value-source": "$1 の値",
 	"infoboxbuilder-node-media": "画像",
+	"infoboxbuilder-node-header": "ヘッダー",
+	"infoboxbuilder-node-header-value": "インフォボックスヘッダー",
+	"infoboxbuilder-node-navigation": "ナビゲーション",
+	"infoboxbuilder-nodeerror-invalidsource": "ソースパラメータが無効です。",
+	"infoboxbuilder-nodeerror-nosourceordefault": "ソースパラメータまたはデフォルト値のない要素は表示されません。",
+	"infoboxbuilder-nodeparam-default": "既定値",
+	"infoboxbuilder-nodeparam-format": "形式",
 	"infoboxbuilder-nodeparam-label": "ラベル",
-	"infoboxbuilder-templatename": "テンプレート名"
+	"infoboxbuilder-nodeparam-source": "ソースパラメータ",
+	"infoboxbuilder-nodeparam-value": "値",
+	"infoboxbuilder-templatename": "テンプレート名",
+	"portableinfoboxbuilder": "ポータブルインフォボックスビルダー"
 }
