@@ -54,7 +54,7 @@ class AllInfoboxesQueryPage extends PageQueryPage {
 	 * @return int number of rows updated
 	 */
 	public function recache( $limit = false, $ignoreErrors = true ) {
-		$res = parent::recache( $limit, $ignoreErrors );
+		$res = parent::recache( $limit );
 
 		$hookContainer = MediaWikiServices::getInstance()->getHookContainer();
 		$hookContainer->run( 'AllInfoboxesQueryRecached' );
