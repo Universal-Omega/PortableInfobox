@@ -61,7 +61,6 @@ class MediaWikiParserService implements ExternalParser {
 			$parsed = "\n" . $parsed;
 		}
 
-		// @phan-suppress-next-line PhanAccessMethodInternal
 		$output = BlockLevelPass::doBlockLevels( $parsed, false );
 		$ready = $this->parser->getStripState()->unstripBoth( $output );
 
