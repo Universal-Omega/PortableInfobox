@@ -11,10 +11,7 @@
 	"type": "parserhook",
 	"license-name": "GPL-3.0-or-later",
 	"requires": {
-		"MediaWiki": ">= 1.39.0",
-		"platform": {
-			"php": ">= 7.3"
-		}
+		"MediaWiki": ">= 1.43.0"
 	},
 	"config": {
 		"AllInfoboxesSubpagesBlacklist": {
