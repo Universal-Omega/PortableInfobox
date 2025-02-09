@@ -73,8 +73,13 @@ class PortableInfoboxParsingHelper {
 		);
 	}
 
-	private static function parserOutputGetPageProperty( \ParserOutput $parserOutput, string $name ) {
-		return $parserOutput->getPageProperty( $name );
+	private static function parserOutputGetPageProperty( \ParserOutput $parserOutput, string $name ): string {
+		$property = $parserOutput->getPageProperty( $name );
+		if ( is_string( $property ) ) {
+			return $property;
+		}
+
+		return '';
 	}
 
 	/**
