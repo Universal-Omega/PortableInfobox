@@ -33,7 +33,7 @@ class AllInfoboxesQueryPage extends PageQueryPage {
 			]
 		];
 
-		$dbr = $this->getDBLoadBalancer()->getConnection( DB_REPLICA );
+		$dbr = $this->getDatabaseProvider()->getReplicaDatabase();
 
 		$subpagesBlacklist = $this->getConfig()->get( 'AllInfoboxesSubpagesBlacklist' );
 		foreach ( $subpagesBlacklist as $subpage ) {
