@@ -211,7 +211,7 @@ class InfoboxParamsValidator {
 	/**
 	 * validates if argument is valid color value.
 	 * @param string $color
-	 * @return bool
+	 * @return string
 	 */
 	public function validateColorValue( $color ) {
 		$color = strtolower( preg_replace( '/\s+/', '', $color ) );
