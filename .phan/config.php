@@ -22,6 +22,4 @@ $cfg['suppress_issue_types'] = [
 	'SecurityCheck-LikelyFalsePositive',
 ];
 
-$cfg['scalar_implicit_cast'] = true;
-
 return $cfg;

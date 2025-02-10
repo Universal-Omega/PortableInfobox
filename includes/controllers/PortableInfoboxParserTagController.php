@@ -229,7 +229,7 @@ class PortableInfoboxParserTagController {
 	}
 
 	private function getLayout( $params ) {
-		$layoutName = $params['layout'] ?? false;
+		$layoutName = $params['layout'] ?? '';
 		if ( $this->getParamsValidator()->validateLayout( $layoutName ) ) {
 			// make sure no whitespaces, prevents side effects
 			return self::INFOBOX_LAYOUT_PREFIX . $layoutName;
