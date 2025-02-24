@@ -3,10 +3,11 @@
 		"authors": [
 			"MathXplore",
 			"Omotecho",
-			"Waki285"
+			"Waki285",
+			"Yaakiyu.jp"
 		]
 	},
-	"portable-infobox-desc": "分かりやすくてパワフルなXML的マークアップを使ってポータブルなインフォボックスを作成し、どんなスキンやプラットフォーム上でも整ったセマンティックHTMLでの表示を可能にします。またポータブルなインフォボックスの作成機能 [[Special:PortableInfoboxBuilder]] を同梱します。",
+	"portable-infobox-desc": "分かりやすくてパワフルなXML的マークアップを使ってポータブルなInfoboxを作成し、どんなスキンやプラットフォーム上でも整ったセマンティックHTMLでの表示を可能にします。またポータブルな Infobox の作成機能 [[Special:PortableInfoboxBuilder]] を同梱します。",
 	"portable-infobox-unimplemented-infobox-tag": "実装されていないインフォボックスのタグです：<$1>",
 	"portable-infobox-xml-parse-error-info": "インフォボックスの解析中にエラーが発生しました",
 	"portable-infobox-xml-parse-error": "XMLマークアップに誤りがあります。XMLをもう一度ご確認ください",
