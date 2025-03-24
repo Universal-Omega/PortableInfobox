@@ -466,6 +466,7 @@ class NodeMediaTest extends MediaWikiIntegrationTestCase {
 	}
 }
 
+// phpcs:ignore Generic.Files.OneObjectStructurePerFile.MultipleFound
 class FileMock {
 
 	protected $mediaType;
@@ -483,6 +484,7 @@ class FileMock {
 	}
 }
 
+// phpcs:ignore Generic.Files.OneObjectStructurePerFile.MultipleFound
 class GalleryMock {
 
 	private $images;
