@@ -253,6 +253,7 @@ class PortableInfoboxDataServiceTest extends MediaWikiIntegrationTestCase {
 	}
 }
 
+// phpcs:ignore Generic.Files.OneObjectStructurePerFile.MultipleFound
 class ParsingHelperDummy {
 
 	public function __construct( $infoboxesData = null, $includeonlyInfoboxesData = null ) {
@@ -273,6 +274,7 @@ class ParsingHelperDummy {
 	}
 }
 
+// phpcs:ignore Generic.Files.OneObjectStructurePerFile.MultipleFound
 class PagePropsProxyDummy {
 
 	public function __construct( $data = [] ) {
