@@ -8,6 +8,7 @@ use MediaWiki\Context\RequestContext;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Parser\ParserOptions;
+use MediaWiki\Parser\ParserOutput;
 use MediaWiki\Title\Title;
 use PortableInfobox\Controllers\PortableInfoboxParserTagController;
 use PortableInfobox\Services\PortableInfoboxDataService;
@@ -74,7 +75,7 @@ class PortableInfoboxParsingHelper {
 		);
 	}
 
-	private static function parserOutputGetPageProperty( \ParserOutput $parserOutput, string $name ): string {
+	private static function parserOutputGetPageProperty( ParserOutput $parserOutput, string $name ): string {
 		$property = $parserOutput->getPageProperty( $name );
 		if ( is_string( $property ) ) {
 			return $property;
