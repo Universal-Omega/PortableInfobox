@@ -18,8 +18,8 @@ use PortableInfobox\Controllers\PortableInfoboxParserTagController;
  */
 class PortableInfoboxParserTagControllerTest extends MediaWikiIntegrationTestCase {
 
-	const THEME_PREFIX = PortableInfoboxParserTagController::INFOBOX_THEME_PREFIX;
-	const THEME_DEFAULT = self::THEME_PREFIX . PortableInfoboxParserTagController::DEFAULT_THEME_NAME;
+	private const THEME_PREFIX = PortableInfoboxParserTagController::INFOBOX_THEME_PREFIX;
+	private const THEME_DEFAULT = self::THEME_PREFIX . PortableInfoboxParserTagController::DEFAULT_THEME_NAME;
 
 	/** @var Parser */
 	protected $parser;
