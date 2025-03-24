@@ -176,7 +176,7 @@ class PortableInfoboxDataServiceTest extends MediaWikiIntegrationTestCase {
 			)
 			->getImages();
 
-		$this->assertEquals( count( $images ), 2 );
+		$this->assertCount( 2, $images );
 	}
 
 	public function testImageListFetchImages() {
@@ -249,10 +249,11 @@ class PortableInfoboxDataServiceTest extends MediaWikiIntegrationTestCase {
 			->setParsingHelper( new ParsingHelperDummy() )
 			->getInfoboxes();
 
-		$this->assertEquals( $result, [ "markup" ] );
+		$this->assertEquals( [ "markup" ], $result );
 	}
 }
 
+// phpcs:ignore Generic.Files.OneObjectStructurePerFile.MultipleFound
 class ParsingHelperDummy {
 
 	public function __construct( $infoboxesData = null, $includeonlyInfoboxesData = null ) {
@@ -273,6 +274,7 @@ class ParsingHelperDummy {
 	}
 }
 
+// phpcs:ignore Generic.Files.OneObjectStructurePerFile.MultipleFound
 class PagePropsProxyDummy {
 
 	public function __construct( $data = [] ) {

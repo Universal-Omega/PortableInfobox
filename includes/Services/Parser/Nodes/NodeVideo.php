@@ -3,6 +3,7 @@
 namespace PortableInfobox\Services\Parser\Nodes;
 
 class NodeVideo extends NodeMedia {
+
 	public function getType() {
 		return 'media';
 	}

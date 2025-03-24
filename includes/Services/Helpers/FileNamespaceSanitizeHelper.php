@@ -8,6 +8,7 @@ use MediaWiki\MediaWikiServices;
 // original class & authors:
 // https://github.com/Wikia/app/blob/dev/includes/wikia/helpers/FileNamespaceSanitizeHelper.php
 class FileNamespaceSanitizeHelper {
+
 	private static $instance = null;
 	private $filePrefixRegex = [];
 

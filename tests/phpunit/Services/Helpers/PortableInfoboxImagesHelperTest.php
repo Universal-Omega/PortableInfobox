@@ -10,6 +10,7 @@ use PortableInfobox\Services\Helpers\PortableInfoboxImagesHelper;
  * @covers \PortableInfobox\Services\Helpers\PortableInfoboxImagesHelper
  */
 class PortableInfoboxImagesHelperTest extends MediaWikiIntegrationTestCase {
+
 	private $helper;
 
 	protected function setUp(): void {
@@ -105,11 +106,11 @@ class PortableInfoboxImagesHelperTest extends MediaWikiIntegrationTestCase {
 		];
 		$thumb = $this->getMockBuilder( 'ThumbnailImage' )
 			->disableOriginalConstructor()
-			->setMethods( [ 'isError', 'getUrl' ] )
+			->onlyMethods( [ 'isError', 'getUrl' ] )
 			->getMock();
 		$file = $this->getMockBuilder( 'File' )
 			->disableOriginalConstructor()
-			->setMethods( [ 'exists', 'transform', 'getWidth', 'getHeight', 'getMediaType' ] )
+			->onlyMethods( [ 'exists', 'transform', 'getWidth', 'getHeight', 'getMediaType' ] )
 			->getMock();
 		$file->expects( $this->once() )
 			->method( 'exists' )

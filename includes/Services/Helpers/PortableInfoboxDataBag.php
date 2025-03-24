@@ -3,6 +3,7 @@
 namespace PortableInfobox\Services\Helpers;
 
 class PortableInfoboxDataBag {
+
 	private static $instance = null;
 	private $galleries = [];
 

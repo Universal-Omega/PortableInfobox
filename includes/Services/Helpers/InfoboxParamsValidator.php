@@ -5,6 +5,7 @@ namespace PortableInfobox\Services\Helpers;
 use Exception;
 
 class InfoboxParamsValidator {
+
 	private static $supportedParams = [
 		'accent-color-default',
 		'accent-color-source',

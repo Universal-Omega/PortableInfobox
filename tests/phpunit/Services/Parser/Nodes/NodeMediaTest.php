@@ -146,11 +146,11 @@ class NodeMediaTest extends MediaWikiIntegrationTestCase {
 	 * @param $expected
 	 */
 	public function testData( $markup, $params, $mediaType, $expected ) {
-		$fileMock = is_null( $mediaType ) ? null : new FileMock( $mediaType );
+		$fileMock = $mediaType === null ? null : new FileMock( $mediaType );
 		$node = NodeFactory::newFromXML( $markup, $params );
 
 		$helper = $this->getMockBuilder( PortableInfoboxImagesHelper::class )
-			->setMethods( [ 'getFile', 'extendImageData' ] )
+			->onlyMethods( [ 'getFile', 'extendImageData' ] )
 			->getMock();
 		$helper->expects( $this->any() )
 			->method( 'getFile' )
@@ -466,7 +466,9 @@ class NodeMediaTest extends MediaWikiIntegrationTestCase {
 	}
 }
 
+// phpcs:ignore Generic.Files.OneObjectStructurePerFile.MultipleFound
 class FileMock {
+
 	protected $mediaType;
 
 	public function __construct( $mediaType ) {
@@ -482,8 +484,11 @@ class FileMock {
 	}
 }
 
+// phpcs:ignore Generic.Files.OneObjectStructurePerFile.MultipleFound
 class GalleryMock {
+
 	private $images;
+
 	public function __construct( array $images = [] ) {
 		$this->images = $images;
 	}

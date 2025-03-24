@@ -18,11 +18,11 @@ class PortableInfoboxParsingHelperTest extends MediaWikiIntegrationTestCase {
 	 */
 	public function testParsingIncludeonlyInfoboxes( $markup, $expected ) {
 		$helper = $this->getMockBuilder( PortableInfoboxParsingHelper::class )
-			->setMethods( [ 'fetchArticleContent' ] )
+			->onlyMethods( [ 'fetchArticleContent' ] )
 			->getMock();
 		$helper->expects( $this->once() )
 			->method( 'fetchArticleContent' )
-			->will( $this->returnValue( $markup ) );
+			->willReturn( $markup );
 
 		$result = $helper->parseIncludeonlyInfoboxes( $this->getExistingTestPage( 'Test' )->getTitle() );
 

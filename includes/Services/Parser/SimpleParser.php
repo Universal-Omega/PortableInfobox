@@ -3,6 +3,7 @@
 namespace PortableInfobox\Services\Parser;
 
 class SimpleParser implements ExternalParser {
+
 	public function parseRecursive( $text ) {
 		return $text;
 	}

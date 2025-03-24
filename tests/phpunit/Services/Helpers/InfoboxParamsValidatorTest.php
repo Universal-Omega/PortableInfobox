@@ -11,6 +11,7 @@ use PortableInfobox\Services\Helpers\InvalidInfoboxParamsException;
  * @covers \PortableInfobox\Services\Helpers\InfoboxParamsValidator
  */
 class InfoboxParamsValidatorTest extends MediaWikiIntegrationTestCase {
+
 	/** @var InfoboxParamsValidator $InfoboxParamsValidator */
 	private $InfoboxParamsValidator;
 
@@ -39,7 +40,7 @@ class InfoboxParamsValidatorTest extends MediaWikiIntegrationTestCase {
 	 * @dataProvider infoboxParamsPassValidationDataProvider
 	 */
 	public function testInfoboxParamsPassValidation( $params ) {
-		$this->assertEquals( true, $this->InfoboxParamsValidator->validateParams( $params ) );
+		$this->assertTrue( $this->InfoboxParamsValidator->validateParams( $params ) );
 	}
 
 	public function infoboxParamsFailValidationDataProvider() {
@@ -165,7 +166,7 @@ class InfoboxParamsValidatorTest extends MediaWikiIntegrationTestCase {
 	 * @dataProvider failValidateColorValueDataProvider
 	 */
 	public function testFailValidateColorValue( $color ) {
-		$this->assertEquals( '', $this->InfoboxParamsValidator->validateColorValue( $color ) );
+		$this->assertSame( '', $this->InfoboxParamsValidator->validateColorValue( $color ) );
 	}
 
 	public function failValidateColorValueDataProvider() {

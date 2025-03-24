@@ -1916,5 +1916,6 @@ class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 			]
 		];
 	}
+
 	// phpcs:enable
 }
