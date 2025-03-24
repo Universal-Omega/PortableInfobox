@@ -7,6 +7,7 @@ use MediaWiki\Logger\LoggerFactory;
 use SimpleXMLElement;
 
 class XmlParser {
+
 	protected static $contentTags = [ 'default', 'label', 'format', 'navigation', 'header' ];
 
 	/**
@@ -66,6 +67,7 @@ class XmlParser {
 
 // phpcs:ignore Generic.Files.OneObjectStructurePerFile.MultipleFound
 class XmlMarkupParseErrorException extends Exception {
+
 	private $errors;
 
 	public function __construct( $errors ) {

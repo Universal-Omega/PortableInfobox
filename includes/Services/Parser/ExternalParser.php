@@ -3,6 +3,7 @@
 namespace PortableInfobox\Services\Parser;
 
 interface ExternalParser {
+
 	public function parseRecursive( $text );
 
 	public function replaceVariables( $text );

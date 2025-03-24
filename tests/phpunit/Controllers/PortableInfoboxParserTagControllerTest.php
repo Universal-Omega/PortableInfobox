@@ -88,7 +88,7 @@ class PortableInfoboxParserTagControllerTest extends MediaWikiIntegrationTestCas
 		$output = $this->controller->renderInfobox( $text, [], $this->parser,
 			$this->parser->getPreprocessor()->newFrame() )[0];
 
-		$this->assertEquals( $output, '', 'Should be empty' );
+		$this->assertSame( '', $output, 'Should be empty' );
 	}
 
 	/**
@@ -294,9 +294,9 @@ class PortableInfoboxParserTagControllerTest extends MediaWikiIntegrationTestCas
 			],
 			[
 				[
-					'accent-color-text-default' => '#fff' ,
+					'accent-color-text-default' => '#fff',
 					'accent-color-text-source' => 'color-source',
-					'accent-color-default' => '#fff' ,
+					'accent-color-default' => '#fff',
 					'accent-color-source' => 'color-source2'
 				],
 				'<aside class="portable-infobox noexcerpt searchaux pi-background pi-theme-default pi-layout-default">
@@ -313,9 +313,9 @@ class PortableInfoboxParserTagControllerTest extends MediaWikiIntegrationTestCas
 			],
 			[
 				[
-					'accent-color-text-default' => 'fff' ,
+					'accent-color-text-default' => 'fff',
 					'accent-color-text-source' => 'color-source',
-					'accent-color-default' => 'fff' ,
+					'accent-color-default' => 'fff',
 					'accent-color-source' => 'color-source2'
 				],
 				'<aside class="portable-infobox noexcerpt searchaux pi-background pi-theme-default pi-layout-default">

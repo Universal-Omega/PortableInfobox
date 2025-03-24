@@ -3,6 +3,7 @@
 namespace PortableInfobox\Services\Parser\Nodes;
 
 class NodeSection extends Node {
+
 	public function getData() {
 		if ( !isset( $this->data ) ) {
 			$this->data = [

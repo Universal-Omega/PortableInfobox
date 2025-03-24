@@ -12,6 +12,7 @@ use ReflectionClass;
  * @covers \PortableInfobox\Services\Helpers\FileNamespaceSanitizeHelper
  */
 class FileNamespaceSanitizeHelperTest extends MediaWikiIntegrationTestCase {
+
 	/** @var FileNamespaceSanitizeHelper $fileNamespaceSanitizeHelper */
 	private $fileNamespaceSanitizeHelper;
 
