@@ -10,7 +10,7 @@ use MediaWiki\Tests\Api\ApiTestCase;
  * @group medium
  * @coversDefaultClass \PortableInfobox\Controllers\ApiQueryAllInfoboxes
  */
-class QueryAllInfoboxesTest extends ApiTestCase {
+class ApiQueryAllInfoboxesTest extends ApiTestCase {
 
 	/**
 	 * @covers ::__construct
