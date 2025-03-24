@@ -7,7 +7,7 @@
 	],
 	"url": "https://github.com/Universal-Omega/PortableInfobox",
 	"descriptionmsg": "portable-infobox-desc",
-	"version": "0.7",
+	"version": "0.8",
 	"type": "parserhook",
 	"license-name": "GPL-3.0-or-later",
 	"requires": {
@@ -40,24 +40,16 @@
 		"PortableInfobox": "i18n"
 	},
 	"ExtensionMessagesFiles": {
-		"PortableInfoboxAliases": "includes/PortableInfoboxAliases.php",
-		"PortableInfoboxMagic": "includes/PortableInfoboxMagic.php"
+		"PortableInfoboxAliases": "PortableInfoboxAliases.php",
+		"PortableInfoboxMagic": "PortableInfoboxMagic.php"
 	},
 	"ResourceModules": {
 		"ext.PortableInfobox.scripts": {
-			"scripts": "resources/PortableInfobox.js",
-			"targets": [
-				"desktop",
-				"mobile"
-			]
+			"scripts": "resources/PortableInfobox.js"
 		},
 		"ext.PortableInfobox.styles": {
-			"class": "PortableInfoboxResourceLoaderModule",
-			"styles": "resources/PortableInfobox.less",
-			"targets": [
-				"desktop",
-				"mobile"
-			]
+			"class": "PortableInfobox\\ResourceLoader\\PortableInfoboxResourceLoaderModule",
+			"styles": "resources/PortableInfobox.less"
 		},
 		"ext.PortableInfoboxBuilder": {
 			"scripts": [
@@ -106,44 +98,32 @@
 		"remoteExtPath": "PortableInfobox"
 	},
 	"AutoloadNamespaces": {
-		"PortableInfobox\\Helpers\\": "includes/services/Helpers/",
-		"PortableInfobox\\Parser\\": "includes/services/Parser/",
-		"PortableInfobox\\Parser\\Nodes\\": "includes/services/Parser/Nodes/"
+		"PortableInfobox\\": "includes/"
 	},
-	"AutoloadClasses": {
-		"PortableInfoboxHooks": "includes/PortableInfoboxHooks.php",
-		"PortableInfoboxDataService": "includes/services/PortableInfoboxDataService.php",
-		"PortableInfoboxRenderService": "includes/services/PortableInfoboxRenderService.php",
-		"PortableInfoboxResourceLoaderModule": "includes/resourceloader/PortableInfoboxResourceLoaderModule.php",
-		"PortableInfoboxErrorRenderService": "includes/services/PortableInfoboxErrorRenderService.php",
-		"PortableInfoboxParserTagController": "includes/controllers/PortableInfoboxParserTagController.php",
-		"ApiPortableInfobox": "includes/controllers/ApiPortableInfobox.php",
-		"ApiQueryPortableInfobox": "includes/controllers/ApiQueryPortableInfobox.php",
-		"ApiQueryAllInfoboxes": "includes/controllers/ApiQueryAllInfoboxes.php",
-		"AllInfoboxesQueryPage": "includes/querypage/AllInfoboxesQueryPage.php",
-		"SpecialPortableInfoboxBuilder": "includes/specials/SpecialPortableInfoboxBuilder.php"
+	"TestAutoloadNamespaces": {
+		"PortableInfobox\\Tests\\": "tests/phpunit/"
 	},
 	"Hooks": {
-		"ParserFirstCallInit": "PortableInfoboxParserTagController::parserTagInit",
-		"AfterParserFetchFileAndTitle": "PortableInfoboxHooks::onAfterParserFetchFileAndTitle",
-		"wgQueryPages": "PortableInfoboxHooks::onWgQueryPages",
-		"AllInfoboxesQueryRecached": "PortableInfoboxHooks::onAllInfoboxesQueryRecached",
-		"ArticlePurge": "PortableInfoboxHooks::onArticlePurge",
-		"MultiContentSave": "PortableInfoboxHooks::onMultiContentSave",
-		"ResourceLoaderRegisterModules": "PortableInfoboxHooks::onResourceLoaderRegisterModules"
+		"ParserFirstCallInit": "PortableInfobox\\Controllers\\PortableInfoboxParserTagController::parserTagInit",
+		"AfterParserFetchFileAndTitle": "PortableInfobox\\Hooks::onAfterParserFetchFileAndTitle",
+		"wgQueryPages": "PortableInfobox\\Hooks::onWgQueryPages",
+		"AllInfoboxesQueryRecached": "PortableInfobox\\Hooks::onAllInfoboxesQueryRecached",
+		"ArticlePurge": "PortableInfobox\\Hooks::onArticlePurge",
+		"MultiContentSave": "PortableInfobox\\Hooks::onMultiContentSave",
+		"ResourceLoaderRegisterModules": "PortableInfobox\\Hooks::onResourceLoaderRegisterModules"
 	},
 	"SpecialPages": {
-		"AllInfoboxes": "AllInfoboxesQueryPage",
-		"PortableInfoboxBuilder": "SpecialPortableInfoboxBuilder"
+		"AllInfoboxes": "PortableInfobox\\Specials\\AllInfoboxesQueryPage",
+		"PortableInfoboxBuilder": "PortableInfobox\\Specials\\SpecialPortableInfoboxBuilder"
 	},
 	"APIModules": {
-		"infobox": "ApiPortableInfobox"
+		"infobox": "PortableInfobox\\Controllers\\ApiPortableInfobox"
 	},
 	"APIPropModules": {
-		"infobox": "ApiQueryPortableInfobox"
+		"infobox": "PortableInfobox\\Controllers\\ApiQueryPortableInfobox"
 	},
 	"APIListModules": {
-		"allinfoboxes": "ApiQueryAllInfoboxes"
+		"allinfoboxes": "PortableInfobox\\Controllers\\ApiQueryAllInfoboxes"
 	},
 	"manifest_version": 2
 }
