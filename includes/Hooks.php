@@ -12,11 +12,12 @@ use Page;
 use PortableInfobox\Controllers\ApiQueryAllInfoboxes;
 use PortableInfobox\Services\Helpers\PortableInfoboxDataBag;
 use PortableInfobox\Services\PortableInfoboxDataService;
+use PortableInfobox\Specials\AllInfoboxesQueryPage;
 
 class Hooks {
 
 	public static function onWgQueryPages( array &$queryPages = [] ) {
-		$queryPages[] = [ 'AllInfoboxesQueryPage', 'AllInfoboxes' ];
+		$queryPages[] = [ AllInfoboxesQueryPage::class, 'AllInfoboxes' ];
 
 		return true;
 	}
