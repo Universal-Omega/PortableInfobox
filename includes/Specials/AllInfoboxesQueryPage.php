@@ -38,8 +38,8 @@ class AllInfoboxesQueryPage extends PageQueryPage {
 
 		$dbr = $this->getDatabaseProvider()->getReplicaDatabase();
 
-		$subpagesBlacklist = $this->getConfig()->get( 'AllInfoboxesSubpagesBlacklist' );
-		foreach ( $subpagesBlacklist as $subpage ) {
+		$excludedSubpages = $this->getConfig()->get( 'AllInfoboxesExcludedSubpages' );
+		foreach ( $excludedSubpages as $subpage ) {
 			$query['conds'][] = 'page_title NOT ' . $dbr->buildLike( "/{$subpage}" );
 		}
 
