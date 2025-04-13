@@ -1,6 +1,6 @@
 <?php
 
-namespace MediaWiki\Extension\PortableInfobox;
+namespace PortableInfobox;
 
 use ImageGalleryBase;
 use MediaWiki\MediaWikiServices;
