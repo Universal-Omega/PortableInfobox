@@ -40,7 +40,7 @@
 	"infoboxbuilder-node-header-value": "インフォボックスヘッダー",
 	"infoboxbuilder-node-navigation": "ナビゲーション",
 	"infoboxbuilder-nodeerror-invalidsource": "ソースパラメータが無効です。",
-	"infoboxbuilder-nodeerror-nosourceordefault": "ソースパラメータまたはデフォルト値のない要素は表示されません。",
+	"infoboxbuilder-nodeerror-nosourceordefault": "ソースパラメーターまたは既定値のない要素は表示されません。",
 	"infoboxbuilder-nodeparam-default": "既定値",
 	"infoboxbuilder-nodeparam-format": "形式",
 	"infoboxbuilder-nodeparam-label": "ラベル",
