@@ -79,13 +79,13 @@
 	--pi-margin: @pi-margin;
 	--pi-width: @pi-width;
 }
-:root.skin-theme-clientpref-night {
+:root.skin-theme-clientpref-night:not(.client-darkmode) {
 	--pi-background: @pi-background-night;
 	--pi-secondary-background: @pi-secondary-background-night;
 	--pi-border-color-night: @pi-border-color-night;
 }
 @media (prefers-color-scheme: dark) {
-	:root.skin-theme-clientpref-os {
+	:root.skin-theme-clientpref-os:not(.client-darkmode) {
 		--pi-background: @pi-background-night;
 		--pi-secondary-background: @pi-secondary-background-night;
 		--pi-border-color-night: @pi-border-color-night;
