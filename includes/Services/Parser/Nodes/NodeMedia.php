@@ -76,8 +76,6 @@ class NodeMedia extends Node {
 
 			// value passed to source parameter (or default)
 			$value = $this->getRawValueWithDefault( $this->xmlNode );
-			$helper = $this->getImageHelper();
-
 			if ( $this->containsTabberOrGallery( $value ) ) {
 				$this->data = $this->getImagesData( $value );
 			} else {

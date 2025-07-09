@@ -48,7 +48,7 @@ class PortableInfoboxParsingHelper {
 				foreach ( $infoboxes as $infobox ) {
 					try {
 						$this->parserTagController->prepareInfobox( $infobox, $parser, $frame );
-					} catch ( Exception $e ) {
+					} catch ( Exception ) {
 						$this->logger->info( 'Invalid infobox syntax' );
 					}
 				}

@@ -51,12 +51,12 @@ class AllInfoboxesQueryPage extends PageQueryPage {
 	 *
 	 * @see QueryPage::recache
 	 *
-	 * @param bool $limit Limit for SQL statement
-	 * @param bool $ignoreErrors Whether to ignore database errors
+	 * @param int|false $limit Limit for SQL statement or false for no limit
+	 * @param bool $unused Unused since 1.43, kept for backwards-compatibility
 	 *
 	 * @return int number of rows updated
 	 */
-	public function recache( $limit = false, $ignoreErrors = true ) {
+	public function recache( $limit = false, $unused = true ) {
 		$res = parent::recache( $limit );
 
 		$hookContainer = MediaWikiServices::getInstance()->getHookContainer();
