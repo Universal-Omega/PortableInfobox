@@ -90,10 +90,10 @@ class MediaWikiParserService implements ExternalParser {
 	 * Add image to parser output for later usage
 	 *
 	 * @param Title $title
-	 * @param ?array $sizeParams
+	 * @param array $sizeParams
 	 * @return ?string PageImages markers, if any.
 	 */
-	public function addImage( $title, ?array $sizeParams = null ): ?string {
+	public function addImage( $title, array $sizeParams ): ?string {
 		$services = MediaWikiServices::getInstance();
 
 		$repoGroup = $services->getRepoGroup();
@@ -119,7 +119,7 @@ class MediaWikiParserService implements ExternalParser {
 			);
 
 			$params = [
-				'handler' => $sizeParams ?? [],
+				'handler' => $sizeParams,
 			];
 			$html = '';
 
