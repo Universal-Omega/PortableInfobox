@@ -52,7 +52,7 @@ class AllInfoboxesQueryPage extends PageQueryPage {
 	 * @see QueryPage::recache
 	 *
 	 * @param int|false $limit Limit for SQL statement or false for no limit
-	 * @param bool $unused Unused since 1.43, kept for backwards-compatibility
+	 * @param bool $unused @phan-unused-param
 	 *
 	 * @return int number of rows updated
 	 */
