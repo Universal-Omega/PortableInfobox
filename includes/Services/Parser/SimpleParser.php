@@ -12,7 +12,7 @@ class SimpleParser implements ExternalParser {
 		return $text;
 	}
 
-	public function addImage( $title ): ?string {
+	public function addImage( $title, array $sizeParams ): ?string {
 		// do nothing
 		return null;
 	}
