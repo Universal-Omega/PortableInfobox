@@ -1,0 +1,30 @@
+{
+	"@metadata": {
+		"authors": [
+			"Умар"
+		]
+	},
+	"allinfoboxes": "Йерриге а инфобоксаш",
+	"apihelp-query+allinfoboxes-summary": "Массо а инфобоксийн могӀам",
+	"apihelp-query+infobox-summary": "Инфобоксан метахаамаш схьаэца",
+	"apiwarn-infobox-invalidargs": "args параметран нийса йоцу формат",
+	"infoboxbuilder-action-addnode": "Инфобоксан элементаш тӀетоха",
+	"infoboxbuilder-action-clear": "Инфобокс дӀацӀанйан",
+	"infoboxbuilder-action-deletenode": "ДӀайаккха элемент",
+	"infoboxbuilder-action-publish": "Инфобокс дӀайазйан",
+	"infoboxbuilder-node-title": "Корта",
+	"infoboxbuilder-node-title-value": "Инфобоксан корта",
+	"infoboxbuilder-node-title-value-pagename": "АгӀонан цӀе",
+	"infoboxbuilder-node-data": "Хаамаш",
+	"infoboxbuilder-node-data-value-source": "МаьӀна $1",
+	"infoboxbuilder-node-media": "Сурт",
+	"infoboxbuilder-node-header": "Корта",
+	"infoboxbuilder-node-header-value": "Инфобоксан корта",
+	"infoboxbuilder-node-navigation": "Навигаци",
+	"infoboxbuilder-nodeparam-default": "МаьӀна Ӏад дитарца",
+	"infoboxbuilder-nodeparam-format": "Формат",
+	"infoboxbuilder-nodeparam-label": "Билгало",
+	"infoboxbuilder-nodeparam-source": "Параметран цӀе (source)",
+	"infoboxbuilder-nodeparam-value": "МаьӀна",
+	"infoboxbuilder-templatename": "Кепан цӀе"
+}
