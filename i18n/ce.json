@@ -4,7 +4,10 @@
 			"Умар"
 		]
 	},
+	"portable-infobox-xml-parse-error-tag-not-finished": "ДӀакъовларан тег хьалхе дӀакхайкхийна",
+	"portable-infobox-xml-parse-error-infobox-tag-attribute-unsupported": "Атрибут \"$1\" лелош йац <infobox> тего",
 	"allinfoboxes": "Йерриге а инфобоксаш",
+	"apihelp-infobox-summary": "ХӀокху модулехь инфобоксан парсер йеш йу.",
 	"apihelp-query+allinfoboxes-summary": "Массо а инфобоксийн могӀам",
 	"apihelp-query+infobox-summary": "Инфобоксан метахаамаш схьаэца",
 	"apiwarn-infobox-invalidargs": "args параметран нийса йоцу формат",
