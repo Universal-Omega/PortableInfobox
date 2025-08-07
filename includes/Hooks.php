@@ -89,4 +89,17 @@ class Hooks {
 
 		return true;
 	}
+
+	/**
+	 * This is called from an ExtensionFunction to add the required JavaScript modules
+	 * to display PortableInfoboxes in VisualEditor. The value of $wgPortableInfoboxVisualEditor
+	 * is true by default, therefore requires explicitly disabling if you do not want this behaviour
+	 */
+	public static function onInit() {
+		global $wgPortableInfoboxVisualEditor, $wgVisualEditorPluginModules;
+
+		if ( $wgPortableInfoboxVisualEditor ) {
+			$wgVisualEditorPluginModules[] = 'ext.PortableInfobox.visualEditor';
+		}
+	}
 }

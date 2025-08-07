@@ -34,6 +34,9 @@
 		},
 		"PortableInfoboxUseFileDescriptionPage": {
 			"value": false
+		},
+		"PortableInfoboxVisualEditor": {
+			"value": true
 		}
 	},
 	"MessagesDirs": {
@@ -91,6 +94,17 @@
 				"infoboxbuilder-nodeparam-value",
 				"infoboxbuilder-templatename"
 			]
+		},
+		"ext.PortableInfobox.visualEditor": {
+			"scripts": [
+				"resources/ve.dm.MWPortableInfoboxTransclusion.js",
+				"resources/ve.ce.MWPortableInfoboxTransclusion.js"
+			],
+			"dependencies": [
+				"ext.visualEditor.mwcore",
+				"ext.visualEditor.mwtransclusion",
+				"ext.visualEditor.core"
+			]
 		}
 	},
 	"ResourceFileModulePaths": {
@@ -125,5 +139,6 @@
 	"APIListModules": {
 		"allinfoboxes": "PortableInfobox\\Controllers\\ApiQueryAllInfoboxes"
 	},
+	"ExtensionFunctions": [ "PortableInfobox\\Hooks::onInit" ],
 	"manifest_version": 2
 }
