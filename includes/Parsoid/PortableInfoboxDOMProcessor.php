@@ -13,9 +13,9 @@ use Wikimedia\Parsoid\DOM\Document;
 class PortableInfoboxDOMProcessor extends DOMProcessor {
 
 	/**
-	 * @inheritDoc
 	 * Note, this is a WIP at present, see comments throughout.
      * Will probably need to be revised at a later stage when Parsoid API is more mature
+     * @since 1.0
 	 */
     public function wtPostprocess(
 		ParsoidExtensionAPI $extApi, Node $node, array $options
