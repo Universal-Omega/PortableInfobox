@@ -41,9 +41,9 @@ class InfoboxTag extends ExtensionTagHandler implements ExtensionModule {
 				'context' => 'inline'
 			]
 		]);
-
+		
 		$portableInfoboxController = ParsoidPortableInfoboxController::newInstance();
-
+	
 		// lets add any of the safe arguments back to the HTML representation
 		// see: https://github.com/Universal-Omega/PortableInfobox/blob/main/templates/PortableInfoboxWrapper.hbs
 		// for our safe arguments/classes

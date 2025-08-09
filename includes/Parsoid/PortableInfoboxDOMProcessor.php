@@ -8,7 +8,6 @@ use Wikimedia\Parsoid\Ext\ParsoidExtensionAPI;
 use Wikimedia\Parsoid\DOM\Node;
 use Wikimedia\Parsoid\Ext\DOMDataUtils;
 use Wikimedia\Parsoid\Ext\DOMUtils;
-use Wikimedia\Parsoid\DOM\Document;
 
 class PortableInfoboxDOMProcessor extends DOMProcessor {
 
@@ -30,6 +29,8 @@ class PortableInfoboxDOMProcessor extends DOMProcessor {
 				// we're only interested in PIs in this function
 				if ( DOMUtils::hasTypeOf( $child, 'mw:Extension/infobox' ) ) {
                     $dataMw = DOMDataUtils::getDataMw( $child );
+					$parsoidData = DOMDataUtils::getDataParsoid( $child )->src;
+
 					$parts = $dataMw->parts;
 
 					// remove the existing stuff that is generated on the first pass of Parsoid
@@ -55,26 +56,14 @@ class PortableInfoboxDOMProcessor extends DOMProcessor {
 						// expects to be passed, albeit we'll need to fudge it a bit!
 						$params = $part->paramInfos ?? [];
 						
-						$this->buildInfoboxContent( $child, $doc, $params );
+						$portableInfoboxRenderService = new ParsoidPortableInfoboxRenderService();
+
+						$portableInfoboxRenderService->renderInfobox( $child, $doc, $params, $parsoidData );
 					}
 
 				}
 			}
 			$child = $nextChild;
 		}
-	}
-
-	/**
-	 * Buil the actual infobox, and return the data back to Parsoid where it will be sent back
-	 * to the caller and saved to the cache. We do not have acces to the frame here, but what we do have
-	 * is the wikitext parameters which Parsoid kindly stuffed into the data-mw attrib. This is enough
-	 * for us to call the same functions as the legacy parser does to get ourselves an infobox
-	 * @param Element $container 
-	 * @param Document $doc the main document which is being parsed
-	 * @param array $params a key => value of the parameters the user passed to the template
-	 * @return void [Writes to DOM]
-	 */
-	private function buildInfoboxContent( Element $container, Document $doc, array $params ): void {
-		// no-op at present
 	}
 }
