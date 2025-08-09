@@ -79,7 +79,7 @@ class ParsoidPortableInfoboxController
         $themes = [];
 
 		if ( isset( $params['theme'] ) ) {
-			$staticTheme = trim( $params['theme'] );
+			$staticTheme = trim( $args['theme'] );
 			if ( !empty( $staticTheme ) ) {
 				$themes[] = $staticTheme;
 			}
