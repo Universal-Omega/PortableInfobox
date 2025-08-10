@@ -27,8 +27,6 @@ class ParsoidPortableInfoboxRenderService {
 
     private array $paramMap = [];
 
-    private $infoboxParamsValidator = null;
-
     public function __construct() {
         // no-op
     }
