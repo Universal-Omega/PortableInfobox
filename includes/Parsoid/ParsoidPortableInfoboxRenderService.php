@@ -9,6 +9,7 @@ use PortableInfobox\Services\Parser\Nodes\NodeFactory;
 use Wikimedia\Parsoid\Core\Sanitizer;
 use Wikimedia\Parsoid\DOM\Document;
 use Wikimedia\Parsoid\DOM\Element;
+use Wikimedia\Parsoid\Ext\ParsoidExtensionAPI;
 use Wikimedia\Parsoid\Utils\DOMCompat;
 
 class ParsoidPortableInfoboxRenderService {
@@ -41,18 +42,20 @@ class ParsoidPortableInfoboxRenderService {
      * @param array $params
      * @return void
      */
-    private function buildParamMap( array $params ): void {
-        // loop over all of the parameters we received and if they have both a value
-        // and a name, then add them to the array - if they do not have a "wt" value, then the value was 
-        // empty and therefore we should not render this part of the infobox
-        // At this point, we have what we pretty much have what we pass to the legacy function on line
-        // 104 of PortableInfoboxParserTagController::class
-        foreach ( $params as $param ) {
-            if ( isset( $param->k ) && isset( $param->valueWt ) ) {
-                $this->paramMap[ $param->k ] = $param->valueWt;
-            }
-        }
-    }
+    private function buildParamMap( ParsoidExtensionAPI $extApi, array $params ): void {
+		// loop over all of the parameters we received and if they have both a value
+		// and a name, then add them to the array - if they do not have a "valueWt" value, then the value was 
+		// empty and therefore we should not render this part of the infobox
+		// At this point, we have what we pretty much have what we pass to the legacy function on line
+		// 104 of PortableInfoboxParserTagController::class
+		foreach ( $params as $param ) {
+			if ( isset( $param->k ) && isset( $param->valueWt ) ) {
+				$htmlValue = $this->processWikitextToHtml( $extApi, $param->valueWt );
+				$this->paramMap[ $param->k ] = $htmlValue;
+			}
+		}
+	}
+	
 
     /**
      * This function is responsible for rendering the actual infobox to the DOM
@@ -60,12 +63,13 @@ class ParsoidPortableInfoboxRenderService {
      * DOMProcessor. This will delegate appropriately
      */
     public function render(
+		ParsoidExtensionAPI $extApi,
         Element $container,
         Document $doc,
         array $params,
         string $parsoidData
     ): void {
-        $this->buildParamMap( $params );
+        $this->buildParamMap( $extApi, $params );
         [ $data, $attr ] = $this->prepareInfobox( $parsoidData, $this->paramMap ?: [] );
     
         $themes = $this->getThemes( $attr );
@@ -100,7 +104,6 @@ class ParsoidPortableInfoboxRenderService {
         string $parsoidData,
         array $params,
     ): array {
-        $this->buildParamMap( $params );
 
         // same as legacy!
         $infoboxNode = NodeFactory::newFromXML( $parsoidData, $this->paramMap ?: [] );
@@ -486,6 +489,35 @@ class ParsoidPortableInfoboxRenderService {
 		}
 
 		return $horizontalGroupData;
+	}
+
+	/**
+	 * A utility function to parse wikitext to HTML which will be passed into the infobox
+	 * template
+	 * @param \Wikimedia\Parsoid\Ext\ParsoidExtensionAPI $extApi
+	 * @param string $wikitext
+	 * @return string
+	 */
+	private function processWikitextToHtml( ParsoidExtensionAPI $extApi, string $wikitext ): string {
+
+		$paramParsed = $extApi->wikitextToDOM( $wikitext, [
+			'processInNewFrame' => true,
+			'parseOpts' => [ 'context' => 'inline' ]
+		], true );
+		
+
+		$htmlContent = '';
+		// this feels really hacky?!
+		if ( $paramParsed->hasChildNodes() ) {
+
+			$tempDoc = $paramParsed->ownerDocument;
+			
+			foreach ( $paramParsed->childNodes as $childNode ) {
+				$htmlContent .= $tempDoc->saveHTML( $childNode );
+			}
+		}
+		
+		return $htmlContent;
 	}
 
 }
