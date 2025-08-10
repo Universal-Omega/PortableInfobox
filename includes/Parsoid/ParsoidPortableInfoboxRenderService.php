@@ -97,7 +97,7 @@ class ParsoidPortableInfoboxRenderService {
 
         if ( isset( $attr['theme'] ) ) {
             $staticTheme = trim( $attr['theme'] );
-            if !empty( $staticTheme ) {
+            if ( !empty( $staticTheme ) ) {
                 $themes[] = $staticTheme;
             }
         }
