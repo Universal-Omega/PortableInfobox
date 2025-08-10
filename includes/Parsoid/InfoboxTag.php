@@ -47,8 +47,8 @@ class InfoboxTag extends ExtensionTagHandler implements ExtensionModule {
 		// for the replacement methods doesn't exist or make sense
 		// this is commented out at present, as these scripts and styles will be added
 		// by the legacy parser (might need it here to stick these in the parser cache also?)
-		// $api->getMetadata()->addModules( [ 'ext.PortableInfobox.scripts' ] );
-		// $api->getMetadata()->addModuleStyles( [ 'ext.PortableInfobox.styles' ] );
+		$api->getMetadata()->addModules( [ 'ext.PortableInfobox.scripts' ] );
+		$api->getMetadata()->addModuleStyles( [ 'ext.PortableInfobox.styles' ] );
 
 		// return this back. At this point, we have constructed the outer tag (<aside class=...</aside>)
 		// and this function is done with its work. The rest of the work will happen in the DOMProcessor
