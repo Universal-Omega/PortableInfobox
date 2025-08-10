@@ -58,7 +58,7 @@ class PortableInfoboxDOMProcessor extends DOMProcessor {
 						
 						$portableInfoboxRenderService = new ParsoidPortableInfoboxRenderService();
 
-						$portableInfoboxRenderService->renderInfobox( $child, $doc, $params, $parsoidData );
+						$portableInfoboxRenderService->render( $child, $doc, $params, $parsoidData );
 					}
 
 				}
