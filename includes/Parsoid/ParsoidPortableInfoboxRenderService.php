@@ -93,18 +93,7 @@ class ParsoidPortableInfoboxRenderService {
             $data, 
         );
     
-		
-        // this is a hack around as we need to have a DOMNode to add to the 
-        // parsoid output, rather than a string.
-        if ( !empty( $result ) ) {
-            $tempDoc = DOMCompat::newDocument( true );
-            $tempDoc->loadHTML( $result, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD );
-            
-            foreach ( $tempDoc->childNodes as $node ) {
-                $importedNode = $doc->importNode( $node, true );
-                $container->appendChild( $importedNode );
-            }
-        }
+		DOMCompat::setInnerHTML( $container, $result );
     }
 
     public function prepareInfobox(
