@@ -9,6 +9,7 @@ use PortableInfobox\Services\Parser\Nodes\NodeFactory;
 use Wikimedia\Parsoid\Core\Sanitizer;
 use Wikimedia\Parsoid\DOM\Document;
 use Wikimedia\Parsoid\DOM\Element;
+use Wikimedia\Parsoid\Utils\DOMCompat;
 
 class ParsoidPortableInfoboxRenderService {
 
@@ -64,7 +65,6 @@ class ParsoidPortableInfoboxRenderService {
         array $params,
         string $parsoidData
     ): void {
-    
         $this->buildParamMap( $params );
         [ $data, $attr ] = $this->prepareInfobox( $parsoidData, $this->paramMap ?: [] );
     
@@ -93,10 +93,11 @@ class ParsoidPortableInfoboxRenderService {
             $data, 
         );
     
+		
         // this is a hack around as we need to have a DOMNode to add to the 
         // parsoid output, rather than a string.
         if ( !empty( $result ) ) {
-            $tempDoc = new DOMDocument( '1.0', 'UTF-8' );
+            $tempDoc = DOMCompat::newDocument( true );
             $tempDoc->loadHTML( $result, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD );
             
             foreach ( $tempDoc->childNodes as $node ) {
