@@ -2,6 +2,7 @@
 
 namespace PortableInfobox\Parsoid;
 
+use DOMDocument;
 use PortableInfobox\Services\Helpers\InfoboxParamsValidator;
 use PortableInfobox\Services\Helpers\PortableInfoboxTemplateEngine;
 use PortableInfobox\Services\Parser\Nodes\NodeFactory;
@@ -66,33 +67,43 @@ class ParsoidPortableInfoboxRenderService {
     
         $this->buildParamMap( $params );
         [ $data, $attr ] = $this->prepareInfobox( $parsoidData, $this->paramMap ?: [] );
-
+    
         $themes = $this->getThemes( $attr );
         $layout = $this->getLayout( $attr );
         $type = $this->getType( $attr );
         $itemName = $this->getItemName( $attr );
-        // @TODO: we need the accentColors and accentColorsText but I've no idea what the heck the controller
-        // for the legacy parser is doing to get that and it's confusing me right now so come back to that later.
-    
-        // need the other accentcolour etc here when thats figured out.
+        
+        // This is a slight change from the legacy, we only use the templates to render the children
+        // since Parsoid will have generated an <aside> wrapper tag before we reach this function, so
+        // lets get our classes and add them to this <aside> wrapper which is the $container
+        $classes = [
+            'portable-infobox',
+            'noexcerpt', 
+            'searchaux',
+            'pi-background'
+        ];
+        
+        $classes = array_merge( $classes, $themes );
+        $classes[] = $layout;  
+        $classes[] = $type;
+        
+        $container->setAttribute('class', implode(' ', $classes ) );
+        
         $result = $this->renderInfobox(
             $data, 
-            implode( ' ', $themes ),
-            $layout, 
-            $type,
-            $itemName
         );
-
+    
         // this is a hack around as we need to have a DOMNode to add to the 
         // parsoid output, rather than a string.
-        $tempDoc = new \DOMDocument( '1.0', 'UTF-8' );
-        $tempDoc->loadHTML( $result, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD );
-        
-        foreach ( $tempDoc->childNodes as $node ) {
-            $importedNode = $doc->importNode( $node, true );
-            $container->appendChild( $importedNode );
+        if ( !empty( $result ) ) {
+            $tempDoc = new DOMDocument( '1.0', 'UTF-8' );
+            $tempDoc->loadHTML( $result, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD );
+            
+            foreach ( $tempDoc->childNodes as $node ) {
+                $importedNode = $doc->importNode( $node, true );
+                $container->appendChild( $importedNode );
+            }
         }
-
     }
 
     public function prepareInfobox(
@@ -189,28 +200,12 @@ class ParsoidPortableInfoboxRenderService {
 
     private function renderInfobox(
         array $data,
-        string $themes,
-        string $layout,
-        string $type,
-        string $itemName
     ) {
         $this->templateEngine = new PortableInfoboxTemplateEngine();
 
         $infoboxHtmlContent = $this->renderChildren( $data );
 
-        if ( !empty( $infoboxHtmlContent ) ) {
-			$output = $this->renderItem( 'wrapper', [
-				'content' => $infoboxHtmlContent,
-				'theme' => $themes,
-				'layout' => $layout,
-				'type' => $type,
-				'item-name' => $itemName
-			] );
-		} else {
-			$output = '';
-		}
-
-		return $output;
+		return $infoboxHtmlContent;
     }
 
     /**

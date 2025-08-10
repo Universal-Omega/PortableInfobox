@@ -41,17 +41,7 @@ class InfoboxTag extends ExtensionTagHandler implements ExtensionModule {
 				'context' => 'inline'
 			]
 		]);
-		
-		$portableInfoboxController = ParsoidPortableInfoboxController::newInstance();
 	
-		// lets add any of the safe arguments back to the HTML representation
-		// see: https://github.com/Universal-Omega/PortableInfobox/blob/main/templates/PortableInfoboxWrapper.hbs
-		// for our safe arguments/classes
-		// note: this is probably not the way to do this? Inspo taken from 
-		// namespace Wikimedia\Parsoid\Ext\Gallery\Gallery::class line 252
-		if ( $domFragments->firstChild instanceof Element ) {
-			$portableInfoboxController->prepareInfobox( $domFragments->firstChild, $api->extArgsToArray( $args ) );
-		}
 
 		// this is a bit messed up as these methods are deprecated, but the documentation
 		// for the replacement methods doesn't exist or make sense
