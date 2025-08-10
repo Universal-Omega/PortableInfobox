@@ -70,7 +70,7 @@ class ParsoidPortableInfoboxRenderService {
         string $parsoidData
     ): void {
         $this->buildParamMap( $extApi, $params );
-        [ $data, $attr ] = $this->prepareInfobox( $parsoidData, $this->paramMap ?: [] );
+        [ $data, $attr ] = $this->prepareInfobox( $extApi, $parsoidData, $this->paramMap ?: [] );
     
         $themes = $this->getThemes( $attr );
         $layout = $this->getLayout( $attr );
@@ -101,12 +101,14 @@ class ParsoidPortableInfoboxRenderService {
     }
 
     public function prepareInfobox(
+		ParsoidExtensionAPI $extApi,
         string $parsoidData,
         array $params,
     ): array {
 
         // same as legacy!
         $infoboxNode = NodeFactory::newFromXML( $parsoidData, $this->paramMap ?: [] );
+		$infoboxNode->setExternalParser( new ParsoidMediaWikiParser( $extApi ) );
         $data = $infoboxNode->getRenderData();
         $attr = $infoboxNode->getParams();
         return [ $data, $attr ];
