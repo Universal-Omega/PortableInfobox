@@ -18,7 +18,6 @@ class ParsoidPortableInfoboxRenderService {
 	public const DEFAULT_THEME_NAME = 'default';
 	public const INFOBOX_THEME_PREFIX = 'pi-theme-';
 
-	private const PARSER_TAG_NAME = 'infobox';
 	private const DEFAULT_LAYOUT_NAME = 'default';
 	private const INFOBOX_LAYOUT_PREFIX = 'pi-layout-';
 	private const INFOBOX_TYPE_PREFIX = 'pi-type-';
@@ -26,6 +25,9 @@ class ParsoidPortableInfoboxRenderService {
 	private const ACCENT_COLOR_TEXT = 'accent-color-text';
 	private const ERR_UNIMPLEMENTEDNODE = 'portable-infobox-unimplemented-infobox-tag';
 	private const ERR_UNSUPPORTEDATTR = 'portable-infobox-xml-parse-error-infobox-tag-attribute-unsupported';
+
+	public const DEFAULT_DESKTOP_INFOBOX_WIDTH = 270;
+	public const DEFAULT_DESKTOP_THUMBNAIL_WIDTH = 350;
 
 	private ?InfoboxParamsValidator $infoboxParamsValidator = null;
 
