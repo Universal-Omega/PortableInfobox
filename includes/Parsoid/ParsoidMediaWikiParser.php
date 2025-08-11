@@ -1,7 +1,8 @@
 <?php
 
-namespace PortableInfobox\Parsoid; 
+namespace PortableInfobox\Parsoid;
 
+use MediaWiki\Title\Title;
 use PortableInfobox\Services\Parser\ExternalParser;
 use ReflectionClass;
 use Wikimedia\Parsoid\Ext\ParsoidExtensionAPI;
@@ -60,15 +61,57 @@ class ParsoidMediaWikiParser implements ExternalParser {
      * currently relies on. So we need to fake it as best we can and hope WMF comes up with something later down
      * the line.
      * @param mixed $wikitext
-     * @return array an array of filenames -> captions
+     * @return array an array of the images
      */
-    public function extractGallery( $wikitext ): array 
+    public function extractGallery( string $wikitext ): array
     {
         if ( $wikitext === null ) {
             return [];
         }
 
-        // no-op at present
-        return [];
+        // the legacy implementation reuturns an array where each element is an array of the caption
+        // and the title object for that specific image. We don't have access to this by default,
+        // since there is no concept of half parsing in Parsoid - we either ask Parsoid for the Parsed wt->html
+        // or we work with the WT and grab what we need.
+        $result = [];
+
+        // this is quicker than passing the wikitext to Parsoid and extracting
+        // the images etc from it. 
+        if ( preg_match( '/<gallery[^>]*>(.*?)<\/gallery>/s', $wikitext, $matches ) ) {
+            $galleryContent = trim( $matches[1] );
+
+            if ( empty( $galleryContent ) ) {
+                return [];
+            }
+
+            $lines = explode( "\n", $galleryContent );
+
+            foreach ( $lines as $line ) {
+                $line = trim( $line );
+
+                if ( empty( $line ) ) {
+                    continue;
+                }
+
+                $parts = explode( '|', $line, 2 );
+                $filename = trim( $parts[0] );
+                $caption = isset( $parts[1] ) ? trim( $parts[1] ) : '';
+
+                if ( empty( $filename ) ) {
+                    continue;
+                }
+
+                $title = Title::newFromText( $filename, NS_FILE );
+
+                if ( $title !== null ) {
+                    $result[] = [
+                        'label' => $caption,
+                        'title' => $title
+                    ];
+                }
+            }
+        }
+
+        return $result;
     }
 }
