@@ -50,8 +50,7 @@ class ParsoidPortableInfoboxRenderService {
 		// 104 of PortableInfoboxParserTagController::class
 		foreach ( $params as $param ) {
 			if ( isset( $param->k ) && isset( $param->valueWt ) ) {
-				$htmlValue = $this->processWikitextToHtml( $extApi, $param->valueWt );
-				$this->paramMap[ $param->k ] = $htmlValue;
+				$this->paramMap[ $param->k ] = $param->valueWt;
 			}
 		}
 	}
@@ -492,34 +491,4 @@ class ParsoidPortableInfoboxRenderService {
 
 		return $horizontalGroupData;
 	}
-
-	/**
-	 * A utility function to parse wikitext to HTML which will be passed into the infobox
-	 * template
-	 * @param \Wikimedia\Parsoid\Ext\ParsoidExtensionAPI $extApi
-	 * @param string $wikitext
-	 * @return string
-	 */
-	private function processWikitextToHtml( ParsoidExtensionAPI $extApi, string $wikitext ): string {
-
-		$paramParsed = $extApi->wikitextToDOM( $wikitext, [
-			'processInNewFrame' => true,
-			'parseOpts' => [ 'context' => 'inline' ]
-		], true );
-		
-
-		$htmlContent = '';
-		// this feels really hacky?!
-		if ( $paramParsed->hasChildNodes() ) {
-
-			$tempDoc = $paramParsed->ownerDocument;
-			
-			foreach ( $paramParsed->childNodes as $childNode ) {
-				$htmlContent .= $tempDoc->saveHTML( $childNode );
-			}
-		}
-		
-		return $htmlContent;
-	}
-
 }

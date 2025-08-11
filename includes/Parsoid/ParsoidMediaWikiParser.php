@@ -18,6 +18,10 @@ class ParsoidMediaWikiParser implements ExternalParser {
 
     public function parseRecursive( $wikitext ) 
     {
+        if ( $wikitext === null ) {
+            return null; 
+        }
+
         $paramParsed = $this->api->wikitextToDOM( $wikitext, [
 			// this differs from earlier as we need the frame to be able to grab the 
             // params the user passed - parsoid handles this internally it appears
@@ -27,7 +31,7 @@ class ParsoidMediaWikiParser implements ExternalParser {
 
         // we don't want Parsoid to wrap in a span or add a typeof here, 
         // just interested in the content
-        $res = DOMCompat::getOuterHTML( $paramParsed );
+        return DOMCompat::getOuterHTML( $paramParsed );
     }
 
     public function replaceVariables( $wikitext ) {
