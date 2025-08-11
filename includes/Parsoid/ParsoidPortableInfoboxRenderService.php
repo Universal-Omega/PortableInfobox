@@ -105,9 +105,10 @@ class ParsoidPortableInfoboxRenderService {
         array $params,
     ): array {
 
+		$externalParser = new ParsoidMediaWikiParser( $extApi );
         // same as legacy!
-        $infoboxNode = NodeFactory::newFromXML( $parsoidData, $this->paramMap ?: [] );
-		$infoboxNode->setExternalParser( new ParsoidMediaWikiParser( $extApi ) );
+        $infoboxNode = NodeFactory::newFromXML( $parsoidData, $this->paramMap ?: [], $externalParser );
+		$infoboxNode->setExternalParser( $externalParser );
         $data = $infoboxNode->getRenderData();
         $attr = $infoboxNode->getParams();
         return [ $data, $attr ];

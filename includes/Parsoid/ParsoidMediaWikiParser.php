@@ -3,12 +3,14 @@
 namespace PortableInfobox\Parsoid; 
 
 use PortableInfobox\Services\Parser\ExternalParser;
+use ReflectionClass;
 use Wikimedia\Parsoid\Ext\ParsoidExtensionAPI;
+use Wikimedia\Parsoid\Fragments\WikitextPFragment;
 use Wikimedia\Parsoid\Utils\DOMCompat;
 
 class ParsoidMediaWikiParser implements ExternalParser {
 
-    private ParsoidExtensionAPI $api;
+    public ParsoidExtensionAPI $api;
 
     public function __construct(
         ParsoidExtensionAPI $api
@@ -40,7 +42,33 @@ class ParsoidMediaWikiParser implements ExternalParser {
 
     public function addImage($title, array $sizeParams): ?string
     {
-        // no-op 
+        // no-op at present. Used to extend the image tag with specific information for the PageImages extension. 
+        // that extension relies on Parser hooks and therefore is not safe to assume that will work indefinitely.
+        // could potentially just do it for now whilst the hooks still exist, and maybe remove at a later date if
+        // PageImages is not made Parsoid-compat. 
         return '';
+    }
+
+    public function getParsoidExtensionApi(): ParsoidExtensionAPI {
+        return $this->api;
+    }
+
+    /**
+     * Extract the gallery and return the filename -> captions. PortableInfobox currently does this
+     * a lot cleaner as it piggybacks on onAfterParserFetchFileAndTitle hook to set the images into the data bag.
+     * This hook is NOT available on Parsoid, and we have no other way to get the resultant class which PortableInfobox
+     * currently relies on. So we need to fake it as best we can and hope WMF comes up with something later down
+     * the line.
+     * @param mixed $wikitext
+     * @return array an array of filenames -> captions
+     */
+    public function extractGallery( $wikitext ): array 
+    {
+        if ( $wikitext === null ) {
+            return [];
+        }
+
+        // no-op at present
+        return [];
     }
 }
