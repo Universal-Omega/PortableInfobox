@@ -28,11 +28,14 @@ class NodeFactory {
 		// a bit messed up, but we want to do some special stuff here with images
 		// that differs from the legacy implementation (which also calls out to Parser.php)
 		// so lets load a different class if we have an image
-		if ( ( $tagType === 'image' ) && 
-            $externalParser instanceof ParsoidMediaWikiParser ) {
-            return new ParsoidMediaNode( $xmlNode, $data );
-        }
-
+		if ( $externalParser instanceof ParsoidMediaWikiParser ) {
+			if ( $tagType === 'image' ) {
+				return new ParsoidImageNode( $xmlNode, $data );
+			} elseif ( $tagType === 'media' ) {
+				return new ParsoidMediaNode( $xmlNode, $data );
+			}
+		}
+		
 		$className = Node::class . mb_convert_case( mb_strtolower( $tagType ), MB_CASE_TITLE );
 		if ( class_exists( $className ) ) {
 			/* @var $instance Node */
