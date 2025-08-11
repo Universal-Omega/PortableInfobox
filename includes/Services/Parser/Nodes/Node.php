@@ -150,8 +150,8 @@ class Node {
 		if ( !isset( $this->children ) ) {
 			$this->children = [];
 			foreach ( $this->xmlNode as $child ) {
-				$this->children[] = NodeFactory::newFromSimpleXml( $child, $this->infoboxData )
-					->setExternalParser( $this->externalParser );
+				$this->children[] = NodeFactory::newFromSimpleXml( $child, $this->infoboxData, $this->getExternalParser() )
+					->setExternalParser( $this->getExternalParser() );
 			}
 		}
 

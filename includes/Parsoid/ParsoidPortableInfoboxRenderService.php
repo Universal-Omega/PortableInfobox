@@ -18,7 +18,6 @@ class ParsoidPortableInfoboxRenderService {
 	public const DEFAULT_THEME_NAME = 'default';
 	public const INFOBOX_THEME_PREFIX = 'pi-theme-';
 
-	private const PARSER_TAG_NAME = 'infobox';
 	private const DEFAULT_LAYOUT_NAME = 'default';
 	private const INFOBOX_LAYOUT_PREFIX = 'pi-layout-';
 	private const INFOBOX_TYPE_PREFIX = 'pi-type-';
@@ -26,6 +25,9 @@ class ParsoidPortableInfoboxRenderService {
 	private const ACCENT_COLOR_TEXT = 'accent-color-text';
 	private const ERR_UNIMPLEMENTEDNODE = 'portable-infobox-unimplemented-infobox-tag';
 	private const ERR_UNSUPPORTEDATTR = 'portable-infobox-xml-parse-error-infobox-tag-attribute-unsupported';
+
+	public const DEFAULT_DESKTOP_INFOBOX_WIDTH = 270;
+	public const DEFAULT_DESKTOP_THUMBNAIL_WIDTH = 350;
 
 	private ?InfoboxParamsValidator $infoboxParamsValidator = null;
 
@@ -50,8 +52,7 @@ class ParsoidPortableInfoboxRenderService {
 		// 104 of PortableInfoboxParserTagController::class
 		foreach ( $params as $param ) {
 			if ( isset( $param->k ) && isset( $param->valueWt ) ) {
-				$htmlValue = $this->processWikitextToHtml( $extApi, $param->valueWt );
-				$this->paramMap[ $param->k ] = $htmlValue;
+				$this->paramMap[ $param->k ] = $param->valueWt;
 			}
 		}
 	}
@@ -70,7 +71,7 @@ class ParsoidPortableInfoboxRenderService {
         string $parsoidData
     ): void {
         $this->buildParamMap( $extApi, $params );
-        [ $data, $attr ] = $this->prepareInfobox( $parsoidData, $this->paramMap ?: [] );
+        [ $data, $attr ] = $this->prepareInfobox( $extApi, $parsoidData, $this->paramMap ?: [] );
     
         $themes = $this->getThemes( $attr );
         $layout = $this->getLayout( $attr );
@@ -101,12 +102,15 @@ class ParsoidPortableInfoboxRenderService {
     }
 
     public function prepareInfobox(
+		ParsoidExtensionAPI $extApi,
         string $parsoidData,
         array $params,
     ): array {
 
+		$externalParser = new ParsoidMediaWikiParser( $extApi );
         // same as legacy!
-        $infoboxNode = NodeFactory::newFromXML( $parsoidData, $this->paramMap ?: [] );
+        $infoboxNode = NodeFactory::newFromXML( $parsoidData, $this->paramMap ?: [], $externalParser );
+		$infoboxNode->setExternalParser( $externalParser );
         $data = $infoboxNode->getRenderData();
         $attr = $infoboxNode->getParams();
         return [ $data, $attr ];
@@ -490,34 +494,4 @@ class ParsoidPortableInfoboxRenderService {
 
 		return $horizontalGroupData;
 	}
-
-	/**
-	 * A utility function to parse wikitext to HTML which will be passed into the infobox
-	 * template
-	 * @param \Wikimedia\Parsoid\Ext\ParsoidExtensionAPI $extApi
-	 * @param string $wikitext
-	 * @return string
-	 */
-	private function processWikitextToHtml( ParsoidExtensionAPI $extApi, string $wikitext ): string {
-
-		$paramParsed = $extApi->wikitextToDOM( $wikitext, [
-			'processInNewFrame' => true,
-			'parseOpts' => [ 'context' => 'inline' ]
-		], true );
-		
-
-		$htmlContent = '';
-		// this feels really hacky?!
-		if ( $paramParsed->hasChildNodes() ) {
-
-			$tempDoc = $paramParsed->ownerDocument;
-			
-			foreach ( $paramParsed->childNodes as $childNode ) {
-				$htmlContent .= $tempDoc->saveHTML( $childNode );
-			}
-		}
-		
-		return $htmlContent;
-	}
-
 }
