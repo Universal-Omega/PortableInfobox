@@ -15,6 +15,8 @@ class ParsoidMediaNode extends Node {
     private const ALLOWIMAGE_ATTR_NAME = 'image';
 	private const ALLOWVIDEO_ATTR_NAME = 'video';
 	private const ALLOWAUDIO_ATTR_NAME = 'audio';
+	private const ALT_TAG_NAME = 'alt';
+	private const CAPTION_TAG_NAME = 'caption';
 
     /**
      * Return the data for the image
@@ -29,11 +31,11 @@ class ParsoidMediaNode extends Node {
             if ( $this->containsTabberOrGallery( $value ) ) {
 				$this->data = $this->getImagesData( $value );
 			} else {
-				// $this->data = [ $this->getImageData(
-				// 	$value,
-				// 	$this->getValueWithDefault( $this->xmlNode->{self::ALT_TAG_NAME} ),
-				// 	$this->getValueWithDefault( $this->xmlNode->{self::CAPTION_TAG_NAME} )
-				// ) ];
+				$this->data = [ $this->getImageData(
+					$value,
+					$this->getValueWithDefault( $this->xmlNode->{self::ALT_TAG_NAME} ),
+					$this->getValueWithDefault( $this->xmlNode->{self::CAPTION_TAG_NAME} )
+				) ];
 			}
         }
 		return $this->data;
