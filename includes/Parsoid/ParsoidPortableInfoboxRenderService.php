@@ -3,6 +3,7 @@
 namespace PortableInfobox\Parsoid;
 
 use DOMDocument;
+use PortableInfobox\Services\AbstractPortableInfoboxRenderService;
 use PortableInfobox\Services\Helpers\InfoboxParamsValidator;
 use PortableInfobox\Services\Helpers\PortableInfoboxTemplateEngine;
 use PortableInfobox\Services\Parser\Nodes\NodeFactory;
@@ -12,7 +13,7 @@ use Wikimedia\Parsoid\DOM\Element;
 use Wikimedia\Parsoid\Ext\ParsoidExtensionAPI;
 use Wikimedia\Parsoid\Utils\DOMCompat;
 
-class ParsoidPortableInfoboxRenderService {
+class ParsoidPortableInfoboxRenderService extends AbstractPortableInfoboxRenderService {
 
     public const PARSER_TAG_VERSION = 2;
 	public const DEFAULT_THEME_NAME = 'default';
@@ -26,25 +27,16 @@ class ParsoidPortableInfoboxRenderService {
 	private const ERR_UNIMPLEMENTEDNODE = 'portable-infobox-unimplemented-infobox-tag';
 	private const ERR_UNSUPPORTEDATTR = 'portable-infobox-xml-parse-error-infobox-tag-attribute-unsupported';
 
-	public const DEFAULT_DESKTOP_INFOBOX_WIDTH = 270;
-	public const DEFAULT_DESKTOP_THUMBNAIL_WIDTH = 350;
-
 	private ?InfoboxParamsValidator $infoboxParamsValidator = null;
 
     private array $paramMap = [];
-
-    private ?PortableInfoboxTemplateEngine $templateEngine = null;
-
-    public function __construct() {
-        // no-op
-    }
 
     /**
      * Build a parameter map of field -> value for display
      * @param array $params
      * @return void
      */
-    private function buildParamMap( ParsoidExtensionAPI $extApi, array $params ): void {
+    private function buildParamMap( array $params ): void {
 		// loop over all of the parameters we received and if they have both a value
 		// and a name, then add them to the array - if they do not have a "valueWt" value, then the value was 
 		// empty and therefore we should not render this part of the infobox
@@ -63,14 +55,14 @@ class ParsoidPortableInfoboxRenderService {
      * This is the entrypoint which should be called to render the infobox from the 
      * DOMProcessor. This will delegate appropriately
      */
-    public function render(
+    public function renderPI(
 		ParsoidExtensionAPI $extApi,
         Element $container,
         Document $doc,
         array $params,
         string $parsoidData
     ): void {
-        $this->buildParamMap( $extApi, $params );
+        $this->buildParamMap( $params );
         [ $data, $attr ] = $this->prepareInfobox( $extApi, $parsoidData, $this->paramMap ?: [] );
     
         $themes = $this->getThemes( $attr );
@@ -205,105 +197,10 @@ class ParsoidPortableInfoboxRenderService {
 		return $infoboxHtmlContent;
     }
 
-    /**
-     * Render the children of the infobox
-     * @param $children our param -> value data (may be nested and this will be recursively called)
-     * @return string the output
-     */
-    private function renderChildren( array $children ): string {
-        $result = '';
-		foreach ( $children as $child ) {
-			$type = $child['type'];
-			if ( $this->templateEngine->isSupportedType( $type ) ) {
-				$result .= $this->renderItem( $type, $child['data'] );
-			}
-		}
-		return $result;
-    }
-
-    /**
-	 * renders part of infobox
-	 *
-	 * @param string $type
-	 * @param array $data
-	 *
-	 * @return string - HTML
-	 */
-	protected function renderItem( $type, array $data ) {
-		switch ( $type ) {
-			case 'group':
-				$result = $this->renderGroup( $data );
-				break;
-			case 'header':
-				$result = $this->renderHeader( $data );
-				break;
-			case 'media':
-				$result = $this->renderMedia( $data );
-				break;
-			case 'title':
-				$result = $this->renderTitle( $data );
-				break;
-			case 'panel':
-				$result = $this->renderPanel( $data );
-				break;
-			case 'section':
-				$result = '';
-				break;
-			default:
-				$result = $this->renderTemplate( $type, $data );
-				break;
-		}
-
-		return $result;
-	}
-
-    /**
-	 * renders group infobox component
-	 *
-	 * @param array $groupData
-	 *
-	 * @return string - group HTML markup
-	 */
-	protected function renderGroup( array $groupData ) {
-		$cssClasses = [];
-		$groupHTMLContent = '';
-		$children = $groupData['value'];
-		$layout = $groupData['layout'];
-		$collapse = $groupData['collapse'];
-		$rowItems = $groupData['row-items'];
-
-		if ( $rowItems > 0 ) {
-			$items = $this->createSmartGroups( $children, $rowItems );
-			$groupHTMLContent .= $this->renderChildren( $items );
-		} elseif ( $layout === 'horizontal' ) {
-			$groupHTMLContent .= $this->renderItem(
-				'horizontal-group-content',
-				$this->createHorizontalGroupData( $children )
-			);
-		} else {
-			$groupHTMLContent .= $this->renderChildren( $children );
-		}
-
-		if ( $collapse !== null && count( $children ) > 0 && $children[0]['type'] === 'header' ) {
-			$cssClasses[] = 'pi-collapse';
-			$cssClasses[] = 'pi-collapse-' . $collapse;
-		}
-
-		return $this->renderTemplate( 'group', [
-			'content' => $groupHTMLContent,
-			'cssClasses' => implode( ' ', $cssClasses ),
-			'item-name' => $groupData['item-name']
-		] );
-	}
-
     protected function renderHeader( array $data ) {
 		// $data['inlineStyles'] = $this->inlineStyles;
 
-		return $this->renderTemplate( 'header', $data );
-	}
-
-    protected function renderTemplate( $type, array $data ) {
-		return $this->templateEngine->render( $type, $data );
+		return $this->render( 'header', $data );
 	}
 
     /**
@@ -330,168 +227,12 @@ class ParsoidPortableInfoboxRenderService {
 			$templateName = 'media-collection';
 		}
 
-		return $this->renderTemplate( $templateName, $data );
+		return $this->render( $templateName, $data );
 	}
 
     protected function renderTitle( array $data ) {
 		// $data['inlineStyles'] = $this->inlineStyles;
 
-		return $this->renderTemplate( 'title', $data );
-	}
-
-    protected function renderPanel( $data, $type = 'panel' ) {
-		$cssClasses = [];
-		$sections = [];
-		$collapse = $data['collapse'];
-		$header = '';
-		$shouldShowToggles = false;
-
-		foreach ( $data['value'] as $index => $child ) {
-			switch ( $child['type'] ) {
-				case 'header':
-					if ( empty( $header ) ) {
-						$header = $this->renderHeader( $child['data'] );
-					}
-					break;
-				case 'section':
-					$sectionData = $this->getSectionData( $child, $index );
-					// section needs to have content in order to render it
-					if ( !empty( $sectionData['content'] ) ) {
-						$sections[] = $sectionData;
-						if ( !empty( $sectionData['label'] ) ) {
-							$shouldShowToggles = true;
-						}
-					}
-					break;
-				default:
-					// we do not support any other tags than section and header inside panel
-					break;
-			}
-		}
-		if ( $collapse !== null && count( $sections ) > 0 && !empty( $header ) ) {
-			$cssClasses[] = 'pi-collapse';
-			$cssClasses[] = 'pi-collapse-' . $collapse;
-		}
-		if ( count( $sections ) > 0 ) {
-			$sections[0]['active'] = true;
-		} else {
-			// do not render empty panel
-			return '';
-		}
-		if ( !$shouldShowToggles ) {
-			$sections = array_map( static function ( $content ) {
-				$content['active'] = true;
-				return $content;
-			}, $sections );
-		}
-
-		return $this->renderTemplate( $type, [
-			'item-name' => $data['item-name'],
-			'cssClasses' => implode( ' ', $cssClasses ),
-			'header' => $header,
-			'sections' => $sections,
-			'shouldShowToggles' => $shouldShowToggles,
-		] );
-	}
-
-    private function getSectionData( $section, $index ) {
-		$content = $this->renderChildren( $section['data']['value'] );
-		return [
-			'index' => $index,
-			'item-name' => $section['data']['item-name'],
-			'label' => $section['data']['label'],
-			'content' => !empty( $content ) ? $content : null
-		];
-	}
-
-    private function createSmartGroups( array $groupData, $rowCapacity ) {
-		$result = [];
-		$rowSpan = 0;
-		$rowItems = [];
-
-		foreach ( $groupData as $item ) {
-			$data = $item['data'];
-
-			if ( $item['type'] === 'data' && $data['layout'] !== 'default' ) {
-
-				if ( !empty( $rowItems ) && $rowSpan + $data['span'] > $rowCapacity ) {
-					$result[] = $this->createSmartGroupItem( $rowItems, $rowSpan );
-					$rowSpan = 0;
-					$rowItems = [];
-				}
-				$rowSpan += $data['span'];
-				$rowItems[] = $item;
-			} else {
-				// smart wrapping works only for data tags
-				if ( !empty( $rowItems ) ) {
-					$result[] = $this->createSmartGroupItem( $rowItems, $rowSpan );
-					$rowSpan = 0;
-					$rowItems = [];
-				}
-				$result[] = $item;
-			}
-		}
-		if ( !empty( $rowItems ) ) {
-			$result[] = $this->createSmartGroupItem( $rowItems, $rowSpan );
-		}
-
-		return $result;
-	}
-
-    private function createSmartGroupItem( array $rowItems, $rowSpan ) {
-		return [
-			'type' => 'smart-group',
-			'data' => $this->createSmartGroupSections( $rowItems, $rowSpan )
-		];
-	}
-
-    private function createSmartGroupSections( array $rowItems, $capacity ) {
-		return array_reduce( $rowItems, static function ( $result, $item ) use ( $capacity ) {
-			$width = $item['data']['span'] / $capacity * 100;
-			$styles = "width: {$width}%";
-
-			$label = $item['data']['label'] ?? "";
-			if ( !empty( $label ) ) {
-				$result['renderLabels'] = true;
-			}
-			$result['data'][] = [
-				'label' => $label,
-				'value' => $item['data']['value'],
-				'inlineStyles' => $styles,
-				'source' => $item['data']['source'] ?? "",
-				'item-name' => $item['data']['item-name']
-			];
-
-			return $result;
-		}, [ 'data' => [], 'renderLabels' => false ] );
-	}
-
-    private function createHorizontalGroupData( array $groupData ) {
-		$horizontalGroupData = [
-			'data' => [],
-			'renderLabels' => false
-		];
-
-		foreach ( $groupData as $item ) {
-			$data = $item['data'];
-
-			if ( $item['type'] === 'data' ) {
-				$horizontalGroupData['data'][] = [
-					'label' => $data['label'],
-					'value' => $data['value'],
-					'source' => $item['data']['source'] ?? "",
-					'item-name' => $item['data']['item-name']
-				];
-
-				if ( !empty( $data['label'] ) ) {
-					$horizontalGroupData['renderLabels'] = true;
-				}
-			} elseif ( $item['type'] === 'header' ) {
-				$horizontalGroupData['header'] = $data['value'];
-				// $horizontalGroupData['inlineStyles'] = $this->inlineStyles;
-			}
-		}
-
-		return $horizontalGroupData;
+		return $this->render( 'title', $data );
 	}
 }
