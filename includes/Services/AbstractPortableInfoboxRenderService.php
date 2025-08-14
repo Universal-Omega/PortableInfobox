@@ -71,7 +71,6 @@ abstract class AbstractPortableInfoboxRenderService {
      * @TODO: implement inlineStyles so these can be made non-abstract
      */
     abstract protected function renderHeader( array $data );
-    abstract protected function renderMedia( array $data );
     abstract protected function renderTitle( array $data );
 
     /**
@@ -319,5 +318,31 @@ abstract class AbstractPortableInfoboxRenderService {
 		] );
 	}
 
-    
+    /**
+	 * If image element has invalid thumbnail, doesn't render this element at all.
+	 *
+	 * @param array $data
+	 * @return string
+	 */
+	protected function renderMedia( array $data ) {
+		if ( count( $data ) === 0 || !$data[0] ) {
+			return '';
+		}
+
+		if ( count( $data ) === 1 ) {
+			$data = $data[0];
+			$templateName = 'media';
+		} else {
+			// More than one image means image collection
+			$data = [
+				'images' => $data,
+				'source' => $data[0]['source'],
+				'item-name' => $data[0]['item-name']
+			];
+			$templateName = 'media-collection';
+		}
+
+		return $this->render( $templateName, $data );
+	}
+
 }
