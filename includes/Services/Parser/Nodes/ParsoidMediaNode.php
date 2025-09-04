@@ -27,8 +27,10 @@ class ParsoidMediaNode extends Node {
 			$this->data = [];
 
 			// value passed to source parameter (or default)
+			// force the $value to be a string so that containsTabberOrGallery()
+			// doesn't fatal
 			$value = $this->getRawValueWithDefault( $this->xmlNode );
-            if ( $this->containsTabberOrGallery( $value ) ) {
+            if ( $this->containsTabberOrGallery( (string)$value ) ) {
 				$this->data = $this->getImagesData( $value );
 			} else {
 				$this->data = [ $this->getImageData(
