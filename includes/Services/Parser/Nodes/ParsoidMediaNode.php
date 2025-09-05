@@ -124,9 +124,9 @@ class ParsoidMediaNode extends Node {
     /**
      * Get the image as a title object
      * @param $imageName the image name 
-     * @return Title
+     * @return Title|null
      */
-    private function getImageAsTitleObject( $imageName ): Title {
+    private function getImageAsTitleObject( $imageName ): ?Title {
 		$contLang = MediaWikiServices::getInstance()->getContentLanguage();
 
 		$title = Title::makeTitleSafe(
