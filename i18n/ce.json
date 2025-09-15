@@ -4,6 +4,7 @@
 			"Умар"
 		]
 	},
+	"portable-infobox-desc": "Муьлххачу а темин/платформехь гайта йиш йолу модулан инфобоксаш кхолла, цхьалхачу семантикин HTML-ца билгалйаккхарца, цхьалхачу а, эффективан а XML-х тера билгалдаккхарца. Портативан инфобокс кхуллуш болу гӀирс а бу [[Special:PortableInfoboxBuilder]] сайтан тӀехь.",
 	"portable-infobox-unimplemented-infobox-tag": "Инфобоксан йоцу тег: <$1>",
 	"portable-infobox-xml-parse-error-info": "Инфобоксан анализ йеш гӀалат даьлла",
 	"portable-infobox-xml-parse-error": "XML дӀайаздар нийса дац. Дехар до, хьайн XML талла",
