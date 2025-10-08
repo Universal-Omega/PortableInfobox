@@ -39,8 +39,7 @@ class ApiQueryPortableInfobox extends ApiQueryBase {
 
 			if ( is_array( $parsedInfoboxes ) && count( $parsedInfoboxes ) ) {
 				$inf = [];
-
-				foreach ( array_keys( $parsedInfoboxes ) as $k => $v ) {
+				foreach ( array_keys( $parsedInfoboxes ) as $k => $_ ) {
 					$inf[$k] = [];
 				}
 
@@ -49,7 +48,6 @@ class ApiQueryPortableInfobox extends ApiQueryBase {
 
 				foreach ( $parsedInfoboxes as $count => $infobox ) {
 					$res->addValue( [ 'query', 'pages', $id, 'infoboxes', $count ], 'id', $count );
-
 					$res->addValue(
 						[ 'query', 'pages', $id, 'infoboxes', $count ],
 						'parser_tag_version',

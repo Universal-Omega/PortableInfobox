@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Justman10000"
+			"Justman10000",
+			"PretzelRocky"
 		]
 	},
 	"portable-infobox-desc": "Erstelle tragbare Infoboxen, die mit sauberem semantischem HTML-Markup auf jeder Oberfläche / Plattform gerendert werden können, indem du leicht verständliches, leistungsstarkes XML-ähnliches Markup verwendest. Enthält auch einen portablen Infobox-Builder unter [[Special:PortableInfoboxBuilder]].",
@@ -17,5 +18,11 @@
 	"portable-infobox-xml-parse-error-gt-required": "Die Tag-Definition wurde nicht richtig geschlossen",
 	"portable-infobox-xml-parse-error-tag-name-mismatch": "Keine Übereinstimmung bei öffnendem Tag und Endtag",
 	"portable-infobox-xml-parse-error-tag-not-finished": "Der Tag wurde vorzeitig geschlossen",
-	"portable-infobox-xml-parse-error-infobox-tag-attribute-unsupported": "Das Attribut \"$1\" wird im <infobox>-Tag nicht unterstützt"
+	"portable-infobox-xml-parse-error-infobox-tag-attribute-unsupported": "Das Attribut \"$1\" wird im <infobox>-Tag nicht unterstützt",
+	"allinfoboxes": "Alle Infoboxen",
+	"infoboxbuilder-action-deletenode": "Element löschen",
+	"infoboxbuilder-node-title": "Titel",
+	"infoboxbuilder-node-title-value": "Infobox-Titel",
+	"infoboxbuilder-node-title-value-pagename": "Seitenname",
+	"infoboxbuilder-node-data": "Daten"
 }

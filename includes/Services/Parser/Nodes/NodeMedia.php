@@ -76,8 +76,6 @@ class NodeMedia extends Node {
 
 			// value passed to source parameter (or default)
 			$value = $this->getRawValueWithDefault( $this->xmlNode );
-			$helper = $this->getImageHelper();
-
 			if ( $this->containsTabberOrGallery( $value ) ) {
 				$this->data = $this->getImagesData( $value );
 			} else {
@@ -164,17 +162,20 @@ class NodeMedia extends Node {
 			'htmlAfter' => null,
 		];
 
-		if ( $titleObj instanceof Title ) {
-			// This call may produce extra HTML from, for example, the PageImages integration
-			$image['htmlAfter'] = $this->getExternalParser()->addImage( $titleObj );
-		}
-
 		if ( $image['isImage'] ) {
 			$image = array_merge( $image, $helper->extendImageData(
 				$fileObj,
 				PortableInfoboxRenderService::DEFAULT_DESKTOP_THUMBNAIL_WIDTH,
 				PortableInfoboxRenderService::DEFAULT_DESKTOP_INFOBOX_WIDTH
 			) );
+		}
+
+		if ( $titleObj instanceof Title ) {
+			// This call may produce extra HTML from, for example, the PageImages integration
+			$image['htmlAfter'] = $this->getExternalParser()->addImage( $titleObj, [
+				'width' => $image['width'] ?? null,
+				'height' => $image['height'] ?? null,
+			] );
 		}
 
 		return $image;

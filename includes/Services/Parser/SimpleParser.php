@@ -2,6 +2,8 @@
 
 namespace PortableInfobox\Services\Parser;
 
+use MediaWiki\Title\Title;
+
 class SimpleParser implements ExternalParser {
 
 	public function parseRecursive( $text ) {
@@ -12,7 +14,11 @@ class SimpleParser implements ExternalParser {
 		return $text;
 	}
 
-	public function addImage( $title ): ?string {
+	/**
+	 * @param Title $title @phan-unused-param
+	 * @param array $sizeParams @phan-unused-param
+	 */
+	public function addImage( $title, array $sizeParams ): ?string {
 		// do nothing
 		return null;
 	}

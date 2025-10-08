@@ -23,12 +23,11 @@ class ApiQueryAllInfoboxes extends ApiQueryBase {
 	}
 
 	public function execute() {
-		$db = $this->getDB();
 		$res = $this->getResult();
 		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
 		$cachekey = $cache->makeKey( self::MCACHE_KEY );
 
-		$data = $cache->getWithSetCallback( $cachekey, self::CACHE_TTL, function () use ( $db ) {
+		$data = $cache->getWithSetCallback( $cachekey, self::CACHE_TTL, function () {
 			$out = [];
 
 			$res = ( new AllInfoboxesQueryPage() )->doQuery();
@@ -44,7 +43,7 @@ class ApiQueryAllInfoboxes extends ApiQueryBase {
 			return $out;
 		} );
 
-		foreach ( $data as $id => $infobox ) {
+		foreach ( $data as $infobox ) {
 			$res->addValue( [ 'query', 'allinfoboxes' ], null, $infobox );
 		}
 		$res->addIndexedTagName( [ 'query', 'allinfoboxes' ], 'i' );

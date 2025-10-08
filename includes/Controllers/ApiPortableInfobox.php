@@ -35,7 +35,7 @@ class ApiPortableInfobox extends ApiBase {
 		);
 
 		if ( is_array( $arguments ) ) {
-			foreach ( $arguments as $key => &$value ) {
+			foreach ( $arguments as &$value ) {
 				$value = $parser->replaceVariables( $value );
 			}
 		}
@@ -50,7 +50,7 @@ class ApiPortableInfobox extends ApiBase {
 				$this->msg( 'portable-infobox-unimplemented-infobox-tag', [ $e->getMessage() ] )->escaped(),
 				'notimplemented'
 			);
-		} catch ( XmlMarkupParseErrorException $e ) {
+		} catch ( XmlMarkupParseErrorException ) {
 			$this->dieWithError( $this->msg( 'portable-infobox-xml-parse-error' )->text(), 'badxml' );
 		} catch ( InvalidInfoboxParamsException $e ) {
 			$this->dieWithError(

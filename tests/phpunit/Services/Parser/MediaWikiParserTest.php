@@ -50,7 +50,7 @@ class MediaWikiParserTest extends MediaWikiIntegrationTestCase {
 		);
 
 		return preg_replace(
-			'|{{{.*}}}|Us', '', preg_replace( '|[\n\r]|Us', '', $parserOutput->getText() )
+			'|{{{.*}}}|Us', '', preg_replace( '|[\n\r]|Us', '', $parserOutput->getContentHolderText() )
 		);
 	}
 

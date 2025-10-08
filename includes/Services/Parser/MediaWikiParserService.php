@@ -37,8 +37,9 @@ class MediaWikiParserService implements ExternalParser {
 							'pwrap' => false,
 						],
 					],
-					// @phan-suppress-next-line PhanDeprecatedClassConstant
-					[ MainConfigNames::ParserEnableLegacyMediaDOM => false ]
+					// Removed in MediaWiki 1.45, so we don't use MainConfigNames here.
+					// Can be removed when we drop backcompat.
+					[ 'ParserEnableLegacyMediaDOM' => false ]
 				)
 			);
 		}
@@ -90,9 +91,10 @@ class MediaWikiParserService implements ExternalParser {
 	 * Add image to parser output for later usage
 	 *
 	 * @param Title $title
+	 * @param array $sizeParams
 	 * @return ?string PageImages markers, if any.
 	 */
-	public function addImage( $title ): ?string {
+	public function addImage( $title, array $sizeParams ): ?string {
 		$services = MediaWikiServices::getInstance();
 
 		$repoGroup = $services->getRepoGroup();
@@ -117,7 +119,9 @@ class MediaWikiParserService implements ExternalParser {
 				$services->getLinksMigration()
 			);
 
-			$params = [];
+			$params = [
+				'handler' => $sizeParams,
+			];
 			$html = '';
 
 			$handler->onParserModifyImageHTML(
