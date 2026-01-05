@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Sabelöga"
+			"Sabelöga",
+			"Stefan2255"
 		]
 	},
 	"portable-infobox-desc": "Skapa flyttbara infoboxar som kan renderas med rent semantisk HTML-markering på alla utseenden / plattformar med hjälp av lättanvänd och kraftfull XML-liknande markering. Inkluderar också en flyttbar infoboxbyggare på [[Special:PortableInfoboxBuilder]].",
@@ -39,11 +40,16 @@
 	"infoboxbuilder-node-data": "Data",
 	"infoboxbuilder-node-data-value-source": "Värde av $1",
 	"infoboxbuilder-node-media": "Bild",
+	"infoboxbuilder-node-header": "Rubrik",
+	"infoboxbuilder-node-header-value": "Infoboxrubrik",
+	"infoboxbuilder-node-navigation": "Navigering",
 	"infoboxbuilder-nodeerror-invalidsource": "Källparametern är ogiltig.",
 	"infoboxbuilder-nodeerror-nosourceordefault": "Element utan källparameter eller standardvärde visas inte.",
 	"infoboxbuilder-nodeparam-default": "Standardvärde",
+	"infoboxbuilder-nodeparam-format": "Format",
 	"infoboxbuilder-nodeparam-label": "Etikett",
 	"infoboxbuilder-nodeparam-source": "Källparameter",
+	"infoboxbuilder-nodeparam-value": "Värde",
 	"infoboxbuilder-templatename": "Mallnamn",
 	"portableinfoboxbuilder": "Flyttbar infobox-byggare"
 }
