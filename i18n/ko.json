@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Bisang",
 			"Markingdots",
 			"Tensama0415",
 			"Ykhwong"
@@ -13,7 +14,7 @@
 	"infoboxbuilder-action-addnode": "정보상자 요소 추가",
 	"infoboxbuilder-action-clear": "정보상자 지우기",
 	"infoboxbuilder-action-publish": "정보상자 게시",
-	"infoboxbuilder-node-title": "문서 제목",
+	"infoboxbuilder-node-title": "제목",
 	"infoboxbuilder-node-title-value-pagename": "문서 이름",
 	"infoboxbuilder-node-data": "데이터",
 	"infoboxbuilder-node-data-value-source": "$1의 값",
