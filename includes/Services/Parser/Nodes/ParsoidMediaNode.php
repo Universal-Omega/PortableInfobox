@@ -10,19 +10,19 @@ use PortableInfobox\Services\Helpers\PortableInfoboxImagesHelper;
 
 class ParsoidMediaNode extends Node {
 
-    private ?PortableInfoboxImagesHelper $helper;
+	private ?PortableInfoboxImagesHelper $helper;
 
-    private const ALLOWIMAGE_ATTR_NAME = 'image';
+	private const ALLOWIMAGE_ATTR_NAME = 'image';
 	private const ALLOWVIDEO_ATTR_NAME = 'video';
 	private const ALLOWAUDIO_ATTR_NAME = 'audio';
 	private const ALT_TAG_NAME = 'alt';
 	private const CAPTION_TAG_NAME = 'caption';
 
-    /**
-     * Return the data for the image
-     * return array
-     */
-    public function getData(): array {
+	/**
+	 * Return the data for the image
+	 * return array
+	 */
+	public function getData(): array {
 		if ( !isset( $this->data ) ) {
 			$this->data = [];
 
@@ -30,7 +30,7 @@ class ParsoidMediaNode extends Node {
 			// force the $value to be a string so that containsTabberOrGallery()
 			// doesn't fatal
 			$value = $this->getRawValueWithDefault( $this->xmlNode );
-            if ( $this->containsTabberOrGallery( (string)$value ) ) {
+			if ( $this->containsTabberOrGallery( (string)$value ) ) {
 				$this->data = $this->getImagesData( $value );
 			} else {
 				$this->data = [ $this->getImageData(
@@ -39,55 +39,55 @@ class ParsoidMediaNode extends Node {
 					$this->getValueWithDefault( $this->xmlNode->{self::CAPTION_TAG_NAME} )
 				) ];
 			}
-        }
+		}
 		return $this->data;
 	}
 
-    /**
-     * Checks if string contains raw <gallery> or <tabber> tags using a hacky regex. With the legacy Parser,
-     * by the time this function runs in NodeMedia::class, the intial parse has already replaced the $str with a strip marker
-     * we are not in such environment and we will receieve the raw wikitext passed by the user
-     * @param string $value wikitext passed in the parameter
-     * @return bool
-     */
-    private function containsTabberOrGallery( string $value ): bool {
-        // <gallery></gallery>
-        if ( preg_match( '/<gallery\b[^>]*>/i', $value ?? '' ) ) {
-            return true;
-        }
-        
-        // <tabber></tabber>
-        if ( preg_match( '/<tabber\b[^>]*>/i', $value ?? '' ) ) {
-            return true;
-        }
-        
-        return false;
-    }
+	/**
+	 * Checks if string contains raw <gallery> or <tabber> tags using a hacky regex. With the legacy Parser,
+	 * by the time this function runs in NodeMedia::class, the intial parse has already replaced the $str with a strip marker
+	 * we are not in such environment and we will receieve the raw wikitext passed by the user
+	 * @param string $value wikitext passed in the parameter
+	 * @return bool
+	 */
+	private function containsTabberOrGallery( string $value ): bool {
+		// <gallery></gallery>
+		if ( preg_match( '/<gallery\b[^>]*>/i', $value ?? '' ) ) {
+			return true;
+		}
 
-    /**
-     * Get the data about the image (or images if tabber/gallery) and return it as an array
-     * @TODO: revisit this later, see comment on ParsoidMediaWikiParser::extractGallery for why this
-     * is a bad idea - but it works
-     * @param string $value the wikitext gallery
-     * @param mixed $value
-     */
-    private function getImagesData( string $value ) {
+		// <tabber></tabber>
+		if ( preg_match( '/<tabber\b[^>]*>/i', $value ?? '' ) ) {
+			return true;
+		}
+
+		return false;
+	}
+
+	/**
+	 * Get the data about the image (or images if tabber/gallery) and return it as an array
+	 * @TODO: revisit this later, see comment on ParsoidMediaWikiParser::extractGallery for why this
+	 * is a bad idea - but it works
+	 * @param string $value the wikitext gallery
+	 * @param mixed $value
+	 */
+	private function getImagesData( string $value ) {
 		$helper = $this->getImageHelper();
 		$data = [];
-        $parser = $this->getExternalParser();
-        $items = $parser->extractGallery( $value );
-		// @TODO: do tabbers also 
-        foreach ( $items as $item ) {
+		$parser = $this->getExternalParser();
+		$items = $parser->extractGallery( $value );
+		// @TODO: do tabbers also
+		foreach ( $items as $item ) {
 			$mediaItem = $this->getImageData( $item['title'], $item['label'], $item['label'] );
 			if ( (bool)$mediaItem ) {
 				$data[] = $mediaItem;
 			}
 		}
 
-        return count( $data ) > 1 ? $helper->extendImageCollectionData( $data ) : $data;
+		return count( $data ) > 1 ? $helper->extendImageCollectionData( $data ) : $data;
 	}
 
-    private function getImageData( $title, $alt, $caption ) {
+	private function getImageData( $title, $alt, $caption ) {
 		$helper = $this->getImageHelper();
 		$titleObj = $title instanceof Title ? $title : $this->getImageAsTitleObject( $title );
 		$fileObj = $helper->getFile( $titleObj );
@@ -121,12 +121,12 @@ class ParsoidMediaNode extends Node {
 		return $image;
 	}
 
-    /**
-     * Get the image as a title object
-     * @param $imageName the image name 
-     * @return Title|null
-     */
-    private function getImageAsTitleObject( $imageName ): ?Title {
+	/**
+	 * Get the image as a title object
+	 * @param $imageName the image name
+	 * @return Title|null
+	 */
+	private function getImageAsTitleObject( $imageName ): ?Title {
 		$contLang = MediaWikiServices::getInstance()->getContentLanguage();
 
 		$title = Title::makeTitleSafe(
@@ -137,7 +137,7 @@ class ParsoidMediaNode extends Node {
 		return $title;
 	}
 
-    /**
+	/**
 	 * Returns image url for given image title
 	 * @param File|null $file
 	 * @param Title|null $title
@@ -153,18 +153,18 @@ class ParsoidMediaNode extends Node {
 		return $file ? $file->getUrl() : '';
 	}
 
-    /**
-     * Get an instance of the PortableInfoboxImageHelper
-     * @return PortableInfoboxImagesHelper
-     */
-    protected function getImageHelper() {
+	/**
+	 * Get an instance of the PortableInfoboxImageHelper
+	 * @return PortableInfoboxImagesHelper
+	 */
+	protected function getImageHelper() {
 		if ( !isset( $this->helper ) ) {
 			$this->helper = new PortableInfoboxImagesHelper();
 		}
 		return $this->helper;
 	}
 
-    /**
+	/**
 	 * Checks if file media type is allowed
 	 * @param string $type
 	 * @return bool
@@ -183,7 +183,7 @@ class ParsoidMediaNode extends Node {
 		}
 	}
 
-    /**
+	/**
 	 * @return bool
 	 */
 	protected function allowImage() {
@@ -210,7 +210,7 @@ class ParsoidMediaNode extends Node {
 		return !( isset( $attr ) && strtolower( $attr ) === 'false' );
 	}
 
-    public function isEmpty() {
+	public function isEmpty() {
 		$data = $this->getData();
 		foreach ( $data as $dataItem ) {
 			if ( !empty( $dataItem['url'] ) ) {

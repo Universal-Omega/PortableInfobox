@@ -2,8 +2,6 @@
 
 namespace PortableInfobox\Parsoid;
 
-use Wikimedia\Parsoid\DOM\Element;
-use Wikimedia\Parsoid\Ext\DOMUtils;
 use Wikimedia\Parsoid\Ext\ExtensionModule;
 use Wikimedia\Parsoid\Ext\ExtensionTagHandler;
 use Wikimedia\Parsoid\Ext\ParsoidExtensionAPI;
@@ -13,8 +11,7 @@ class InfoboxTag extends ExtensionTagHandler implements ExtensionModule {
 	/**
 	 * @inheritDoc
 	 */
-	public function getConfig(): array
-	{
+	public function getConfig(): array {
 		return [
 			'name' => 'PortableInfobox',
 			'tags' => [
@@ -29,19 +26,17 @@ class InfoboxTag extends ExtensionTagHandler implements ExtensionModule {
 		];
 	}
 
-    /**
-     * @inheritDoc
-     */
-    public function sourceToDom( ParsoidExtensionAPI $api, string $src, array $args )
-	{
+	/**
+	 * @inheritDoc
+	 */
+	public function sourceToDom( ParsoidExtensionAPI $api, string $src, array $args ) {
 		$domFragments = $api->extTagToDOM( $args, $src, [
 			'wrapperTag' => 'aside',
 			'parseOpts' => [
 				'extTag' => 'infobox',
 				'context' => 'inline'
 			]
-		]);
-	
+		] );
 
 		// this is a bit messed up as these methods are deprecated, but the documentation
 		// for the replacement methods doesn't exist or make sense

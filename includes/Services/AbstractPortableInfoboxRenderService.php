@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace PortableInfobox\Services;
 
@@ -6,18 +6,18 @@ use PortableInfobox\Services\Helpers\PortableInfoboxTemplateEngine;
 
 abstract class AbstractPortableInfoboxRenderService {
 
-    // keep synced with css variables (--pi-width)
+	// keep synced with css variables (--pi-width)
 	public const DEFAULT_DESKTOP_INFOBOX_WIDTH = 270;
 	public const DEFAULT_DESKTOP_THUMBNAIL_WIDTH = 350;
 
 	protected $templateEngine;
 	protected $inlineStyles;
 
-    public function __construct() {
+	public function __construct() {
 		$this->templateEngine = new PortableInfoboxTemplateEngine();
 	}
 
-    /**
+	/**
 	 * Produces HTML output for item type and data
 	 *
 	 * @param string $type
@@ -28,7 +28,7 @@ abstract class AbstractPortableInfoboxRenderService {
 		return $this->templateEngine->render( $type, $data );
 	}
 
-    /**
+	/**
 	 * renders part of infobox
 	 *
 	 * @param string $type
@@ -64,16 +64,17 @@ abstract class AbstractPortableInfoboxRenderService {
 		return $result;
 	}
 
-    /**
-     * Render specific elements. These are declared abstract so that both 
-     * Parsoid and legacy can implement themselves as legacy uses $this->inlineStyles
-     * which Parsoid implementation does not currently support
-     * @TODO: implement inlineStyles so these can be made non-abstract
-     */
-    abstract protected function renderHeader( array $data );
-    abstract protected function renderTitle( array $data );
+	/**
+	 * Render specific elements. These are declared abstract so that both
+	 * Parsoid and legacy can implement themselves as legacy uses $this->inlineStyles
+	 * which Parsoid implementation does not currently support
+	 * @TODO: implement inlineStyles so these can be made non-abstract
+	 */
+	abstract protected function renderHeader( array $data );
 
-    /**
+	abstract protected function renderTitle( array $data );
+
+	/**
 	 * renders group infobox component
 	 *
 	 * @param array $groupData
@@ -112,12 +113,12 @@ abstract class AbstractPortableInfoboxRenderService {
 		] );
 	}
 
-    /**
-     * Create a smart group 
-     * @param array $groupData
-     * @param $rowCapacity
-     */
-    protected function createSmartGroups( array $groupData, $rowCapacity ) {
+	/**
+	 * Create a smart group
+	 * @param array $groupData
+	 * @param $rowCapacity
+	 */
+	protected function createSmartGroups( array $groupData, $rowCapacity ) {
 		$result = [];
 		$rowSpan = 0;
 		$rowItems = [];
@@ -151,25 +152,25 @@ abstract class AbstractPortableInfoboxRenderService {
 		return $result;
 	}
 
-    /**
-     * Create a smart group item
-     * @param array $rowItems
-     * @param $rowSpan
-     * @return array
-     */
-    protected function createSmartGroupItem( array $rowItems, $rowSpan ): array {
+	/**
+	 * Create a smart group item
+	 * @param array $rowItems
+	 * @param $rowSpan
+	 * @return array
+	 */
+	protected function createSmartGroupItem( array $rowItems, $rowSpan ): array {
 		return [
 			'type' => 'smart-group',
 			'data' => $this->createSmartGroupSections( $rowItems, $rowSpan )
 		];
 	}
 
-    /**
-     * Create a smart group section
-     * @param array $rowItems
-     * @param $capacity
-     */
-    protected function createSmartGroupSections( array $rowItems, $capacity ) {
+	/**
+	 * Create a smart group section
+	 * @param array $rowItems
+	 * @param $capacity
+	 */
+	protected function createSmartGroupSections( array $rowItems, $capacity ) {
 		return array_reduce( $rowItems, static function ( $result, $item ) use ( $capacity ) {
 			$width = $item['data']['span'] / $capacity * 100;
 			$styles = "width: {$width}%";
@@ -190,12 +191,12 @@ abstract class AbstractPortableInfoboxRenderService {
 		}, [ 'data' => [], 'renderLabels' => false ] );
 	}
 
-    /**
-     * Create group data for a horizontal group
-     * @param array $groupData
-     * @return array
-     */
-    protected function createHorizontalGroupData( array $groupData ): array {
+	/**
+	 * Create group data for a horizontal group
+	 * @param array $groupData
+	 * @return array
+	 */
+	protected function createHorizontalGroupData( array $groupData ): array {
 		$horizontalGroupData = [
 			'data' => [],
 			'renderLabels' => false
@@ -224,13 +225,13 @@ abstract class AbstractPortableInfoboxRenderService {
 		return $horizontalGroupData;
 	}
 
-    /**
-     * Get data for a specific section
-     * @param $section
-     * @param $index
-     * @return array
-     */
-    protected function getSectionData( $section, $index ): array {
+	/**
+	 * Get data for a specific section
+	 * @param $section
+	 * @param $index
+	 * @return array
+	 */
+	protected function getSectionData( $section, $index ): array {
 		$content = $this->renderChildren( $section['data']['value'] );
 		return [
 			'index' => $index,
@@ -240,13 +241,13 @@ abstract class AbstractPortableInfoboxRenderService {
 		];
 	}
 
-    /**
-     * Render the children of the infobox - this turns everything between the 
-     * <infobox></infobox> tags into HTML
-     * @param array $children
-     * @return string
-     */
-    protected function renderChildren( array $children ): string {
+	/**
+	 * Render the children of the infobox - this turns everything between the
+	 * <infobox></infobox> tags into HTML
+	 * @param array $children
+	 * @return string
+	 */
+	protected function renderChildren( array $children ): string {
 		$result = '';
 		foreach ( $children as $child ) {
 			$type = $child['type'];
@@ -258,12 +259,12 @@ abstract class AbstractPortableInfoboxRenderService {
 		return $result;
 	}
 
-    /**
-     * Render a panel
-     * @param array $data
-     * @param string $type
-     */
-    protected function renderPanel( array $data, $type = 'panel' ) {
+	/**
+	 * Render a panel
+	 * @param array $data
+	 * @param string $type
+	 */
+	protected function renderPanel( array $data, $type = 'panel' ) {
 		$cssClasses = [];
 		$sections = [];
 		$collapse = $data['collapse'];
@@ -318,7 +319,7 @@ abstract class AbstractPortableInfoboxRenderService {
 		] );
 	}
 
-    /**
+	/**
 	 * If image element has invalid thumbnail, doesn't render this element at all.
 	 *
 	 * @param array $data

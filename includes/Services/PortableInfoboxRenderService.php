@@ -2,8 +2,6 @@
 
 namespace PortableInfobox\Services;
 
-use PortableInfobox\Services\Helpers\PortableInfoboxTemplateEngine;
-
 class PortableInfoboxRenderService extends AbstractPortableInfoboxRenderService {
 
 	/**

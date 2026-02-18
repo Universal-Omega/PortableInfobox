@@ -35,7 +35,7 @@ class NodeFactory {
 				return new ParsoidMediaNode( $xmlNode, $data );
 			}
 		}
-		
+
 		$className = Node::class . mb_convert_case( mb_strtolower( $tagType ), MB_CASE_TITLE );
 		if ( class_exists( $className ) ) {
 			/* @var $instance Node */
