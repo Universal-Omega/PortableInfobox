@@ -7,7 +7,7 @@
 	],
 	"url": "https://github.com/Universal-Omega/PortableInfobox",
 	"descriptionmsg": "portable-infobox-desc",
-	"version": "0.8",
+	"version": "1.0",
 	"type": "parserhook",
 	"license-name": "GPL-3.0-or-later",
 	"requires": {
@@ -15,7 +15,11 @@
 	},
 	"config": {
 		"AllInfoboxesExcludedSubpages": {
-			"value": [ "doc", "draft", "test" ]
+			"value": [
+				"doc",
+				"draft",
+				"test"
+			]
 		},
 		"PortableInfoboxCacheRenderers": {
 			"value": false
@@ -125,5 +129,6 @@
 	"APIListModules": {
 		"allinfoboxes": "PortableInfobox\\Controllers\\ApiQueryAllInfoboxes"
 	},
+	"ParsoidModules": [ "PortableInfobox\\Parsoid\\InfoboxTag" ],
 	"manifest_version": 2
 }

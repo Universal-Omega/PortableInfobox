@@ -1,0 +1,80 @@
+!! options
+version=2
+parsoid-compatible=wt2html
+!! end
+!! article
+Template:Character
+!! text
+<infobox type="Character">
+<title source="name"/>
+<image source="image">
+<caption source="imagecaption" />
+</image>
+<group>
+<data source="aliases"><label>Aliases</label></data>
+<data source="relatives"><label>Relatives</label></data>
+<data source="affiliation"><label>Affiliation</label></data>
+</group>
+<group>
+<header>Biographical information</header>
+<data source="marital"><label>Marital status</label></data>
+<data source="birthDate"><label>Date of birth</label></data>
+<data source="birthPlace"><label>Place of birth</label></data>
+<data source="deathDate"><label>Date of death</label></data>
+<data source="deathPlace"><label>Place of death</label></data>
+</group>
+<group>
+<header>Physical description</header>
+<data source="species"><label>Species</label></data>
+<data source="gender"><label>Gender</label></data>
+<data source="height"><label>Height</label></data>
+<data source="weight"><label>Weight</label></data>
+<data source="eyes"><label>Eye color</label></data>
+</group>
+</infobox>
+!! endarticle
+
+!! test
+PortableInfobox Character Template test
+!! config
+wgPortableInfoboxUseHeadings=false
+!! wikitext
+{{Character
+ | name         = Example
+ | image        = Example.jpg
+ | imagecaption = An example caption!
+ | aliases      =
+ | relatives    =
+ | affiliation  =
+ | marital      =
+ | birthDate    = January 22, 2026
+ | birthPlace   = United Kingdom
+ | deathDate    =
+ | deathPlace   =
+ | species      = Human
+ | gender       =
+ | height       =
+ | weight       =
+ | eyes         =
+}}
+!! html/parsoid
+<aside typeof="mw:Extension/infobox mw:Transclusion" class="portable-infobox noexcerpt searchaux pi-background pi-theme-default pi-layout-default pi-type-Character" data-mw='{"name":"infobox","attrs":{"type":"Character"},"body":{"extsrc":"\n&lt;title source=\"name\"/>\n&lt;image source=\"image\">\n&lt;caption source=\"imagecaption\" />\n&lt;/image>\n&lt;group>\n&lt;data source=\"aliases\">&lt;label>Aliases&lt;/label>&lt;/data>\n&lt;data source=\"relatives\">&lt;label>Relatives&lt;/label>&lt;/data>\n&lt;data source=\"affiliation\">&lt;label>Affiliation&lt;/label>&lt;/data>\n&lt;/group>\n&lt;group>\n&lt;header>Biographical information&lt;/header>\n&lt;data source=\"marital\">&lt;label>Marital status&lt;/label>&lt;/data>\n&lt;data source=\"birthDate\">&lt;label>Date of birth&lt;/label>&lt;/data>\n&lt;data source=\"birthPlace\">&lt;label>Place of birth&lt;/label>&lt;/data>\n&lt;data source=\"deathDate\">&lt;label>Date of death&lt;/label>&lt;/data>\n&lt;data source=\"deathPlace\">&lt;label>Place of death&lt;/label>&lt;/data>\n&lt;/group>\n&lt;group>\n&lt;header>Physical description&lt;/header>\n&lt;data source=\"species\">&lt;label>Species&lt;/label>&lt;/data>\n&lt;data source=\"gender\">&lt;label>Gender&lt;/label>&lt;/data>\n&lt;data source=\"height\">&lt;label>Height&lt;/label>&lt;/data>\n&lt;data source=\"weight\">&lt;label>Weight&lt;/label>&lt;/data>\n&lt;data source=\"eyes\">&lt;label>Eye color&lt;/label>&lt;/data>\n&lt;/group>\n"},"parts":[{"template":{"target":{"wt":"Character\n ","href":"./Template:Character"},"params":{"name":{"wt":"Example"},"image":{"wt":"Example.jpg"},"imagecaption":{"wt":"An example caption!"},"aliases":{"wt":""},"relatives":{"wt":""},"affiliation":{"wt":""},"marital":{"wt":""},"birthDate":{"wt":"January 22, 2026"},"birthPlace":{"wt":"United Kingdom"},"deathDate":{"wt":""},"deathPlace":{"wt":""},"species":{"wt":"Human"},"gender":{"wt":""},"height":{"wt":""},"weight":{"wt":""},"eyes":{"wt":""}},"i":0}}]}'>
+<div class="pi-item pi-item-spacing pi-title" data-source="name">Example</div>
+<section class="pi-item pi-group pi-border-color">
+<div class="pi-item pi-header pi-secondary-font pi-item-spacing pi-secondary-background">Biographical information</div>
+<div class="pi-item pi-data pi-item-spacing pi-border-color" data-source="birthDate">
+<div class="pi-data-label pi-secondary-font">Date of birth</div>
+<div class="pi-data-value pi-font">January 22, 2026</div>
+</div>
+<div class="pi-item pi-data pi-item-spacing pi-border-color" data-source="birthPlace">
+<div class="pi-data-label pi-secondary-font">Place of birth</div>
+<div class="pi-data-value pi-font">United Kingdom</div>
+</div>
+</section><section class="pi-item pi-group pi-border-color">
+<div class="pi-item pi-header pi-secondary-font pi-item-spacing pi-secondary-background">Physical description</div>
+<div class="pi-item pi-data pi-item-spacing pi-border-color" data-source="species">
+<div class="pi-data-label pi-secondary-font">Species</div>
+<div class="pi-data-value pi-font">Human</div>
+</div>
+</section></aside>
+!! end
