@@ -52,7 +52,7 @@ class NodeMedia extends Node {
 		$libXmlErrorSetting = libxml_use_internal_errors( true );
 
 		// encode for correct load
-		$doc->loadHTML( mb_convert_encoding( $html, 'HTML-ENTITIES', 'UTF-8' ) );
+		$doc->loadHTML( '<?xml encoding="UTF-8">' . $html );
 
 		libxml_clear_errors();
 		libxml_use_internal_errors( $libXmlErrorSetting );
