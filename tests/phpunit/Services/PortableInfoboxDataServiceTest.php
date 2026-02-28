@@ -279,7 +279,7 @@ class ParsingHelperDummy {
 class PagePropsProxyDummy {
 
 	public function __construct(
-		private readonly array $data = [],
+		private array $data = [],
 	) {
 	}
 
