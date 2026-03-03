@@ -305,6 +305,8 @@ jobs:
         uses: codecov/codecov-action@v5
         with:
           directory: /home/runner/cover
+          token: ${{ secrets.CODECOV_TOKEN }}
+          slug: ${{ github.repository_owner }}/${{ github.event.repository.name }}
 
       - name: Tear down
         run: |
