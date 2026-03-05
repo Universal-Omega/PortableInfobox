@@ -29,7 +29,7 @@ class NodeMediaTest extends MediaWikiIntegrationTestCase {
 		$this->assertEquals( $expected, NodeMedia::getGalleryData( $marker ) );
 	}
 
-	public function galleryDataProvider() {
+	public static function galleryDataProvider() {
 		$markers = [
 			"'\"`UNIQabcd-gAlLeRy-1-QINU`\"'",
 			"'\"`UNIQabcd-gAlLeRy-2-QINU`\"'",
@@ -114,7 +114,7 @@ class NodeMediaTest extends MediaWikiIntegrationTestCase {
 		$this->assertEquals( $expected, NodeMedia::getMarkers( $value, $ext ) );
 	}
 
-	public function markersProvider() {
+	public static function markersProvider() {
 		return [
 			[
 				'TABBER',
@@ -167,7 +167,7 @@ class NodeMediaTest extends MediaWikiIntegrationTestCase {
 		$this->assertEquals( $expected, $node->getData() );
 	}
 
-	public function dataProvider() {
+	public static function dataProvider() {
 		// markup, params, expected
 		return [
 			[
@@ -324,7 +324,7 @@ class NodeMediaTest extends MediaWikiIntegrationTestCase {
 		$this->assertEquals( $expected, $node->isEmpty() );
 	}
 
-	public function isEmptyProvider() {
+	public static function isEmptyProvider() {
 		return [
 			[ '<media></media>', [], true ],
 		];
@@ -343,7 +343,7 @@ class NodeMediaTest extends MediaWikiIntegrationTestCase {
 		$this->assertEquals( $expected, $node->getSources() );
 	}
 
-	public function sourcesProvider() {
+	public static function sourcesProvider() {
 		return [
 			[
 				'<media source="img"/>',
@@ -382,7 +382,7 @@ class NodeMediaTest extends MediaWikiIntegrationTestCase {
 		$this->assertEquals( $expected, $node->getMetadata() );
 	}
 
-	public function metadataProvider() {
+	public static function metadataProvider() {
 		return [
 			[
 				'<media source="img">' .
@@ -424,7 +424,7 @@ class NodeMediaTest extends MediaWikiIntegrationTestCase {
 		}
 	}
 
-	public function isTypeAllowedProvider() {
+	public static function isTypeAllowedProvider() {
 		return [
 			[
 				'<media />',

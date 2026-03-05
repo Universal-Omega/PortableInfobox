@@ -26,7 +26,7 @@ class NodeHeaderTest extends MediaWikiIntegrationTestCase {
 		$this->assertEquals( $expected, $node->getData() );
 	}
 
-	public function dataProvider() {
+	public static function dataProvider() {
 		return [
 			[
 				'<header></header>',

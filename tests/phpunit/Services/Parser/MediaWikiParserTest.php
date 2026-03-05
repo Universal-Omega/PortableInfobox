@@ -76,7 +76,7 @@ class MediaWikiParserTest extends MediaWikiIntegrationTestCase {
 		$this->assertEquals( $this->parse( $wikitext, $params, $newline ), $output );
 	}
 
-	public function mwParserWrapperDataProvider() {
+	public static function mwParserWrapperDataProvider() {
 		return [
 			[ "*1\n*2\n*3", [], true ],
 			[ "''d''", [], false ],

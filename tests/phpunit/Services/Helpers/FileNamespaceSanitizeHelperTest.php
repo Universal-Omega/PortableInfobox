@@ -57,7 +57,7 @@ class FileNamespaceSanitizeHelperTest extends MediaWikiIntegrationTestCase {
 		$this->assertEquals( $expectedOutput, $actualOutput, $description );
 	}
 
-	public function sanitizeImageFilenameDataProvider() {
+	public static function sanitizeImageFilenameDataProvider() {
 		return [
 			[
 				'filename.jpg',
@@ -316,7 +316,7 @@ class FileNamespaceSanitizeHelperTest extends MediaWikiIntegrationTestCase {
 		$this->assertEquals( $expectedOutput, $actualOutput );
 	}
 
-	public function removeImageParamsDataProvider() {
+	public static function removeImageParamsDataProvider() {
 		return [
 			[
 				'File:image.jpg|300px|lorem ipsum',

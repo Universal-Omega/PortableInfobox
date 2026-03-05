@@ -55,7 +55,7 @@ class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 	}
 
 	// phpcs:disable Generic.Files.LineLength
-	public function renderInfoboxDataProvider() {
+	public static function renderInfoboxDataProvider() {
 		return [
 			[
 				'input' => [],

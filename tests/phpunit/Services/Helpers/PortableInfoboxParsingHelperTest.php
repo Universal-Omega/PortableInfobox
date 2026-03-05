@@ -29,7 +29,7 @@ class PortableInfoboxParsingHelperTest extends MediaWikiIntegrationTestCase {
 		$this->assertEquals( $expected, $result );
 	}
 
-	public function parsingIncludeonlyInfoboxesDataProvider() {
+	public static function parsingIncludeonlyInfoboxesDataProvider() {
 		return [
 			[ 'test', false ],
 			[
