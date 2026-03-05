@@ -25,7 +25,7 @@ class NodeInfoboxTest extends MediaWikiIntegrationTestCase {
 		$this->assertEquals( $expected, $node->getParams() );
 	}
 
-	public function paramsProvider() {
+	public static function paramsProvider() {
 		return [
 			[ '<infobox></infobox>', [] ],
 			[ '<infobox theme="abs"></infobox>', [ 'theme' => 'abs' ] ],
