@@ -24,7 +24,7 @@ class PortableInfoboxTemplateEngineTest extends MediaWikiIntegrationTestCase {
 		);
 	}
 
-	public function isTypeSupportedInTemplatesDataProvider() {
+	public static function isTypeSupportedInTemplatesDataProvider() {
 		return [
 			[
 				'type' => 'title',
