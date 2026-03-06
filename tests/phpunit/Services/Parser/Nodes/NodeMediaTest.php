@@ -161,7 +161,6 @@ class NodeMediaTest extends MediaWikiIntegrationTestCase {
 
 		$reflection = new ReflectionClass( $node );
 		$reflectionProperty = $reflection->getProperty( 'helper' );
-		$reflectionProperty->setAccessible( true );
 		$reflectionProperty->setValue( $node, $helper );
 
 		$this->assertEquals( $expected, $node->getData() );
@@ -417,7 +416,6 @@ class NodeMediaTest extends MediaWikiIntegrationTestCase {
 
 		$reflection = new ReflectionClass( $node );
 		$reflection_method = $reflection->getMethod( 'isTypeAllowed' );
-		$reflection_method->setAccessible( true );
 
 		foreach ( $types as $i => $type ) {
 			$this->assertEquals( $expected[$i], $reflection_method->invoke( $node, $type ) );
