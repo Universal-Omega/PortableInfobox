@@ -21,9 +21,7 @@ class FileNamespaceSanitizeHelperTest extends MediaWikiIntegrationTestCase {
 
 		$class = new ReflectionClass( FileNamespaceSanitizeHelper::class );
 		$instance = $class->getProperty( 'instance' );
-		$instance->setAccessible( true );
 		$filePrefixRegex = $class->getProperty( 'filePrefixRegex' );
-		$filePrefixRegex->setAccessible( true );
 
 		$this->fileNamespaceSanitizeHelper = FileNamespaceSanitizeHelper::getInstance();
 		$instance->setValue( $this->fileNamespaceSanitizeHelper, null );
