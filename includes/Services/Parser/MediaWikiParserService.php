@@ -6,6 +6,7 @@ use MediaWiki\Config\ServiceOptions;
 use MediaWiki\MainConfigNames;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Parser\BlockLevelPass;
+use MediaWiki\Parser\LinkHolderArray;
 use MediaWiki\Parser\Parser;
 use MediaWiki\Parser\PPFrame;
 use MediaWiki\Tidy\RemexDriver;
@@ -66,9 +67,16 @@ class MediaWikiParserService implements ExternalParser {
 		$output = BlockLevelPass::doBlockLevels( $parsed, false );
 		$ready = $this->parser->getStripState()->unstripBoth( $output );
 
-		// @phan-suppress-next-line PhanDeprecatedFunction
-		$this->parser->replaceLinkHolders( $ready );
+		$services = MediaWikiServices::getInstance();
+		$linkHolders = new LinkHolderArray(
+			$this->parser,
+			$services->getLanguageConverterFactory()->getLanguageConverter(
+				$this->parser->getContentLanguage()
+			),
+			$services->getHookContainer()
+		);
 
+		$linkHolders->replace( $ready );
 		if ( isset( $this->tidyDriver ) ) {
 			$ready = $this->tidyDriver->tidy( $ready );
 		}
