@@ -5,8 +5,6 @@ namespace PortableInfobox\Services\Parser;
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\MainConfigNames;
 use MediaWiki\MediaWikiServices;
-use MediaWiki\Parser\BlockLevelPass;
-use MediaWiki\Parser\LinkHolderArray;
 use MediaWiki\Parser\Parser;
 use MediaWiki\Parser\PPFrame;
 use MediaWiki\Tidy\RemexDriver;
@@ -58,25 +56,15 @@ class MediaWikiParserService implements ExternalParser {
 			return $this->cache[$wikitext];
 		}
 
-		$parsed = $this->parser->recursiveTagParse( $wikitext ?? '', $this->frame );
-		if ( in_array( substr( $parsed, 0, 1 ), [ '*', '#' ] ) ) {
+		$ready = $this->parser->recursiveTagParseFully( $wikitext ?? '', $this->frame );
+		/* if ( in_array( substr( $parsed, 0, 1 ), [ '*', '#' ] ) ) {
 			// fix for first item list elements
 			$parsed = "\n" . $parsed;
 		}
 
 		$output = BlockLevelPass::doBlockLevels( $parsed, false );
-		$ready = $this->parser->getStripState()->unstripBoth( $output );
+		$ready = $this->parser->getStripState()->unstripBoth( $output ); */
 
-		$services = MediaWikiServices::getInstance();
-		$linkHolders = new LinkHolderArray(
-			$this->parser,
-			$services->getLanguageConverterFactory()->getLanguageConverter(
-				$this->parser->getContentLanguage()
-			),
-			$services->getHookContainer()
-		);
-
-		$linkHolders->replace( $ready );
 		if ( isset( $this->tidyDriver ) ) {
 			$ready = $this->tidyDriver->tidy( $ready );
 		}
