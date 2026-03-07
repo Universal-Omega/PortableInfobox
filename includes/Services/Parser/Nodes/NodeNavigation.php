@@ -14,9 +14,7 @@ class NodeNavigation extends Node {
 	}
 
 	public function isEmpty() {
-		$data = $this->getData();
-		$links = trim( $data['value'] );
-
-		return $links === null || $links === '';
+		$links = trim( $this->getData()['value'] );
+		return $links === '';
 	}
 }
