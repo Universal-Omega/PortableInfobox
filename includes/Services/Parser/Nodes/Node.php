@@ -140,7 +140,7 @@ class Node {
 	 */
 	public function isEmpty() {
 		$data = $this->getData()['value'];
-		return $data === null || $data === '';
+		return $data === null || $data === '' || $data === [];
 	}
 
 	protected function getChildNodes() {
