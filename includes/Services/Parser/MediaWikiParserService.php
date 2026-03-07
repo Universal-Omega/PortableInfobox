@@ -70,7 +70,7 @@ class MediaWikiParserService implements ExternalParser {
 		// This is required and there is no alternative to this if we want to prevent pwrap with our
 		// own tidy setup, otherwise we could just call recursiveTagParseFully above instead.
 		$replaceLinkHolders = new ReflectionMethod( Parser::class, 'replaceLinkHoldersPrivate' );
-		$replaceLinkHolders->invoke( $this->parser, $ready );
+		$replaceLinkHolders->invokeArgs( $this->parser, [ &$ready ] );
 
 		if ( isset( $this->tidyDriver ) ) {
 			$ready = $this->tidyDriver->tidy( $ready );
