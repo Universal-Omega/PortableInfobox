@@ -37,10 +37,10 @@ class NodeMedia extends Node {
 
 	public static function getGalleryData( $marker ) {
 		$gallery = PortableInfoboxDataBag::getInstance()->getGallery( $marker );
-		return isset( $gallery ) ? array_map( static function ( $image ) {
+		return $gallery ? array_map( static function ( $image ) {
 			return [
 				'label' => $image[1],
-				'title' => $image[0]
+				'title' => $image[0],
 			];
 		}, $gallery->getimages() ) : [];
 	}
@@ -71,7 +71,7 @@ class NodeMedia extends Node {
 	}
 
 	public function getData() {
-		if ( !isset( $this->data ) ) {
+		if ( $this->data === null ) {
 			$this->data = [];
 
 			// value passed to source parameter (or default)
@@ -95,8 +95,8 @@ class NodeMedia extends Node {
 	 * @return bool
 	 */
 	private function containsTabberOrGallery( $str ) {
-		return !empty( self::getMarkers( $str, self::TABBER ) ) ||
-			!empty( self::getMarkers( $str, self::GALLERY ) );
+		return self::getMarkers( $str, self::TABBER ) ||
+			self::getMarkers( $str, self::GALLERY );
 	}
 
 	private function getImagesData( $value ) {
@@ -144,7 +144,7 @@ class NodeMedia extends Node {
 		$titleObj = $title instanceof Title ? $title : $this->getImageAsTitleObject( $title );
 		$fileObj = $helper->getFile( $titleObj );
 
-		if ( !isset( $fileObj ) || !$this->isTypeAllowed( $fileObj->getMediaType() ) ) {
+		if ( !$fileObj || !$this->isTypeAllowed( $fileObj->getMediaType() ) ) {
 			return [];
 		}
 
@@ -217,9 +217,7 @@ class NodeMedia extends Node {
 	}
 
 	protected function getImageHelper() {
-		if ( !isset( $this->helper ) ) {
-			$this->helper = new PortableInfoboxImagesHelper();
-		}
+		$this->helper ??= new PortableInfoboxImagesHelper();
 		return $this->helper;
 	}
 
@@ -263,8 +261,7 @@ class NodeMedia extends Node {
 	 */
 	protected function allowImage() {
 		$attr = $this->getXmlAttribute( $this->xmlNode, self::ALLOWIMAGE_ATTR_NAME );
-
-		return !( isset( $attr ) && strtolower( $attr ) === 'false' );
+		return !( $attr && strtolower( $attr ) === 'false' );
 	}
 
 	/**
@@ -272,8 +269,7 @@ class NodeMedia extends Node {
 	 */
 	protected function allowVideo() {
 		$attr = $this->getXmlAttribute( $this->xmlNode, self::ALLOWVIDEO_ATTR_NAME );
-
-		return !( isset( $attr ) && strtolower( $attr ) === 'false' );
+		return !( $attr && strtolower( $attr ) === 'false' );
 	}
 
 	/*
@@ -281,7 +277,6 @@ class NodeMedia extends Node {
 	 */
 	protected function allowAudio() {
 		$attr = $this->getXmlAttribute( $this->xmlNode, self::ALLOWAUDIO_ATTR_NAME );
-
-		return !( isset( $attr ) && strtolower( $attr ) === 'false' );
+		return !( $attr && strtolower( $attr ) === 'false' );
 	}
 }

@@ -7,10 +7,7 @@ class NodeInfobox extends Node {
 	protected $params;
 
 	public function getData() {
-		if ( !isset( $this->data ) ) {
-			$this->data = [ 'value' => $this->getDataForChildren() ];
-		}
-
+		$this->data ??= [ 'value' => $this->getDataForChildren() ];
 		return $this->data;
 	}
 
@@ -30,7 +27,7 @@ class NodeInfobox extends Node {
 	}
 
 	public function getParams() {
-		if ( !isset( $this->params ) ) {
+		if ( !$this->params ) {
 			$result = [];
 			foreach ( $this->xmlNode->attributes() as $k => $v ) {
 				$result[$k] = (string)$v;
