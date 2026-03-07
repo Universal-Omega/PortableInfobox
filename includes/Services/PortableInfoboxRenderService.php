@@ -36,13 +36,13 @@ class PortableInfoboxRenderService {
 
 		$infoboxHtmlContent = $this->renderChildren( $infoboxdata );
 
-		if ( !empty( $infoboxHtmlContent ) ) {
+		if ( $infoboxHtmlContent ) {
 			$output = $this->renderItem( 'wrapper', [
 				'content' => $infoboxHtmlContent,
 				'theme' => $theme,
 				'layout' => $layout,
 				'type' => $type,
-				'item-name' => $itemName
+				'item-name' => $itemName,
 			] );
 		} else {
 			$output = '';
@@ -198,7 +198,7 @@ class PortableInfoboxRenderService {
 		foreach ( $data['value'] as $index => $child ) {
 			switch ( $child['type'] ) {
 				case 'header':
-					if ( empty( $header ) ) {
+					if ( !$header ) {
 						$header = $this->renderHeader( $child['data'] );
 					}
 					break;
@@ -217,7 +217,7 @@ class PortableInfoboxRenderService {
 					break;
 			}
 		}
-		if ( $collapse !== null && count( $sections ) > 0 && !empty( $header ) ) {
+		if ( $collapse !== null && count( $sections ) > 0 && $header ) {
 			$cssClasses[] = 'pi-collapse';
 			$cssClasses[] = 'pi-collapse-' . $collapse;
 		}
@@ -249,13 +249,13 @@ class PortableInfoboxRenderService {
 			'index' => $index,
 			'item-name' => $section['data']['item-name'],
 			'label' => $section['data']['label'],
-			'content' => !empty( $content ) ? $content : null
+			'content' => $content ?: null,
 		];
 	}
 
 	private function getInlineStyles( $accentColor, $accentColorText ) {
-		$backgroundColor = empty( $accentColor ) ? '' : "background-color:{$accentColor};";
-		$color = empty( $accentColorText ) ? '' : "color:{$accentColorText};";
+		$backgroundColor = !$accentColor ? '' : "background-color:{$accentColor};";
+		$color = !$accentColorText ? '' : "color:{$accentColorText};";
 
 		return "{$backgroundColor}{$color}";
 	}
@@ -296,10 +296,8 @@ class PortableInfoboxRenderService {
 
 		foreach ( $groupData as $item ) {
 			$data = $item['data'];
-
 			if ( $item['type'] === 'data' && $data['layout'] !== 'default' ) {
-
-				if ( !empty( $rowItems ) && $rowSpan + $data['span'] > $rowCapacity ) {
+				if ( $rowItems && $rowSpan + $data['span'] > $rowCapacity ) {
 					$result[] = $this->createSmartGroupItem( $rowItems, $rowSpan );
 					$rowSpan = 0;
 					$rowItems = [];
@@ -308,7 +306,7 @@ class PortableInfoboxRenderService {
 				$rowItems[] = $item;
 			} else {
 				// smart wrapping works only for data tags
-				if ( !empty( $rowItems ) ) {
+				if ( $rowItems ) {
 					$result[] = $this->createSmartGroupItem( $rowItems, $rowSpan );
 					$rowSpan = 0;
 					$rowItems = [];
@@ -316,7 +314,7 @@ class PortableInfoboxRenderService {
 				$result[] = $item;
 			}
 		}
-		if ( !empty( $rowItems ) ) {
+		if ( $rowItems ) {
 			$result[] = $this->createSmartGroupItem( $rowItems, $rowSpan );
 		}
 
@@ -335,15 +333,15 @@ class PortableInfoboxRenderService {
 			$width = $item['data']['span'] / $capacity * 100;
 			$styles = "width: {$width}%";
 
-			$label = $item['data']['label'] ?? "";
-			if ( !empty( $label ) ) {
+			$label = $item['data']['label'] ?? '';
+			if ( $label ) {
 				$result['renderLabels'] = true;
 			}
 			$result['data'][] = [
 				'label' => $label,
 				'value' => $item['data']['value'],
 				'inlineStyles' => $styles,
-				'source' => $item['data']['source'] ?? "",
+				'source' => $item['data']['source'] ?? '',
 				'item-name' => $item['data']['item-name']
 			];
 

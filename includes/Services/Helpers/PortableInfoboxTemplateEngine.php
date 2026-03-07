@@ -29,18 +29,13 @@ class PortableInfoboxTemplateEngine {
 		'navigation' => 'PortableInfoboxItemNavigation.hbs',
 		'media-collection' => 'PortableInfoboxItemMediaCollection.hbs',
 		'panel' => 'PortableInfoboxPanel.hbs',
-		'xml-parse-error' => 'PortableInfoboxMarkupDebug.hbs'
+		'xml-parse-error' => 'PortableInfoboxMarkupDebug.hbs',
 	];
 
 	public function __construct() {
-		if ( !isset( self::$lightncandy ) ) {
-			self::$lightncandy = LightnCandy::class;
-			self::$compileFlags = self::$lightncandy::FLAG_BESTPERFORMANCE | self::$lightncandy::FLAG_PARENT | self::$lightncandy::FLAG_HANDLEBARS;
-		}
-
-		if ( !isset( self::$memcache ) ) {
-			self::$memcache = MediaWikiServices::getInstance()->getMainWANObjectCache();
-		}
+		self::$lightncandy ??= LightnCandy::class;
+		self::$compileFlags ??= self::$lightncandy::FLAG_BESTPERFORMANCE | self::$lightncandy::FLAG_PARENT | self::$lightncandy::FLAG_HANDLEBARS;
+		self::$memcache ??= MediaWikiServices::getInstance()->getMainWANObjectCache();
 	}
 
 	public static function getTemplatesDir() {

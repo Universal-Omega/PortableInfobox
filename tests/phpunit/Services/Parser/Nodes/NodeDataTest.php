@@ -343,6 +343,7 @@ class NodeDataTest extends MediaWikiIntegrationTestCase {
 	/**
 	 * @covers ::getMetadata
 	 * @covers \PortableInfobox\Services\Parser\Nodes\NodeInfobox::getMetadata
+	 * @covers \PortableInfobox\Services\Parser\Nodes\NodeGroup::getMetadata
 	 * @dataProvider metadataDataProvider
 	 *
 	 * @param $markup

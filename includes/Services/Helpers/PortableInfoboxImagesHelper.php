@@ -37,14 +37,14 @@ class PortableInfoboxImagesHelper {
 			$file->getHeight()
 		);
 		$imgTagDimensions =
-			empty( $thumbnailImgTagWidth )
+			!$thumbnailImgTagWidth
 				? $fileDimensions
 				: $this->getThumbnailSizes( $thumbnailImgTagWidth,
 				self::MAX_DESKTOP_THUMBNAIL_HEIGHT, $originalWidth, $file->getHeight() );
 
 		// if custom and big enough, scale thumbnail size
 		$ratio =
-			!empty( $wgPortableInfoboxCustomImageWidth ) &&
+			$wgPortableInfoboxCustomImageWidth &&
 			$originalWidth > $wgPortableInfoboxCustomImageWidth
 				? $wgPortableInfoboxCustomImageWidth / $fileDimensions['width'] : 1;
 		// get thumbnail
