@@ -33,14 +33,12 @@ class PortableInfoboxTemplateEngine {
 	];
 
 	public function __construct() {
-		if ( !isset( self::$lightncandy ) ) {
+		if ( !self::$lightncandy ) {
 			self::$lightncandy = LightnCandy::class;
 			self::$compileFlags = self::$lightncandy::FLAG_BESTPERFORMANCE | self::$lightncandy::FLAG_PARENT | self::$lightncandy::FLAG_HANDLEBARS;
 		}
 
-		if ( !isset( self::$memcache ) ) {
-			self::$memcache = MediaWikiServices::getInstance()->getMainWANObjectCache();
-		}
+		self::$memcache ??= MediaWikiServices::getInstance()->getMainWANObjectCache();
 	}
 
 	public static function getTemplatesDir() {

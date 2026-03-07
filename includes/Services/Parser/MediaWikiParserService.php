@@ -72,7 +72,7 @@ class MediaWikiParserService implements ExternalParser {
 		$replaceLinkHolders = new ReflectionMethod( Parser::class, 'replaceLinkHoldersPrivate' );
 		$replaceLinkHolders->invokeArgs( $this->parser, [ &$ready ] );
 
-		if ( isset( $this->tidyDriver ) ) {
+		if ( $this->tidyDriver ) {
 			$ready = $this->tidyDriver->tidy( $ready );
 		}
 

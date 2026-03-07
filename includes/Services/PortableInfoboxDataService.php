@@ -226,7 +226,7 @@ class PortableInfoboxDataService {
 		if ( is_array( $infoboxes ) ) {
 			foreach ( $infoboxes as $infobox ) {
 				if (
-					empty( $infobox ) ||
+					!$infobox ||
 					!isset( $infobox['parser_tag_version'] ) ||
 					$infobox['parser_tag_version'] !== PortableInfoboxParserTagController::PARSER_TAG_VERSION
 				) {

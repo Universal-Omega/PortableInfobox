@@ -35,17 +35,11 @@ class PortableInfoboxParserTagController {
 
 	private $infoboxParamsValidator = null;
 
-	protected static $instance;
+	private static self $instance;
 
-	/**
-	 * @return self
-	 */
-	public static function getInstance() {
-		if ( !isset( static::$instance ) ) {
-			static::$instance = new self();
-		}
-
-		return static::$instance;
+	public static function getInstance(): self {
+		self::$instance ??= new self();
+		return self::$instance;
 	}
 
 	/**
@@ -107,7 +101,7 @@ class PortableInfoboxParserTagController {
 		);
 
 		// get params if not overridden
-		if ( !isset( $params ) ) {
+		if ( $params === null ) {
 			$params = ( $infoboxNode instanceof NodeInfobox ) ? $infoboxNode->getParams() : [];
 		}
 
@@ -214,22 +208,21 @@ class PortableInfoboxParserTagController {
 
 	private function getThemes( $params, PPFrame $frame ) {
 		$themes = [];
-
 		if ( isset( $params['theme'] ) ) {
 			$staticTheme = trim( $params['theme'] );
-			if ( !empty( $staticTheme ) ) {
+			if ( $staticTheme ) {
 				$themes[] = $staticTheme;
 			}
 		}
 		if ( !empty( $params['theme-source'] ) ) {
 			$variableTheme = trim( $frame->getArgument( $params['theme-source'] ) );
-			if ( !empty( $variableTheme ) ) {
+			if ( $variableTheme ) {
 				$themes[] = $variableTheme;
 			}
 		}
 
 		// use default global theme if not present
-		$themes = !empty( $themes ) ? $themes : [ self::DEFAULT_THEME_NAME ];
+		$themes = $themes ?: [ self::DEFAULT_THEME_NAME ];
 
 		return array_map( static function ( $name ) {
 			return Sanitizer::escapeClass(
@@ -253,13 +246,12 @@ class PortableInfoboxParserTagController {
 		$defaultParam = $colorParam . '-default';
 
 		$color = '';
-
-		if ( isset( $params[$sourceParam] ) && !empty( $frame->getArgument( $params[$sourceParam] ) ) ) {
+		if ( isset( $params[$sourceParam] ) && $frame->getArgument( $params[$sourceParam] ) ) {
 			$color = trim( $frame->getArgument( $params[$sourceParam] ) );
 			$color = $this->sanitizeColor( $color );
 		}
 
-		if ( empty( $color ) && isset( $params[$defaultParam] ) ) {
+		if ( !$color && isset( $params[$defaultParam] ) ) {
 			$color = trim( $params[$defaultParam] );
 			$color = $this->sanitizeColor( $color );
 		}
@@ -282,10 +274,7 @@ class PortableInfoboxParserTagController {
 	}
 
 	private function getParamsValidator() {
-		if ( empty( $this->infoboxParamsValidator ) ) {
-			$this->infoboxParamsValidator = new InfoboxParamsValidator();
-		}
-
+		$this->infoboxParamsValidator ??= new InfoboxParamsValidator();
 		return $this->infoboxParamsValidator;
 	}
 }
