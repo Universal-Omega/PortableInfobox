@@ -101,9 +101,7 @@ class PortableInfoboxParserTagController {
 		);
 
 		// get params if not overridden
-		if ( $params === null ) {
-			$params = ( $infoboxNode instanceof NodeInfobox ) ? $infoboxNode->getParams() : [];
-		}
+		$params ??= $infoboxNode instanceof NodeInfobox ? $infoboxNode->getParams() : [];
 
 		$this->getParamsValidator()->validateParams( $params );
 
