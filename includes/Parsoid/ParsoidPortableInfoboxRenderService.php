@@ -95,7 +95,6 @@ class ParsoidPortableInfoboxRenderService extends AbstractPortableInfoboxRenderS
 		$infoboxNode = NodeFactory::newFromXML( $parsoidData, $this->paramMap ?: [], $externalParser );
 		$infoboxNode->setExternalParser( $externalParser );
 		$data = $infoboxNode->getRenderData();
-		$attr = $infoboxNode->getParams();
 		$attr = $infoboxNode instanceof NodeInfobox ? $infoboxNode->getParams() : [];
 		return [ $data, $attr ];
 	}
