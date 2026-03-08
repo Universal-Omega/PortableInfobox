@@ -4,6 +4,7 @@ namespace PortableInfobox\Parsoid;
 
 use MediaWiki\Title\Title;
 use PortableInfobox\Services\Parser\ExternalParser;
+use Wikimedia\Parsoid\DOM\Element;
 use Wikimedia\Parsoid\Ext\ParsoidExtensionAPI;
 use Wikimedia\Parsoid\Utils\DOMCompat;
 
@@ -25,6 +26,7 @@ class ParsoidMediaWikiParser implements ExternalParser {
 			'processInNewFrame' => false,
 			'parseOpts' => [ 'context' => 'inline' ],
 		], true );
+		'@phan-var Element $paramParsed';
 
 		// we don't want Parsoid to wrap in a span or add a typeof here,
 		// just interested in the content
