@@ -2,6 +2,8 @@
 
 namespace PortableInfobox\Parsoid;
 
+use Wikimedia\Parsoid\DOM\Document;
+use Wikimedia\Parsoid\DOM\DocumentFragment;
 use Wikimedia\Parsoid\DOM\Element;
 use Wikimedia\Parsoid\DOM\Node;
 use Wikimedia\Parsoid\Ext\DOMDataUtils;
@@ -23,6 +25,8 @@ class PortableInfoboxDOMProcessor extends DOMProcessor {
 		Node $node,
 		array $options
 	): void {
+		'@phan-var Document|DocumentFragment $node';
+		// @var Document|DocumentFragment $node
 		$child = $node->firstChild;
 
 		// insipiration taken from Ext:Cite
