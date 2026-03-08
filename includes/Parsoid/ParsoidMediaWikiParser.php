@@ -9,12 +9,9 @@ use Wikimedia\Parsoid\Utils\DOMCompat;
 
 class ParsoidMediaWikiParser implements ExternalParser {
 
-	public ParsoidExtensionAPI $api;
-
 	public function __construct(
-		ParsoidExtensionAPI $api
+		private readonly ParsoidExtensionAPI $api,
 	) {
-		$this->api = $api;
 	}
 
 	public function parseRecursive( $wikitext ) {
@@ -26,7 +23,10 @@ class ParsoidMediaWikiParser implements ExternalParser {
 			// this differs from earlier as we need the frame to be able to grab the
 			// params the user passed - parsoid handles this internally it appears
 			'processInNewFrame' => false,
-			'parseOpts' => [ 'context' => 'inline' ]
+			'parseOpts' => [
+				'extTag' => 'infobox',
+				'context' => 'inline',
+			],
 		], true );
 
 		// we don't want Parsoid to wrap in a span or add a typeof here,
@@ -74,34 +74,29 @@ class ParsoidMediaWikiParser implements ExternalParser {
 		// the images etc from it.
 		if ( preg_match( '/<gallery[^>]*>(.*?)<\/gallery>/s', $wikitext, $matches ) ) {
 			$galleryContent = trim( $matches[1] );
-
-			if ( empty( $galleryContent ) ) {
+			if ( !$galleryContent ) {
 				return [];
 			}
 
 			$lines = explode( "\n", $galleryContent );
-
 			foreach ( $lines as $line ) {
 				$line = trim( $line );
-
-				if ( empty( $line ) ) {
+				if ( !$line ) {
 					continue;
 				}
 
 				$parts = explode( '|', $line, 2 );
 				$filename = trim( $parts[0] );
-				$caption = isset( $parts[1] ) ? trim( $parts[1] ) : '';
-
-				if ( empty( $filename ) ) {
+				$caption = trim( $parts[1] ?? '' );
+				if ( !$filename ) {
 					continue;
 				}
 
 				$title = Title::newFromText( $filename, NS_FILE );
-
 				if ( $title !== null ) {
 					$result[] = [
 						'label' => $caption,
-						'title' => $title
+						'title' => $title,
 					];
 				}
 			}
