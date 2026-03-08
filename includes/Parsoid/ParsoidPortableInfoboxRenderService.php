@@ -7,7 +7,6 @@ use PortableInfobox\Services\Helpers\InfoboxParamsValidator;
 use PortableInfobox\Services\Helpers\PortableInfoboxTemplateEngine;
 use PortableInfobox\Services\Parser\Nodes\NodeFactory;
 use Wikimedia\Parsoid\Core\Sanitizer;
-use Wikimedia\Parsoid\DOM\Document;
 use Wikimedia\Parsoid\DOM\Element;
 use Wikimedia\Parsoid\Ext\ParsoidExtensionAPI;
 use Wikimedia\Parsoid\Utils\DOMCompat;
@@ -56,12 +55,11 @@ class ParsoidPortableInfoboxRenderService extends AbstractPortableInfoboxRenderS
 	public function renderPI(
 		ParsoidExtensionAPI $extApi,
 		Element $container,
-		Document $doc,
 		array $params,
 		string $parsoidData
 	): void {
 		$this->buildParamMap( $params );
-		[ $data, $attr ] = $this->prepareInfobox( $extApi, $parsoidData, $this->paramMap ?: [] );
+		[ $data, $attr ] = $this->prepareInfobox( $extApi, $parsoidData );
 
 		$themes = $this->getThemes( $attr );
 		$layout = $this->getLayout( $attr );
@@ -75,7 +73,7 @@ class ParsoidPortableInfoboxRenderService extends AbstractPortableInfoboxRenderS
 			'portable-infobox',
 			'noexcerpt',
 			'searchaux',
-			'pi-background'
+			'pi-background',
 		];
 
 		$classes = array_merge( $classes, $themes );
@@ -84,17 +82,13 @@ class ParsoidPortableInfoboxRenderService extends AbstractPortableInfoboxRenderS
 
 		$container->setAttribute( 'class', implode( ' ', $classes ) );
 
-		$result = $this->renderInfobox(
-			$data,
-		);
-
+		$result = $this->renderInfobox( $data );
 		DOMCompat::setInnerHTML( $container, $result );
 	}
 
 	public function prepareInfobox(
 		ParsoidExtensionAPI $extApi,
-		string $parsoidData,
-		array $params,
+		string $parsoidData
 	): array {
 		$externalParser = new ParsoidMediaWikiParser( $extApi );
 		// same as legacy!
@@ -112,10 +106,9 @@ class ParsoidPortableInfoboxRenderService extends AbstractPortableInfoboxRenderS
 	 */
 	private function getThemes( array $attr ): array {
 		$themes = [];
-
 		if ( isset( $attr['theme'] ) ) {
 			$staticTheme = trim( $attr['theme'] );
-			if ( !empty( $staticTheme ) ) {
+			if ( $staticTheme ) {
 				$themes[] = $staticTheme;
 			}
 		}
@@ -124,12 +117,12 @@ class ParsoidPortableInfoboxRenderService extends AbstractPortableInfoboxRenderS
 		// we can get the value for that - I think this works but I'm a bit confused alas!
 		if ( !empty( $attr['theme-source' ] ) ) {
 			$variableTheme = $this->paramMap[ $attr['theme-source'] ];
-			if ( !empty( $variableTheme ) ) {
+			if ( $variableTheme ) {
 				$themes[] = $variableTheme;
 			}
 		}
 
-		$themes = !empty( $themes ) ? $themes : [ self::DEFAULT_THEME_NAME ];
+		$themes = $themes ?: [ self::DEFAULT_THEME_NAME ];
 
 		return array_map( static function ( $name ) {
 			return Sanitizer::escapeIdForAttribute(
@@ -153,13 +146,10 @@ class ParsoidPortableInfoboxRenderService extends AbstractPortableInfoboxRenderS
 
 	/**
 	 * Get an instance of the InfoboxParamsValidator::class
-	 * @return \PortableInfobox\Services\Helpers\InfoboxParamsValidator;
+	 * @return InfoboxParamsValidator
 	 */
 	private function getParamsValidator() {
-		if ( empty( $this->infoboxParamsValidator ) ) {
-			$this->infoboxParamsValidator = new InfoboxParamsValidator();
-		}
-
+		$this->infoboxParamsValidator ??= new InfoboxParamsValidator();
 		return $this->infoboxParamsValidator;
 	}
 
@@ -178,17 +168,14 @@ class ParsoidPortableInfoboxRenderService extends AbstractPortableInfoboxRenderS
 	 * Get the name for this infobox
 	 * @TODO: needs to go through the sanitizer
 	 * @param array $attr
-	 * @return @string
+	 * @return string
 	 */
 	private function getItemName( $attr ) {
 		return !empty( $attr['name'] ) ? $attr['name'] : '';
 	}
 
-	private function renderInfobox(
-		array $data,
-	) {
+	private function renderInfobox( array $data ) {
 		$this->templateEngine = new PortableInfoboxTemplateEngine();
-
 		$infoboxHtmlContent = $this->renderChildren( $data );
 
 		return $infoboxHtmlContent;
