@@ -64,7 +64,6 @@ class ParsoidPortableInfoboxRenderService extends AbstractPortableInfoboxRenderS
 		$themes = $this->getThemes( $attr );
 		$layout = $this->getLayout( $attr );
 		$type = $this->getType( $attr );
-		$itemName = $this->getItemName( $attr );
 
 		// This is a slight change from the legacy, we only use the templates to render the children
 		// since Parsoid will have generated an <aside> wrapper tag before we reach this function, so
