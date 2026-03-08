@@ -4,6 +4,7 @@ namespace PortableInfobox\Services\Parser\Nodes;
 
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\Title;
+use PortableInfobox\Parsoid\ParsoidMediaWikiParser;
 use PortableInfobox\Parsoid\ParsoidPortableInfoboxRenderService;
 use PortableInfobox\Services\Helpers\FileNamespaceSanitizeHelper;
 use PortableInfobox\Services\Helpers\PortableInfoboxImagesHelper;
@@ -23,7 +24,7 @@ class ParsoidMediaNode extends Node {
 	 * return array
 	 */
 	public function getData(): array {
-		if ( !isset( $this->data ) ) {
+		if ( $this->data === null ) {
 			$this->data = [];
 
 			// value passed to source parameter (or default)
@@ -52,12 +53,12 @@ class ParsoidMediaNode extends Node {
 	 */
 	private function containsTabberOrGallery( string $value ): bool {
 		// <gallery></gallery>
-		if ( preg_match( '/<gallery\b[^>]*>/i', $value ?? '' ) ) {
+		if ( preg_match( '/<gallery\b[^>]*>/i', $value ) ) {
 			return true;
 		}
 
 		// <tabber></tabber>
-		if ( preg_match( '/<tabber\b[^>]*>/i', $value ?? '' ) ) {
+		if ( preg_match( '/<tabber\b[^>]*>/i', $value ) ) {
 			return true;
 		}
 
@@ -69,12 +70,12 @@ class ParsoidMediaNode extends Node {
 	 * @TODO: revisit this later, see comment on ParsoidMediaWikiParser::extractGallery for why this
 	 * is a bad idea - but it works
 	 * @param string $value the wikitext gallery
-	 * @param mixed $value
 	 */
 	private function getImagesData( string $value ) {
 		$helper = $this->getImageHelper();
 		$data = [];
 		$parser = $this->getExternalParser();
+		'@phan-var ParsoidMediaWikiParser $parser';
 		$items = $parser->extractGallery( $value );
 		// @TODO: do tabbers also
 		foreach ( $items as $item ) {
@@ -92,7 +93,7 @@ class ParsoidMediaNode extends Node {
 		$titleObj = $title instanceof Title ? $title : $this->getImageAsTitleObject( $title );
 		$fileObj = $helper->getFile( $titleObj );
 
-		if ( !isset( $fileObj ) || !$this->isTypeAllowed( $fileObj->getMediaType() ) ) {
+		if ( !$fileObj || !$this->isTypeAllowed( $fileObj->getMediaType() ) ) {
 			return [];
 		}
 
@@ -158,9 +159,7 @@ class ParsoidMediaNode extends Node {
 	 * @return PortableInfoboxImagesHelper
 	 */
 	protected function getImageHelper() {
-		if ( !isset( $this->helper ) ) {
-			$this->helper = new PortableInfoboxImagesHelper();
-		}
+		$this->helper ??= new PortableInfoboxImagesHelper();
 		return $this->helper;
 	}
 
@@ -188,8 +187,7 @@ class ParsoidMediaNode extends Node {
 	 */
 	protected function allowImage() {
 		$attr = $this->getXmlAttribute( $this->xmlNode, self::ALLOWIMAGE_ATTR_NAME );
-
-		return !( isset( $attr ) && strtolower( $attr ) === 'false' );
+		return !( $attr && strtolower( $attr ) === 'false' );
 	}
 
 	/**
@@ -197,8 +195,7 @@ class ParsoidMediaNode extends Node {
 	 */
 	protected function allowVideo() {
 		$attr = $this->getXmlAttribute( $this->xmlNode, self::ALLOWVIDEO_ATTR_NAME );
-
-		return !( isset( $attr ) && strtolower( $attr ) === 'false' );
+		return !( $attr && strtolower( $attr ) === 'false' );
 	}
 
 	/*
@@ -206,8 +203,7 @@ class ParsoidMediaNode extends Node {
 	 */
 	protected function allowAudio() {
 		$attr = $this->getXmlAttribute( $this->xmlNode, self::ALLOWAUDIO_ATTR_NAME );
-
-		return !( isset( $attr ) && strtolower( $attr ) === 'false' );
+		return !( $attr && strtolower( $attr ) === 'false' );
 	}
 
 	public function isEmpty() {
