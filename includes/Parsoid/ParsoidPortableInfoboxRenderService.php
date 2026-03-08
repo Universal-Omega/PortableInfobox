@@ -6,6 +6,7 @@ use PortableInfobox\Services\AbstractPortableInfoboxRenderService;
 use PortableInfobox\Services\Helpers\InfoboxParamsValidator;
 use PortableInfobox\Services\Helpers\PortableInfoboxTemplateEngine;
 use PortableInfobox\Services\Parser\Nodes\NodeFactory;
+use PortableInfobox\Services\Parser\Nodes\NodeInfobox;
 use Wikimedia\Parsoid\Core\Sanitizer;
 use Wikimedia\Parsoid\DOM\Element;
 use Wikimedia\Parsoid\Ext\ParsoidExtensionAPI;
@@ -95,6 +96,7 @@ class ParsoidPortableInfoboxRenderService extends AbstractPortableInfoboxRenderS
 		$infoboxNode->setExternalParser( $externalParser );
 		$data = $infoboxNode->getRenderData();
 		$attr = $infoboxNode->getParams();
+		$attr = $infoboxNode instanceof NodeInfobox ? $infoboxNode->getParams() : [];
 		return [ $data, $attr ];
 	}
 
