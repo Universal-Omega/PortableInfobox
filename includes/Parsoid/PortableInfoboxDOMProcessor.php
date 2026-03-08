@@ -15,9 +15,13 @@ class PortableInfoboxDOMProcessor extends DOMProcessor {
 	 * Note, this is a WIP at present, see comments throughout.
 	 * Will probably need to be revised at a later stage when Parsoid API is more mature
 	 * @since 1.0
+	 *
+	 * @param array $options @phan-unused-param
 	 */
 	public function wtPostprocess(
-		ParsoidExtensionAPI $extApi, Node $node, array $options
+		ParsoidExtensionAPI $extApi,
+		Node $node,
+		array $options
 	): void {
 		$child = $node->firstChild;
 
@@ -44,8 +48,6 @@ class PortableInfoboxDOMProcessor extends DOMProcessor {
 						$child->removeChild( $child->firstChild );
 					}
 
-					$doc = $child->ownerDocument;
-
 					foreach ( $parts as $part ) {
 						// add our parts to the params info
 						// this will get us the key => value of the parameters that the
@@ -57,8 +59,7 @@ class PortableInfoboxDOMProcessor extends DOMProcessor {
 						$params = $part->paramInfos ?? [];
 
 						$portableInfoboxRenderService = new ParsoidPortableInfoboxRenderService();
-
-						$portableInfoboxRenderService->renderPI( $extApi, $child, $doc, $params, $parsoidData );
+						$portableInfoboxRenderService->renderPI( $extApi, $child, $params, $parsoidData );
 					}
 
 				}
