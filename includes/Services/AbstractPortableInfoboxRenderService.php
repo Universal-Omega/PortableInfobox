@@ -109,7 +109,7 @@ abstract class AbstractPortableInfoboxRenderService {
 		return $this->render( 'group', [
 			'content' => $groupHTMLContent,
 			'cssClasses' => implode( ' ', $cssClasses ),
-			'item-name' => $groupData['item-name']
+			'item-name' => $groupData['item-name'],
 		] );
 	}
 
@@ -127,8 +127,7 @@ abstract class AbstractPortableInfoboxRenderService {
 			$data = $item['data'];
 
 			if ( $item['type'] === 'data' && $data['layout'] !== 'default' ) {
-
-				if ( !empty( $rowItems ) && $rowSpan + $data['span'] > $rowCapacity ) {
+				if ( $rowItems && $rowSpan + $data['span'] > $rowCapacity ) {
 					$result[] = $this->createSmartGroupItem( $rowItems, $rowSpan );
 					$rowSpan = 0;
 					$rowItems = [];
@@ -137,7 +136,7 @@ abstract class AbstractPortableInfoboxRenderService {
 				$rowItems[] = $item;
 			} else {
 				// smart wrapping works only for data tags
-				if ( !empty( $rowItems ) ) {
+				if ( $rowItems ) {
 					$result[] = $this->createSmartGroupItem( $rowItems, $rowSpan );
 					$rowSpan = 0;
 					$rowItems = [];
@@ -145,7 +144,7 @@ abstract class AbstractPortableInfoboxRenderService {
 				$result[] = $item;
 			}
 		}
-		if ( !empty( $rowItems ) ) {
+		if ( $rowItems ) {
 			$result[] = $this->createSmartGroupItem( $rowItems, $rowSpan );
 		}
 
@@ -161,7 +160,7 @@ abstract class AbstractPortableInfoboxRenderService {
 	protected function createSmartGroupItem( array $rowItems, $rowSpan ): array {
 		return [
 			'type' => 'smart-group',
-			'data' => $this->createSmartGroupSections( $rowItems, $rowSpan )
+			'data' => $this->createSmartGroupSections( $rowItems, $rowSpan ),
 		];
 	}
 
@@ -175,16 +174,16 @@ abstract class AbstractPortableInfoboxRenderService {
 			$width = $item['data']['span'] / $capacity * 100;
 			$styles = "width: {$width}%";
 
-			$label = $item['data']['label'] ?? "";
-			if ( !empty( $label ) ) {
+			$label = $item['data']['label'] ?? '';
+			if ( $label ) {
 				$result['renderLabels'] = true;
 			}
 			$result['data'][] = [
 				'label' => $label,
 				'value' => $item['data']['value'],
 				'inlineStyles' => $styles,
-				'source' => $item['data']['source'] ?? "",
-				'item-name' => $item['data']['item-name']
+				'source' => $item['data']['source'] ?? '',
+				'item-name' => $item['data']['item-name'],
 			];
 
 			return $result;
@@ -199,18 +198,17 @@ abstract class AbstractPortableInfoboxRenderService {
 	protected function createHorizontalGroupData( array $groupData ): array {
 		$horizontalGroupData = [
 			'data' => [],
-			'renderLabels' => false
+			'renderLabels' => false,
 		];
 
 		foreach ( $groupData as $item ) {
 			$data = $item['data'];
-
 			if ( $item['type'] === 'data' ) {
 				$horizontalGroupData['data'][] = [
 					'label' => $data['label'],
 					'value' => $data['value'],
-					'source' => $item['data']['source'] ?? "",
-					'item-name' => $item['data']['item-name']
+					'source' => $item['data']['source'] ?? '',
+					'item-name' => $item['data']['item-name'],
 				];
 
 				if ( !empty( $data['label'] ) ) {
@@ -237,7 +235,7 @@ abstract class AbstractPortableInfoboxRenderService {
 			'index' => $index,
 			'item-name' => $section['data']['item-name'],
 			'label' => $section['data']['label'],
-			'content' => !empty( $content ) ? $content : null
+			'content' => $content ?: null,
 		];
 	}
 
@@ -274,7 +272,7 @@ abstract class AbstractPortableInfoboxRenderService {
 		foreach ( $data['value'] as $index => $child ) {
 			switch ( $child['type'] ) {
 				case 'header':
-					if ( empty( $header ) ) {
+					if ( !$header ) {
 						$header = $this->renderHeader( $child['data'] );
 					}
 					break;
@@ -293,7 +291,7 @@ abstract class AbstractPortableInfoboxRenderService {
 					break;
 			}
 		}
-		if ( $collapse !== null && count( $sections ) > 0 && !empty( $header ) ) {
+		if ( $collapse !== null && count( $sections ) > 0 && $header ) {
 			$cssClasses[] = 'pi-collapse';
 			$cssClasses[] = 'pi-collapse-' . $collapse;
 		}
@@ -338,7 +336,7 @@ abstract class AbstractPortableInfoboxRenderService {
 			$data = [
 				'images' => $data,
 				'source' => $data[0]['source'],
-				'item-name' => $data[0]['item-name']
+				'item-name' => $data[0]['item-name'],
 			];
 			$templateName = 'media-collection';
 		}
