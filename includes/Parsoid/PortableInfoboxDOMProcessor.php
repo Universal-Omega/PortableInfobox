@@ -48,7 +48,7 @@ class PortableInfoboxDOMProcessor extends DOMProcessor {
 					// grant us the ability to do that, so just remove whatever gobbldy-guck was generated
 					// in the first pass. This is probably a bit of a performance hog, but it will be cached in the
 					// parser cache for subsequent reads so is a one-shot-pony until the cache expires.
-					while ( $child->firstChild ) {
+					while ( $child->firstChild !== null ) {
 						$child->removeChild( $child->firstChild );
 					}
 
