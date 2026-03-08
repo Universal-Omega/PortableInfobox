@@ -31,10 +31,15 @@ class ParsoidMediaWikiParser implements ExternalParser {
 		return DOMCompat::getOuterHTML( $paramParsed );
 	}
 
+	/** @param $wikitext @phan-unused-param */
 	public function replaceVariables( $wikitext ) {
 		// no-op - I think handled by ->wikiTextToDOM?
 	}
 
+	/**
+	 * @param $title @phan-unused-param
+	 * @param array $sizeParams @phan-unused-param
+	 */
 	public function addImage( $title, array $sizeParams ): ?string {
 		// no-op at present. Used to extend the image tag with specific information for the PageImages extension.
 		// that extension relies on Parser hooks and therefore is not safe to assume that will work indefinitely.
@@ -53,14 +58,10 @@ class ParsoidMediaWikiParser implements ExternalParser {
 	 * This hook is NOT available on Parsoid, and we have no other way to get the resultant class which PortableInfobox
 	 * currently relies on. So we need to fake it as best we can and hope WMF comes up with something later down
 	 * the line.
-	 * @param mixed $wikitext
+	 * @param string $wikitext
 	 * @return array an array of the images
 	 */
 	public function extractGallery( string $wikitext ): array {
-		if ( $wikitext === null ) {
-			return [];
-		}
-
 		// the legacy implementation reuturns an array where each element is an array of the caption
 		// and the title object for that specific image. We don't have access to this by default,
 		// since there is no concept of half parsing in Parsoid - we either ask Parsoid for the Parsed wt->html
