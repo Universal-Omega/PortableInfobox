@@ -60,7 +60,7 @@ class PortableInfoboxDOMProcessor extends DOMProcessor {
 						// params['name'] = [ 'k' => 'name', 'valueWt' => 'John Doe' ]
 						// which is something akin to what PortableInfoboxParserTagController::renderInfobox()
 						// expects to be passed, albeit we'll need to fudge it a bit!
-						$params = $part->paramInfos ?? [];
+						$params = $part->paramInfos;
 
 						$portableInfoboxRenderService = new ParsoidPortableInfoboxRenderService();
 						$portableInfoboxRenderService->renderPI( $extApi, $child, $params, $parsoidData );
