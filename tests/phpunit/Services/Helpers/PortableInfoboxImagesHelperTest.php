@@ -38,7 +38,7 @@ class PortableInfoboxImagesHelperTest extends MediaWikiIntegrationTestCase {
 		$this->assertEquals( $expected, $result );
 	}
 
-	public function thumbnailSizesDataProvider() {
+	public static function thumbnailSizesDataProvider() {
 		return [
 			[
 				'preferredWidth' => 270,
@@ -141,7 +141,7 @@ class PortableInfoboxImagesHelperTest extends MediaWikiIntegrationTestCase {
 		$this->assertEquals( $expected, $result );
 	}
 
-	public function customWidthProvider() {
+	public static function customWidthProvider() {
 		return [
 			[
 				'custom' => false,

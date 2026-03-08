@@ -28,7 +28,7 @@ class NodeDataTest extends MediaWikiIntegrationTestCase {
 		$this->assertEquals( $expected, $node->getSources() );
 	}
 
-	public function sourceDataProvider() {
+	public static function sourceDataProvider() {
 		return [
 			[
 				'<data source="test"></data>',
@@ -99,7 +99,7 @@ class NodeDataTest extends MediaWikiIntegrationTestCase {
 		$this->assertEquals( $expected, $node->getSourcesMetadata() );
 	}
 
-	public function sourcesMetadataDataProvider() {
+	public static function sourcesMetadataDataProvider() {
 		return [
 			[
 				'<data source="test"></data>',
@@ -343,6 +343,7 @@ class NodeDataTest extends MediaWikiIntegrationTestCase {
 	/**
 	 * @covers ::getMetadata
 	 * @covers \PortableInfobox\Services\Parser\Nodes\NodeInfobox::getMetadata
+	 * @covers \PortableInfobox\Services\Parser\Nodes\NodeGroup::getMetadata
 	 * @dataProvider metadataDataProvider
 	 *
 	 * @param $markup
@@ -355,7 +356,7 @@ class NodeDataTest extends MediaWikiIntegrationTestCase {
 		$this->assertEquals( $expected, $node->getMetadata() );
 	}
 
-	public function metadataDataProvider() {
+	public static function metadataDataProvider() {
 		return [
 			[
 				'<infobox><data source="test"></data></infobox>',
@@ -515,7 +516,7 @@ class NodeDataTest extends MediaWikiIntegrationTestCase {
 		$this->assertEquals( $expected, $node->setExternalParser( $parser )->getExternalParser() );
 	}
 
-	public function parserTestDataProvider() {
+	public static function parserTestDataProvider() {
 		return [
 			[ null, new SimpleParser() ],
 			[ new SimpleParser(), new SimpleParser() ]
@@ -536,7 +537,7 @@ class NodeDataTest extends MediaWikiIntegrationTestCase {
 		$this->assertEquals( $expected, $node->getData() );
 	}
 
-	public function dataProvider() {
+	public static function dataProvider() {
 		return [
 			[
 				'<data source="test"></data>',
@@ -751,7 +752,7 @@ class NodeDataTest extends MediaWikiIntegrationTestCase {
 		$this->assertEquals( $expected, $node->getRenderData() );
 	}
 
-	public function dataRenderProvider() {
+	public static function dataRenderProvider() {
 		return [
 			[
 				'<data source="test"></data>',
@@ -875,7 +876,7 @@ class NodeDataTest extends MediaWikiIntegrationTestCase {
 		$this->assertEquals( $expected, $node->isType( $typeToCheck ) );
 	}
 
-	public function isTypeDataProvider() {
+	public static function isTypeDataProvider() {
 		return [
 			[ '<data source="test"></data>', 'data', true ],
 			[ '<data source="test"></data>', 'DaTa', true ],
@@ -896,7 +897,7 @@ class NodeDataTest extends MediaWikiIntegrationTestCase {
 		$this->assertEquals( $expected, $node->getType() );
 	}
 
-	public function typeDataProvider() {
+	public static function typeDataProvider() {
 		return [
 			[ '<data source="test"></data>', 'data' ],
 			[ '<infobox></infobox>', 'infobox' ],
@@ -915,7 +916,7 @@ class NodeDataTest extends MediaWikiIntegrationTestCase {
 		$this->assertTrue( $node->isEmpty( $nodeData ) == $expectedOutput );
 	}
 
-	public function isEmptyDataProvider() {
+	public static function isEmptyDataProvider() {
 		return [
 			[
 				'season' => '0',

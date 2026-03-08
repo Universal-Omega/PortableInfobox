@@ -13,18 +13,17 @@ class NodePanel extends Node {
 	];
 
 	public function getData() {
-		if ( !isset( $this->data ) ) {
-			$this->data = [
-				'value' => $this->getRenderDataForChildren(),
-				'collapse' => $this->getCollapse(),
-				'item-name' => $this->getItemName(),
-			];
-		}
+		$this->data ??= [
+			'value' => $this->getRenderDataForChildren(),
+			'collapse' => $this->getCollapse(),
+			'item-name' => $this->getItemName(),
+		];
+
 		return $this->data;
 	}
 
 	protected function getChildNodes() {
-		if ( !isset( $this->children ) ) {
+		if ( $this->children === null ) {
 			$this->children = [];
 			$hasHeader = false;
 
@@ -46,7 +45,7 @@ class NodePanel extends Node {
 
 	protected function getCollapse() {
 		$collapse = $this->getXmlAttribute( $this->xmlNode, self::COLLAPSE_ATTR_NAME );
-		return ( isset( $collapse ) && in_array( $collapse, $this->supportedPanelCollapses ) ) ?
+		return ( $collapse && in_array( $collapse, $this->supportedPanelCollapses ) ) ?
 			$collapse : null;
 	}
 }

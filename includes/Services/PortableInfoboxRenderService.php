@@ -24,13 +24,13 @@ class PortableInfoboxRenderService extends AbstractPortableInfoboxRenderService 
 
 		$infoboxHtmlContent = $this->renderChildren( $infoboxdata );
 
-		if ( !empty( $infoboxHtmlContent ) ) {
+		if ( $infoboxHtmlContent ) {
 			$output = $this->renderItem( 'wrapper', [
 				'content' => $infoboxHtmlContent,
 				'theme' => $theme,
 				'layout' => $layout,
 				'type' => $type,
-				'item-name' => $itemName
+				'item-name' => $itemName,
 			] );
 		} else {
 			$output = '';
@@ -52,8 +52,8 @@ class PortableInfoboxRenderService extends AbstractPortableInfoboxRenderService 
 	}
 
 	private function getInlineStyles( $accentColor, $accentColorText ) {
-		$backgroundColor = empty( $accentColor ) ? '' : "background-color:{$accentColor};";
-		$color = empty( $accentColorText ) ? '' : "color:{$accentColorText};";
+		$backgroundColor = !$accentColor ? '' : "background-color:{$accentColor};";
+		$color = !$accentColorText ? '' : "color:{$accentColorText};";
 
 		return "{$backgroundColor}{$color}";
 	}

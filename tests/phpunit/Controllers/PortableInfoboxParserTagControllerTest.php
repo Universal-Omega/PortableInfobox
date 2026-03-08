@@ -107,7 +107,7 @@ class PortableInfoboxParserTagControllerTest extends MediaWikiIntegrationTestCas
 		}, true ), $message );
 	}
 
-	public function themeNamesProvider() {
+	public static function themeNamesProvider() {
 		return [
 			// static theme, variable theme, [ classes ], message
 			[
@@ -170,7 +170,7 @@ class PortableInfoboxParserTagControllerTest extends MediaWikiIntegrationTestCas
 		), $message );
 	}
 
-	public function getLayoutDataProvider() {
+	public static function getLayoutDataProvider() {
 		return [
 			[
 				'layout' => [ 'layout' => 'stacked' ],
@@ -227,7 +227,7 @@ class PortableInfoboxParserTagControllerTest extends MediaWikiIntegrationTestCas
 		);
 	}
 
-	public function getColorDataProvider() {
+	public static function getColorDataProvider() {
 		return [
 			[
 				[ 'accent-color-default' => '#fff' ],
@@ -359,7 +359,7 @@ class PortableInfoboxParserTagControllerTest extends MediaWikiIntegrationTestCas
 		$this->assertEquals( $expected, $result );
 	}
 
-	public function paramsDataProvider() {
+	public static function paramsDataProvider() {
 		return [
 			[ [ 0 => 'zero', 1 => 'one', 2 => 'two' ], [ 'zero', 'one', 'two' ] ],
 			[ [ 1 => 'three', 2 => 'four', 3 => 'five' ],

@@ -21,9 +21,7 @@ class FileNamespaceSanitizeHelperTest extends MediaWikiIntegrationTestCase {
 
 		$class = new ReflectionClass( FileNamespaceSanitizeHelper::class );
 		$instance = $class->getProperty( 'instance' );
-		$instance->setAccessible( true );
 		$filePrefixRegex = $class->getProperty( 'filePrefixRegex' );
-		$filePrefixRegex->setAccessible( true );
 
 		$this->fileNamespaceSanitizeHelper = FileNamespaceSanitizeHelper::getInstance();
 		$instance->setValue( $this->fileNamespaceSanitizeHelper, null );
@@ -57,7 +55,7 @@ class FileNamespaceSanitizeHelperTest extends MediaWikiIntegrationTestCase {
 		$this->assertEquals( $expectedOutput, $actualOutput, $description );
 	}
 
-	public function sanitizeImageFilenameDataProvider() {
+	public static function sanitizeImageFilenameDataProvider() {
 		return [
 			[
 				'filename.jpg',
@@ -316,7 +314,7 @@ class FileNamespaceSanitizeHelperTest extends MediaWikiIntegrationTestCase {
 		$this->assertEquals( $expectedOutput, $actualOutput );
 	}
 
-	public function removeImageParamsDataProvider() {
+	public static function removeImageParamsDataProvider() {
 		return [
 			[
 				'File:image.jpg|300px|lorem ipsum',

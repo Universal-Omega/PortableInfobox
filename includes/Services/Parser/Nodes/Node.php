@@ -53,7 +53,7 @@ class Node {
 		foreach ( $sources as $source ) {
 			$metadata[$source] = [];
 			$metadata[$source]['label'] = ( $sourcesLength > 1 ) ?
-				( !empty( $baseLabel ) ? "{$baseLabel} ({$source})" : '' ) :
+				( $baseLabel ? "{$baseLabel} ({$source})" : '' ) :
 				$baseLabel;
 		}
 
@@ -78,7 +78,7 @@ class Node {
 	 * @return ExternalParser
 	 */
 	public function getExternalParser() {
-		if ( !isset( $this->externalParser ) ) {
+		if ( !$this->externalParser ) {
 			$this->setExternalParser( new SimpleParser() );
 		}
 
@@ -116,13 +116,11 @@ class Node {
 	}
 
 	public function getData() {
-		if ( !isset( $this->data ) ) {
-			$this->data = [
-				'value' => (string)$this->xmlNode,
-				'source' => $this->getPrimarySource(),
-				'item-name' => $this->getItemName()
-			];
-		}
+		$this->data ??= [
+			'value' => (string)$this->xmlNode,
+			'source' => $this->getPrimarySource(),
+			'item-name' => $this->getItemName(),
+		];
 
 		return $this->data;
 	}
@@ -142,12 +140,11 @@ class Node {
 	 */
 	public function isEmpty() {
 		$data = $this->getData()['value'];
-
-		return ( empty( $data ) && $data != '0' );
+		return $data === null || $data === '' || $data === [];
 	}
 
 	protected function getChildNodes() {
-		if ( !isset( $this->children ) ) {
+		if ( $this->children === null ) {
 			$this->children = [];
 			foreach ( $this->xmlNode as $child ) {
 				$this->children[] = NodeFactory::newFromSimpleXml( $child, $this->infoboxData, $this->getExternalParser() )
@@ -253,8 +250,7 @@ class Node {
 	 */
 	protected function extractDataFromSource( SimpleXMLElement $xmlNode ) {
 		$source = $this->getXmlAttribute( $xmlNode, self::DATA_SRC_ATTR_NAME );
-
-		return ( !empty( $source ) || $source == '0' ) ? $this->getInfoboxData( $source )
+		return ( $source !== null && $source !== '' ) ? $this->getInfoboxData( $source )
 			: null;
 	}
 

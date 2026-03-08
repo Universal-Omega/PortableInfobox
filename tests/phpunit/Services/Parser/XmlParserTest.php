@@ -19,7 +19,7 @@ class XmlParserTest extends MediaWikiIntegrationTestCase {
 		$this->assertEquals( $content, (string)$result->{$tag} );
 	}
 
-	public function contentTagsDataProvider() {
+	public static function contentTagsDataProvider() {
 		return [
 			[ 'default', 'sadf <br> sakdjfl' ],
 			[ 'format', '<>' ],
@@ -35,7 +35,7 @@ class XmlParserTest extends MediaWikiIntegrationTestCase {
 		$this->assertEquals( $expectedResult, $result[ 0 ] );
 	}
 
-	public function entitiesTestDataProvider() {
+	public static function entitiesTestDataProvider() {
 		return [
 			[ '<data></data>', '' ],
 			[ '<data>&aksjdf;</data>', '&aksjdf;' ],

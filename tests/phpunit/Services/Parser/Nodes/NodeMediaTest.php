@@ -29,7 +29,7 @@ class NodeMediaTest extends MediaWikiIntegrationTestCase {
 		$this->assertEquals( $expected, NodeMedia::getGalleryData( $marker ) );
 	}
 
-	public function galleryDataProvider() {
+	public static function galleryDataProvider() {
 		$markers = [
 			"'\"`UNIQabcd-gAlLeRy-1-QINU`\"'",
 			"'\"`UNIQabcd-gAlLeRy-2-QINU`\"'",
@@ -114,7 +114,7 @@ class NodeMediaTest extends MediaWikiIntegrationTestCase {
 		$this->assertEquals( $expected, NodeMedia::getMarkers( $value, $ext ) );
 	}
 
-	public function markersProvider() {
+	public static function markersProvider() {
 		return [
 			[
 				'TABBER',
@@ -161,13 +161,12 @@ class NodeMediaTest extends MediaWikiIntegrationTestCase {
 
 		$reflection = new ReflectionClass( $node );
 		$reflectionProperty = $reflection->getProperty( 'helper' );
-		$reflectionProperty->setAccessible( true );
 		$reflectionProperty->setValue( $node, $helper );
 
 		$this->assertEquals( $expected, $node->getData() );
 	}
 
-	public function dataProvider() {
+	public static function dataProvider() {
 		// markup, params, expected
 		return [
 			[
@@ -324,7 +323,7 @@ class NodeMediaTest extends MediaWikiIntegrationTestCase {
 		$this->assertEquals( $expected, $node->isEmpty() );
 	}
 
-	public function isEmptyProvider() {
+	public static function isEmptyProvider() {
 		return [
 			[ '<media></media>', [], true ],
 		];
@@ -343,7 +342,7 @@ class NodeMediaTest extends MediaWikiIntegrationTestCase {
 		$this->assertEquals( $expected, $node->getSources() );
 	}
 
-	public function sourcesProvider() {
+	public static function sourcesProvider() {
 		return [
 			[
 				'<media source="img"/>',
@@ -382,7 +381,7 @@ class NodeMediaTest extends MediaWikiIntegrationTestCase {
 		$this->assertEquals( $expected, $node->getMetadata() );
 	}
 
-	public function metadataProvider() {
+	public static function metadataProvider() {
 		return [
 			[
 				'<media source="img">' .
@@ -417,14 +416,13 @@ class NodeMediaTest extends MediaWikiIntegrationTestCase {
 
 		$reflection = new ReflectionClass( $node );
 		$reflection_method = $reflection->getMethod( 'isTypeAllowed' );
-		$reflection_method->setAccessible( true );
 
 		foreach ( $types as $i => $type ) {
 			$this->assertEquals( $expected[$i], $reflection_method->invoke( $node, $type ) );
 		}
 	}
 
-	public function isTypeAllowedProvider() {
+	public static function isTypeAllowedProvider() {
 		return [
 			[
 				'<media />',

@@ -41,7 +41,7 @@ class NodeFactoryTest extends MediaWikiIntegrationTestCase {
 		$this->assertEquals( $expected, get_class( $node ) );
 	}
 
-	public function newFromXMLProvider() {
+	public static function newFromXMLProvider() {
 		return [
 			[
 				'<infobox />',

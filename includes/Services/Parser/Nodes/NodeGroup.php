@@ -30,15 +30,13 @@ class NodeGroup extends Node {
 	];
 
 	public function getData() {
-		if ( !isset( $this->data ) ) {
-			$this->data = [
-				'value' => $this->getDataForChildren(),
-				'layout' => $this->getLayout(),
-				'collapse' => $this->getCollapse(),
-				'row-items' => $this->getRowItems(),
-				'item-name' => $this->getItemName()
-			];
-		}
+		$this->data ??= [
+			'value' => $this->getDataForChildren(),
+			'layout' => $this->getLayout(),
+			'collapse' => $this->getCollapse(),
+			'row-items' => $this->getRowItems(),
+			'item-name' => $this->getItemName(),
+		];
 
 		return $this->data;
 	}
@@ -83,7 +81,7 @@ class NodeGroup extends Node {
 	public function getMetadata() {
 		return [
 			'type' => $this->getType(),
-			'metadata' => $this->getMetadataForChildren()
+			'metadata' => $this->getMetadataForChildren(),
 		];
 	}
 
@@ -93,27 +91,24 @@ class NodeGroup extends Node {
 
 	protected function getDisplay() {
 		$show = $this->getXmlAttribute( $this->xmlNode, self::SHOW_ATTR_NAME );
-
-		return ( isset( $show ) && in_array( strtolower( $show ), $this->supportedGroupDisplays ) ) ?
+		return ( $show && in_array( strtolower( $show ), $this->supportedGroupDisplays ) ) ?
 			$show : self::SHOW_DEFAULT_OPTION;
 	}
 
 	protected function getCollapse() {
 		$collapse = $this->getXmlAttribute( $this->xmlNode, self::COLLAPSE_ATTR_NAME );
-		return ( isset( $collapse ) && in_array( $collapse, $this->supportedGroupCollapses ) ) ?
+		return ( $collapse && in_array( $collapse, $this->supportedGroupCollapses ) ) ?
 			$collapse : null;
 	}
 
 	protected function getLayout() {
 		$layout = $this->getXmlAttribute( $this->xmlNode, self::LAYOUT_ATTR_NAME );
-
-		return ( isset( $layout ) && in_array( $layout, $this->supportedGroupLayouts ) ) ?
+		return ( $layout && in_array( $layout, $this->supportedGroupLayouts ) ) ?
 			$layout : self::LAYOUT_DEFAULT_OPTION;
 	}
 
 	protected function getRowItems() {
 		$rowItems = $this->getXmlAttribute( $this->xmlNode, self::ROW_ITEMS_ATTR_NAME );
-
-		return ( isset( $rowItems ) && ctype_digit( $rowItems ) ) ? intval( $rowItems ) : null;
+		return ( $rowItems && ctype_digit( $rowItems ) ) ? (int)$rowItems : null;
 	}
 }

@@ -91,11 +91,14 @@ class ApiPortableInfobox extends ApiBase {
 	}
 
 	/**
-	 * @return mixed
+	 * @return array|false
 	 */
 	protected function getFrameArguments() {
-		$arguments = $this->getParameter( "args" );
-		return isset( $arguments ) ? json_decode( $arguments, true ) : false;
-	}
+		$arguments = $this->getParameter( 'args' );
+		if ( !$arguments ) {
+			return false;
+		}
 
+		return json_decode( $arguments, true );
+	}
 }

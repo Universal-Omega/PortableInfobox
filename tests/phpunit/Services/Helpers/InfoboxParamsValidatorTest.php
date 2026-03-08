@@ -43,7 +43,7 @@ class InfoboxParamsValidatorTest extends MediaWikiIntegrationTestCase {
 		$this->assertTrue( $this->InfoboxParamsValidator->validateParams( $params ) );
 	}
 
-	public function infoboxParamsFailValidationDataProvider() {
+	public static function infoboxParamsFailValidationDataProvider() {
 		return [
 			[
 				'params' => [
@@ -60,7 +60,7 @@ class InfoboxParamsValidatorTest extends MediaWikiIntegrationTestCase {
 		];
 	}
 
-	public function infoboxParamsPassValidationDataProvider() {
+	public static function infoboxParamsPassValidationDataProvider() {
 		return [
 			[
 				'params' => [],
@@ -92,7 +92,7 @@ class InfoboxParamsValidatorTest extends MediaWikiIntegrationTestCase {
 		);
 	}
 
-	public function passValidateColorValueDataProvider() {
+	public static function passValidateColorValueDataProvider() {
 		return [
 			[ 'color' => '#aaa' ],
 			[ 'color' => '#abc' ],
@@ -169,7 +169,7 @@ class InfoboxParamsValidatorTest extends MediaWikiIntegrationTestCase {
 		$this->assertSame( '', $this->InfoboxParamsValidator->validateColorValue( $color ) );
 	}
 
-	public function failValidateColorValueDataProvider() {
+	public static function failValidateColorValueDataProvider() {
 		return [
 			[ 'color' => '' ],
 			[ 'color' => 'ggg' ],
@@ -222,7 +222,7 @@ class InfoboxParamsValidatorTest extends MediaWikiIntegrationTestCase {
 		$this->assertTrue( $this->InfoboxParamsValidator->validateLayout( $layout ) );
 	}
 
-	public function passValidateLayoutDataProvider() {
+	public static function passValidateLayoutDataProvider() {
 		return [
 			[ 'layout' => 'default' ],
 			[ 'layout' => 'stacked' ]
@@ -237,7 +237,7 @@ class InfoboxParamsValidatorTest extends MediaWikiIntegrationTestCase {
 		$this->assertFalse( $this->InfoboxParamsValidator->validateLayout( $layout ) );
 	}
 
-	public function failValidateLayoutDataProvider() {
+	public static function failValidateLayoutDataProvider() {
 		return [
 			[ 'layout' => '' ],
 			[ 'layout' => 'custom' ]

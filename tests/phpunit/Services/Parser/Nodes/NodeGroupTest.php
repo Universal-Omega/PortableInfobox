@@ -24,7 +24,7 @@ class NodeGroupTest extends MediaWikiIntegrationTestCase {
 		$this->assertEquals( $expected, $node->getData()['collapse'] );
 	}
 
-	public function groupNodeCollapseTestProvider() {
+	public static function groupNodeCollapseTestProvider() {
 		return [
 			[ '<group></group>', null ],
 			[ '<group collapse="wrong"></group>', null ],
@@ -47,7 +47,7 @@ class NodeGroupTest extends MediaWikiIntegrationTestCase {
 		$this->assertEquals( $expected, $node->getRenderData()['data']['row-items'] );
 	}
 
-	public function groupNodeRowItemsTestProvider() {
+	public static function groupNodeRowItemsTestProvider() {
 		return [
 			[ '<group></group>', null ],
 			[ '<group row-items="not a number"></group>', null ],
@@ -71,7 +71,7 @@ class NodeGroupTest extends MediaWikiIntegrationTestCase {
 		$this->assertEquals( $expected, $node->getData() );
 	}
 
-	public function groupNodeTestProvider() {
+	public static function groupNodeTestProvider() {
 		return [
 			[
 				'<group>' .

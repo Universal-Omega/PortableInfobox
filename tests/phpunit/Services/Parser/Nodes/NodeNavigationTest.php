@@ -26,7 +26,7 @@ class NodeNavigationTest extends MediaWikiIntegrationTestCase {
 		$this->assertEquals( $expected, $node->getData() );
 	}
 
-	public function dataProvider() {
+	public static function dataProvider() {
 		return [
 			[
 				'<navigation></navigation>',
@@ -57,7 +57,7 @@ class NodeNavigationTest extends MediaWikiIntegrationTestCase {
 		$this->assertTrue( $node->isEmpty( $data ) == $expectedOutput );
 	}
 
-	public function isEmptyDataProvider() {
+	public static function isEmptyDataProvider() {
 		return [
 			[
 				'string' => '<navigation>goodnight</navigation>',
