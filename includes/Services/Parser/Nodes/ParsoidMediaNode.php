@@ -2,6 +2,7 @@
 
 namespace PortableInfobox\Services\Parser\Nodes;
 
+use MediaWiki\FileRepo\File\File;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\Title;
 use PortableInfobox\Parsoid\ParsoidMediaWikiParser;
