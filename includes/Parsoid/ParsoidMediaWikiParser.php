@@ -23,10 +23,7 @@ class ParsoidMediaWikiParser implements ExternalParser {
 			// this differs from earlier as we need the frame to be able to grab the
 			// params the user passed - parsoid handles this internally it appears
 			'processInNewFrame' => false,
-			'parseOpts' => [
-				'extTag' => 'infobox',
-				'context' => 'inline',
-			],
+			'parseOpts' => [ 'context' => 'inline' ],
 		], true );
 
 		// we don't want Parsoid to wrap in a span or add a typeof here,
