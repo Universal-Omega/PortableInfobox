@@ -193,7 +193,7 @@ class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 				],
 				'output' => '<aside class="portable-infobox noexcerpt searchaux pi-background">
 						<div class="pi-item pi-data pi-item-spacing pi-border-color">
-							<h3 class="pi-data-label pi-secondary-font">test label</h3>
+							<div class="pi-data-label pi-secondary-font">test label</div>
 							<div class="pi-data-value pi-font">test value</div>
 						</div>
 					</aside>',
@@ -246,7 +246,7 @@ class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 							</a>
 						</figure>
 						<div class="pi-item pi-data pi-item-spacing pi-border-color" data-source="test">
-							<h3 class="pi-data-label pi-secondary-font">test label</h3>
+							<div class="pi-data-label pi-secondary-font">test label</div>
 							<div class="pi-data-value pi-font">test value</div>
 						</div>
 					</aside>',
@@ -281,7 +281,7 @@ class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 				'output' => '<aside class="portable-infobox noexcerpt searchaux pi-background">
 						<div class="pi-item pi-item-spacing pi-title">Test Title</div>
 						<div class="pi-item pi-data pi-item-spacing pi-border-color">
-							<h3 class="pi-data-label pi-secondary-font">test label</h3>
+							<div class="pi-data-label pi-secondary-font">test label</div>
 							<div class="pi-data-value pi-font">test value</div>
 						</div>
 					</aside>',
@@ -311,7 +311,7 @@ class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 				'output' => '<aside class="portable-infobox noexcerpt searchaux pi-background">
 						<div class="pi-item pi-item-spacing pi-title">Test Title</div>
 						<div class="pi-item pi-data pi-item-spacing pi-border-color" data-item-name="testname">
-							<h3 class="pi-data-label pi-secondary-font">test label</h3>
+							<div class="pi-data-label pi-secondary-font">test label</div>
 							<div class="pi-data-value pi-font">test value</div>
 						</div>
 					</aside>',
@@ -371,11 +371,11 @@ class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 						<section class="pi-item pi-group pi-border-color">
 							<div class="pi-item pi-header pi-secondary-font pi-item-spacing pi-secondary-background">Test Header</div>
 							<div class="pi-item pi-data pi-item-spacing pi-border-color" data-item-name="dataname">
-								<h3 class="pi-data-label pi-secondary-font">test label</h3>
+								<div class="pi-data-label pi-secondary-font">test label</div>
 								<div class="pi-data-value pi-font">test value</div>
 							</div>
 							<div class="pi-item pi-data pi-item-spacing pi-border-color" data-source="datasrc">
-								<h3 class="pi-data-label pi-secondary-font">test label</h3>
+								<div class="pi-data-label pi-secondary-font">test label</div>
 								<div class="pi-data-value pi-font">test value</div>
 							</div>
 						</section>
@@ -436,11 +436,11 @@ class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 						<section class="pi-item pi-group pi-border-color">
 							<div class="pi-item pi-header pi-secondary-font pi-item-spacing pi-secondary-background" style="background-color:#FFF;color:#000;">Test Header</div>
 							<div class="pi-item pi-data pi-item-spacing pi-border-color">
-								<h3 class="pi-data-label pi-secondary-font">test label</h3>
+								<div class="pi-data-label pi-secondary-font">test label</div>
 								<div class="pi-data-value pi-font">test value</div>
 							</div>
 							<div class="pi-item pi-data pi-item-spacing pi-border-color">
-								<h3 class="pi-data-label pi-secondary-font">test label</h3>
+								<div class="pi-data-label pi-secondary-font">test label</div>
 								<div class="pi-data-value pi-font">test value</div>
 							</div>
 						</section>
@@ -818,9 +818,9 @@ class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 						<section class="pi-item pi-group pi-border-color">
 							<section class="pi-item pi-smart-group pi-border-color">
 								<section class="pi-smart-group-head">
-									<h3 class="pi-smart-data-label pi-data-label pi-secondary-font pi-item-spacing" style="width: 33.333333333333%">Test 1</h3>
-									<h3 class="pi-smart-data-label pi-data-label pi-secondary-font pi-item-spacing" style="width: 33.333333333333%">Test 2</h3>
-									<h3 class="pi-smart-data-label pi-data-label pi-secondary-font pi-item-spacing" style="width: 33.333333333333%">Test 3</h3>
+									<div class="pi-smart-data-label pi-data-label pi-secondary-font pi-item-spacing" style="width: 33.333333333333%">Test 1</div>
+									<div class="pi-smart-data-label pi-data-label pi-secondary-font pi-item-spacing" style="width: 33.333333333333%">Test 2</div>
+									<div class="pi-smart-data-label pi-data-label pi-secondary-font pi-item-spacing" style="width: 33.333333333333%">Test 3</div>
 								</section>
 								<section class="pi-smart-group-body">
 									<div class="pi-smart-data-value pi-data-value pi-font pi-item-spacing" style="width: 33.333333333333%">test value 1</div>
@@ -830,8 +830,8 @@ class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 							</section>
 							<section class="pi-item pi-smart-group pi-border-color">
 								<section class="pi-smart-group-head">
-									<h3 class="pi-smart-data-label pi-data-label pi-secondary-font pi-item-spacing" style="width: 50%">Test 4</h3>
-									<h3 class="pi-smart-data-label pi-data-label pi-secondary-font pi-item-spacing" style="width: 50%">Test 5</h3>
+									<div class="pi-smart-data-label pi-data-label pi-secondary-font pi-item-spacing" style="width: 50%">Test 4</div>
+									<div class="pi-smart-data-label pi-data-label pi-secondary-font pi-item-spacing" style="width: 50%">Test 5</div>
 								</section>
 								<section class="pi-smart-group-body">
 									<div class="pi-smart-data-value pi-data-value pi-font pi-item-spacing" style="width: 50%">test value 4</div>
@@ -906,9 +906,9 @@ class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 						<section class="pi-item pi-group pi-border-color">
 							<section class="pi-item pi-smart-group pi-border-color">
 								<section class="pi-smart-group-head">
-									<h3 class="pi-smart-data-label pi-data-label pi-secondary-font pi-item-spacing" style="width: 33.333333333333%">Test 1</h3>
-									<h3 class="pi-smart-data-label pi-data-label pi-secondary-font pi-item-spacing" style="width: 33.333333333333%" data-item-name="test2">Test 2</h3>
-									<h3 class="pi-smart-data-label pi-data-label pi-secondary-font pi-item-spacing" style="width: 33.333333333333%" data-source="test3" data-item-name="test3">Test 3</h3>
+									<div class="pi-smart-data-label pi-data-label pi-secondary-font pi-item-spacing" style="width: 33.333333333333%">Test 1</div>
+									<div class="pi-smart-data-label pi-data-label pi-secondary-font pi-item-spacing" style="width: 33.333333333333%" data-item-name="test2">Test 2</div>
+									<div class="pi-smart-data-label pi-data-label pi-secondary-font pi-item-spacing" style="width: 33.333333333333%" data-source="test3" data-item-name="test3">Test 3</div>
 								</section>
 								<section class="pi-smart-group-body">
 									<div class="pi-smart-data-value pi-data-value pi-font pi-item-spacing" style="width: 33.333333333333%">test value 1</div>
@@ -918,7 +918,7 @@ class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 							</section>
 							<section class="pi-item pi-smart-group pi-border-color">
 								<section class="pi-smart-group-head">
-									<h3 class="pi-smart-data-label pi-data-label pi-secondary-font pi-item-spacing" style="width: 100%" data-source="test4" data-item-name="test4">Test 4</h3>
+									<div class="pi-smart-data-label pi-data-label pi-secondary-font pi-item-spacing" style="width: 100%" data-source="test4" data-item-name="test4">Test 4</div>
 								</section>
 								<section class="pi-smart-group-body">
 									<div class="pi-smart-data-value pi-data-value pi-font pi-item-spacing" style="width: 100%" data-source="test4" data-item-name="test4">test value 4</div>
@@ -959,7 +959,7 @@ class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 					  <section class="pi-item pi-group pi-border-color">
 							<section class="pi-item pi-smart-group pi-border-color">
 								<section class="pi-smart-group-head">
-									<h3 class="pi-smart-data-label pi-data-label pi-secondary-font pi-item-spacing" style="width: 100%">Test 1</h3>
+									<div class="pi-smart-data-label pi-data-label pi-secondary-font pi-item-spacing" style="width: 100%">Test 1</div>
 								</section>
 								<section class="pi-smart-group-body">
 									<div class="pi-smart-data-value pi-data-value pi-font pi-item-spacing" style="width: 100%">test value 1</div>
@@ -1011,8 +1011,8 @@ class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 					  <section class="pi-item pi-group pi-border-color">
 							<section class="pi-item pi-smart-group pi-border-color">
 								<section class="pi-smart-group-head">
-									<h3 class="pi-smart-data-label pi-data-label pi-secondary-font pi-item-spacing" style="width: 66.666666666667%">Test 1</h3>
-									<h3 class="pi-smart-data-label pi-data-label pi-secondary-font pi-item-spacing" style="width: 33.333333333333%">Test 2</h3>
+									<div class="pi-smart-data-label pi-data-label pi-secondary-font pi-item-spacing" style="width: 66.666666666667%">Test 1</div>
+									<div class="pi-smart-data-label pi-data-label pi-secondary-font pi-item-spacing" style="width: 33.333333333333%">Test 2</div>
 								</section>
 								<section class="pi-smart-group-body">
 									<div class="pi-smart-data-value pi-data-value pi-font pi-item-spacing" style="width: 66.666666666667%">test value 1</div>
@@ -1065,8 +1065,8 @@ class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 						<section class="pi-item pi-group pi-border-color">
 							<section class="pi-item pi-smart-group pi-border-color">
 								<section class="pi-smart-group-head">
-									<h3 class="pi-smart-data-label pi-data-label pi-secondary-font pi-item-spacing" style="width: 66.666666666667%">Test 1</h3>
-									<h3 class="pi-smart-data-label pi-data-label pi-secondary-font pi-item-spacing" style="width: 33.333333333333%">Test 2</h3>
+									<div class="pi-smart-data-label pi-data-label pi-secondary-font pi-item-spacing" style="width: 66.666666666667%">Test 1</div>
+									<div class="pi-smart-data-label pi-data-label pi-secondary-font pi-item-spacing" style="width: 33.333333333333%">Test 2</div>
 								</section>
 								<section class="pi-smart-group-body">
 									<div class="pi-smart-data-value pi-data-value pi-font pi-item-spacing" style="width: 66.666666666667%">test value 1</div>
@@ -1130,7 +1130,7 @@ class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 						<section class="pi-item pi-group pi-border-color">
 							<section class="pi-item pi-smart-group pi-border-color">
 								<section class="pi-smart-group-head">
-									<h3 class="pi-smart-data-label pi-data-label pi-secondary-font pi-item-spacing" style="width: 100%">Test 1</h3>
+									<div class="pi-smart-data-label pi-data-label pi-secondary-font pi-item-spacing" style="width: 100%">Test 1</div>
 								</section>
 								<section class="pi-smart-group-body">
 									<div class="pi-smart-data-value pi-data-value pi-font pi-item-spacing" style="width: 100%">test value 1</div>
@@ -1138,7 +1138,7 @@ class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 							</section>
 							<section class="pi-item pi-smart-group pi-border-color">
 								<section class="pi-smart-group-head">
-									<h3 class="pi-smart-data-label pi-data-label pi-secondary-font pi-item-spacing" style="width: 100%">Test 2</h3>
+									<div class="pi-smart-data-label pi-data-label pi-secondary-font pi-item-spacing" style="width: 100%">Test 2</div>
 								</section>
 								<section class="pi-smart-group-body">
 									<div class="pi-smart-data-value pi-data-value pi-font pi-item-spacing" style="width: 100%">test value 2</div>
@@ -1146,7 +1146,7 @@ class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 							</section>
 							<section class="pi-item pi-smart-group pi-border-color">
 								<section class="pi-smart-group-head">
-									<h3 class="pi-smart-data-label pi-data-label pi-secondary-font pi-item-spacing" style="width: 100%">Test 3</h3>
+									<div class="pi-smart-data-label pi-data-label pi-secondary-font pi-item-spacing" style="width: 100%">Test 3</div>
 								</section>
 								<section class="pi-smart-group-body">
 									<div class="pi-smart-data-value pi-data-value pi-font pi-item-spacing" style="width: 100%">test value 3</div>
@@ -1242,8 +1242,8 @@ class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 						<section class="pi-item pi-group pi-border-color">
 							<section class="pi-item pi-smart-group pi-border-color">
 								<section class="pi-smart-group-head">
-									<h3 class="pi-smart-data-label pi-data-label pi-secondary-font pi-item-spacing" style="width: 50%">Test 1</h3>
-									<h3 class="pi-smart-data-label pi-data-label pi-secondary-font pi-item-spacing" style="width: 50%">Test 2</h3>
+									<div class="pi-smart-data-label pi-data-label pi-secondary-font pi-item-spacing" style="width: 50%">Test 1</div>
+									<div class="pi-smart-data-label pi-data-label pi-secondary-font pi-item-spacing" style="width: 50%">Test 2</div>
 								</section>
 								<section class="pi-smart-group-body">
 									<div class="pi-smart-data-value pi-data-value pi-font pi-item-spacing" style="width: 50%">test value 1</div>
@@ -1251,14 +1251,14 @@ class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 								</section>
 							</section>
 							<div class="pi-item pi-data pi-item-spacing pi-border-color">
-								<h3 class="pi-data-label pi-secondary-font">Test 3</h3>
+								<div class="pi-data-label pi-secondary-font">Test 3</div>
 								<div class="pi-data-value pi-font">test value 3</div>
 							</div>
 							<section class="pi-item pi-smart-group pi-border-color">
 								<section class="pi-smart-group-head">
-									<h3 class="pi-smart-data-label pi-data-label pi-secondary-font pi-item-spacing" style="width: 33.333333333333%">Test 4</h3>
-									<h3 class="pi-smart-data-label pi-data-label pi-secondary-font pi-item-spacing" style="width: 33.333333333333%">Test 5</h3>
-									<h3 class="pi-smart-data-label pi-data-label pi-secondary-font pi-item-spacing" style="width: 33.333333333333%">Test 6</h3>
+									<div class="pi-smart-data-label pi-data-label pi-secondary-font pi-item-spacing" style="width: 33.333333333333%">Test 4</div>
+									<div class="pi-smart-data-label pi-data-label pi-secondary-font pi-item-spacing" style="width: 33.333333333333%">Test 5</div>
+									<div class="pi-smart-data-label pi-data-label pi-secondary-font pi-item-spacing" style="width: 33.333333333333%">Test 6</div>
 								</section>
 								<section class="pi-smart-group-body">
 									<div class="pi-smart-data-value pi-data-value pi-font pi-item-spacing" style="width: 33.333333333333%">test value 4</div>
@@ -1356,9 +1356,9 @@ class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 						<section class="pi-item pi-group pi-border-color">
 							<section class="pi-item pi-smart-group pi-border-color">
 								<section class="pi-smart-group-head">
-									<h3 class="pi-smart-data-label pi-data-label pi-secondary-font pi-item-spacing" style="width: 33.333333333333%">Test 1</h3>
-									<h3 class="pi-smart-data-label pi-data-label pi-secondary-font pi-item-spacing" style="width: 33.333333333333%">Test 2</h3>
-									<h3 class="pi-smart-data-label pi-data-label pi-secondary-font pi-item-spacing" style="width: 33.333333333333%">Test 3</h3>
+									<div class="pi-smart-data-label pi-data-label pi-secondary-font pi-item-spacing" style="width: 33.333333333333%">Test 1</div>
+									<div class="pi-smart-data-label pi-data-label pi-secondary-font pi-item-spacing" style="width: 33.333333333333%">Test 2</div>
+									<div class="pi-smart-data-label pi-data-label pi-secondary-font pi-item-spacing" style="width: 33.333333333333%">Test 3</div>
 								</section>
 								<section class="pi-smart-group-body">
 									<div class="pi-smart-data-value pi-data-value pi-font pi-item-spacing" style="width: 33.333333333333%">test value 1</div>
@@ -1368,8 +1368,8 @@ class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 							</section>
 							<section class="pi-item pi-smart-group pi-border-color">
 								<section class="pi-smart-group-head">
-									<h3 class="pi-smart-data-label pi-data-label pi-secondary-font pi-item-spacing" style="width: 50%">Test 4</h3>
-									<h3 class="pi-smart-data-label pi-data-label pi-secondary-font pi-item-spacing" style="width: 50%">Test 5</h3>
+									<div class="pi-smart-data-label pi-data-label pi-secondary-font pi-item-spacing" style="width: 50%">Test 4</div>
+									<div class="pi-smart-data-label pi-data-label pi-secondary-font pi-item-spacing" style="width: 50%">Test 5</div>
 								</section>
 								<section class="pi-smart-group-body">
 									<div class="pi-smart-data-value pi-data-value pi-font pi-item-spacing" style="width: 50%">test value 4</div>
@@ -1377,7 +1377,7 @@ class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 								</section>
 							</section>
 							<div class="pi-item pi-data pi-item-spacing pi-border-color">
-								<h3 class="pi-data-label pi-secondary-font">Test 6</h3>
+								<div class="pi-data-label pi-secondary-font">Test 6</div>
 								<div class="pi-data-value pi-font">test value 6</div>
 							</div>
 						</section>
@@ -1437,7 +1437,7 @@ class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 						<section class="pi-item pi-group pi-border-color">
 							<section class="pi-item pi-smart-group pi-border-color">
 								<section class="pi-smart-group-head">
-									<h3 class="pi-smart-data-label pi-data-label pi-secondary-font pi-item-spacing" style="width: 100%">Test 1</h3>
+									<div class="pi-smart-data-label pi-data-label pi-secondary-font pi-item-spacing" style="width: 100%">Test 1</div>
 								</section>
 								<section class="pi-smart-group-body">
 									<div class="pi-smart-data-value pi-data-value pi-font pi-item-spacing" style="width: 100%">test value 1</div>
@@ -1445,8 +1445,8 @@ class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 							</section>
 							<section class="pi-item pi-smart-group pi-border-color">
 								<section class="pi-smart-group-head">
-									<h3 class="pi-smart-data-label pi-data-label pi-secondary-font pi-item-spacing" style="width: 50%">Test 2</h3>
-									<h3 class="pi-smart-data-label pi-data-label pi-secondary-font pi-item-spacing" style="width: 50%">Test 3</h3>
+									<div class="pi-smart-data-label pi-data-label pi-secondary-font pi-item-spacing" style="width: 50%">Test 2</div>
+									<div class="pi-smart-data-label pi-data-label pi-secondary-font pi-item-spacing" style="width: 50%">Test 3</div>
 								</section>
 								<section class="pi-smart-group-body">
 									<div class="pi-smart-data-value pi-data-value pi-font pi-item-spacing" style="width: 50%">test value 2</div>
@@ -1510,7 +1510,7 @@ class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 						<section class="pi-item pi-group pi-border-color">
 							<section class="pi-item pi-smart-group pi-border-color">
 								<section class="pi-smart-group-head">
-									<h3 class="pi-smart-data-label pi-data-label pi-secondary-font pi-item-spacing" style="width: 100%">Test 1</h3>
+									<div class="pi-smart-data-label pi-data-label pi-secondary-font pi-item-spacing" style="width: 100%">Test 1</div>
 								</section>
 								<section class="pi-smart-group-body">
 									<div class="pi-smart-data-value pi-data-value pi-font pi-item-spacing" style="width: 100%">test value 1</div>
@@ -1518,7 +1518,7 @@ class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 							</section>
 							<section class="pi-item pi-smart-group pi-border-color">
 								<section class="pi-smart-group-head">
-									<h3 class="pi-smart-data-label pi-data-label pi-secondary-font pi-item-spacing" style="width: 100%">Test 2</h3>
+									<div class="pi-smart-data-label pi-data-label pi-secondary-font pi-item-spacing" style="width: 100%">Test 2</div>
 								</section>
 								<section class="pi-smart-group-body">
 									<div class="pi-smart-data-value pi-data-value pi-font pi-item-spacing" style="width: 100%">test value 2</div>
@@ -1526,7 +1526,7 @@ class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 							</section>
 							<section class="pi-item pi-smart-group pi-border-color">
 								<section class="pi-smart-group-head">
-									<h3 class="pi-smart-data-label pi-data-label pi-secondary-font pi-item-spacing" style="width: 100%">Test 3</h3>
+									<div class="pi-smart-data-label pi-data-label pi-secondary-font pi-item-spacing" style="width: 100%">Test 3</div>
 								</section>
 								<section class="pi-smart-group-body">
 									<div class="pi-smart-data-value pi-data-value pi-font pi-item-spacing" style="width: 100%">test value 3</div>
@@ -1597,8 +1597,8 @@ class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 						<section class="pi-item pi-group pi-border-color">
 							<section class="pi-item pi-smart-group pi-border-color">
 								<section class="pi-smart-group-head">
-									<h3 class="pi-smart-data-label pi-data-label pi-secondary-font pi-item-spacing" style="width: 50%">Test 1</h3>
-									<h3 class="pi-smart-data-label pi-data-label pi-secondary-font pi-item-spacing" style="width: 50%">Test 2</h3>
+									<div class="pi-smart-data-label pi-data-label pi-secondary-font pi-item-spacing" style="width: 50%">Test 1</div>
+									<div class="pi-smart-data-label pi-data-label pi-secondary-font pi-item-spacing" style="width: 50%">Test 2</div>
 								</section>
 								<section class="pi-smart-group-body">
 									<div class="pi-smart-data-value pi-data-value pi-font pi-item-spacing" style="width: 50%">test value 1</div>
@@ -1608,7 +1608,7 @@ class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 							<div class="pi-item pi-item-spacing pi-title">title value</div>
 							<section class="pi-item pi-smart-group pi-border-color">
 								<section class="pi-smart-group-head">
-									<h3 class="pi-smart-data-label pi-data-label pi-secondary-font pi-item-spacing" style="width: 100%">Test 3</h3>
+									<div class="pi-smart-data-label pi-data-label pi-secondary-font pi-item-spacing" style="width: 100%">Test 3</div>
 								</section>
 								<section class="pi-smart-group-body">
 									<div class="pi-smart-data-value pi-data-value pi-font pi-item-spacing" style="width: 100%">test value 3</div>
@@ -1697,8 +1697,8 @@ class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 							<div class="pi-item pi-item-spacing pi-title">title value</div>
 							<section class="pi-item pi-smart-group pi-border-color">
 								<section class="pi-smart-group-head">
-									<h3 class="pi-smart-data-label pi-data-label pi-secondary-font pi-item-spacing" style="width: 50%"></h3>
-									<h3 class="pi-smart-data-label pi-data-label pi-secondary-font pi-item-spacing" style="width: 50%">Test 4</h3>
+									<div class="pi-smart-data-label pi-data-label pi-secondary-font pi-item-spacing" style="width: 50%"></div>
+									<div class="pi-smart-data-label pi-data-label pi-secondary-font pi-item-spacing" style="width: 50%">Test 4</div>
 								</section>
 								<section class="pi-smart-group-body">
 									<div class="pi-smart-data-value pi-data-value pi-font pi-item-spacing" style="width: 50%">test value 3</div>
@@ -1836,11 +1836,11 @@ class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 						<section class="pi-item pi-group pi-border-color pi-collapse pi-collapse-open">
 							<div class="pi-item pi-header pi-secondary-font pi-item-spacing pi-secondary-background">Test Header</div>
 							<div class="pi-item pi-data pi-item-spacing pi-border-color">
-								<h3 class="pi-data-label pi-secondary-font">test label</h3>
+								<div class="pi-data-label pi-secondary-font">test label</div>
 								<div class="pi-data-value pi-font">test value</div>
 							</div>
 							<div class="pi-item pi-data pi-item-spacing pi-border-color">
-								<h3 class="pi-data-label pi-secondary-font">test label</h3>
+								<div class="pi-data-label pi-secondary-font">test label</div>
 								<div class="pi-data-value pi-font">test value</div>
 							</div>
 						</section>
@@ -1901,11 +1901,11 @@ class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 						<section class="pi-item pi-group pi-border-color pi-collapse pi-collapse-closed">
 							<div class="pi-item pi-header pi-secondary-font pi-item-spacing pi-secondary-background" data-item-name="header">Test Header</div>
 							<div class="pi-item pi-data pi-item-spacing pi-border-color">
-								<h3 class="pi-data-label pi-secondary-font">test label</h3>
+								<div class="pi-data-label pi-secondary-font">test label</div>
 								<div class="pi-data-value pi-font">test value</div>
 							</div>
 							<div class="pi-item pi-data pi-item-spacing pi-border-color">
-								<h3 class="pi-data-label pi-secondary-font">test label</h3>
+								<div class="pi-data-label pi-secondary-font">test label</div>
 								<div class="pi-data-value pi-font">test value</div>
 							</div>
 						</section>
