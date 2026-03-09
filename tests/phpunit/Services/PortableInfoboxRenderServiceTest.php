@@ -18,7 +18,7 @@ class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 	 * @return string
 	 */
 	private function normalizeHTML( $html ) {
-		if ( empty( $html ) ) {
+		if ( !$html ) {
 			return '';
 		}
 
@@ -76,7 +76,7 @@ class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 					]
 				],
 				'output' => '<aside class="portable-infobox noexcerpt searchaux pi-background">
-						<h2 class="pi-item pi-item-spacing pi-title">Test Title</h2>
+						<div class="pi-item pi-item-spacing pi-title">Test Title</div>
 					</aside>',
 				'description' => 'Only title',
 				'accentColor' => '',
@@ -94,7 +94,7 @@ class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 					]
 				],
 				'output' => '<aside class="portable-infobox noexcerpt searchaux pi-background">
-						<h2 class="pi-item pi-item-spacing pi-title" style="background-color:#FFF;color:#000;">Test Title</h2>
+						<div class="pi-item pi-item-spacing pi-title" style="background-color:#FFF;color:#000;">Test Title</div>
 					</aside>',
 				'description' => 'Only title with custom colors',
 				'accentColor' => '#FFF',
@@ -238,7 +238,7 @@ class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 					]
 				],
 				'output' => '<aside class="portable-infobox noexcerpt searchaux pi-background">
-						<h2 class="pi-item pi-item-spacing pi-title">Test Title</h2>
+						<div class="pi-item pi-item-spacing pi-title">Test Title</div>
 						<figure class="pi-item pi-media pi-image">
 							<a href="http://image.jpg" class="image image-thumbnail" title="image alt">
 								<img src="http://thumbnail.jpg" srcset="http://thumbnail.jpg 1x, http://thumbnail2x.jpg 2x"
@@ -279,7 +279,7 @@ class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 					]
 				],
 				'output' => '<aside class="portable-infobox noexcerpt searchaux pi-background">
-						<h2 class="pi-item pi-item-spacing pi-title">Test Title</h2>
+						<div class="pi-item pi-item-spacing pi-title">Test Title</div>
 						<div class="pi-item pi-data pi-item-spacing pi-border-color">
 							<h3 class="pi-data-label pi-secondary-font">test label</h3>
 							<div class="pi-data-value pi-font">test value</div>
@@ -309,7 +309,7 @@ class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 					]
 				],
 				'output' => '<aside class="portable-infobox noexcerpt searchaux pi-background">
-						<h2 class="pi-item pi-item-spacing pi-title">Test Title</h2>
+						<div class="pi-item pi-item-spacing pi-title">Test Title</div>
 						<div class="pi-item pi-data pi-item-spacing pi-border-color" data-item-name="testname">
 							<h3 class="pi-data-label pi-secondary-font">test label</h3>
 							<div class="pi-data-value pi-font">test value</div>
@@ -367,9 +367,9 @@ class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 					]
 				],
 				'output' => '<aside class="portable-infobox noexcerpt searchaux pi-background">
-						<h2 class="pi-item pi-item-spacing pi-title">Test Title</h2>
+						<div class="pi-item pi-item-spacing pi-title">Test Title</div>
 						<section class="pi-item pi-group pi-border-color">
-							<h2 class="pi-item pi-header pi-secondary-font pi-item-spacing pi-secondary-background">Test Header</h2>
+							<div class="pi-item pi-header pi-secondary-font pi-item-spacing pi-secondary-background">Test Header</div>
 							<div class="pi-item pi-data pi-item-spacing pi-border-color" data-item-name="dataname">
 								<h3 class="pi-data-label pi-secondary-font">test label</h3>
 								<div class="pi-data-value pi-font">test value</div>
@@ -432,9 +432,9 @@ class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 					]
 				],
 				'output' => '<aside class="portable-infobox noexcerpt searchaux pi-background">
-						<h2 class="pi-item pi-item-spacing pi-title" style="background-color:#FFF;color:#000;">Test Title</h2>
+						<div class="pi-item pi-item-spacing pi-title" style="background-color:#FFF;color:#000;">Test Title</div>
 						<section class="pi-item pi-group pi-border-color">
-							<h2 class="pi-item pi-header pi-secondary-font pi-item-spacing pi-secondary-background" style="background-color:#FFF;color:#000;">Test Header</h2>
+							<div class="pi-item pi-header pi-secondary-font pi-item-spacing pi-secondary-background" style="background-color:#FFF;color:#000;">Test Header</div>
 							<div class="pi-item pi-data pi-item-spacing pi-border-color">
 								<h3 class="pi-data-label pi-secondary-font">test label</h3>
 								<div class="pi-data-value pi-font">test value</div>
@@ -1605,7 +1605,7 @@ class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 									<div class="pi-smart-data-value pi-data-value pi-font pi-item-spacing" style="width: 50%">test value 2</div>
 								 </section>
 							</section>
-							<h2 class="pi-item pi-item-spacing pi-title">title value</h2>
+							<div class="pi-item pi-item-spacing pi-title">title value</div>
 							<section class="pi-item pi-smart-group pi-border-color">
 								<section class="pi-smart-group-head">
 									<h3 class="pi-smart-data-label pi-data-label pi-secondary-font pi-item-spacing" style="width: 100%">Test 3</h3>
@@ -1694,7 +1694,7 @@ class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 									<div class="pi-smart-data-value pi-data-value pi-font pi-item-spacing" style="width: 50%">test value 2</div>
 								</section>
 							</section>
-							<h2 class="pi-item pi-item-spacing pi-title">title value</h2>
+							<div class="pi-item pi-item-spacing pi-title">title value</div>
 							<section class="pi-item pi-smart-group pi-border-color">
 								<section class="pi-smart-group-head">
 									<h3 class="pi-smart-data-label pi-data-label pi-secondary-font pi-item-spacing" style="width: 50%"></h3>
@@ -1755,7 +1755,7 @@ class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 					]
 				],
 				'output' => '<aside class="portable-infobox noexcerpt searchaux pi-background">
-						<h2 class="pi-item pi-item-spacing pi-title">Test Title</h2>
+						<div class="pi-item pi-item-spacing pi-title">Test Title</div>
 						<div class="pi-media-collection" data-source="src" data-item-name="img">
 							<ul class="pi-media-collection-tabs">
 								<li class="pi-tab-link pi-item-spacing current" data-pi-tab="pi-tab-1">caption</li>
@@ -1832,9 +1832,9 @@ class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 					]
 				],
 				'output' => '<aside class="portable-infobox noexcerpt searchaux pi-background">
-						<h2 class="pi-item pi-item-spacing pi-title">Test Title</h2>
+						<div class="pi-item pi-item-spacing pi-title">Test Title</div>
 						<section class="pi-item pi-group pi-border-color pi-collapse pi-collapse-open">
-							<h2 class="pi-item pi-header pi-secondary-font pi-item-spacing pi-secondary-background">Test Header</h2>
+							<div class="pi-item pi-header pi-secondary-font pi-item-spacing pi-secondary-background">Test Header</div>
 							<div class="pi-item pi-data pi-item-spacing pi-border-color">
 								<h3 class="pi-data-label pi-secondary-font">test label</h3>
 								<div class="pi-data-value pi-font">test value</div>
@@ -1897,9 +1897,9 @@ class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 					]
 				],
 				'output' => '<aside class="portable-infobox noexcerpt searchaux pi-background">
-						<h2 class="pi-item pi-item-spacing pi-title">Test Title</h2>
+						<div class="pi-item pi-item-spacing pi-title">Test Title</div>
 						<section class="pi-item pi-group pi-border-color pi-collapse pi-collapse-closed">
-							<h2 class="pi-item pi-header pi-secondary-font pi-item-spacing pi-secondary-background" data-item-name="header">Test Header</h2>
+							<div class="pi-item pi-header pi-secondary-font pi-item-spacing pi-secondary-background" data-item-name="header">Test Header</div>
 							<div class="pi-item pi-data pi-item-spacing pi-border-color">
 								<h3 class="pi-data-label pi-secondary-font">test label</h3>
 								<div class="pi-data-value pi-font">test value</div>
