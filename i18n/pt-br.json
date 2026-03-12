@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eduardoaddad"
+		]
+	},
+	"portable-infobox-desc": "Cria caixas informativas portáteis que podem ser compostas usando uma notação semântica de fácil compreensão, semelhante a HTML, em qualquer tema ou plataforma. Também inclui um criador de caixas informativas portáteis em [[Special:PortableInfoboxBuilder|Especial:Criador de caixas informativas portáteis]].",
+	"portable-infobox-unimplemented-infobox-tag": "Etiqueta de caixa informativa não implementada: <$1>",
+	"portable-infobox-xml-parse-error-space-required": "Erro de construção de atributos",
+	"portable-infobox-xml-parse-error-name-required": "Erro na análise sintática do nome do atributo",
+	"portable-infobox-xml-parse-error-tag-name-mismatch": "As etiquetas de abertura e fecho não correspondem",
+	"portable-infobox-xml-parse-error-infobox-tag-attribute-unsupported": "O atributo \"$1\" não é suportado na etiqueta <infobox>",
+	"infoboxbuilder-node-title": "Título",
+	"infoboxbuilder-node-title-value-pagename": "Nome da página",
+	"infoboxbuilder-node-data": "Dados",
+	"infoboxbuilder-node-media": "Imagem",
+	"infoboxbuilder-node-header": "Cabeçalho",
+	"infoboxbuilder-node-navigation": "Navegação",
+	"infoboxbuilder-nodeparam-default": "Valor padrão",
+	"infoboxbuilder-nodeparam-format": "Formato",
+	"infoboxbuilder-nodeparam-label": "Etiqueta",
+	"infoboxbuilder-nodeparam-value": "Valor",
+	"infoboxbuilder-templatename": "Nome da predefinição"
+}
