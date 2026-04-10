@@ -1,5 +1,6 @@
 {
-	"name": "Portable Infobox",
+	"name": "PortableInfobox",
+	"namemsg": "portable-infobox-name",
 	"author": [
 		"Universal Omega",
 		"Luqgreg (Łukasz K.)",
