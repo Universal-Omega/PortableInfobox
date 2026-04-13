@@ -4,6 +4,7 @@
 			"Rail"
 		]
 	},
+	"portable-infobox-name": "Przenośny Infoboks",
 	"portable-infobox-desc": "Twórz przenośne infoboksy, które mogą być wyświetlane za pomocą czystej i semantycznej składni HTML na każdej skórce i platformie przy użyciu prostej do zrozumienia, a zarazem potężnej składni podobnej do języka XML. Udostępnia również kreator infoboksów na [[{{#special:PortableInfoboxBuilder}}]].",
 	"portable-infobox-unimplemented-infobox-tag": "Niezaimplementowany tag infoboksu: <$1>",
 	"portable-infobox-xml-parse-error-info": "Wystąpił problem z parsowaniem infoboksu",

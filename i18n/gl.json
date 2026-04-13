@@ -4,6 +4,7 @@
 			"Toliño"
 		]
 	},
+	"portable-infobox-name": "Caixa de información portable",
 	"portable-infobox-desc": "Crea caixas de información portables que se poden renderizar usando etiquetas HTML semánticas limpas en calquera aparencia/plataforma usando etiquetas XML potentes e fáciles de entender. Tamén inclúe un creador de caixas de información portables en «[[Special:PortableInfoboxBuilder]]».",
 	"portable-infobox-unimplemented-infobox-tag": "Etiqueta da caixa de información non implementada: <$1>",
 	"portable-infobox-xml-parse-error-info": "Hai un problema ao analizar a caixa de información",
