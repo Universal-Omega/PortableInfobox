@@ -6,6 +6,7 @@
 			"Siebrand"
 		]
 	},
+	"portable-infobox-name": "Overdraagbare infobox",
 	"portable-infobox-desc": "Maakt overdraagbare infoboxen die kunnen worden weergegeven met behulp van zuivere semantische HTML-opmaak, op iedere vormgeving en op ieder platform, met behulp van een eenvoudig te begrijpen, krachtige, XML-achtige notatie. Bevat ook een bouwprogramma voor overdraagbare infoboxen op [[Special:PortableInfoboxBuilder]].",
 	"portable-infobox-unimplemented-infobox-tag": "Niet-geïmplementeerde infobox-tag: <$1>",
 	"portable-infobox-xml-parse-error-info": "Er is een probleem met het interpreteren van de infobox.",

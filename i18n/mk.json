@@ -4,6 +4,7 @@
 			"Bjankuloski06"
 		]
 	},
+	"portable-infobox-name": "Пренослива инфокутија",
 	"portable-infobox-desc": "Создавајте пренослив иинфокутии што можат да се испишуваат користејќи чисти семантички HTML-ознаки во секое руво / подлога со помош на лесно разблириво означување налик на XML. Вклучува и градител на преносливи инфокутии на  [[Special:PortableInfoboxBuilder]].",
 	"portable-infobox-unimplemented-infobox-tag": "Неприменета инфокутиска ознака: <$1>",
 	"portable-infobox-xml-parse-error-info": "Се појави проблем при расчленувањето на инфокутијата",

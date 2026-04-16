@@ -7,14 +7,17 @@
 			"Ykhwong"
 		]
 	},
+	"portable-infobox-name": "간편 정보상자",
 	"portable-infobox-xml-parse-error-info": "정보 상자의 구문을 분석하는 데 문제가 있습니다",
 	"allinfoboxes": "모든 정보상자",
 	"apihelp-query+allinfoboxes-summary": "모든 정보상자 나열",
 	"apihelp-query+infobox-summary": "정보상자 메타데이터 가져오기",
 	"infoboxbuilder-action-addnode": "정보상자 요소 추가",
 	"infoboxbuilder-action-clear": "정보상자 지우기",
+	"infoboxbuilder-action-deletenode": "요소 삭제",
 	"infoboxbuilder-action-publish": "정보상자 게시",
 	"infoboxbuilder-node-title": "제목",
+	"infoboxbuilder-node-title-value": "정보상자 제목",
 	"infoboxbuilder-node-title-value-pagename": "문서 이름",
 	"infoboxbuilder-node-data": "데이터",
 	"infoboxbuilder-node-data-value-source": "$1의 값",
@@ -26,5 +29,6 @@
 	"infoboxbuilder-nodeparam-format": "형식",
 	"infoboxbuilder-nodeparam-label": "레이블",
 	"infoboxbuilder-nodeparam-value": "값",
+	"infoboxbuilder-templatename": "틀 제목",
 	"portableinfoboxbuilder": "간편 정보상자 빌더"
 }
