@@ -4,6 +4,7 @@
 			"McDutchie"
 		]
 	},
+	"portable-infobox-name": "Quadro de information portabile",
 	"portable-infobox-desc": "Crear quadros informative portabile que pote esser rendite usante un clar marcation HTML semantic sur qualcunque apparentia/platteforma usante un marcation simile a XML, potente e facile a comprender. Include etiam un constructor de quadros informative portabile a [[Special:PortableInfoboxBuilder]].",
 	"portable-infobox-unimplemented-infobox-tag": "Etiquetta de quadro informative non implementate: <$1>",
 	"portable-infobox-xml-parse-error-info": "Il ha un problema con le analyse syntactic del quadro informative",
