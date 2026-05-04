@@ -5,7 +5,7 @@
 			<ul class="pi-section-navigation">
 				{{#each sections}}
 					<li class="pi-section-tab pi-item-spacing{{#if active}} pi-section-active{{/if}}" data-ref="{{index}}"{{#if item-name}} data-item-name="{{item-name}}"{{/if}}>
-						<div class="pi-section-label">{{#if label}}{{label}}{{else}}{{index}}{{/if}}</div>
+						<div class="pi-section-label">{{#if label}}{{{label}}}{{else}}{{index}}{{/if}}</div>
 					</li>
 				{{/each}}
 			</ul>
