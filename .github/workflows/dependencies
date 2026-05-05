@@ -1,3 +1,6 @@
 PageImages:
   branch: auto
   repo: auto
+ParserMigration:
+  branch: auto
+  repo: auto
