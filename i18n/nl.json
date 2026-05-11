@@ -45,7 +45,7 @@
 	"infoboxbuilder-node-header": "Koptekst",
 	"infoboxbuilder-node-header-value": "Infobox-koptekst",
 	"infoboxbuilder-node-navigation": "Navigatie",
-	"infoboxbuilder-nodeerror-invalidsource": "Bronparameter is ongeldig.",
+	"infoboxbuilder-nodeerror-invalidsource": "Bronparameter is onjuist.",
 	"infoboxbuilder-nodeerror-nosourceordefault": "Elementen zonder bronparameter of standaardwaarde worden niet weergegeven.",
 	"infoboxbuilder-nodeparam-default": "Standaardwaarde",
 	"infoboxbuilder-nodeparam-format": "Opmaak",
