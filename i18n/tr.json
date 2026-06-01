@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
+			"HakanIST",
 			"SaldırganSincap"
 		]
 	},
+	"portable-infobox-name": "Taşınabilir Bilgi Kutusu",
 	"portable-infobox-desc": "Anlaşılması kolay, güçlü XML benzeri işaretleme kullanarak herhangi bir görünümde / platformda temiz anlamsal HTML işaretlemesi kullanılarak oluşturulabilen taşınabilir bilgi kutuları oluşturun. Ayrıca [[Special:PortableInfoboxBuilder]] sayfasında taşınabilir bir bilgi kutusu oluşturucu içerir.",
 	"portable-infobox-unimplemented-infobox-tag": "Uygulanmamış bilgi kutusu etiketi: <$1>",
 	"portable-infobox-xml-parse-error-info": "Bilgi kutusunun ayrıştırılmasıyla ilgili bir sorun var",
@@ -39,11 +41,16 @@
 	"infoboxbuilder-node-data": "Veri",
 	"infoboxbuilder-node-data-value-source": "$1 değeri",
 	"infoboxbuilder-node-media": "Resim",
+	"infoboxbuilder-node-header": "Başlık",
+	"infoboxbuilder-node-header-value": "Bilgi kutusu başlığı",
+	"infoboxbuilder-node-navigation": "Gezinme",
 	"infoboxbuilder-nodeerror-invalidsource": "Kaynak parametresi geçersizdir.",
 	"infoboxbuilder-nodeerror-nosourceordefault": "Kaynak parametresi veya varsayılan değeri olmayan öge görüntülenmeyecektir.",
 	"infoboxbuilder-nodeparam-default": "Varsayılan değer",
+	"infoboxbuilder-nodeparam-format": "Biçim",
 	"infoboxbuilder-nodeparam-label": "Etiket",
 	"infoboxbuilder-nodeparam-source": "Kaynak parametresi",
+	"infoboxbuilder-nodeparam-value": "Değer",
 	"infoboxbuilder-templatename": "Şablon adı",
 	"portableinfoboxbuilder": "Taşınabilir Bilgi Kutusu Oluşturucu"
 }
