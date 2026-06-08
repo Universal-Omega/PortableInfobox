@@ -27,7 +27,7 @@
 	"apihelp-infobox-param-title": "Titel van de pagina waar de tekst bij hoort",
 	"apihelp-infobox-param-args": "Variabelenlijst die gebruikt moet worden tijdens het verwerken (json-formaat)",
 	"apihelp-query+allinfoboxes-summary": "Alle infoboxen weergeven",
-	"apihelp-query+infobox-summary": "Infobox-metadata ophalen",
+	"apihelp-query+infobox-summary": "Infobox-metagegevens ophalen",
 	"apiwarn-infobox-invalidargs": "De opgegeven parameter args is onjuist",
 	"infoboxbuilder-action-addnode": "Infobox-elementen toevoegen",
 	"infoboxbuilder-action-clear": "Infobox wissen",
