@@ -2,11 +2,13 @@
 	"@metadata": {
 		"authors": [
 			"Googology",
+			"GuoPC",
 			"Lakejason0",
 			"沈澄心"
 		]
 	},
-	"portable-infobox-desc": "您可以使用类似XML标记创建简便的信息表格，并且可以使用清晰的语义特性HTML标记在任何皮肤或者平台进行呈现。在[[Special:PortableInfoboxBuilder]]有移动化信息框生成器。",
+	"portable-infobox-name": "便携式信息框",
+	"portable-infobox-desc": "您可以使用类似XML标记创建简便的信息表格，并且可以使用清晰的语义特性HTML标记在任何皮肤或者平台进行呈现。在[[Special:PortableInfoboxBuilder]]有便捷式信息框生成器。",
 	"portable-infobox-unimplemented-infobox-tag": "未生效的信息框标签：<$1>",
 	"portable-infobox-xml-parse-error-info": "解析信息框时出现问题",
 	"portable-infobox-xml-parse-error": "XML 标记不正确。请验证您的 XML。",
@@ -52,5 +54,5 @@
 	"infoboxbuilder-nodeparam-source": "源参数",
 	"infoboxbuilder-nodeparam-value": "值",
 	"infoboxbuilder-templatename": "模板名称",
-	"portableinfoboxbuilder": "移动化信息框生成器"
+	"portableinfoboxbuilder": "便携式信息框生成器"
 }
