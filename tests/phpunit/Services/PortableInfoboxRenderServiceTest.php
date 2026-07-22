@@ -32,6 +32,7 @@ class PortableInfoboxRenderServiceTest extends MediaWikiIntegrationTestCase {
 
 	/**
 	 * @covers ::renderInfobox
+	 * @covers \PortableInfobox\Services\AbstractPortableInfoboxRenderService
 	 * @covers \PortableInfobox\Services\Helpers\PortableInfoboxTemplateEngine
 	 * @param $input
 	 * @param $expectedOutput
