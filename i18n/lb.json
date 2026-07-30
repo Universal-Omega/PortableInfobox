@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"Robby",
+			"Volvox"
+		]
+	},
+	"portable-infobox-xml-parse-error-name-required": "Feeler beim Parse vum Attributnumm",
+	"allinfoboxes": "All Infoboxen",
+	"infoboxbuilder-action-clear": "Infobox eidelmaachen",
+	"infoboxbuilder-action-deletenode": "Element läschen",
+	"infoboxbuilder-node-title": "Titel",
+	"infoboxbuilder-node-title-value-pagename": "Numm vun der Säit",
+	"infoboxbuilder-node-data": "Donnéeën",
+	"infoboxbuilder-node-data-value-source": "Wäert vu(n) $1",
+	"infoboxbuilder-node-media": "Bild",
+	"infoboxbuilder-node-navigation": "Navigatioun",
+	"infoboxbuilder-nodeparam-default": "Standardwäert",
+	"infoboxbuilder-nodeparam-label": "Etikett",
+	"infoboxbuilder-nodeparam-value": "Wäert"
+}
