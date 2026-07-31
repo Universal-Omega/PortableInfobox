@@ -23,6 +23,12 @@ You can use several variables to modify extension's behaviour:
 - `$wgPortableInfoboxResponsiblyOpenCollapsed` (bool) - open collapsed groups when the screen is narrow. (default: true)
 - `$wgPortableInfoboxUseFileDescriptionPage` (bool) - control whether or not embedded images in the infobox will link to their file description page instead of directly to the file. (default: false)
 
+### Parsoid
+PortableInfobox has support for displaying infoboxes when rendering an article using Parsoid. This has been tested against MediaWiki 1.45 and is not guaranteed to work in earlier versions. 
+
+There are still some issues, and the implementation is not bug free, however it should display most infoboxes - infoboxes will also display in the VisualEditor. 
+
+When using PortableInfoboxes and Parsoid, you **must** set `$wgPortableInfoboxUseHeadings = false` otherwise Parsoid will wrap the headings in the infobox in section tags which will break formatting and styling.
 ## Usage
 See: https://community.fandom.com/wiki/Help:Infoboxes
 
