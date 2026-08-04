@@ -146,17 +146,21 @@
 		font-weight: bold;
 	}
 	.pi-data-value {
-		flex-basis: 200px;
-		-webkit-flex-basis: 200px;
-		-moz-flex-basis: 200px;
-		> :not( ul ),
+		flex-basis: 180px;
+		-webkit-flex-basis: 180px;
+		-moz-flex-basis: 180px;
+
 		li {
 			margin: 0;
 		}
-		ol {
-			list-style-position: inside;
-		}
 	}
+
+	ol, ul {
+		list-style-position: outside;
+		margin: 0 0 0 15px;
+		text-align: initial;
+	}
+
 	>.pi-item:last-child {
 		border-bottom: 0;
 	}
