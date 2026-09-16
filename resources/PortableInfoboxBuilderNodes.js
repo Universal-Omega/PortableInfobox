@@ -233,7 +233,7 @@
 			super.html();
 
 			if ( this.params.label ) {
-				let label = document.createElement( 'h3' );
+				let label = document.createElement( 'div' );
 				label.className = 'pi-data-label pi-secondary-font';
 				label.textContent = this.params.label;
 				this.element.appendChild( label );
@@ -267,7 +267,7 @@
 	class NodeTitle extends PINode {
 		constructor( markupDoc, params ) {
 			super( markupDoc, params );
-			this.elementTag = 'h2';
+			this.elementTag = 'div';
 			this.elementClasses += 'pi-item-spacing pi-title';
 			this.markupTag = 'title';
 		}
@@ -342,7 +342,7 @@
 	class NodeHeader extends PINode {
 		constructor( markupDoc, params ) {
 			super( markupDoc, params );
-			this.elementTag = 'h2';
+			this.elementTag = 'div';
 			this.elementClasses += 'pi-item-spacing pi-header pi-secondary-font pi-secondary-background';
 			this.markupTag = 'header';
 			this.markupContentTag = true;

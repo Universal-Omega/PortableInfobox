@@ -25,7 +25,7 @@
 			"value": 300
 		},
 		"PortableInfoboxUseHeadings": {
-			"value": true
+			"value": false
 		},
 		"PortableInfoboxUseTidy": {
 			"value": true
