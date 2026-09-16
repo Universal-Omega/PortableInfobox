@@ -8,8 +8,12 @@ use OOUI\ProgressBarWidget;
 class SpecialPortableInfoboxBuilder extends SpecialPage {
 
 	public function __construct() {
-		$restriction = $this->getConfig()->get( 'NamespaceProtection' )[NS_TEMPLATE][0] ?? '';
-		parent::__construct( 'PortableInfoboxBuilder', $restriction );
+		if ( version_compare( MW_VERSION, '1.46', '>=' ) ) {
+			parent::__construct( 'PortableInfoboxBuilder' );
+		} else {
+			$restriction = $this->getConfig()->get( 'NamespaceProtection' )[NS_TEMPLATE][0] ?? '';
+			parent::__construct( 'PortableInfoboxBuilder', $restriction );
+		}
 	}
 
 	public function execute( $par ) {
@@ -26,5 +30,10 @@ class SpecialPortableInfoboxBuilder extends SpecialPage {
 				new ProgressBarWidget( [ 'progress' => false ] ) .
 			'</div>'
 		);
+	}
+
+	/** @inheritDoc */
+	public function getRestriction(): string {
+		return $this->getConfig()->get( 'NamespaceProtection' )[NS_TEMPLATE][0] ?? '';
 	}
 }
