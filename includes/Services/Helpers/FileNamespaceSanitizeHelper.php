@@ -50,7 +50,7 @@ class FileNamespaceSanitizeHelper {
 
 			// be able to match user-provided file namespaces that may contain both underscores and spaces
 			$fileNamespaces = array_map( static function ( $namespace ) {
-				return mb_ereg_replace( '_', '(_|\ )', $namespace );
+				return str_replace( '_', '(_|\ )', preg_quote( $namespace, '/' ) );
 			}, $fileNamespaces );
 
 			// be able to match both upper- and lowercase first letters of the namespace
@@ -59,7 +59,7 @@ class FileNamespaceSanitizeHelper {
 			}, $fileNamespaces );
 
 			$namespaces = array_merge( $fileNamespaces, $lowercaseFileNamespaces );
-			$this->filePrefixRegex[$langCode] = '^(' . implode( '|', $namespaces ) . '):';
+			$this->filePrefixRegex[$langCode] = '/^(' . implode( '|', $namespaces ) . '):/u';
 		}
 
 		return $this->filePrefixRegex[$langCode];
@@ -109,7 +109,7 @@ class FileNamespaceSanitizeHelper {
 	 */
 	private function extractFilename( $potentialFilename, $filePrefixRegex ) {
 		$trimmedFilename = trim( $potentialFilename, '[]' );
-		$unprefixedFilename = mb_ereg_replace( $filePrefixRegex, '', $trimmedFilename );
+		$unprefixedFilename = preg_replace( $filePrefixRegex, '', $trimmedFilename ) ?? $trimmedFilename;
 		$filenameParts = explode( '|', $unprefixedFilename );
 
 		if ( !empty( $filenameParts[0] ) ) {
